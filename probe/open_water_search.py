@@ -1,15 +1,16 @@
-"""Search a flight of drone photos for swimmers with Muse Ember.
+"""Search a drone flight for swimmers with Muse Ember.
 
-    MODEL_API_KEY=... python open_water_search.py FRAMES_DIR --out RESULTS_DIR --budget 0.05
+    MODEL_API_KEY=... python open_water_search.py FLIGHT --out RESULTS_DIR --budget 0.05
 
-FRAMES_DIR holds the flight's photos, ordered in time by file name. Every frame first gets one
+FLIGHT is a video file or a folder of photos. A video is cut into one frame per second on this machine with
+ffmpeg. A folder holds one photo per second, ordered in time by file name. Every frame first gets one
 overview, in which Ember ranks the nine tiles of a 3 x 3 grid. Then each frame gets close looks at its
 top-ranked tiles, one round at a time, until the per-frame look count or the spending cap runs out. The
 worst-case cost of every request is checked against the spending cap before it is sent.
 
 RESULTS_DIR receives:
   search-record.json  the search record: every possible sighting, the coverage timeline of every tile of
-                      every frame, every Ember call with its tokens and cost, and how the run ended
+                      every second, every Ember call with its tokens and cost, and how the run ended
   report.html         the reviewer queue and a coverage map of every frame, built from the search record
   queue.json          the reviewer queue: ranked sightings, up to five per frame, built from the search record
   coverage.json       the coverage timeline from the search record: per frame, the tiles Ember checked,
@@ -20,13 +21,17 @@ The prompts, image preparation, output limit and answer readers are the ones use
 30-frame run and its validation repeat.
 """
 import argparse
+import atexit
 import base64
 import html
 import json
 import os
+import shutil
+import subprocess
 import time
 from itertools import groupby
 from pathlib import Path
+from tempfile import mkdtemp
 
 from PIL import Image
 
@@ -93,12 +98,30 @@ class Search:
         return event
 
 
+def cut_into_seconds(video):
+    """Extract one frame per second of the video, numbered by its second: second-00000.jpg, ...
+
+    The frames go in a temporary folder that is removed when the command exits.
+    """
+    folder = Path(mkdtemp(prefix="open-water-search-"))
+    atexit.register(shutil.rmtree, folder, ignore_errors=True)
+    try:
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf", "fps=1", "-qscale:v", "2",
+                        "-start_number", "0", str(folder / "second-%05d.jpg")], check=True, capture_output=True, text=True)
+    except FileNotFoundError:
+        raise SystemExit("Install ffmpeg to search a video flight.")
+    except subprocess.CalledProcessError as error:
+        raise SystemExit(f"ffmpeg could not cut {video} into frames: {error.stderr.strip()}")
+    return folder
+
+
 def load_frames(folder):
+    """The flight's frames in time order, one per second."""
     frames = []
-    for path in sorted(p for p in folder.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")):
+    for second, path in enumerate(sorted(p for p in folder.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png"))):
         with Image.open(path) as image:
             width, height = image.size
-        frames.append(dict(path=path, name=path.stem, width=width, height=height,
+        frames.append(dict(path=path, name=path.stem, second=second, width=width, height=height,
                            overview="awaiting overview", ranking=[], tiles={}))
     if not frames:
         raise SystemExit(f"No .jpg, .jpeg or .png frames in {folder}")
@@ -138,8 +161,9 @@ def search_record(flight, settings, frames, search, ending):
                                    crop=f"crops/{frame['name']}-t{tile}.jpg")
                               for x, y, c in points]
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
-        coverage_timeline.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
-                                      overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
+        coverage_timeline.append(dict(second=frame["second"], frame=frame["name"], width=frame["width"],
+                                      height=frame["height"], overview=frame["overview"], ranking=frame["ranking"],
+                                      tiles=tiles))
     return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
                 sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending)
 
@@ -234,8 +258,9 @@ a {{ color: #1b594c; }}
 
 def main(arguments=None, api=None):
     """Run the command. Offline tests pass a simulated Ember as api; otherwise it calls Meta with MODEL_API_KEY."""
-    parser = argparse.ArgumentParser(description="Search drone frames for swimmers with Muse Ember.")
-    parser.add_argument("frames", type=Path, help="folder of .jpg, .jpeg or .png drone frames")
+    parser = argparse.ArgumentParser(description="Search a drone flight for swimmers with Muse Ember.")
+    parser.add_argument("frames", type=Path, metavar="flight",
+                        help="video file of the flight, or folder of its .jpg, .jpeg or .png photos, one per second")
     parser.add_argument("--out", type=Path, required=True, help="new folder for the results")
     parser.add_argument("--budget", type=float, default=0.05, help="most to spend on Ember, in dollars (default 0.05)")
     parser.add_argument("--looks", type=int, default=2, choices=range(0, 10), metavar="0-9",
@@ -250,7 +275,7 @@ def main(arguments=None, api=None):
         api = Meta()
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
-    frames = load_frames(args.frames)
+    frames = load_frames(cut_into_seconds(args.frames) if args.frames.is_file() else args.frames)
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
