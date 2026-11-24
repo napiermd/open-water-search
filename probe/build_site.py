@@ -1,4 +1,4 @@
-"""Assemble the public website in site/: both pages, the sealed-run data, and the 60 frames and labels.
+"""Assemble the public website in site/: the three pages, the sealed-run data, and the 60 frames and labels.
 
     python probe/fetch_frames.py
     python probe/build_site.py
@@ -19,7 +19,7 @@ SITE = ROOT / "site"
 LONG_EDGE = 2400
 VERCEL = {
     "redirects": [
-        {"source": "/", "destination": "/pages/judge.html", "permanent": False},
+        {"source": "/", "destination": "/pages/index.html", "permanent": False},
         {"source": "/judge", "destination": "/pages/judge.html", "permanent": False},
         {"source": "/replay", "destination": "/pages/replay.html", "permanent": False},
     ],
@@ -54,7 +54,7 @@ def main():
             frames += 1
     (SITE / "vercel.json").write_text(json.dumps(VERCEL, indent=2))
     (SITE / ".vercelignore").write_text(".env*\n")  # vercel link writes a token to .env.local; never upload it
-    print(f"site/ ready: {frames} frames, both pages and the run data")
+    print(f"site/ ready: {frames} frames, the pages and the run data")
 
 
 if __name__ == "__main__":

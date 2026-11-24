@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Water Search · Muse Ember finds the water worth a close look</title>
+  <meta name="description" content="Muse Ember looks at each whole drone photo once, picks the patch of water worth a close look, and hands the reviewer marked crops plus a map of the water nobody has checked.">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="index.css">
+  <script type="module" src="index.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <span>Open Water Search</span>
+    <nav aria-label="Pages"><a href="index.html" aria-current="page">How it works</a><a href="judge.html">Take over a search</a><a href="replay.html">Replay</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h1 id="hero-title">3,600 drone photos an hour, and each swimmer is a speck.</h1>
+        <p class="lede">In the image Muse Ember reads, a typical swimmer is about 11 pixels across. Open Water Search has Ember look at each whole photo once, choose the patch of water worth a close look, and mark anyone it finds. The person reviewing gets marked crops to check and a map of the water nobody has looked at closely yet.</p>
+        <div class="actions">
+          <a class="primary" href="judge.html">Take over a search</a>
+          <a class="secondary" href="replay.html">Compare Ember with a fixed grid</a>
+        </div>
+        <p class="muted small">Both pages replay a recorded Muse Ember run, so clicking around costs nothing.</p>
+      </div>
+      <figure class="hero-figure">
+        <div id="hero-photo" class="photo"></div>
+        <figcaption id="hero-caption">Loading validation frame 2…</figcaption>
+        <ul class="legend" aria-label="Markings">
+          <li><span class="swatch chosen"></span>Ember’s close look, in order</li>
+          <li><span class="swatch point"></span>Ember’s mark</li>
+          <li><span class="swatch unchecked"></span>No close look yet</li>
+        </ul>
+      </figure>
+    </section>
+
+    <section aria-labelledby="how-title">
+      <h2 id="how-title" class="section-title">How it works</h2>
+      <ol class="flow">
+        <li>
+          <h3>One look at the whole photo</h3>
+          <div id="step-overview" class="photo"></div>
+          <p>Ember splits the photo into a 3 × 3 grid and ranks the nine tiles by how likely each is to hold a person in the water.</p>
+        </li>
+        <li>
+          <h3>Close looks at the top tiles</h3>
+          <div id="step-crops" class="crops"></div>
+          <p>Ember gets a full-resolution crop of each top-ranked tile, one at a time, and marks anyone it sees. A budget caps the spend before every request.</p>
+        </li>
+        <li>
+          <h3>A handoff the next person can use</h3>
+          <div id="step-handoff" class="photo"></div>
+          <p>The reviewer gets each mark as a crop and as a pin on the full photo. Water that never got a close look stays shaded, so nobody mistakes it for searched.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="compare-title">
+      <h2 id="compare-title" class="section-title">Same two close looks, different water</h2>
+      <p>A fixed grid opens tiles in a preset order. Ember opens the ones it ranked highest. On this photo, that difference decides whether anyone gets found.</p>
+      <div class="compare">
+        <figure><div id="compare-chosen" class="photo"></div><figcaption id="compare-chosen-caption"></figcaption></figure>
+        <figure><div id="compare-grid" class="photo"></div><figcaption id="compare-grid-caption"></figcaption></figure>
+      </div>
+
+      <h3 class="chart-title">Across 30 validation frames Ember had never seen, with 134 swimmers</h3>
+      <div class="chart" role="img" aria-label="Swimmers found out of 134. One close look per frame: Ember picks 63 to 64, center first 30 to 31, fixed grid 7. Two close looks per frame: Ember picks 74, center first 31 to 33, fixed grid 16.">
+        <div class="chart-group">
+          <p class="chart-label">One close look per frame</p>
+          <div class="bar-row"><span>Ember picks the tile</span><span class="bar ember" style="--low: 63; --high: 64"></span><b>63–64</b></div>
+          <div class="bar-row"><span>Always zoom the center</span><span class="bar center" style="--low: 30; --high: 31"></span><b>30–31</b></div>
+          <div class="bar-row"><span>Fixed grid order</span><span class="bar grid" style="--low: 7; --high: 7"></span><b>7</b></div>
+        </div>
+        <div class="chart-group">
+          <p class="chart-label">Two close looks per frame</p>
+          <div class="bar-row"><span>Ember picks the tile</span><span class="bar ember" style="--low: 74; --high: 74"></span><b>74</b></div>
+          <div class="bar-row"><span>Always zoom the center</span><span class="bar center" style="--low: 31; --high: 33"></span><b>31–33</b></div>
+          <div class="bar-row"><span>Fixed grid order</span><span class="bar grid" style="--low: 16; --high: 16"></span><b>16</b></div>
+        </div>
+      </div>
+      <p class="muted small">Every row uses the same recorded Ember answer for each crop, so only the order of the close looks differs. Ranges cover two passes over the frames. With all nine tiles opened, every order finds 77–78, so the gain comes from where the first looks go. The measure and its pass rule were written down before any call.</p>
+      <p>An overview plus two close looks cost about <strong>$0.00052 per photo</strong>, or $1.88 for an hour of footage at one photo a second.</p>
+    </section>
+
+    <section class="story" aria-labelledby="story-title">
+      <h2 id="story-title" class="section-title">Why the unchecked water matters</h2>
+      <p>On July 4, 2021, a Glendale, Wisconsin police drone found two paddleboarders on Lake Michigan and held a light on them while boats came in. The crew could reach the boats only through dispatch. Later, the officer told us:</p>
+      <blockquote>“Honestly, we didn’t know if the boats knew.”</blockquote>
+      <p>Finding someone is half the job. The other half is making sure the next person knows exactly where to look, and which water nobody has checked.</p>
+    </section>
+
+    <section aria-labelledby="run-title">
+      <h2 id="run-title" class="section-title">Run it on your own photos</h2>
+      <pre><code>pip install pillow
+export MODEL_API_KEY=your-meta-model-api-key
+python probe/open_water_search.py path/to/photos --out results --budget 0.05
+open results/report.html</code></pre>
+      <p>You get a report page with the reviewer queue and the coverage map, plus <code>queue.json</code>, <code>coverage.json</code> and <code>calls.jsonl</code> with every request and its cost. The tool stops before any request that could exceed <code>--budget</code>.</p>
+    </section>
+
+    <section aria-labelledby="limits-title">
+      <h2 id="limits-title" class="section-title">What this does not show yet</h2>
+      <ul class="limits">
+        <li>When each search used its own answers at equal spend, the totals came out 78 to 77. That gap is within Ember’s own variation between passes, and both scorecards are published.</li>
+        <li>There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.</li>
+      </ul>
+    </section>
+
+    <p class="provenance">Built during the Muse Ember Hackathon, November 23 to December 2, 2026. Photos and labels: SeaDronesSee (CC0), by Varga, Kiefer, Messmer and Zell. Every Ember call is in the <a href="https://github.com/napiermd/open-water-search">public repository</a>.</p>
+  </main>
+</body>
+</html>

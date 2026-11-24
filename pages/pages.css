@@ -20,7 +20,8 @@ body { margin: 0; }
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   padding-block: 1rem; border-bottom: 1px solid var(--rule); font-weight: 650;
 }
-.masthead nav { display: flex; gap: 1.2rem; font-weight: 600; }
+.masthead nav { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; font-weight: 600; }
+.masthead nav a { white-space: nowrap; }
 main { padding-block: 1.5rem 3rem; }
 h1 { margin: 0; font: 400 2.6rem/1.08 Georgia, serif; letter-spacing: -.03em; text-wrap: balance; }
 h2 { margin: 0; font-size: 1.15rem; line-height: 1.25; }
