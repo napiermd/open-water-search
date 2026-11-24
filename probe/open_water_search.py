@@ -62,7 +62,6 @@ REVIEW_LIMIT = 5
 FAILURE_LIMIT = 10
 # After a 429: wait out Retry-After, then back off from half a second, doubling on each further 429.
 FIRST_BACKOFF = 0.5
-RATE_LIMIT_TRIES = 8
 RATE_LIMIT_HEADERS = dict(limit_requests="x-ratelimit-limit-requests", remaining_requests="x-ratelimit-remaining-requests",
                           limit_tokens="x-ratelimit-limit-tokens", remaining_tokens="x-ratelimit-remaining-tokens")
 # Sightings merge into one possible person when they are at most this many seconds apart
@@ -126,7 +125,8 @@ def dollars(nanodollars):
 
 
 class Search:
-    def __init__(self, api, budget_nano, out, parallel, grounding=False):
+    def __init__(self, api, budget_nano, out, parallel, grounding=False, retries=1):
+        self.tries = retries + 1
         self.api = api
         self.budget = budget_nano
         self.grounding = grounding
@@ -241,7 +241,7 @@ class Search:
     def within_rate_limits(self, method, body):
         """Call Ember, spacing requests out when the rate-limit headers run low. After a 429, every request
         waits at least Retry-After, then a back-off that doubles with each 429 this request meets."""
-        for attempt in range(RATE_LIMIT_TRIES):
+        for attempt in range(self.tries):
             with self.lock:
                 now = time.monotonic()
                 send_at = max(now, self.next_send)
@@ -253,7 +253,7 @@ class Search:
                 backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
                 with self.lock:
                     self.next_send = max(self.next_send, time.monotonic() + (limited.retry_after or 0) + backoff)
-        raise RuntimeError(f"Meta answered 429 to {RATE_LIMIT_TRIES} tries in a row")
+        raise RuntimeError(f"Meta answered 429 to {self.tries} tries in a row")
 
 
 def cut_into_seconds(video):
@@ -483,9 +483,11 @@ def main(arguments=None, api=None):
                         help="close looks per frame after its overview (default 2)")
     parser.add_argument("--parallel", type=int, default=8, choices=range(1, 9), metavar="1-8",
                         help="most requests to Ember at once (default 8)")
-    parser.add_argument("--format", choices=("frozen", "grounding"), default="frozen",
-                        help="how close looks ask for marks: the frozen prompts of the published runs (default), "
-                             "or Meta's 0-1,000 grounding format with a JSON schema")
+    parser.add_argument("--format", choices=("grounding", "frozen"), default="grounding",
+                        help="how close looks ask for marks: Meta's 0-1,000 grounding format with a JSON schema "
+                             "(default), or the frozen prompts of the published one-zoom runs")
+    parser.add_argument("--retries", type=int, default=1, choices=range(0, 8), metavar="0-7",
+                        help="times to retry a request after a 429 rate-limit reply (default 1)")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     args = parser.parse_args(arguments)
     if api is None:
@@ -501,7 +503,7 @@ def main(arguments=None, api=None):
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
     budget = round(args.budget * NANO)
-    search = Search(api, budget, args.out, args.parallel, grounding=args.format == "grounding")
+    search = Search(api, budget, args.out, args.parallel, grounding=args.format == "grounding", retries=args.retries)
     ending = dict(outcome="finished", reason=None)
     started = time.monotonic()
     try:
@@ -512,7 +514,7 @@ def main(arguments=None, api=None):
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
     seconds = time.monotonic() - started
     search.log.close()
-    settings = dict(model=MODEL, looks=args.looks, format=args.format, parallel=args.parallel,
+    settings = dict(model=MODEL, looks=args.looks, format=args.format, parallel=args.parallel, retries=args.retries,
                     spending_cap_nanodollars=budget)
     record = search_record(args.frames, settings, frames, search, ending, seconds)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))

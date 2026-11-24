@@ -86,7 +86,7 @@ class ParallelFlight(unittest.TestCase):
         replies = quiet_flight(2)
         replies["frame-01", -1] = [RateLimited(None), RateLimited(1), '{"tiles":[4,0]}']
         ember = SimulatedEmber(replies)
-        status, _, record, _ = self.search(2, ember, "--looks", "0")
+        status, _, record, _ = self.search(2, ember, "--looks", "0", "--retries", "2")
         self.assertEqual(status, 0)
         self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
         self.assertEqual(self.requests_in(record), [("frame-01", -1), ("frame-02", -1)])
@@ -95,6 +95,16 @@ class ParallelFlight(unittest.TestCase):
         self.assertGreaterEqual(second - first, 0.25)
         self.assertLess(second - first, 1.0)
         self.assertGreaterEqual(third - second, 1 + 0.5)
+
+    def test_by_default_a_request_is_retried_once_after_a_429_and_a_second_429_fails_the_run(self):
+        replies = quiet_flight(2)
+        replies["frame-01", -1] = [RateLimited(None), RateLimited(None), '{"tiles":[4,0]}']
+        ember = SimulatedEmber(replies)
+        status, _, record, _ = self.search(2, ember, "--looks", "0")
+        self.assertEqual(status, 1)
+        self.assertEqual(record["ending"]["outcome"], "failed")
+        self.assertEqual(len(ember.times_sent(("frame-01", -1))), 2)
+        self.assertEqual(record["settings"]["retries"], 1)
 
     def test_low_rate_limit_headers_space_requests_out(self):
         # 200 requests left of 3,000 a minute is under a tenth, so requests are spaced 60 s / 200 = 0.3 s apart.

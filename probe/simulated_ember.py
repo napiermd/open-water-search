@@ -151,8 +151,14 @@ def refuse_network():
         socket.socket.connect = connect
 
 
-def run_command(arguments, ember):
-    """Run the real command with ember in place of Meta. Returns its exit status and what it printed."""
+def run_command(arguments, ember, as_given=False):
+    """Run the real command with ember in place of Meta. Returns its exit status and what it printed.
+
+    Scripted answers are written in the frozen prompts' fractions, so the command runs with --format frozen unless
+    a test names a format itself or passes as_given=True to run the arguments exactly as written.
+    """
+    if not as_given and "--format" not in arguments:
+        arguments = [*arguments, "--format", "frozen"]
     printed = io.StringIO()
     status = 0
     with redirect_stdout(printed), refuse_network():
