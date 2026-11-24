@@ -50,11 +50,11 @@ python probe/open_water_search.py path/to/photos --out results --budget 0.05
 open results/report.html
 ~~~
 
-Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
+Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
 
 | File in `results/` | What it holds |
 |---|---|
-| `search-record.json` | The search record: every possible sighting in source-image pixels, every tile's status for every photo, every Ember call with its tokens and cost, and how the run ended |
+| `search-record.json` | The search record: every possible sighting in source-image pixels, the possible people they merge into with a handoff message for each, every tile's status for every photo, every Ember call with its tokens and cost, and how the run ended |
 | `report.html` | The reviewer queue, highest confidence first, and a coverage map of every photo, built from the search record |
 | `queue.json` | Up to five sightings per photo, in source-image pixels, built from the search record |
 | `coverage.json` | Every tile's status for every photo, from the search record |
