@@ -51,10 +51,12 @@ button.replay:focus-visible { outline-color: var(--ember); }
 .timeline .clear, .swatch.clear { background: #5d8c81; }
 .timeline .flagged, .swatch.flagged { background: var(--ember); }
 .timeline .unreadable { background: var(--false); }
+.timeline.check { grid-template-rows: 1.4rem; }
 .swatch.never, .swatch.clear, .swatch.flagged { border: 1px solid #78928a; }
 .timeline-axis { display: flex; justify-content: space-between; margin-top: .3rem; font-size: .75rem; color: #8fa7a0; font-variant-numeric: tabular-nums; }
 .flight .legend { color: #c8d3cc; }
 .flight figcaption { color: #c8d3cc; margin-top: .7rem; }
+.flight figcaption a { color: var(--ember); }
 .flight ::selection { background: #2f6b5e; color: #fff; }
 
 /* Possible people on the flight's time axis, beside the selected handoff message. */
