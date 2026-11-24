@@ -6,6 +6,10 @@ MOBDrone (Cafarelli et al., 2022, https://doi.org/10.5281/zenodo.5996890) is rel
 outside this repository. Downloads MOBDrone_videos.zip and annotations_person_coco_classes.json into DATA_DIR and
 checks each against the MD5 Zenodo publishes, then unpacks the 66 videos into DATA_DIR/videos and checks each
 against the SHA-256 in mobdrone/frames.json. Files already present with the right hash are skipped.
+
+Finally it checks that the label file parses and lists one image per frame of every video, named
+VIDEO_FRAME.PNG with the frame number in six digits counting from 0, so every chosen frame has its label entry.
+The video DJI_0915_0007_40.mp4 appears in the label file as DJI_0915_0007_40m.
 """
 import hashlib
 import json
@@ -20,6 +24,11 @@ RECORD = "https://zenodo.org/api/records/5996890/files"
 VIDEOS = "MOBDrone_videos.zip"
 LABELS = "annotations_person_coco_classes.json"
 MD5 = {VIDEOS: "250c19fdd6fb0b5aa5fa43e5ad140306", LABELS: "c3c97f5518440489e686b63525fb6d3e"}
+LABEL_STEMS = {"DJI_0915_0007_40.mp4": "DJI_0915_0007_40m"}
+
+
+def label_name(video, frame):
+    return f"{LABEL_STEMS.get(video, Path(video).stem)}_{frame:06}.PNG"
 
 
 def digest(path, algorithm):
@@ -69,7 +78,13 @@ def main(data):
     for video in listing["videos"]:
         if digest(data / "videos" / video["video"], "sha256") != video["sha256"]:
             raise SystemExit(f"SHA-256 mismatch for {video['video']}")
+    labelled = {image["file_name"] for image in json.loads((data / LABELS).read_text())["images"]}
+    counted = {label_name(video["video"], frame) for video in listing["videos"] for frame in range(video["frame_count"])}
+    if labelled != counted:
+        raise SystemExit(f"{LABELS} does not list exactly the {len(counted)} frames ffprobe counted")
+    chosen = {label_name(frame["video"], frame["frame"]) for frame in listing["frames"]}
     print(f"{len(listing['videos'])} videos match mobdrone/frames.json; {LABELS} matches Zenodo's MD5")
+    print(f"{LABELS} lists all {len(counted)} frames, including the {len(chosen & labelled)} chosen")
 
 
 if __name__ == "__main__":
