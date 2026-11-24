@@ -14,8 +14,6 @@ reserved against --budget, so the run stops before crossing it. OUT gets checks.
 sightings.json, scorecard.json and summary.json.
 """
 import argparse
-import base64
-import io
 import json
 import os
 import threading
@@ -25,64 +23,15 @@ from pathlib import Path
 
 from PIL import Image
 
+# The check itself lives in flag_check, which open_water_search.py --mode detector-check shares.
+from flag_check import CHECKS, CROP_PIXELS, CROP_SCALE, MAX_CANDIDATES, MIN_CROP, PROMPT, candidates, read_checks, request_body
 from open_water_search import Ember, RateLimited, is_transient
 from runner import LIMIT, MODEL, NANO, price
 from score import groundtruth, score_sightings
 
-MAX_CANDIDATES = 12
-CROP_SCALE = 3
-MIN_CROP = 96
-CROP_PIXELS = 224
-PROMPT = ("Each numbered image is a crop from a drone photo of open water, centred on something a detector flagged. "
-          "For every crop, say whether a person in the water is at its centre, how confident you are from 0 to 1, "
-          "and in a few words what is there.")
-CHECKS = {"type": "json_schema", "name": "checks", "strict": True, "schema": {
-    "type": "object", "additionalProperties": False, "required": ["crops"],
-    "properties": {"crops": {"type": "array", "items": {
-        "type": "object", "additionalProperties": False, "required": ["crop", "person", "confidence", "what"],
-        "properties": {"crop": {"type": "integer"}, "person": {"type": "boolean"},
-                       "confidence": {"type": "number"}, "what": {"type": "string"}}}}}}}
-
 
 class OutOfBudget(Exception):
     pass
-
-
-def candidates(photo):
-    swimmers = [box for box in photo["boxes"] if box[5] == 0]
-    return sorted(swimmers, key=lambda box: -box[4])[:MAX_CANDIDATES]
-
-
-def crop(image, box):
-    x1, y1, x2, y2 = box[:4]
-    side = max(CROP_SCALE * max(x2 - x1, y2 - y1), MIN_CROP)
-    side = min(side, image.width, image.height)
-    left = min(max((x1 + x2) / 2 - side / 2, 0), image.width - side)
-    top = min(max((y1 + y2) / 2 - side / 2, 0), image.height - side)
-    region = image.crop((round(left), round(top), round(left + side), round(top + side)))
-    buffer = io.BytesIO()
-    region.resize((CROP_PIXELS, CROP_PIXELS), Image.Resampling.LANCZOS).save(buffer, "JPEG", quality=90)
-    return "data:image/jpeg;base64," + base64.b64encode(buffer.getvalue()).decode()
-
-
-def request_body(image, boxes):
-    content = [{"type": "input_text", "text": PROMPT}]
-    for number, box in enumerate(boxes, 1):
-        content += [{"type": "input_text", "text": f"Crop {number}:"}, {"type": "input_image", "image_url": crop(image, box)}]
-    return {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
-            "input": [{"role": "user", "content": content}], "text": {"format": CHECKS}}
-
-
-def read_checks(reply, count):
-    """Ember's verdict for each crop as (person, confidence, what), or None when the answer is not schema-shaped."""
-    raw = "".join(part["text"] for item in reply["output"] for part in item.get("content", [])
-                  if part["type"] == "output_text")
-    try:
-        crops = json.loads(raw)["crops"]
-        verdicts = {int(c["crop"]): (bool(c["person"]), float(c["confidence"]), str(c["what"])) for c in crops}
-    except (ValueError, KeyError, TypeError):
-        return None
-    return [verdicts.get(number) for number in range(1, count + 1)]
 
 
 class Checker:
