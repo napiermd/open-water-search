@@ -16,3 +16,7 @@ validation/live/*-overview.jpg
 results/
 __pycache__/
 .DS_Store
+
+# Built website and Vercel link
+site/
+.vercel/

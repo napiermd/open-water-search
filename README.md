@@ -4,6 +4,8 @@ A drone over open water takes thousands of wide photos an hour. The people in th
 
 Built during the Muse Ember Hackathon, November 23 to December 2, 2026.
 
+**Try it:** [open-water-search.vercel.app](https://open-water-search.vercel.app) opens partway into a recorded search for you to take over. [The replay page](https://open-water-search.vercel.app/replay) puts both searches side by side on all 60 frames. Both pages replay the sealed runs and make no API calls.
+
 ## Run it
 
 ```
@@ -62,6 +64,22 @@ Then open these two pages. Both replay the sealed traces in this repository, so 
 - `http://localhost:8000/pages/replay.html` puts both searches side by side on every frame of either run. Choose 1 to 9 close looks per frame to see the tiles each search opened in order, its reviewer queue, its spend, and totals across all 30 frames. Reveal the labels to see swimmers found, swimmers missed in checked tiles, swimmers in tiles never checked, and marks with no swimmer. The totals at nine looks match `score.json`, and at one to three looks they match the order table.
 
 `probe/build_pages.py` rebuilds `pages/runs/` from the sealed traces. It reads no labels. The pages load labels in the browser from the files `fetch_frames.py` downloads.
+
+The hosted site comes from `python probe/build_site.py`, which copies both pages, the run data, and the frames resized to 2,400 pixels, along with their labels, into `site/`. Then `vercel deploy site --prod` publishes it. SeaDronesSee is CC0, so the site can carry frames and labels that this repository leaves out.
+
+## Muse Ember usage
+
+Every call made for this project, from the token usage Meta returned with each answer:
+
+| | Calls | Input tokens | Cached input | Output tokens | Reasoning tokens | Cost |
+|---|---|---|---|---|---|---|
+| First run | 570 | 396,696 | 61,786 | 64,829 | 52,879 | $0.0662 |
+| False start | 46 | 33,333 | 0 | 8,345 | 7,718 | $0.0075 |
+| Validation | 570 | 373,864 | 61,606 | 70,966 | 59,924 | $0.0670 |
+| Tool test | 12 | 7,632 | 0 | 3,116 | 2,712 | $0.0023 |
+| **Total** | **1,198** | **811,525** | **123,392** | **147,256** | **123,233** | **$0.1429** |
+
+Costs use Meta's published Muse Ember rates: $0.10 per million input tokens, $0.004 per million cached input tokens and $0.50 per million output tokens, below 200,000 tokens of context. Each call's prompt hash, image hash, timing, usage and raw answer are in the traces.
 
 ## Reproduce the numbers
 

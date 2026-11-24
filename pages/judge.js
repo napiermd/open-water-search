@@ -54,9 +54,12 @@ async function start() {
 
   function drawCrop(tile, caption) {
     const [left, top, right, bottom] = frameRect(tile);
-    cropCanvas.width = right - left;
-    cropCanvas.height = bottom - top;
-    cropCanvas.getContext("2d").drawImage(image, left, top, right - left, bottom - top, 0, 0, right - left, bottom - top);
+    // The hosted site serves resized frames, so convert original-image coordinates to the loaded image's pixels.
+    const scale = image.naturalWidth / current.frame.width;
+    cropCanvas.width = Math.round((right - left) * scale);
+    cropCanvas.height = Math.round((bottom - top) * scale);
+    cropCanvas.getContext("2d").drawImage(image, left * scale, top * scale, (right - left) * scale, (bottom - top) * scale,
+      0, 0, cropCanvas.width, cropCanvas.height);
     cropCanvas.setAttribute("aria-label", "Close look at the " + TILE_NAMES[tile] + " tile");
     cropLayer.replaceChildren(...pointsFor(current.frame, tile).map(([x, y]) => {
       const mark = element("div", "mark");
