@@ -40,7 +40,10 @@ class ToolTestFlight(unittest.TestCase):
 
     def test_reviewer_queue_coverage_map_and_report_page_match_todays_output(self):
         self.assertEqual((self.out / "queue.json").read_text(), (TOOL_TEST / "queue.json").read_text())
-        self.assertEqual((self.out / "coverage.json").read_text(), (TOOL_TEST / "coverage.json").read_text())
+        # #8 keys each frame of the coverage timeline by its second in the flight. Nothing else changed.
+        todays_coverage = json.loads((TOOL_TEST / "coverage.json").read_text())
+        self.assertEqual(json.loads((self.out / "coverage.json").read_text()),
+                         [dict(frame, second=second) for second, frame in zip([0, 1, 2, 3], todays_coverage)])
         self.assertEqual((self.out / "report.html").read_text(),
                          (Path(__file__).parent / "fixtures" / "tool-test" / "report.html").read_text())
 

@@ -12,12 +12,14 @@ connection, and run_command fails any test that tries.
 import base64
 import io
 import socket
+import threading
+import time
 from contextlib import contextmanager, redirect_stdout
 
 from PIL import Image
 
 import open_water_search
-from runner import rectangle
+from runner import LIMIT, price, rectangle
 
 # Colour steps survive JPEG compression and resizing of flat tiles. Red and blue hold the frame index, green the tile.
 FRAME_STEP = 8
@@ -71,31 +73,69 @@ class SimulatedEmber:
 
     replies maps (frame name, tile) to what Ember returns for that request, with tile -1 for the overview:
     answer text, a full reply such as one recorded from a paid run, or an exception to raise instead of
-    replying. A request with no scripted reply raises KeyError, which the command treats as a failed request.
-    requests holds the body of every request sent for an answer, in order.
+    replying. A list scripts successive tries of the same request, such as a 429 and then an answer; the
+    last entry repeats. A request with no scripted reply raises KeyError, which the command treats as a
+    failed request.
+
+    latency maps (frame name, tile) to the seconds Ember takes to answer that request; others answer at once.
+    limits stands for Meta's rate-limit headers, as open_water_search.Ember reads them.
+
+    While it runs it notes every request sent, with when it was sent, the most requests in flight at once,
+    and the most ever committed: what was paid so far plus the worst-case cost of every request in flight.
+    requests holds the body of every request sent for an answer, in the order they were sent.
     """
 
-    def __init__(self, replies):
+    def __init__(self, replies, latency=None, limits=None):
         self.replies = replies
+        self.latency = latency or {}
+        self.limits = limits
+        self.lock = threading.Lock()
+        self.sent = []
+        self.in_flight = []
+        self.paid = 0
+        self.most_in_flight = 0
+        self.most_committed = 0
         self.requests = []
 
-    def reply_to(self, body):
+    def request_in(self, body):
         content = body["input"][0]["content"]
         url = next(part["image_url"] for part in content if part["type"] == "input_image")
         with Image.open(io.BytesIO(base64.b64decode(url.split(",", 1)[1]))) as image:
-            reply = self.replies[identify(image.convert("RGB"))]
+            return identify(image.convert("RGB"))
+
+    def reply_to(self, request, take=False):
+        reply = self.replies[request]
+        if isinstance(reply, list):
+            reply = reply.pop(0) if take and len(reply) > 1 else reply[0]
         return answer(reply) if isinstance(reply, str) else reply
 
     def count(self, body):
-        reply = self.reply_to(body)
+        reply = self.reply_to(self.request_in(body))
         return INPUT_TOKENS if isinstance(reply, Exception) else reply["usage"]["input_tokens"]
 
     def generate(self, body):
-        self.requests.append(body)
-        reply = self.reply_to(body)
+        request = self.request_in(body)
+        worst = price(self.count(body), 0, LIMIT)
+        with self.lock:
+            reply = self.reply_to(request, take=True)
+            self.sent.append((time.monotonic(), request))
+            self.requests.append(body)
+            self.in_flight.append(worst)
+            self.most_in_flight = max(self.most_in_flight, len(self.in_flight))
+            self.most_committed = max(self.most_committed, self.paid + sum(self.in_flight))
+        time.sleep(self.latency.get(request, 0))
+        with self.lock:
+            self.in_flight.remove(worst)
+            if not isinstance(reply, Exception):
+                usage = reply["usage"]
+                self.paid += price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"],
+                                   usage["output_tokens"])
         if isinstance(reply, Exception):
             raise reply
         return reply
+
+    def times_sent(self, request):
+        return [when for when, sent in self.sent if sent == request]
 
 
 @contextmanager
