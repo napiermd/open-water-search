@@ -1,0 +1,2671 @@
+[
+  {
+    "second": 0,
+    "frame": "second-00000",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 1,
+    "frame": "second-00001",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 2,
+    "frame": "second-00002",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 3,
+    "frame": "second-00003",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 4,
+    "frame": "second-00004",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 5,
+    "frame": "second-00005",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 6,
+    "frame": "second-00006",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1838.0,
+          411.06,
+          1903.29,
+          432.86
+        ],
+        "detector_confidence": 0.5452,
+        "status": "dismissed",
+        "crop": "crops/second-00006-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "open water, person right of centre"
+      }
+    ]
+  },
+  {
+    "second": 7,
+    "frame": "second-00007",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1751.22,
+          402.44,
+          1816.02,
+          424.75
+        ],
+        "detector_confidence": 0.5802,
+        "status": "kept",
+        "crop": "crops/second-00007-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 8,
+    "frame": "second-00008",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1662.03,
+          398.06,
+          1728.18,
+          419.85
+        ],
+        "detector_confidence": 0.4741,
+        "status": "kept",
+        "crop": "crops/second-00008-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 9,
+    "frame": "second-00009",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1572.67,
+          390.33,
+          1640.72,
+          413.37
+        ],
+        "detector_confidence": 0.6685,
+        "status": "kept",
+        "crop": "crops/second-00009-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 10,
+    "frame": "second-00010",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1485.42,
+          381.47,
+          1550.45,
+          405.4
+        ],
+        "detector_confidence": 0.6881,
+        "status": "kept",
+        "crop": "crops/second-00010-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "Person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 11,
+    "frame": "second-00011",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1395.14,
+          370.59,
+          1459.53,
+          400.35
+        ],
+        "detector_confidence": 0.7422,
+        "status": "kept",
+        "crop": "crops/second-00011-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person floating on back, snorkel visible"
+      }
+    ]
+  },
+  {
+    "second": 12,
+    "frame": "second-00012",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1304.8,
+          360.58,
+          1364.92,
+          397.67
+        ],
+        "detector_confidence": 0.8121,
+        "status": "dismissed",
+        "crop": "crops/second-00012-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "duck swimming"
+      }
+    ]
+  },
+  {
+    "second": 13,
+    "frame": "second-00013",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1217.32,
+          349.87,
+          1276.39,
+          390.87
+        ],
+        "detector_confidence": 0.8277,
+        "status": "kept",
+        "crop": "crops/second-00013-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "Snorkeler floating on surface"
+      }
+    ]
+  },
+  {
+    "second": 14,
+    "frame": "second-00014",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1136.6,
+          344.11,
+          1197.38,
+          388.12
+        ],
+        "detector_confidence": 0.7987,
+        "status": "kept",
+        "crop": "crops/second-00014-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "swimmer floating on back"
+      }
+    ]
+  },
+  {
+    "second": 15,
+    "frame": "second-00015",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1069.79,
+          340.68,
+          1126.29,
+          385.22
+        ],
+        "detector_confidence": 0.7826,
+        "status": "kept",
+        "crop": "crops/second-00015-flag1.jpg",
+        "ember_confidence": 0.8,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 16,
+    "frame": "second-00016",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1006.36,
+          339.99,
+          1063.03,
+          383.8
+        ],
+        "detector_confidence": 0.8094,
+        "status": "kept",
+        "crop": "crops/second-00016-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "Person floating swimming"
+      }
+    ]
+  },
+  {
+    "second": 17,
+    "frame": "second-00017",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          946.51,
+          337.89,
+          1001.65,
+          384.35
+        ],
+        "detector_confidence": 0.76,
+        "status": "kept",
+        "crop": "crops/second-00017-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "swimmer floating on back"
+      }
+    ]
+  },
+  {
+    "second": 18,
+    "frame": "second-00018",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          888.48,
+          335.18,
+          945.61,
+          383.07
+        ],
+        "detector_confidence": 0.8267,
+        "status": "kept",
+        "crop": "crops/second-00018-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person swimming on back in open water"
+      }
+    ]
+  },
+  {
+    "second": 19,
+    "frame": "second-00019",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          837.58,
+          332.48,
+          893.72,
+          378.94
+        ],
+        "detector_confidence": 0.7465,
+        "status": "kept",
+        "crop": "crops/second-00019-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person swimming prone"
+      }
+    ]
+  },
+  {
+    "second": 20,
+    "frame": "second-00020",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          786.62,
+          334.87,
+          842.62,
+          377.07
+        ],
+        "detector_confidence": 0.4465,
+        "status": "kept",
+        "crop": "crops/second-00020-flag1.jpg",
+        "ember_confidence": 0.7,
+        "what": "person floating face down in water"
+      }
+    ]
+  },
+  {
+    "second": 21,
+    "frame": "second-00021",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          738.71,
+          335.39,
+          796.64,
+          379.05
+        ],
+        "detector_confidence": 0.8067,
+        "status": "kept",
+        "crop": "crops/second-00021-flag1.jpg",
+        "ember_confidence": 0.75,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 22,
+    "frame": "second-00022",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          693.35,
+          335.74,
+          752.07,
+          380.42
+        ],
+        "detector_confidence": 0.8179,
+        "status": "kept",
+        "crop": "crops/second-00022-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 23,
+    "frame": "second-00023",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          657.85,
+          335.28,
+          710.7,
+          378.97
+        ],
+        "detector_confidence": 0.8236,
+        "status": "kept",
+        "crop": "crops/second-00023-flag1.jpg",
+        "ember_confidence": 0.75,
+        "what": "person snorkelling prone"
+      }
+    ]
+  },
+  {
+    "second": 24,
+    "frame": "second-00024",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          612.66,
+          335.0,
+          664.84,
+          384.68
+        ],
+        "detector_confidence": 0.8248,
+        "status": "dismissed",
+        "crop": "crops/second-00024-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "large bird in flight over water"
+      }
+    ]
+  },
+  {
+    "second": 25,
+    "frame": "second-00025",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          571.7,
+          336.91,
+          616.78,
+          391.95
+        ],
+        "detector_confidence": 0.7739,
+        "status": "kept",
+        "crop": "crops/second-00025-flag1.jpg",
+        "ember_confidence": 0.65,
+        "what": "person face down in dark wetsuit"
+      },
+      {
+        "number": 2,
+        "box": [
+          1883.4,
+          131.69,
+          1911.99,
+          187.94
+        ],
+        "detector_confidence": 0.7076,
+        "status": "kept",
+        "crop": "crops/second-00025-flag2.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating with legs up"
+      }
+    ]
+  },
+  {
+    "second": 26,
+    "frame": "second-00026",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1838.95,
+          137.9,
+          1869.42,
+          196.16
+        ],
+        "detector_confidence": 0.7647,
+        "status": "kept",
+        "crop": "crops/second-00026-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "Person floating, legs up, pink top"
+      },
+      {
+        "number": 2,
+        "box": [
+          526.53,
+          345.83,
+          566.57,
+          399.31
+        ],
+        "detector_confidence": 0.6421,
+        "status": "kept",
+        "crop": "crops/second-00026-flag2.jpg",
+        "ember_confidence": 0.85,
+        "what": "Person floating on back, dark wetsuit"
+      }
+    ]
+  },
+  {
+    "second": 27,
+    "frame": "second-00027",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1790.38,
+          141.79,
+          1820.32,
+          200.7
+        ],
+        "detector_confidence": 0.7831,
+        "status": "kept",
+        "crop": "crops/second-00027-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person diving head down"
+      }
+    ]
+  },
+  {
+    "second": 28,
+    "frame": "second-00028",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1742.67,
+          146.06,
+          1770.1,
+          204.34
+        ],
+        "detector_confidence": 0.7669,
+        "status": "kept",
+        "crop": "crops/second-00028-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "Person upside down, legs up in water"
+      }
+    ]
+  },
+  {
+    "second": 29,
+    "frame": "second-00029",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1692.55,
+          147.21,
+          1721.21,
+          205.99
+        ],
+        "detector_confidence": 0.7782,
+        "status": "kept",
+        "crop": "crops/second-00029-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person diving head down"
+      },
+      {
+        "number": 2,
+        "box": [
+          384.3,
+          364.66,
+          418.76,
+          420.41
+        ],
+        "detector_confidence": 0.6696,
+        "status": "kept",
+        "crop": "crops/second-00029-flag2.jpg",
+        "ember_confidence": 0.7,
+        "what": "person floating face down"
+      }
+    ]
+  },
+  {
+    "second": 30,
+    "frame": "second-00030",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1642.29,
+          148.85,
+          1672.51,
+          208.36
+        ],
+        "detector_confidence": 0.786,
+        "status": "kept",
+        "crop": "crops/second-00030-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
+      },
+      {
+        "number": 2,
+        "box": [
+          330.73,
+          363.73,
+          369.88,
+          423.67
+        ],
+        "detector_confidence": 0.7582,
+        "status": "kept",
+        "crop": "crops/second-00030-flag2.jpg",
+        "ember_confidence": 0.88,
+        "what": "person swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 31,
+    "frame": "second-00031",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1586.49,
+          151.96,
+          1618.7,
+          214.17
+        ],
+        "detector_confidence": 0.8003,
+        "status": "kept",
+        "crop": "crops/second-00031-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "Person floating on back"
+      },
+      {
+        "number": 2,
+        "box": [
+          268.81,
+          364.49,
+          316.23,
+          424.08
+        ],
+        "detector_confidence": 0.7867,
+        "status": "kept",
+        "crop": "crops/second-00031-flag2.jpg",
+        "ember_confidence": 0.75,
+        "what": "Person swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 32,
+    "frame": "second-00032",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          206.2,
+          372.07,
+          253.01,
+          427.21
+        ],
+        "detector_confidence": 0.7992,
+        "status": "kept",
+        "crop": "crops/second-00032-flag1.jpg",
+        "ember_confidence": 0.65,
+        "what": "person diving, legs up with white feet"
+      },
+      {
+        "number": 2,
+        "box": [
+          1528.34,
+          157.62,
+          1563.2,
+          219.77
+        ],
+        "detector_confidence": 0.7929,
+        "status": "kept",
+        "crop": "crops/second-00032-flag2.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating, legs up with white feet"
+      }
+    ]
+  },
+  {
+    "second": 33,
+    "frame": "second-00033",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1469.31,
+          169.65,
+          1505.03,
+          234.28
+        ],
+        "detector_confidence": 0.8009,
+        "status": "kept",
+        "crop": "crops/second-00033-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
+      },
+      {
+        "number": 2,
+        "box": [
+          142.0,
+          388.65,
+          186.26,
+          447.26
+        ],
+        "detector_confidence": 0.7813,
+        "status": "kept",
+        "crop": "crops/second-00033-flag2.jpg",
+        "ember_confidence": 0.7,
+        "what": "person floating diagonally"
+      }
+    ]
+  },
+  {
+    "second": 34,
+    "frame": "second-00034",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1411.68,
+          187.75,
+          1446.58,
+          252.0
+        ],
+        "detector_confidence": 0.8296,
+        "status": "kept",
+        "crop": "crops/second-00034-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "Person floating inverted legs up"
+      },
+      {
+        "number": 2,
+        "box": [
+          80.01,
+          409.52,
+          125.35,
+          468.38
+        ],
+        "detector_confidence": 0.7849,
+        "status": "dismissed",
+        "crop": "crops/second-00034-flag2.jpg",
+        "ember_confidence": 0.9,
+        "what": "Seabird on water surface"
+      }
+    ]
+  },
+  {
+    "second": 35,
+    "frame": "second-00035",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          28.09,
+          434.27,
+          74.37,
+          493.1
+        ],
+        "detector_confidence": 0.7929,
+        "status": "kept",
+        "crop": "crops/second-00035-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating in water"
+      },
+      {
+        "number": 2,
+        "box": [
+          1361.96,
+          207.59,
+          1392.3,
+          269.07
+        ],
+        "detector_confidence": 0.773,
+        "status": "kept",
+        "crop": "crops/second-00035-flag2.jpg",
+        "ember_confidence": 0.95,
+        "what": "person inverted in water"
+      }
+    ]
+  },
+  {
+    "second": 36,
+    "frame": "second-00036",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1310.65,
+          228.87,
+          1343.48,
+          288.63
+        ],
+        "detector_confidence": 0.8061,
+        "status": "kept",
+        "crop": "crops/second-00036-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person diving, legs up"
+      },
+      {
+        "number": 2,
+        "box": [
+          0.0,
+          455.24,
+          24.3,
+          517.23
+        ],
+        "detector_confidence": 0.4175,
+        "status": "dismissed",
+        "crop": "crops/second-00036-flag2.jpg",
+        "ember_confidence": 0.9,
+        "what": "open water ripples, partial object left edge"
+      }
+    ]
+  },
+  {
+    "second": 37,
+    "frame": "second-00037",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1266.36,
+          253.65,
+          1297.09,
+          311.11
+        ],
+        "detector_confidence": 0.7927,
+        "status": "kept",
+        "crop": "crops/second-00037-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "Person floating in water legs raised"
+      }
+    ]
+  },
+  {
+    "second": 38,
+    "frame": "second-00038",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1222.7,
+          280.06,
+          1256.13,
+          338.71
+        ],
+        "detector_confidence": 0.8183,
+        "status": "kept",
+        "crop": "crops/second-00038-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person in water on back, legs up"
+      }
+    ]
+  },
+  {
+    "second": 39,
+    "frame": "second-00039",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1188.67,
+          311.0,
+          1221.14,
+          367.28
+        ],
+        "detector_confidence": 0.7821,
+        "status": "kept",
+        "crop": "crops/second-00039-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person floating head down legs up"
+      }
+    ]
+  },
+  {
+    "second": 40,
+    "frame": "second-00040",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1153.65,
+          338.4,
+          1186.62,
+          392.74
+        ],
+        "detector_confidence": 0.7963,
+        "status": "kept",
+        "crop": "crops/second-00040-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person diving upside down in water"
+      }
+    ]
+  },
+  {
+    "second": 41,
+    "frame": "second-00041",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1122.81,
+          358.55,
+          1153.24,
+          414.35
+        ],
+        "detector_confidence": 0.7591,
+        "status": "kept",
+        "crop": "crops/second-00041-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person diving head down"
+      }
+    ]
+  },
+  {
+    "second": 42,
+    "frame": "second-00042",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1088.47,
+          372.57,
+          1123.75,
+          431.78
+        ],
+        "detector_confidence": 0.7779,
+        "status": "kept",
+        "crop": "crops/second-00042-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating face down"
+      }
+    ]
+  },
+  {
+    "second": 43,
+    "frame": "second-00043",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1057.89,
+          387.49,
+          1091.19,
+          442.84
+        ],
+        "detector_confidence": 0.8056,
+        "status": "kept",
+        "crop": "crops/second-00043-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "Person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 44,
+    "frame": "second-00044",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1024.15,
+          397.83,
+          1057.09,
+          455.65
+        ],
+        "detector_confidence": 0.813,
+        "status": "kept",
+        "crop": "crops/second-00044-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 45,
+    "frame": "second-00045",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          986.77,
+          405.91,
+          1020.96,
+          460.3
+        ],
+        "detector_confidence": 0.7971,
+        "status": "kept",
+        "crop": "crops/second-00045-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person floating face-down in water"
+      }
+    ]
+  },
+  {
+    "second": 46,
+    "frame": "second-00046",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          946.65,
+          411.46,
+          981.79,
+          468.96
+        ],
+        "detector_confidence": 0.8181,
+        "status": "kept",
+        "crop": "crops/second-00046-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back with fins"
+      }
+    ]
+  },
+  {
+    "second": 47,
+    "frame": "second-00047",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          900.56,
+          422.01,
+          934.45,
+          477.62
+        ],
+        "detector_confidence": 0.8111,
+        "status": "kept",
+        "crop": "crops/second-00047-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating face down"
+      }
+    ]
+  },
+  {
+    "second": 48,
+    "frame": "second-00048",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          850.1,
+          431.53,
+          885.7,
+          483.55
+        ],
+        "detector_confidence": 0.8124,
+        "status": "kept",
+        "crop": "crops/second-00048-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person legs up swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 49,
+    "frame": "second-00049",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          795.65,
+          441.76,
+          830.02,
+          496.19
+        ],
+        "detector_confidence": 0.8215,
+        "status": "kept",
+        "crop": "crops/second-00049-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 50,
+    "frame": "second-00050",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          734.64,
+          448.97,
+          772.12,
+          503.74
+        ],
+        "detector_confidence": 0.8081,
+        "status": "kept",
+        "crop": "crops/second-00050-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "swimmer face-down with flippers"
+      }
+    ]
+  },
+  {
+    "second": 51,
+    "frame": "second-00051",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          667.66,
+          451.88,
+          705.54,
+          505.01
+        ],
+        "detector_confidence": 0.8177,
+        "status": "kept",
+        "crop": "crops/second-00051-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person in dark wetsuit floating in water"
+      }
+    ]
+  },
+  {
+    "second": 52,
+    "frame": "second-00052",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          602.72,
+          448.65,
+          640.01,
+          504.65
+        ],
+        "detector_confidence": 0.7963,
+        "status": "kept",
+        "crop": "crops/second-00052-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 53,
+    "frame": "second-00053",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          534.0,
+          452.48,
+          570.37,
+          505.4
+        ],
+        "detector_confidence": 0.7048,
+        "status": "kept",
+        "crop": "crops/second-00053-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 54,
+    "frame": "second-00054",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          467.41,
+          456.65,
+          504.18,
+          510.08
+        ],
+        "detector_confidence": 0.8125,
+        "status": "kept",
+        "crop": "crops/second-00054-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 55,
+    "frame": "second-00055",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          396.37,
+          456.34,
+          432.68,
+          513.27
+        ],
+        "detector_confidence": 0.8027,
+        "status": "kept",
+        "crop": "crops/second-00055-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 56,
+    "frame": "second-00056",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          324.52,
+          455.36,
+          361.43,
+          513.53
+        ],
+        "detector_confidence": 0.8169,
+        "status": "kept",
+        "crop": "crops/second-00056-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "Person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 57,
+    "frame": "second-00057",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          253.43,
+          454.65,
+          288.73,
+          511.15
+        ],
+        "detector_confidence": 0.8016,
+        "status": "kept",
+        "crop": "crops/second-00057-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 58,
+    "frame": "second-00058",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          178.18,
+          450.56,
+          214.07,
+          506.47
+        ],
+        "detector_confidence": 0.8009,
+        "status": "kept",
+        "crop": "crops/second-00058-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 59,
+    "frame": "second-00059",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          101.96,
+          449.38,
+          139.83,
+          505.2
+        ],
+        "detector_confidence": 0.7664,
+        "status": "kept",
+        "crop": "crops/second-00059-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 60,
+    "frame": "second-00060",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          24.8,
+          446.0,
+          61.43,
+          502.67
+        ],
+        "detector_confidence": 0.8008,
+        "status": "kept",
+        "crop": "crops/second-00060-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person floating face down in water"
+      }
+    ]
+  },
+  {
+    "second": 61,
+    "frame": "second-00061",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 62,
+    "frame": "second-00062",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 63,
+    "frame": "second-00063",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 64,
+    "frame": "second-00064",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 65,
+    "frame": "second-00065",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 66,
+    "frame": "second-00066",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 67,
+    "frame": "second-00067",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 68,
+    "frame": "second-00068",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 69,
+    "frame": "second-00069",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 70,
+    "frame": "second-00070",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 71,
+    "frame": "second-00071",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 72,
+    "frame": "second-00072",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 73,
+    "frame": "second-00073",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 74,
+    "frame": "second-00074",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 75,
+    "frame": "second-00075",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": []
+  },
+  {
+    "second": 76,
+    "frame": "second-00076",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          6.13,
+          471.05,
+          63.22,
+          506.41
+        ],
+        "detector_confidence": 0.7706,
+        "status": "kept",
+        "crop": "crops/second-00076-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 77,
+    "frame": "second-00077",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          89.0,
+          484.5,
+          144.03,
+          516.38
+        ],
+        "detector_confidence": 0.7566,
+        "status": "kept",
+        "crop": "crops/second-00077-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 78,
+    "frame": "second-00078",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          161.32,
+          494.95,
+          218.32,
+          524.58
+        ],
+        "detector_confidence": 0.7171,
+        "status": "kept",
+        "crop": "crops/second-00078-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 79,
+    "frame": "second-00079",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          236.53,
+          507.42,
+          293.61,
+          527.65
+        ],
+        "detector_confidence": 0.6991,
+        "status": "kept",
+        "crop": "crops/second-00079-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person floating in wetsuit"
+      }
+    ]
+  },
+  {
+    "second": 80,
+    "frame": "second-00080",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          308.2,
+          513.97,
+          365.35,
+          535.22
+        ],
+        "detector_confidence": 0.6923,
+        "status": "kept",
+        "crop": "crops/second-00080-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "Swimmer floating on back"
+      }
+    ]
+  },
+  {
+    "second": 81,
+    "frame": "second-00081",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          380.77,
+          518.74,
+          444.48,
+          546.19
+        ],
+        "detector_confidence": 0.7283,
+        "status": "kept",
+        "crop": "crops/second-00081-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "Person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 82,
+    "frame": "second-00082",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          451.06,
+          527.39,
+          509.85,
+          553.28
+        ],
+        "detector_confidence": 0.734,
+        "status": "kept",
+        "crop": "crops/second-00082-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 83,
+    "frame": "second-00083",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          527.62,
+          531.18,
+          585.91,
+          558.97
+        ],
+        "detector_confidence": 0.7498,
+        "status": "kept",
+        "crop": "crops/second-00083-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 84,
+    "frame": "second-00084",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          606.19,
+          532.42,
+          663.66,
+          562.22
+        ],
+        "detector_confidence": 0.7474,
+        "status": "kept",
+        "crop": "crops/second-00084-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 85,
+    "frame": "second-00085",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          683.99,
+          538.13,
+          741.89,
+          570.99
+        ],
+        "detector_confidence": 0.7706,
+        "status": "kept",
+        "crop": "crops/second-00085-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "Person in wetsuit floating on back"
+      }
+    ]
+  },
+  {
+    "second": 86,
+    "frame": "second-00086",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          767.5,
+          543.58,
+          825.17,
+          576.58
+        ],
+        "detector_confidence": 0.777,
+        "status": "kept",
+        "crop": "crops/second-00086-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 87,
+    "frame": "second-00087",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          848.13,
+          545.55,
+          906.06,
+          578.2
+        ],
+        "detector_confidence": 0.7946,
+        "status": "kept",
+        "crop": "crops/second-00087-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 88,
+    "frame": "second-00088",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          935.06,
+          543.76,
+          990.72,
+          580.3
+        ],
+        "detector_confidence": 0.8071,
+        "status": "kept",
+        "crop": "crops/second-00088-flag1.jpg",
+        "ember_confidence": 0.97,
+        "what": "person in dark wetsuit floating in open water"
+      }
+    ]
+  },
+  {
+    "second": 89,
+    "frame": "second-00089",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1023.08,
+          538.78,
+          1077.97,
+          576.29
+        ],
+        "detector_confidence": 0.8048,
+        "status": "kept",
+        "crop": "crops/second-00089-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 90,
+    "frame": "second-00090",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1108.38,
+          529.54,
+          1164.34,
+          568.57
+        ],
+        "detector_confidence": 0.8048,
+        "status": "kept",
+        "crop": "crops/second-00090-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 91,
+    "frame": "second-00091",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1199.64,
+          517.65,
+          1255.63,
+          557.82
+        ],
+        "detector_confidence": 0.8104,
+        "status": "kept",
+        "crop": "crops/second-00091-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 92,
+    "frame": "second-00092",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1292.61,
+          510.48,
+          1347.42,
+          549.29
+        ],
+        "detector_confidence": 0.7864,
+        "status": "kept",
+        "crop": "crops/second-00092-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 93,
+    "frame": "second-00093",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1384.86,
+          502.39,
+          1440.51,
+          543.77
+        ],
+        "detector_confidence": 0.8227,
+        "status": "kept",
+        "crop": "crops/second-00093-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 94,
+    "frame": "second-00094",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1474.04,
+          494.4,
+          1530.44,
+          536.79
+        ],
+        "detector_confidence": 0.8081,
+        "status": "kept",
+        "crop": "crops/second-00094-flag1.jpg",
+        "ember_confidence": 0.96,
+        "what": "swimmer in dark wetsuit floating"
+      },
+      {
+        "number": 2,
+        "box": [
+          45.12,
+          737.99,
+          99.9,
+          783.04
+        ],
+        "detector_confidence": 0.7763,
+        "status": "kept",
+        "crop": "crops/second-00094-flag2.jpg",
+        "ember_confidence": 0.55,
+        "what": "elongated dark figure in water"
+      }
+    ]
+  },
+  {
+    "second": 95,
+    "frame": "second-00095",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1559.09,
+          479.89,
+          1614.83,
+          523.98
+        ],
+        "detector_confidence": 0.7917,
+        "status": "kept",
+        "crop": "crops/second-00095-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      },
+      {
+        "number": 2,
+        "box": [
+          124.77,
+          727.55,
+          183.58,
+          770.76
+        ],
+        "detector_confidence": 0.7815,
+        "status": "dismissed",
+        "crop": "crops/second-00095-flag2.jpg",
+        "ember_confidence": 0.75,
+        "what": "seal or animal swimming"
+      }
+    ]
+  },
+  {
+    "second": 96,
+    "frame": "second-00096",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1642.9,
+          464.51,
+          1696.1,
+          507.72
+        ],
+        "detector_confidence": 0.797,
+        "status": "kept",
+        "crop": "crops/second-00096-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating in water"
+      },
+      {
+        "number": 2,
+        "box": [
+          203.7,
+          717.71,
+          259.65,
+          754.64
+        ],
+        "detector_confidence": 0.7704,
+        "status": "dismissed",
+        "crop": "crops/second-00096-flag2.jpg",
+        "ember_confidence": 0.75,
+        "what": "bird or marine animal at surface"
+      }
+    ]
+  },
+  {
+    "second": 97,
+    "frame": "second-00097",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1723.41,
+          444.21,
+          1776.78,
+          489.0
+        ],
+        "detector_confidence": 0.8046,
+        "status": "kept",
+        "crop": "crops/second-00097-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person floating on back"
+      },
+      {
+        "number": 2,
+        "box": [
+          279.72,
+          698.24,
+          337.47,
+          738.18
+        ],
+        "detector_confidence": 0.7514,
+        "status": "kept",
+        "crop": "crops/second-00097-flag2.jpg",
+        "ember_confidence": 0.55,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 98,
+    "frame": "second-00098",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1805.66,
+          422.34,
+          1858.09,
+          467.47
+        ],
+        "detector_confidence": 0.8246,
+        "status": "kept",
+        "crop": "crops/second-00098-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
+      },
+      {
+        "number": 2,
+        "box": [
+          357.65,
+          670.87,
+          414.85,
+          716.39
+        ],
+        "detector_confidence": 0.8184,
+        "status": "dismissed",
+        "crop": "crops/second-00098-flag2.jpg",
+        "ember_confidence": 0.85,
+        "what": "water bird swimming"
+      }
+    ]
+  },
+  {
+    "second": 99,
+    "frame": "second-00099",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          439.57,
+          650.5,
+          496.3,
+          693.13
+        ],
+        "detector_confidence": 0.8048,
+        "status": "kept",
+        "crop": "crops/second-00099-flag1.jpg",
+        "ember_confidence": 0.75,
+        "what": "swimmer with white fins centre"
+      },
+      {
+        "number": 2,
+        "box": [
+          1891.67,
+          395.32,
+          1920.0,
+          446.42
+        ],
+        "detector_confidence": 0.7001,
+        "status": "dismissed",
+        "crop": "crops/second-00099-flag2.jpg",
+        "ember_confidence": 0.9,
+        "what": "partial legs at right edge"
+      }
+    ]
+  },
+  {
+    "second": 100,
+    "frame": "second-00100",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          526.81,
+          626.81,
+          586.19,
+          669.31
+        ],
+        "detector_confidence": 0.7927,
+        "status": "kept",
+        "crop": "crops/second-00100-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 101,
+    "frame": "second-00101",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          616.16,
+          600.06,
+          676.04,
+          642.06
+        ],
+        "detector_confidence": 0.7889,
+        "status": "kept",
+        "crop": "crops/second-00101-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating swimming in water"
+      }
+    ]
+  },
+  {
+    "second": 102,
+    "frame": "second-00102",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          710.05,
+          572.37,
+          768.08,
+          613.91
+        ],
+        "detector_confidence": 0.831,
+        "status": "kept",
+        "crop": "crops/second-00102-flag1.jpg",
+        "ember_confidence": 0.72,
+        "what": "swimmer with fins floating on surface"
+      }
+    ]
+  },
+  {
+    "second": 103,
+    "frame": "second-00103",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          800.34,
+          543.01,
+          860.17,
+          583.68
+        ],
+        "detector_confidence": 0.7918,
+        "status": "kept",
+        "crop": "crops/second-00103-flag1.jpg",
+        "ember_confidence": 0.75,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 104,
+    "frame": "second-00104",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          879.83,
+          523.8,
+          942.93,
+          559.71
+        ],
+        "detector_confidence": 0.7966,
+        "status": "kept",
+        "crop": "crops/second-00104-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 105,
+    "frame": "second-00105",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          951.67,
+          506.24,
+          1013.53,
+          538.68
+        ],
+        "detector_confidence": 0.7649,
+        "status": "kept",
+        "crop": "crops/second-00105-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person swimming on back"
+      }
+    ]
+  },
+  {
+    "second": 106,
+    "frame": "second-00106",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1022.43,
+          486.5,
+          1083.31,
+          516.83
+        ],
+        "detector_confidence": 0.7797,
+        "status": "kept",
+        "crop": "crops/second-00106-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 107,
+    "frame": "second-00107",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1085.6,
+          469.56,
+          1147.67,
+          499.85
+        ],
+        "detector_confidence": 0.7748,
+        "status": "kept",
+        "crop": "crops/second-00107-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person swimming on stomach"
+      }
+    ]
+  },
+  {
+    "second": 108,
+    "frame": "second-00108",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1145.24,
+          453.54,
+          1209.23,
+          483.79
+        ],
+        "detector_confidence": 0.7962,
+        "status": "kept",
+        "crop": "crops/second-00108-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 109,
+    "frame": "second-00109",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1206.67,
+          443.86,
+          1272.16,
+          471.32
+        ],
+        "detector_confidence": 0.7261,
+        "status": "kept",
+        "crop": "crops/second-00109-flag1.jpg",
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 110,
+    "frame": "second-00110",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1271.03,
+          432.99,
+          1333.97,
+          462.1
+        ],
+        "detector_confidence": 0.7571,
+        "status": "kept",
+        "crop": "crops/second-00110-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "Person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 111,
+    "frame": "second-00111",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1334.2,
+          423.54,
+          1396.36,
+          448.56
+        ],
+        "detector_confidence": 0.7201,
+        "status": "kept",
+        "crop": "crops/second-00111-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 112,
+    "frame": "second-00112",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1395.34,
+          413.79,
+          1460.73,
+          440.21
+        ],
+        "detector_confidence": 0.702,
+        "status": "kept",
+        "crop": "crops/second-00112-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating face down in water"
+      }
+    ]
+  },
+  {
+    "second": 113,
+    "frame": "second-00113",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1461.0,
+          403.66,
+          1525.7,
+          427.01
+        ],
+        "detector_confidence": 0.6259,
+        "status": "kept",
+        "crop": "crops/second-00113-flag1.jpg",
+        "ember_confidence": 0.95,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 114,
+    "frame": "second-00114",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1529.62,
+          390.89,
+          1593.53,
+          413.61
+        ],
+        "detector_confidence": 0.6212,
+        "status": "kept",
+        "crop": "crops/second-00114-flag1.jpg",
+        "ember_confidence": 0.98,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 115,
+    "frame": "second-00115",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1599.44,
+          377.08,
+          1661.61,
+          402.38
+        ],
+        "detector_confidence": 0.6831,
+        "status": "kept",
+        "crop": "crops/second-00115-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating on back in water"
+      }
+    ]
+  },
+  {
+    "second": 116,
+    "frame": "second-00116",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1665.51,
+          366.03,
+          1726.72,
+          392.99
+        ],
+        "detector_confidence": 0.7364,
+        "status": "kept",
+        "crop": "crops/second-00116-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 117,
+    "frame": "second-00117",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1731.12,
+          357.66,
+          1792.5,
+          386.57
+        ],
+        "detector_confidence": 0.7416,
+        "status": "kept",
+        "crop": "crops/second-00117-flag1.jpg",
+        "ember_confidence": 0.85,
+        "what": "person floating on back"
+      }
+    ]
+  },
+  {
+    "second": 118,
+    "frame": "second-00118",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1800.07,
+          349.97,
+          1858.5,
+          380.99
+        ],
+        "detector_confidence": 0.7319,
+        "status": "kept",
+        "crop": "crops/second-00118-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "person floating in water"
+      }
+    ]
+  },
+  {
+    "second": 119,
+    "frame": "second-00119",
+    "width": 1920,
+    "height": 1012,
+    "overview": "detector scan",
+    "flags": [
+      {
+        "number": 1,
+        "box": [
+          1867.4,
+          337.86,
+          1919.7,
+          373.48
+        ],
+        "detector_confidence": 0.6817,
+        "status": "dismissed",
+        "crop": "crops/second-00119-flag1.jpg",
+        "ember_confidence": 0.9,
+        "what": "swimmer right of centre"
+      }
+    ]
+  }
+]

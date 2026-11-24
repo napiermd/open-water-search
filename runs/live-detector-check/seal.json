@@ -1,8 +1,8 @@
 {
-  "search_record_sha256": "609fb8ac161d484c4c060580dfa379c74bde28da24b3ac1855d26020c67f4c82",
-  "calls_sha256": "81ffc2e61a3ead9615811412c5f056a5bb6743d71dca72e8eb093ffa27959257",
-  "search_record_redacted_sha256": "815333263a965a2df5ae7ac1dbd3279b647553d0109570d0deee3fb4e8c16bd6",
-  "calls_redacted_sha256": "3a0caca39baf86d79f829f14409ec9092bac7af26677508ab60686d2ff611ea0",
+  "search_record_sha256": "4dac8da8c3cf9b24a6a35d1a81e1793869645f332373009d14b7b3376f4d1048",
+  "calls_sha256": "42009b21631c1301e10c3ca776a2c6be80e586aa8faf3fb3492d6ac56e547803",
+  "search_record_redacted_sha256": "0193cc935b2c8be4481aeb671f4b18cff2d0689f608af2615837fdcf3b8bdfb2",
+  "calls_redacted_sha256": "52fa17c51e546690b32ac5167d8dcdb55fe587fd20a9a7b526e7d16a3c41657f",
   "removed": "response.id and output[].id from every call",
   "settings": {
     "model": "muse-ember-1.0",
@@ -17,10 +17,10 @@
       "min_confidence": 0.05,
       "most_flags_per_frame": 12,
       "device": "mps",
-      "seconds": 15.925
+      "seconds": 8.136
     }
   },
-  "spent_nanodollars": 8130972,
+  "spent_nanodollars": 8032472,
   "ending": {
     "outcome": "finished",
     "reason": null

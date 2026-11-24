@@ -40,7 +40,7 @@ Ember made 207 requests for $0.0318. A false alarm is any mark with no labeled p
 
 **What Ember gets wrong.** Both versions still miss 87 of the 297. Ember dismissed 40 flags that were real people, calling them a dark shape, a bird or an animal. That is why the report lists every dismissed flag with its crop and Ember's words.
 
-**Live on a two-minute clip** (`runs/live-detector-check`, $0.0081). The command ran end to end on the same MOBDrone clip as Ember's own search below, and `terminal.jsonl` records every line it printed. It found 105 of 116 person appearances with no false alarms, and its sightings merged into 6 possible people for the clip's 4 labeled people, all real. On this clip the detector alone did better, finding 114 with 1 false alarm: Ember's check had almost nothing to remove and dismissed 9 real sightings, six as birds, a duck or a seal. Ember's own search on the clip left 15 possible people, 7 of them holding no one.
+**Live on a two-minute clip** (`runs/live-detector-check`, $0.0080). The command ran end to end on the same MOBDrone clip as Ember's own search below, in 57 seconds for two minutes of footage, and `terminal.jsonl` records every line it printed. It found 101 of 116 person appearances with no false alarms, and its sightings merged into 8 possible people for the clip's 4 labeled people, all real. On this clip the detector alone did better, finding 114 with 1 false alarm. Ember's check had almost nothing to remove and dismissed 13 real sightings, eight of them as a duck, a bird, a seal or a dolphin. Ember's own search on the clip left 15 possible people, 7 of them holding no one. A first take of the same command, from another folder, found 105 with 6 possible people (`runs/live-detector-check-first-take`).
 
 **The one command reproduces the sealed run.** Running `--mode detector-check` on the same 300 frames, with the detector run fresh and Ember's sealed answers replayed, sent all 207 requests byte for byte as sealed and scored 210 found with 38 false alarms. `python runs/verify-mobdrone/replay_one_command.py OUT detector-venv/bin/python` repeats it with no network and no key.
 
@@ -319,7 +319,8 @@ The November 24 runs, with the cost each run folder's README reports. Every call
 | Detector, then Ember: 300 MOBDrone frames and 30 validation photos (`runs/verify-check`) | $0.0391 |
 | Detector, then Ember: confirmation on 1,517 validation photos, failed (`runs/verify-confirm`) | $0.2690 |
 | Detector, then Ember: 300 new MOBDrone frames, passed (`runs/verify-mobdrone`) | $0.0318 |
-| Detector, then Ember: live two-minute clip, one command (`runs/live-detector-check`) | $0.0081 |
+| Detector, then Ember: live two-minute clip, one command, first take (`runs/live-detector-check-first-take`) | $0.0081 |
+| Detector, then Ember: live two-minute clip, re-run from the repository folder (`runs/live-detector-check`) | $0.0080 |
 
 ## Reproduce the numbers
 

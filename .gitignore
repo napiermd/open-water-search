@@ -45,3 +45,7 @@ runs/verify-check/*/checks.jsonl
 runs/verify-confirm/run/checks.jsonl
 runs/verify-mobdrone/run/checks.jsonl
 runs/*/inputs/images
+
+# Local links for the recorded live run: the clip and the detector Python
+/clip.mp4
+/detector-venv
