@@ -1,0 +1,21 @@
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.totals { margin: 0 0 1.5rem; padding: 1rem 0; border-block: 1px solid var(--rule); }
+.totals table { border-collapse: collapse; margin-top: .6rem; font-variant-numeric: tabular-nums; }
+.totals th, .totals td { text-align: left; padding: .35rem 1.4rem .35rem 0; border-bottom: 1px solid var(--rule); }
+.totals th { font-size: .85rem; color: var(--muted); font-weight: 600; }
+.totals td:first-child { font-weight: 650; }
+.stepper { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: 1rem; }
+.frame-select { flex: 0 1 30rem; min-width: 0; }
+.frame-select select { width: 100%; }
+.panels { display: grid; gap: 1.6rem; }
+.panel header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .2rem 1rem; margin-bottom: .45rem; }
+.panel .stats { margin: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+.panel:first-child .photo { outline: 3px solid var(--ember); }
+.panel:last-child .photo { outline: 3px solid var(--grid); }
+.legend .reveal-key { display: none; }
+.revealed .legend .reveal-key { display: flex; }
+@media (max-width: 48rem) {
+  .totals { overflow-x: auto; }
+  .totals th, .totals td { padding-right: .8rem; }
+  .frame-select { order: -1; flex-basis: 100%; }
+}

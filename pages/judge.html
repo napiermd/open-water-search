@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take over a search · Open Water Search</title>
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="judge.css">
+  <script type="module" src="judge.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <span>Open Water Search</span>
+    <nav aria-label="Pages"><a href="judge.html" aria-current="page">Take over a search</a><a href="replay.html">Replay</a></nav>
+  </header>
+  <main>
+    <h1>Take over this search</h1>
+    <p class="intro">A drone sent this wide frame. Muse Ember took one look at the whole thing, opened the tile it ranked first, and flagged a possible swimmer. You’re the next reviewer.</p>
+    <ol class="steps" id="steps" aria-label="Steps">
+      <li data-step="flag">Check Ember’s flag</li>
+      <li data-step="pick">Pick the next tile</li>
+      <li data-step="reveal">See what was there</li>
+    </ol>
+    <p id="loading" role="status">Loading the recorded search…</p>
+    <p id="error" role="alert" hidden></p>
+    <div id="workspace" class="workspace" hidden>
+      <section class="frame" aria-labelledby="frame-title">
+        <header class="frame-header"><h2 id="frame-title">Full frame</h2><span id="frame-meta" class="muted"></span></header>
+        <div class="photo" id="frame-photo">
+          <img id="full" alt="">
+          <div id="layer" class="layer" aria-hidden="true"></div>
+          <button id="pin-area" class="pin-area" type="button" aria-label="Place your swimmer pin on the full frame" hidden></button>
+          <div id="tile-buttons" class="tile-buttons" role="group" aria-label="Choose the next tile to check" hidden></div>
+        </div>
+        <ul class="legend" aria-label="Markings">
+          <li><span class="swatch chosen"></span>Ember checked</li>
+          <li><span class="swatch reviewed"></span>You reviewed</li>
+          <li><span class="swatch grid"></span>Your next look</li>
+          <li><span class="swatch unchecked"></span>No close look yet</li>
+          <li><span class="swatch point"></span>Ember’s mark</li>
+          <li id="pin-key" hidden><span class="swatch person"></span>Your pin</li>
+          <li class="reveal-key"><span class="swatch found"></span>Swimmer Ember marked</li>
+          <li class="reveal-key"><span class="swatch missed"></span>Swimmer not marked</li>
+        </ul>
+      </section>
+      <aside class="task" aria-labelledby="task-title">
+        <h2 id="task-title" tabindex="-1"></h2>
+        <p id="task-text"></p>
+        <figure id="crop-figure" hidden>
+          <div class="photo crop"><canvas id="crop" role="img"></canvas><div id="crop-layer" class="layer" aria-hidden="true"></div></div>
+          <figcaption id="crop-caption"></figcaption>
+        </figure>
+        <div id="actions" class="actions"></div>
+        <dl id="results" class="results" hidden></dl>
+        <p id="status" class="status" aria-live="polite"></p>
+      </aside>
+    </div>
+    <p class="provenance">Recorded from the sealed Muse Ember run in this repository, so every click costs nothing. The tile you pick shows Ember’s recorded close look at that tile. Frames and labels: SeaDronesSee (CC0), downloaded by probe/fetch_frames.py.</p>
+  </main>
+</body>
+</html>

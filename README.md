@@ -48,6 +48,21 @@ From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 
 
 We also planned a head-to-head at equal spend, in which each search used its own answers. It does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
 
+## Replay the runs and take over a search
+
+```
+pip install pillow
+python probe/fetch_frames.py
+python -m http.server 8000
+```
+
+Then open these two pages. Both replay the sealed traces in this repository, so clicking through them makes no API calls.
+
+- `http://localhost:8000/pages/judge.html` puts you partway into a recorded search. Ember has taken one overview, opened the tile it ranked first, and flagged a possible swimmer. You mark it, dismiss it or say you can't tell. Then you pick the next tile, see Ember's recorded close look there, and reveal the labels. The reveal shows whether the flag was real, where your pin landed, what your pick held, what Ember would have opened next, and how many swimmers remain in water nobody has checked. Cases follow manifest order and include every validation frame whose first close look flagged something and which has a swimmer outside that tile.
+- `http://localhost:8000/pages/replay.html` puts both searches side by side on every frame of either run. Choose 1 to 9 close looks per frame to see the tiles each search opened in order, its reviewer queue, its spend, and totals across all 30 frames. Reveal the labels to see swimmers found, swimmers missed in checked tiles, swimmers in tiles never checked, and marks with no swimmer. The totals at nine looks match `score.json`, and at one to three looks they match the order table.
+
+`probe/build_pages.py` rebuilds `pages/runs/` from the sealed traces. It reads no labels. The pages load labels in the browser from the files `fetch_frames.py` downloads.
+
 ## Reproduce the numbers
 
 ```

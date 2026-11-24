@@ -215,9 +215,8 @@ def order_table(trace,frames,labels,looks=(1,2,3,9)):
                 unreadable_crops={s:sum(1 for f in frames for t in range(9) if 'points' not in answers.get((s,f['frame'],t),{})) for s in finds},
                 ember_beats_center_at_one_look=beats('center'),ember_beats_grid_at_one_look=beats('grid'))
 
-if __name__=='__main__':
-    import sys
-    base=ROOT/'validation' if sys.argv[1:]==['validation'] else ROOT
+def load_sealed(base):
+    """Return the verified trace and frames of the sealed run under base (ROOT or ROOT/'validation')."""
     live=base/'live'
     seal=json.loads((live/'seal.json').read_text())
     if (live/'trace.json').exists():
@@ -231,8 +230,13 @@ if __name__=='__main__':
         assert hashlib.sha256(raw).hexdigest()==redaction['redacted_sha256']
     manifest=(base/'inputs/manifest.json').read_bytes()
     assert hashlib.sha256(manifest).hexdigest()==seal['manifest']
-    frames=json.loads(manifest)['frames']
-    trace=json.loads(raw)
+    return json.loads(raw),json.loads(manifest)['frames']
+
+if __name__=='__main__':
+    import sys
+    base=ROOT/'validation' if sys.argv[1:]==['validation'] else ROOT
+    live=base/'live'
+    trace,frames=load_sealed(base)
     labels=groundtruth(base/'scoring-only',frames)
     import os,tempfile
     converted=with_grid_rule(trace)
