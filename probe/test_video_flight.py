@@ -20,11 +20,12 @@ def write_video(flight, video):
 
 
 def without_source_or_timing(record):
-    """The search record minus what differs between any two runs: the input's path and the clock times of the run
-    and of each call."""
+    """The search record minus what differs between any two runs: the input's path, the clock times of the run, of
+    each call and of each decision, and the order in which parallel answers arrived."""
     record = dict(record, flight=None, seconds=None, photos_per_minute=None)
     record["calls"] = [dict(call, seconds=None, answer=dict(call["answer"], started=None, finished=None))
                        for call in record["calls"]]
+    record["decision_log"] = sorted(json.dumps(dict(decision, seconds=None)) for decision in record["decision_log"])
     return record
 
 
