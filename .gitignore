@@ -41,3 +41,4 @@ runs/*/scoring-only/labels
 mobdrone/*/labels
 mobdrone/*/*/labels
 mobdrone/inputs/images
+runs/verify-check/*/checks.jsonl
