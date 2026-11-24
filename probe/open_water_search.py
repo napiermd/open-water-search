@@ -23,6 +23,9 @@ message, which code writes from the search record without calling Ember.
 
 The prompts, image preparation, output limit and answer readers are the ones used in the November 23
 30-frame run and its validation repeat.
+
+--format grounding asks for close-look marks in Meta's grounding format instead: points on a 0-1,000 grid over
+the image Ember received, forced into a JSON schema by structured output. Overviews keep the frozen prompt.
 """
 import argparse
 import base64
@@ -36,6 +39,7 @@ from pathlib import Path
 
 from PIL import Image
 
+import grounding_format
 from runner import INSPECT, LIMIT, MODEL, NANO, OVERVIEW, Meta, interpret, prepare, price, rectangle
 from score import grid_points
 
@@ -58,9 +62,10 @@ def dollars(nanodollars):
 
 
 class Search:
-    def __init__(self, api, budget_nano, out):
+    def __init__(self, api, budget_nano, out, grounding=False):
         self.api = api
         self.budget = budget_nano
+        self.grounding = grounding
         self.spent = 0
         self.out = out
         self.calls = []
@@ -71,11 +76,14 @@ class Search:
         """Send one overview (tile -1) or close look, and return the read answer."""
         rect = rectangle(frame["width"], frame["height"], tile)
         image = prepare(frame["path"], rect)
-        prompt = OVERVIEW if tile == -1 else INSPECT
+        grounding = self.grounding and tile >= 0
+        prompt = OVERVIEW if tile == -1 else grounding_format.INSPECT if grounding else INSPECT
         body = {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
                 "input": [{"role": "user", "content": [
                     {"type": "input_text", "text": prompt},
                     {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}]}
+        if grounding:
+            body["text"] = {"format": grounding_format.MARKS}
         worst = price(self.api.count(body), 0, LIMIT)
         if self.spent + worst > self.budget:
             raise OutOfBudget()
@@ -85,11 +93,15 @@ class Search:
         usage = reply["usage"]
         paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
         self.spent += paid
-        event = interpret(dict(rect=rect, response=reply, started=started, finished=finished), tile)
-        converted = grid_points(dict(tile=tile, evidence=event))
-        if converted is not None:
-            event.pop("failure")
-            event["points"] = converted
+        answered = dict(rect=rect, response=reply, started=started, finished=finished)
+        if grounding:
+            event = grounding_format.read_marks(answered)
+        else:
+            event = interpret(answered, tile)
+            converted = grid_points(dict(tile=tile, evidence=event))
+            if converted is not None:
+                event.pop("failure")
+                event["points"] = converted
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=paid, usage=usage,
                     seconds=round(finished - started, 3), answer=event)
         self.calls.append(call)
@@ -311,6 +323,9 @@ def main(arguments=None, api=None):
     parser.add_argument("--budget", type=float, default=0.05, help="most to spend on Ember, in dollars (default 0.05)")
     parser.add_argument("--looks", type=int, default=2, choices=range(0, 10), metavar="0-9",
                         help="close looks per frame after its overview (default 2)")
+    parser.add_argument("--format", choices=("frozen", "grounding"), default="frozen",
+                        help="how close looks ask for marks: the frozen prompts of the published runs (default), "
+                             "or Meta's 0-1,000 grounding format with a JSON schema")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     args = parser.parse_args(arguments)
     if api is None:
@@ -326,7 +341,7 @@ def main(arguments=None, api=None):
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
     budget = round(args.budget * NANO)
-    search = Search(api, budget, args.out)
+    search = Search(api, budget, args.out, grounding=args.format == "grounding")
     ending = dict(outcome="finished", reason=None)
     try:
         run(search, frames, args.looks)
@@ -335,7 +350,7 @@ def main(arguments=None, api=None):
     except Exception as error:
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
     search.log.close()
-    settings = dict(model=MODEL, looks=args.looks, spending_cap_nanodollars=budget)
+    settings = dict(model=MODEL, looks=args.looks, format=args.format, spending_cap_nanodollars=budget)
     record = search_record(args.frames, settings, frames, search, ending)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
     queue = reviewer_queue(record)
