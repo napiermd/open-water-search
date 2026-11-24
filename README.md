@@ -50,13 +50,14 @@ python probe/open_water_search.py path/to/photos --out results --budget 0.05
 open results/report.html
 ~~~
 
-Point it at a folder of .jpg, .jpeg or .png photos. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the report. If a request fails, it also writes the report for everything finished so far, then exits with status 1.
+Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
 
 | File in `results/` | What it holds |
 |---|---|
-| `report.html` | The reviewer queue, highest confidence first, and a coverage map of every photo |
-| `queue.json` | Up to five sightings per photo, in source-image pixels |
-| `coverage.json` | Every tile's status for every photo |
+| `search-record.json` | The search record: every possible sighting in source-image pixels, every tile's status for every photo, every Ember call with its tokens and cost, and how the run ended |
+| `report.html` | The reviewer queue, highest confidence first, and a coverage map of every photo, built from the search record |
+| `queue.json` | Up to five sightings per photo, in source-image pixels, built from the search record |
+| `coverage.json` | Every tile's status for every photo, from the search record |
 | `calls.jsonl` | Every Ember request, with its token usage, cost and answer |
 
 An overview plus two close looks cost about $0.00052 per photo in our runs, or $1.88 per 3,600 photos. Requests go one at a time, about 4.4 seconds per photo.
@@ -169,6 +170,7 @@ Costs use Meta's published Muse Ember rates: $0.10 per million input tokens, $0.
 pip install pillow
 python probe/fetch_frames.py      # downloads the 60 frames and labels from the pinned mirror and checks every hash
 python probe/check.py             # offline checks with simulated answers, no API calls
+python -m unittest discover -s probe  # the command end to end against a simulated Ember, no API calls
 python probe/score.py             # rebuilds the first-run scorecards and compares them with live/
 python probe/score.py validation  # the same for validation/live/
 ~~~

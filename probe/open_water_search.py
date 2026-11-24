@@ -1,16 +1,20 @@
-"""Search a folder of drone frames for swimmers with Muse Ember.
+"""Search a flight of drone photos for swimmers with Muse Ember.
 
     MODEL_API_KEY=... python open_water_search.py FRAMES_DIR --out RESULTS_DIR --budget 0.05
 
-Every frame first gets one overview, in which Ember ranks the nine tiles of a 3 x 3 grid. Then each frame
-gets close looks at its top-ranked tiles, one round at a time, until the per-frame look count or the budget
-runs out. The worst-case cost of every request is checked against the budget before it is sent.
+FRAMES_DIR holds the flight's photos, ordered in time by file name. Every frame first gets one
+overview, in which Ember ranks the nine tiles of a 3 x 3 grid. Then each frame gets close looks at its
+top-ranked tiles, one round at a time, until the per-frame look count or the spending cap runs out. The
+worst-case cost of every request is checked against the spending cap before it is sent.
 
 RESULTS_DIR receives:
-  report.html    the reviewer queue and a coverage map of every frame
-  queue.json     ranked sightings, up to five per frame
-  coverage.json  per frame, the tiles Ember checked, flagged, could not read, or never reached
-  calls.jsonl    every Ember request with its token usage and cost
+  search-record.json  the search record: every possible sighting, the coverage timeline of every tile of
+                      every frame, every Ember call with its tokens and cost, and how the run ended
+  report.html         the reviewer queue and a coverage map of every frame, built from the search record
+  queue.json          the reviewer queue: ranked sightings, up to five per frame, built from the search record
+  coverage.json       the coverage timeline from the search record: per frame, the tiles Ember checked,
+                      flagged, could not read, or never reached
+  calls.jsonl         every Ember call, written as it happens
 
 The prompts, image preparation, output limit and answer readers are the ones used in the November 23
 30-frame run and its validation repeat.
@@ -21,6 +25,7 @@ import html
 import json
 import os
 import time
+from itertools import groupby
 from pathlib import Path
 
 from PIL import Image
@@ -48,7 +53,8 @@ class Search:
         self.budget = budget_nano
         self.spent = 0
         self.out = out
-        self.calls = (out / "calls.jsonl").open("a")
+        self.calls = []
+        self.log = (out / "calls.jsonl").open("a")
         self.failures_in_a_row = 0
 
     def ask(self, frame, tile):
@@ -74,9 +80,11 @@ class Search:
         if converted is not None:
             event.pop("failure")
             event["points"] = converted
-        self.calls.write(json.dumps(dict(frame=frame["name"], tile=tile, paid_nanodollars=paid, usage=usage,
-                                         seconds=round(finished - started, 3), answer=event)) + "\n")
-        self.calls.flush()
+        call = dict(frame=frame["name"], tile=tile, paid_nanodollars=paid, usage=usage,
+                    seconds=round(finished - started, 3), answer=event)
+        self.calls.append(call)
+        self.log.write(json.dumps(call) + "\n")
+        self.log.flush()
         self.failures_in_a_row = self.failures_in_a_row + 1 if "failure" in event else 0
         if self.failures_in_a_row >= FAILURE_LIMIT:
             raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
@@ -110,10 +118,14 @@ def run(search, frames, looks):
                 frame["tiles"][tile] = search.ask(frame, tile).get("points")
 
 
-def summarize(frames):
-    queue, coverage = [], []
+def search_record(flight, settings, frames, search, ending):
+    """Everything the run found and spent for the flight. The other results are views of this record.
+
+    Sightings are in pixels of the original frame, in flight order and then tile order.
+    """
+    sightings, coverage_timeline = [], []
     for frame in frames:
-        sightings, tiles = [], []
+        tiles = []
         for tile in range(9):
             if tile not in frame["tiles"]:
                 status = "not checked"
@@ -122,27 +134,45 @@ def summarize(frames):
             else:
                 points = frame["tiles"][tile]
                 status = "flagged" if points else "checked, no sighting"
-                left, top, right, bottom = rectangle(frame["width"], frame["height"], tile)
-                sightings += [dict(frame=frame["name"], tile=tile, tile_name=TILE_NAMES[tile], x=round(x, 1), y=round(y, 1),
-                                   confidence=c, crop=f"crops/{frame['name']}-t{tile}.jpg",
-                                   crop_x=(x - left) / (right - left), crop_y=(y - top) / (bottom - top))
+                sightings += [dict(frame=frame["name"], tile=tile, x=x, y=y, confidence=c,
+                                   crop=f"crops/{frame['name']}-t{tile}.jpg")
                               for x, y, c in points]
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
-        queue += sorted(sightings, key=lambda s: -s["confidence"])[:REVIEW_LIMIT]
-        coverage.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
-                             overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
+        coverage_timeline.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
+                                      overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
+    return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
+                sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending)
+
+
+def reviewer_queue(record):
+    """Up to five sightings per frame, ranked across the flight by confidence."""
+    sizes = {frame["frame"]: (frame["width"], frame["height"]) for frame in record["coverage_timeline"]}
+    queue = []
+    for name, sightings in groupby(record["sightings"], key=lambda s: s["frame"]):
+        for s in sorted(sightings, key=lambda s: -s["confidence"])[:REVIEW_LIMIT]:
+            left, top, right, bottom = rectangle(*sizes[name], s["tile"])
+            queue.append(dict(frame=name, tile=s["tile"], tile_name=TILE_NAMES[s["tile"]],
+                              x=round(s["x"], 1), y=round(s["y"], 1), confidence=s["confidence"], crop=s["crop"],
+                              crop_x=(s["x"] - left) / (right - left), crop_y=(s["y"] - top) / (bottom - top)))
     queue.sort(key=lambda s: -s["confidence"])
     for rank, sighting in enumerate(queue, 1):
         sighting["rank"] = rank
-    return queue, coverage
+    return queue
 
 
-def write_report(out, frames, queue, coverage, spent, stopped):
+def save_frames(out, frames):
+    """Save a reduced copy of each frame for the report page."""
     for frame in frames:
         with Image.open(frame["path"]) as image:
             thumbnail = image.convert("RGB")
             thumbnail.thumbnail((1400, 1400))
             thumbnail.save(out / "frames" / f"{frame['name']}.jpg", quality=85)
+
+
+def write_report(out, record):
+    queue = reviewer_queue(record)
+    coverage = record["coverage_timeline"]
+    stopped = record["ending"]["reason"]
     esc = html.escape
     cards = "".join(
         f'<li><a href="#{esc(s["frame"])}"><span class="photo"><img src="{esc(s["crop"])}" alt="Close look at the {esc(s["tile_name"])} tile of {esc(s["frame"])}">'
@@ -191,7 +221,7 @@ a {{ color: #1b594c; }}
 .tile.unreadable {{ border: 2px dashed #ff8a3d; }}
 </style></head><body>
 <h1>Reviewer queue</h1>
-<p class="muted">{len(frames)} frames · {len(queue)} sightings to review · {dollars(spent)} spent on Muse Ember. {status}</p>
+<p class="muted">{len(coverage)} frames · {len(queue)} sightings to review · {dollars(record["spent_nanodollars"])} spent on Muse Ember. {status}</p>
 <p>Each card shows the close look Ember received, with its mark. Open a card to see that mark on the full frame. Water Ember checked without reporting anyone can still hold a swimmer, and shaded tiles never got a close look.</p>
 <h2>Sightings, highest confidence first</h2>
 <ol class="queue">{cards}</ol>
@@ -202,7 +232,8 @@ a {{ color: #1b594c; }}
 """)
 
 
-def main():
+def main(arguments=None, api=None):
+    """Run the command. Offline tests pass a simulated Ember as api; otherwise it calls Meta with MODEL_API_KEY."""
     parser = argparse.ArgumentParser(description="Search drone frames for swimmers with Muse Ember.")
     parser.add_argument("frames", type=Path, help="folder of .jpg, .jpeg or .png drone frames")
     parser.add_argument("--out", type=Path, required=True, help="new folder for the results")
@@ -210,35 +241,42 @@ def main():
     parser.add_argument("--looks", type=int, default=2, choices=range(0, 10), metavar="0-9",
                         help="close looks per frame after its overview (default 2)")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
-    args = parser.parse_args()
-    if args.key_file:
-        os.environ["MODEL_API_KEY"] = args.key_file.read_text().strip()
-    if not os.environ.get("MODEL_API_KEY"):
-        raise SystemExit("Set MODEL_API_KEY or pass --key-file.")
+    args = parser.parse_args(arguments)
+    if api is None:
+        if args.key_file:
+            os.environ["MODEL_API_KEY"] = args.key_file.read_text().strip()
+        if not os.environ.get("MODEL_API_KEY"):
+            raise SystemExit("Set MODEL_API_KEY or pass --key-file.")
+        api = Meta()
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
     frames = load_frames(args.frames)
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
-    search = Search(Meta(), round(args.budget * NANO), args.out)
-    stopped = None
-    failed = False
+    budget = round(args.budget * NANO)
+    search = Search(api, budget, args.out)
+    ending = dict(outcome="finished", reason=None)
     try:
         run(search, frames, args.looks)
     except OutOfBudget:
-        stopped = "the next request could have exceeded the budget"
+        ending = dict(outcome="spending cap", reason="the next request could have exceeded the budget")
     except Exception as error:
-        stopped = f"{type(error).__name__}: {error}"
-        failed = True
-    queue, coverage = summarize(frames)
+        ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
+    search.log.close()
+    settings = dict(model=MODEL, looks=args.looks, spending_cap_nanodollars=budget)
+    record = search_record(args.frames, settings, frames, search, ending)
+    (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
+    queue = reviewer_queue(record)
     (args.out / "queue.json").write_text(json.dumps(queue, indent=2))
-    (args.out / "coverage.json").write_text(json.dumps(coverage, indent=2))
-    write_report(args.out, frames, queue, coverage, search.spent, stopped)
-    ending = "Stopped early: " + stopped if stopped else "Finished."
-    print(f"{len(frames)} frames, {len(queue)} sightings, {dollars(search.spent)} spent. {ending} Open {args.out / 'report.html'}")
+    (args.out / "coverage.json").write_text(json.dumps(record["coverage_timeline"], indent=2))
+    save_frames(args.out, frames)
+    write_report(args.out, record)
+    how_it_ended = "Stopped early: " + ending["reason"] if ending["reason"] else "Finished."
+    print(f"{len(frames)} frames, {len(queue)} sightings, {dollars(search.spent)} spent. {how_it_ended} "
+          f"Search record: {args.out / 'search-record.json'}. Open {args.out / 'report.html'}")
     # A budget stop is a normal ending. A failed request is not, so scripts and agents can tell from the exit status.
-    if failed:
+    if ending["outcome"] == "failed":
         raise SystemExit(1)
 
 
