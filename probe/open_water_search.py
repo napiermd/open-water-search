@@ -30,6 +30,12 @@ The prompts, image preparation, output limit and answer readers are the ones use
 
 --format grounding asks for close-look marks in Meta's grounding format instead: points on a 0-1,000 grid over
 the image Ember received, forced into a JSON schema by structured output. Overviews keep the frozen prompt.
+
+--positions FILE gives the drone's latitude and longitude for the frames that have them, as JSON keyed by frame
+name, which is second-00000 and so on for a video (write_positions.py writes one for SeaDronesSee frames). Handoff
+messages then give the drone position at sighting, and the report maps where the drone was. Frames without
+position data get no coordinates. Without the file, the search record says position data was unavailable and the
+report shows no map.
 """
 import argparse
 import atexit
@@ -68,6 +74,9 @@ RATE_LIMIT_HEADERS = dict(limit_requests="x-ratelimit-limit-requests", remaining
 # and within this fraction of the frame width of each other.
 MERGE_SECONDS = 2
 MERGE_DISTANCE = 0.1
+# Metres per degree of latitude, and per degree of longitude at the equator.
+METRES_PER_DEGREE_NORTH = 110_574
+METRES_PER_DEGREE_EAST = 111_320
 
 
 class OutOfBudget(Exception):
@@ -286,6 +295,24 @@ def load_frames(folder):
     return frames
 
 
+def read_positions(path, frames):
+    """Give each frame the drone's position from the operator's position file, where the file has one.
+
+    The file maps frame names to the drone's latitude and longitude in decimal degrees, and may keep the source
+    metadata alongside them. A frame that is missing from the file or null in it has no position data.
+    """
+    given = json.loads(path.read_text())["frames"]
+    for frame in frames:
+        position = given.get(frame["name"])
+        if position is None:
+            continue
+        latitude, longitude = position.get("latitude"), position.get("longitude")
+        if not (isinstance(latitude, (int, float)) and isinstance(longitude, (int, float))
+                and -90 <= latitude <= 90 and -180 <= longitude <= 180):
+            raise SystemExit(f"{path}: {frame['name']} needs a latitude from -90 to 90 and a longitude from -180 to 180.")
+        frame["drone_position"] = position
+
+
 def run(search, frames, looks):
     """Overview every frame, then give each frame its next ranked close look, one round at a time."""
     search.ask_all([(frame, -1) for frame in frames])
@@ -315,11 +342,16 @@ def search_record(flight, settings, frames, search, ending, seconds):
                                    crop=f"crops/{frame['name']}-t{tile}.jpg")
                               for x, y, c in points]
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
-        coverage_timeline.append(dict(second=frame["second"], frame=frame["name"], width=frame["width"],
-                                      height=frame["height"], overview=frame["overview"], ranking=frame["ranking"],
-                                      tiles=tiles))
+        entry = dict(second=frame["second"], frame=frame["name"], width=frame["width"], height=frame["height"],
+                     overview=frame["overview"], ranking=frame["ranking"], tiles=tiles)
+        if "drone_position" in frame:
+            entry["drone_position"] = frame["drone_position"]
+        coverage_timeline.append(entry)
     photos = sum(frame["overview"] != "awaiting overview" for frame in frames)
-    return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
+    placed = sum("drone_position" in frame for frame in coverage_timeline)
+    position_data = f"drone position for {placed} of {len(frames)} frames" if placed else "unavailable"
+    return dict(flight=dict(source=str(flight), position_data=position_data), settings=settings,
+                coverage_timeline=coverage_timeline,
                 sightings=sightings, possible_people=possible_people(sightings, coverage_timeline),
                 calls=search.calls, spent_nanodollars=search.spent, ending=ending,
                 seconds=round(seconds, 3), photos_per_minute=round(photos * 60 / seconds, 1))
@@ -348,13 +380,16 @@ def possible_people(sightings, coverage_timeline):
                 people.append(person)
             person.append(sighting)
     merged = []
+    timeline = {frame["frame"]: frame for frame in coverage_timeline}
     for number, person in enumerate(people, 1):
         last = person[-1]
+        # Where the possible person was last seen, in pixels of that frame.
+        position = dict(frame=last["frame"], x=last["x"], y=last["y"], section=TILE_NAMES[last["tile"]])
+        drone = timeline[last["frame"]].get("drone_position")
+        if drone:
+            position["drone_position_at_sighting"] = dict(latitude=drone["latitude"], longitude=drone["longitude"])
         possible_person = dict(number=number, first_seen_second=person[0]["second"], last_seen_second=last["second"],
-                               first_frame=person[0]["frame"], last_frame=last["frame"],
-                               # Where the possible person was last seen, in pixels of that frame.
-                               position=dict(frame=last["frame"], x=last["x"], y=last["y"],
-                                             section=TILE_NAMES[last["tile"]]),
+                               first_frame=person[0]["frame"], last_frame=last["frame"], position=position,
                                confidence=max(s["confidence"] for s in person), sightings=person)
         possible_person["handoff_message"] = handoff_message(possible_person, coverage_timeline)
         merged.append(possible_person)
@@ -369,14 +404,23 @@ def handoff_message(person, coverage_timeline):
     """The fixed-format message a dispatcher reads to a boat crew, written from the search record without Ember.
 
     A section whose close look could not be read counts as never searched.
+
+    The flight data gives the drone's position but no camera field of view, and its altitude is measured from the
+    takeoff point, so the person's own coordinates would be a guess. The message gives where the drone was.
     """
     position = person["position"]
     frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
     never_searched = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
-    # When the flight carries real position data, its latitude and longitude follow the section.
+    where = ""
+    if "drone_position_at_sighting" in position:
+        drone = position["drone_position_at_sighting"]
+        where = (f" Drone position at sighting latitude {drone['latitude']:.5f}, longitude {drone['longitude']:.5f}."
+                 " The person's own position could not be worked out from the flight data.")
+    elif any("drone_position" in frame for frame in coverage_timeline):
+        where = " No position data for that frame."
     return (f"Possible person {person['number']}. First seen {flight_time(person['first_seen_second'])}, "
             f"last seen {flight_time(person['last_seen_second'])} into the flight, "
-            f"in the {position['section']} section of {position['frame']}. "
+            f"in the {position['section']} section of {position['frame']}.{where} "
             f"Confidence {person['confidence']:.2f}. {never_searched} of the 9 sections of that frame were never searched.")
 
 
@@ -409,9 +453,49 @@ def save_frames(out, frames):
             thumbnail.save(out / "frames" / f"{frame['name']}.jpg", quality=85)
 
 
+def drone_positions(record):
+    """The report's section on where the drone was, with a map only of the frames that have position data.
+
+    The map is north up with no background. Distances come from a flat-earth approximation around the first
+    position, which holds over the few kilometres of one flight.
+    """
+    placed = [frame for frame in record["coverage_timeline"] if "drone_position" in frame]
+    if not placed:
+        return "<h2>Drone positions</h2><p>No position data came with this flight, so this report shows no coordinates or map.</p>"
+    origin = placed[0]["drone_position"]
+    metres_per_degree_east = METRES_PER_DEGREE_EAST * math.cos(math.radians(origin["latitude"]))
+    east = [(frame["drone_position"]["longitude"] - origin["longitude"]) * metres_per_degree_east for frame in placed]
+    north = [(frame["drone_position"]["latitude"] - origin["latitude"]) * METRES_PER_DEGREE_NORTH for frame in placed]
+    # Fit the positions into a 600 x 400 drawing with a 40-unit margin, showing at least 50 metres each way.
+    scale = min(520 / max(max(east) - min(east), 50), 320 / max(max(north) - min(north), 50))
+    middle_east, middle_north = (max(east) + min(east)) / 2, (max(north) + min(north)) / 2
+    last_seen = {}
+    for person in record["possible_people"]:
+        last_seen.setdefault(person["position"]["frame"], []).append(str(person["number"]))
+    plain, yellow = [], []
+    for frame, metres_east, metres_north in zip(placed, east, north):
+        x = 300 + (metres_east - middle_east) * scale
+        y = 200 - (metres_north - middle_north) * scale
+        if frame["frame"] in last_seen:
+            yellow.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="#ffdd75" stroke="#172f2e"><title>'
+                          f'{html.escape(frame["frame"])}, possible person {", ".join(last_seen[frame["frame"]])}</title></circle>')
+        else:
+            plain.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="#1b594c">'
+                         f'<title>{html.escape(frame["frame"])}</title></circle>')
+    missing = len(record["coverage_timeline"]) - len(placed)
+    return (f'<h2>Drone positions</h2><p>Where the drone was for each frame with position data, north up. Yellow dots '
+            f'mark the frames where a possible person was last seen. The positions span '
+            f'{max(east) - min(east):,.0f} m east to west and {max(north) - min(north):,.0f} m north to south. '
+            f'{missing} of {len(record["coverage_timeline"])} frames have no position data and are not on the map.</p>'
+            f'<svg viewBox="0 0 600 400" role="img" aria-label="Drone positions, north up" '
+            f'style="display: block; width: 100%; max-width: 50rem; background: #e6ebe3;">'
+            f'{"".join(plain + yellow)}</svg>')
+
+
 def write_report(out, record):
     queue = reviewer_queue(record)
     coverage = record["coverage_timeline"]
+    has_positions = any("drone_position" in frame for frame in coverage)
     stopped = record["ending"]["reason"]
     esc = html.escape
     cards = "".join(
@@ -432,6 +516,11 @@ def write_report(out, record):
             note = f"{unchecked} of 9 tiles never got a close look."
         else:
             note = "Awaiting an overview." if frame["overview"] == "awaiting overview" else "Ember's overview could not be read, so no tile got a close look."
+        if "drone_position" in frame:
+            drone = frame["drone_position"]
+            note += f" Drone position latitude {drone['latitude']:.5f}, longitude {drone['longitude']:.5f}."
+        elif has_positions:
+            note += " No position data for this frame."
         maps.append(f'<section id="{esc(frame["frame"])}"><h3>{esc(frame["frame"])}</h3><p>{note}</p>'
                     f'<div class="photo"><img src="frames/{esc(frame["frame"])}.jpg" alt="{esc(frame["frame"])} with its coverage map">{cells}{pins}</div></section>')
     status = f"Stopped early: {esc(stopped)}." if stopped else "Finished."
@@ -468,6 +557,7 @@ a {{ color: #1b594c; }}
 <h2>Coverage map</h2>
 <p>Yellow tiles hold a sighting. Blue tiles were checked with nothing reported. Shaded tiles are water nobody has looked at closely yet.</p>
 <div class="maps">{"".join(maps)}</div>
+{drone_positions(record)}
 </body></html>
 """)
 
@@ -489,6 +579,8 @@ def main(arguments=None, api=None):
     parser.add_argument("--retries", type=int, default=1, choices=range(0, 8), metavar="0-7",
                         help="times to retry a request after a 429 rate-limit reply (default 1)")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
+    parser.add_argument("--positions", type=Path,
+                        help="JSON file of the drone's latitude and longitude for each frame, keyed by frame name")
     args = parser.parse_args(arguments)
     if api is None:
         if args.key_file:
@@ -499,6 +591,8 @@ def main(arguments=None, api=None):
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
     frames = load_frames(cut_into_seconds(args.frames) if args.frames.is_file() else args.frames)
+    if args.positions:
+        read_positions(args.positions, frames)
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
