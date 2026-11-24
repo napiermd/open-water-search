@@ -25,6 +25,21 @@ function buildTimeline(clip) {
   return cells;
 }
 
+// The live clip's numbers in the page text, counted from the recorded run.
+function showCounts(clip) {
+  const seconds = clip.timeline.length;
+  const sections = clip.timeline.flat();
+  const neverSearched = sections.filter(status => status === "not checked").length;
+  byId("flight-timeline").setAttribute("aria-label", "Coverage timeline of the " + seconds + "-second flight. "
+    + (sections.length - neverSearched).toLocaleString("en-US") + " of its " + sections.length.toLocaleString("en-US")
+    + " sections got a close look, and " + neverSearched.toLocaleString("en-US") + " were never searched.");
+  byId("axis-middle").textContent = clock(seconds / 2);
+  for (const node of document.querySelectorAll(".flight-length")) node.textContent = clock(seconds);
+  for (const node of document.querySelectorAll(".people-count")) node.textContent = clip.people.length;
+  byId("labeled-count").textContent = new Set(clip.people.flatMap(person => person.labeled_people)).size;
+  byId("unlabeled-count").textContent = clip.people.filter(person => person.labeled_people.length === 0).length;
+}
+
 // Prints one recorded line and updates the coverage timeline: an overview turns its second's water unsearched,
 // and a close look gives its section the status it ended the run with.
 function showPrinted(entry, clip, cells) {
@@ -103,6 +118,7 @@ function showPeople(clip) {
 async function startFlight() {
   const clip = await loadRun("live-clip");
   const cells = buildTimeline(clip);
+  showCounts(clip);
   showPeople(clip);
   const replay = byId("flight-replay");
   replay.hidden = matchMedia("(prefers-reduced-motion: reduce)").matches;

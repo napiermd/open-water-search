@@ -32,8 +32,8 @@
         </div>
         <ol id="flight-printed" class="printed" aria-label="What the command printed"></ol>
         <p id="flight-clock" class="clock">Loading the recorded run…</p>
-        <div id="flight-timeline" class="timeline" role="img" aria-label="Coverage timeline of the 120-second flight. Each second got close looks at two of the nine sections of its frame, and seven were never searched."></div>
-        <div class="timeline-axis" aria-hidden="true"><span>0:00</span><span>1:00</span><span>2:00</span></div>
+        <div id="flight-timeline" class="timeline" role="img" aria-label="Coverage timeline of the flight."></div>
+        <div class="timeline-axis" aria-hidden="true"><span>0:00</span><span id="axis-middle"></span><span class="flight-length"></span></div>
         <ul class="legend" aria-label="Coverage timeline">
           <li><span class="swatch flagged"></span>Close look, possible person</li>
           <li><span class="swatch clear"></span>Close look, no one marked</li>
@@ -44,11 +44,11 @@
     </section>
 
     <section aria-labelledby="record-title">
-      <h2 id="record-title" class="section-title">The search record: 15 possible people, each with a handoff message</h2>
+      <h2 id="record-title" class="section-title">The search record: <span class="people-count"></span> possible people, each with a handoff message</h2>
       <p>Sightings in back-to-back seconds within 10% of the frame width become one possible person. Pick one to read its handoff message.</p>
       <div class="record">
         <div class="people-wrap">
-          <div class="people-head" aria-hidden="true"><span>#</span><span>Seen during the flight, 0:00 to 2:00</span><span>Labeled person</span></div>
+          <div class="people-head" aria-hidden="true"><span>#</span><span>Seen during the flight, 0:00 to <span class="flight-length"></span></span><span>Labeled person</span></div>
           <ol id="people" class="people" aria-label="Possible people"></ol>
         </div>
         <div class="handoff" aria-live="polite">
@@ -59,8 +59,8 @@
       </div>
       <ul class="facts-list">
         <li><strong>107 of 116</strong> person appearances found (92%), with 47 marks with no person. Cost $0.0531, at 46.9 photos a minute including cutting the video.</li>
-        <li><strong>The merge rule never joined two different people.</strong> It split every one of the 4 labeled people, 6 times in all, each split within two seconds.</li>
-        <li><strong>7 of the 15 possible people hold no labeled person.</strong> MOBDrone labels only people, so some may be boats or buoys, and the rest are false sightings.</li>
+        <li><strong>The merge rule never joined two different people.</strong> It split every one of the <span id="labeled-count"></span> labeled people, 6 times in all, each split within two seconds.</li>
+        <li><strong><span id="unlabeled-count"></span> of the <span class="people-count"></span> possible people hold no labeled person.</strong> MOBDrone labels only people, so some may be boats or buoys, and the rest are false sightings.</li>
       </ul>
     </section>
 
