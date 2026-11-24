@@ -13,7 +13,7 @@ The trained detector is more accurate and far cheaper on this dataset, and its c
 - **Cost:** $0.9571 for 4,641 calls, or about $0.00062 per photo. At one photo a second that is about $2.23 per hour of footage.
 - **Speed:** 35.1 photos a minute over the whole run (2,646 s), short of the 60 a minute needed to keep pace with one photo a second.
 - **Reliability:** every overview was read, with no lost requests and no unreadable answers. The first attempt ended after 57 calls when one request timed out; the fix (one retry, then only that request is lost) is in commit e68172f, and that attempt's $0.0208 is counted in the project's spending.
-- **The earlier 30 validation photos** are part of this split. Within this run they scored 76 of 134 found and 19 marks with no swimmer (`scorecard-earlier-30.json`). The format check found 79 on the same photos in a separate pass.
+- **The earlier 30 validation photos** are part of this split. Within this run they scored 76 of 134 found, 58 missed and 19 marks with no swimmer (`scorecard-earlier-30.json`), for $0.0185 across their 90 calls. Their requests ran interleaved with the rest of the flight, so photos per minute is measured for the whole run only. The format check found 79 on the same photos in a separate pass.
 
 The photos are not one continuous flight, so possible people here merge sightings from unrelated photos. The merge rule is checked on the live clip in `runs/live-clip`.
 
