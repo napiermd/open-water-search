@@ -82,6 +82,7 @@ class SimulatedEmber:
 
     While it runs it notes every request sent, with when it was sent, the most requests in flight at once,
     and the most ever committed: what was paid so far plus the worst-case cost of every request in flight.
+    requests holds the body of every request sent for an answer, in the order they were sent.
     """
 
     def __init__(self, replies, latency=None, limits=None):
@@ -94,6 +95,7 @@ class SimulatedEmber:
         self.paid = 0
         self.most_in_flight = 0
         self.most_committed = 0
+        self.requests = []
 
     def request_in(self, body):
         content = body["input"][0]["content"]
@@ -117,6 +119,7 @@ class SimulatedEmber:
         with self.lock:
             reply = self.reply_to(request, take=True)
             self.sent.append((time.monotonic(), request))
+            self.requests.append(body)
             self.in_flight.append(worst)
             self.most_in_flight = max(self.most_in_flight, len(self.in_flight))
             self.most_committed = max(self.most_committed, self.paid + sum(self.in_flight))

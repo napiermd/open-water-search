@@ -1,8 +1,9 @@
-"""Search a flight of drone photos for swimmers with Muse Ember.
+"""Search a drone flight for swimmers with Muse Ember.
 
-    MODEL_API_KEY=... python open_water_search.py FRAMES_DIR --out RESULTS_DIR --budget 0.05
+    MODEL_API_KEY=... python open_water_search.py FLIGHT --out RESULTS_DIR --budget 0.05
 
-FRAMES_DIR holds the flight's photos, ordered in time by file name. Every frame first gets one
+FLIGHT is a video file or a folder of photos. A video is cut into one frame per second on this machine with
+ffmpeg. A folder holds one photo per second, ordered in time by file name. Every frame first gets one
 overview, in which Ember ranks the nine tiles of a 3 x 3 grid. Then each frame gets close looks at its
 top-ranked tiles, one round at a time, until the per-frame look count or the spending cap runs out. The
 worst-case cost of every request is reserved against the spending cap before it is sent.
@@ -11,23 +12,35 @@ Up to eight requests run at once (--parallel). Requests are spaced out when Meta
 run low, and after a 429 the tool waits at least the Retry-After time, then backs off with jitter.
 
 RESULTS_DIR receives:
-  search-record.json  the search record: every possible sighting, the coverage timeline of every tile of
-                      every frame, every Ember call with its tokens and cost, and how the run ended
+  search-record.json  the search record: every possible sighting, the possible people they merge into with
+                      a handoff message for each, the coverage timeline of every tile of every second, every
+                      Ember call with its tokens and cost, and how the run ended
   report.html         the reviewer queue and a coverage map of every frame, built from the search record
   queue.json          the reviewer queue: ranked sightings, up to five per frame, built from the search record
   coverage.json       the coverage timeline from the search record: per frame, the tiles Ember checked,
                       flagged, could not read, or never reached
   calls.jsonl         every Ember call, written as it happens
 
+The flight holds one frame per second. Sightings in frames at most two seconds apart and within 10% of the
+frame width of each other merge into one possible person. The run prints each possible person's handoff
+message, which code writes from the search record without calling Ember.
+
 The prompts, image preparation, output limit and answer readers are the ones used in the November 23
 30-frame run and its validation repeat.
+
+--format grounding asks for close-look marks in Meta's grounding format instead: points on a 0-1,000 grid over
+the image Ember received, forced into a JSON schema by structured output. Overviews keep the frozen prompt.
 """
 import argparse
+import atexit
 import base64
 import html
 import json
+import math
 import os
 import random
+import shutil
+import subprocess
 import threading
 import time
 import urllib.error
@@ -35,9 +48,11 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from itertools import groupby
 from pathlib import Path
+from tempfile import mkdtemp
 
 from PIL import Image
 
+import grounding_format
 from runner import INSPECT, LIMIT, MODEL, NANO, OVERVIEW, Meta, interpret, prepare, price, rectangle
 from score import grid_points
 
@@ -50,6 +65,10 @@ FIRST_BACKOFF = 0.5
 RATE_LIMIT_TRIES = 8
 RATE_LIMIT_HEADERS = dict(limit_requests="x-ratelimit-limit-requests", remaining_requests="x-ratelimit-remaining-requests",
                           limit_tokens="x-ratelimit-limit-tokens", remaining_tokens="x-ratelimit-remaining-tokens")
+# Sightings merge into one possible person when they are at most this many seconds apart
+# and within this fraction of the frame width of each other.
+MERGE_SECONDS = 2
+MERGE_DISTANCE = 0.1
 
 
 class OutOfBudget(Exception):
@@ -107,9 +126,10 @@ def dollars(nanodollars):
 
 
 class Search:
-    def __init__(self, api, budget_nano, out, parallel):
+    def __init__(self, api, budget_nano, out, parallel, grounding=False):
         self.api = api
         self.budget = budget_nano
+        self.grounding = grounding
         self.spent = 0
         self.reserved = 0
         self.out = out
@@ -153,23 +173,35 @@ class Search:
     def send_and_read(self, frame, tile, turn):
         rect = rectangle(frame["width"], frame["height"], tile)
         image = prepare(frame["path"], rect)
-        prompt = OVERVIEW if tile == -1 else INSPECT
+        grounding = self.grounding and tile >= 0
+        prompt = OVERVIEW if tile == -1 else grounding_format.INSPECT if grounding else INSPECT
         body = {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
                 "input": [{"role": "user", "content": [
                     {"type": "input_text", "text": prompt},
                     {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}]}
-        worst = price(self.within_rate_limits(self.api.count, body), 0, LIMIT)
+        if grounding:
+            body["text"] = {"format": grounding_format.MARKS}
+        input_tokens = self.within_rate_limits(self.api.count, body)
+        if grounding:
+            # Meta's input-token count leaves out the schema, so count each of its characters as a token. That can
+            # only overestimate, which keeps the spending cap a guarantee.
+            input_tokens += len(json.dumps(body["text"]))
+        worst = price(input_tokens, 0, LIMIT)
         self.reserve(turn, worst)
         started = time.time()
         reply = self.within_rate_limits(self.api.generate, body)
         finished = time.time()
         usage = reply["usage"]
         paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
-        event = interpret(dict(rect=rect, response=reply, started=started, finished=finished), tile)
-        converted = grid_points(dict(tile=tile, evidence=event))
-        if converted is not None:
-            event.pop("failure")
-            event["points"] = converted
+        answered = dict(rect=rect, response=reply, started=started, finished=finished)
+        if grounding:
+            event = grounding_format.read_marks(answered)
+        else:
+            event = interpret(answered, tile)
+            converted = grid_points(dict(tile=tile, evidence=event))
+            if converted is not None:
+                event.pop("failure")
+                event["points"] = converted
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=paid, usage=usage,
                     seconds=round(finished - started, 3), answer=event)
         if tile >= 0:
@@ -224,12 +256,30 @@ class Search:
         raise RuntimeError(f"Meta answered 429 to {RATE_LIMIT_TRIES} tries in a row")
 
 
+def cut_into_seconds(video):
+    """Extract one frame per second of the video, numbered by its second: second-00000.jpg, ...
+
+    The frames go in a temporary folder that is removed when the command exits.
+    """
+    folder = Path(mkdtemp(prefix="open-water-search-"))
+    atexit.register(shutil.rmtree, folder, ignore_errors=True)
+    try:
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf", "fps=1", "-qscale:v", "2",
+                        "-start_number", "0", str(folder / "second-%05d.jpg")], check=True, capture_output=True, text=True)
+    except FileNotFoundError:
+        raise SystemExit("Install ffmpeg to search a video flight.")
+    except subprocess.CalledProcessError as error:
+        raise SystemExit(f"ffmpeg could not cut {video} into frames: {error.stderr.strip()}")
+    return folder
+
+
 def load_frames(folder):
+    """The flight's frames in time order. A flight holds one frame per second, so each frame's place is its second."""
     frames = []
     for path in sorted(p for p in folder.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")):
         with Image.open(path) as image:
             width, height = image.size
-        frames.append(dict(path=path, name=path.stem, width=width, height=height,
+        frames.append(dict(path=path, name=path.stem, second=len(frames), width=width, height=height,
                            overview="awaiting overview", ranking=[], tiles={}))
     if not frames:
         raise SystemExit(f"No .jpg, .jpeg or .png frames in {folder}")
@@ -261,16 +311,77 @@ def search_record(flight, settings, frames, search, ending, seconds):
             else:
                 points = frame["tiles"][tile]
                 status = "flagged" if points else "checked, no sighting"
-                sightings += [dict(frame=frame["name"], tile=tile, x=x, y=y, confidence=c,
+                sightings += [dict(frame=frame["name"], second=frame["second"], tile=tile, x=x, y=y, confidence=c,
                                    crop=f"crops/{frame['name']}-t{tile}.jpg")
                               for x, y, c in points]
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
-        coverage_timeline.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
-                                      overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
+        coverage_timeline.append(dict(second=frame["second"], frame=frame["name"], width=frame["width"],
+                                      height=frame["height"], overview=frame["overview"], ranking=frame["ranking"],
+                                      tiles=tiles))
     photos = sum(frame["overview"] != "awaiting overview" for frame in frames)
     return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
-                sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending,
+                sightings=sightings, possible_people=possible_people(sightings, coverage_timeline),
+                calls=search.calls, spent_nanodollars=search.spent, ending=ending,
                 seconds=round(seconds, 3), photos_per_minute=round(photos * 60 / seconds, 1))
+
+
+def possible_people(sightings, coverage_timeline):
+    """Merge the flight's sightings into possible people, numbered in the order they were first seen.
+
+    A sighting joins the nearest possible person last seen one or two seconds earlier within 10% of the frame
+    width of that last sighting. Otherwise it starts a new possible person, so a gap of more than two seconds
+    splits one. A possible person takes at most one sighting per second, so two sightings in one frame stay two
+    possible people. Within a second, the most confident sightings join first.
+    """
+    widths = {frame["frame"]: frame["width"] for frame in coverage_timeline}
+    people = []
+    for second, in_this_second in groupby(sightings, key=lambda s: s["second"]):
+        can_join = [person for person in people if second - person[-1]["second"] <= MERGE_SECONDS]
+        for sighting in sorted(in_this_second, key=lambda s: -s["confidence"]):
+            reach = MERGE_DISTANCE * widths[sighting["frame"]]
+            near = [person for person in can_join if separation(person[-1], sighting) <= reach]
+            if near:
+                person = min(near, key=lambda person: separation(person[-1], sighting))
+                can_join.remove(person)
+            else:
+                person = []
+                people.append(person)
+            person.append(sighting)
+    merged = []
+    for number, person in enumerate(people, 1):
+        last = person[-1]
+        possible_person = dict(number=number, first_seen_second=person[0]["second"], last_seen_second=last["second"],
+                               first_frame=person[0]["frame"], last_frame=last["frame"],
+                               # Where the possible person was last seen, in pixels of that frame.
+                               position=dict(frame=last["frame"], x=last["x"], y=last["y"],
+                                             section=TILE_NAMES[last["tile"]]),
+                               confidence=max(s["confidence"] for s in person), sightings=person)
+        possible_person["handoff_message"] = handoff_message(possible_person, coverage_timeline)
+        merged.append(possible_person)
+    return merged
+
+
+def separation(first, second):
+    return math.dist((first["x"], first["y"]), (second["x"], second["y"]))
+
+
+def handoff_message(person, coverage_timeline):
+    """The fixed-format message a dispatcher reads to a boat crew, written from the search record without Ember.
+
+    A section whose close look could not be read counts as never searched.
+    """
+    position = person["position"]
+    frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
+    never_searched = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
+    # When the flight carries real position data, its latitude and longitude follow the section.
+    return (f"Possible person {person['number']}. First seen {flight_time(person['first_seen_second'])}, "
+            f"last seen {flight_time(person['last_seen_second'])} into the flight, "
+            f"in the {position['section']} section of {position['frame']}. "
+            f"Confidence {person['confidence']:.2f}. {never_searched} of the 9 sections of that frame were never searched.")
+
+
+def flight_time(second):
+    return f"{second // 60}:{second % 60:02}"
 
 
 def reviewer_queue(record):
@@ -363,14 +474,18 @@ a {{ color: #1b594c; }}
 
 def main(arguments=None, api=None):
     """Run the command. Offline tests pass a simulated Ember as api; otherwise it calls Meta with MODEL_API_KEY."""
-    parser = argparse.ArgumentParser(description="Search drone frames for swimmers with Muse Ember.")
-    parser.add_argument("frames", type=Path, help="folder of .jpg, .jpeg or .png drone frames")
+    parser = argparse.ArgumentParser(description="Search a drone flight for swimmers with Muse Ember.")
+    parser.add_argument("frames", type=Path, metavar="flight",
+                        help="video file of the flight, or folder of its .jpg, .jpeg or .png photos, one per second")
     parser.add_argument("--out", type=Path, required=True, help="new folder for the results")
     parser.add_argument("--budget", type=float, default=0.05, help="most to spend on Ember, in dollars (default 0.05)")
     parser.add_argument("--looks", type=int, default=2, choices=range(0, 10), metavar="0-9",
                         help="close looks per frame after its overview (default 2)")
     parser.add_argument("--parallel", type=int, default=8, choices=range(1, 9), metavar="1-8",
                         help="most requests to Ember at once (default 8)")
+    parser.add_argument("--format", choices=("frozen", "grounding"), default="frozen",
+                        help="how close looks ask for marks: the frozen prompts of the published runs (default), "
+                             "or Meta's 0-1,000 grounding format with a JSON schema")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     args = parser.parse_args(arguments)
     if api is None:
@@ -381,12 +496,12 @@ def main(arguments=None, api=None):
         api = Ember()
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
-    frames = load_frames(args.frames)
+    frames = load_frames(cut_into_seconds(args.frames) if args.frames.is_file() else args.frames)
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
     budget = round(args.budget * NANO)
-    search = Search(api, budget, args.out, args.parallel)
+    search = Search(api, budget, args.out, args.parallel, grounding=args.format == "grounding")
     ending = dict(outcome="finished", reason=None)
     started = time.monotonic()
     try:
@@ -397,7 +512,8 @@ def main(arguments=None, api=None):
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
     seconds = time.monotonic() - started
     search.log.close()
-    settings = dict(model=MODEL, looks=args.looks, parallel=args.parallel, spending_cap_nanodollars=budget)
+    settings = dict(model=MODEL, looks=args.looks, format=args.format, parallel=args.parallel,
+                    spending_cap_nanodollars=budget)
     record = search_record(args.frames, settings, frames, search, ending, seconds)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
     queue = reviewer_queue(record)
@@ -405,6 +521,8 @@ def main(arguments=None, api=None):
     (args.out / "coverage.json").write_text(json.dumps(record["coverage_timeline"], indent=2))
     save_frames(args.out, frames)
     write_report(args.out, record)
+    for person in record["possible_people"]:
+        print(person["handoff_message"])
     how_it_ended = "Stopped early: " + ending["reason"] if ending["reason"] else "Finished."
     print(f"{len(frames)} frames, {len(queue)} sightings, {dollars(search.spent)} spent. {how_it_ended} "
           f"Search record: {args.out / 'search-record.json'}. Open {args.out / 'report.html'}")
