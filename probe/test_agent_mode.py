@@ -190,6 +190,21 @@ class AgentMode(unittest.TestCase):
         self.assertEqual(record["ending"], {"outcome": "failed", "reason": "RuntimeError: 10 unreadable answers in a row"})
         self.assertEqual(len(record["calls"]), 10)
 
+    def test_the_search_record_logs_every_printed_line_including_refusals_and_moves_to_the_next_frame(self):
+        share = WORST + PAID // 2
+        status, printed, record, _ = self.search({"frame-01": [[look(4), report(2, 500, 500, 0.8)], [MOVE_ON]],
+                                                  "frame-02": [[MOVE_ON]]}, 2, "--budget", budget(2 * share))
+        self.assertEqual(status, 0)
+        log = record["decision_log"]
+        self.assertEqual([(entry["frame"], entry["tile"], entry["text"]) for entry in log], [
+            ("frame-01", 4, "frame-01: look closer at the center tile (4)"),
+            ("frame-01", 2, "frame-01: report a sighting in the top right tile (2) refused: "
+                            "you have not received a close look at that tile"),
+            ("frame-01", None, "frame-01: its share of the budget is spent, so the search moves to the next frame"),
+            ("frame-02", None, "frame-02: move to the next frame")])
+        self.assertEqual(printed.splitlines()[:4], [entry["text"] for entry in log])
+        self.assertEqual([entry["seconds"] for entry in log], sorted(entry["seconds"] for entry in log))
+
     def test_the_fixed_two_look_method_stays_the_default(self):
         folder = TemporaryDirectory()
         self.addCleanup(folder.cleanup)

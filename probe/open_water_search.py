@@ -14,7 +14,8 @@ run low, and after a 429 the tool waits at least the Retry-After time, then back
 RESULTS_DIR receives:
   search-record.json  the search record: every possible sighting, the possible people they merge into with
                       a handoff message for each, the coverage timeline of every tile of every second, every
-                      Ember call with its tokens and cost, and how the run ended
+                      Ember call with its tokens and cost, the decision log of every decision line the run printed
+                      with its frame, tile and time, and how the run ended
   report.html         the reviewer queue and a coverage map of every frame, built from the search record
   queue.json          the reviewer queue: ranked sightings, up to five per frame, built from the search record
   coverage.json       the coverage timeline from the search record: per frame, the tiles Ember checked,
@@ -177,6 +178,7 @@ class Search:
         self.out = out
         self.parallel = parallel
         self.calls = []
+        self.decisions = []
         self.log = (out / "calls.jsonl").open("a")
         self.failures_in_a_row = 0
         # Guards the money, the request order, the pacing and the shared records across request threads.
@@ -184,6 +186,7 @@ class Search:
         self.next_turn = 0
         self.stopped = False
         self.next_send = 0
+        self.started = time.monotonic()
 
     def ask_all(self, requests):
         """Send each (frame, tile) request, up to parallel at once, and wait for all of them.
@@ -261,7 +264,7 @@ class Search:
         else:
             frame["ranking"] = event.get("tiles", [])
             frame["overview"] = "done" if frame["ranking"] else "unreadable"
-        print(decision_line(frame["name"], tile, event), flush=True)
+        self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, event))
         self.finish(call, worst, failed="failure" in event)
 
     def record_lost(self, frame, tile, worst, lost):
@@ -274,8 +277,16 @@ class Search:
             frame["overview"] = "unreadable"
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=worst, usage=None, seconds=None,
                     answer=dict(failure=str(lost), lost=True))
-        print(decision_line(frame["name"], tile, call["answer"]), flush=True)
+        self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, call["answer"]))
         self.finish(call, worst, failed=True)
+
+    def decide(self, frame_name, tile, text):
+        """Print one decision line as it happens and add it to the decision log, with the tile it concerns, or None
+        for a line about the whole frame, and the seconds since the run started."""
+        with self.lock:
+            print(text, flush=True)
+            self.decisions.append(dict(frame=frame_name, tile=tile, text=text,
+                                       seconds=round(time.monotonic() - self.started, 3)))
 
     def finish(self, call, worst, failed):
         """Settle a request: release its worst-case reservation, count what it cost as spent, and add the call to the
@@ -429,7 +440,7 @@ def search_record(flight, settings, frames, search, ending, seconds):
     return dict(flight=dict(source=str(flight), position_data=position_data), settings=settings,
                 coverage_timeline=coverage_timeline,
                 sightings=sightings, possible_people=possible_people(sightings, coverage_timeline),
-                calls=search.calls, spent_nanodollars=search.spent, ending=ending,
+                calls=search.calls, decision_log=search.decisions, spent_nanodollars=search.spent, ending=ending,
                 seconds=round(seconds, 3), photos_per_minute=round(photos * 60 / seconds, 1))
 
 
@@ -561,10 +572,10 @@ def search_frame(search, frame, note, earned):
                 frame["overview"] = "unreadable"
             for tile, _ in opened[answered:]:
                 frame["tiles"][tile] = None
-            print(f"{name}: {lost}, so the search moves to the next frame", flush=True)
+            search.decide(name, None, f"{name}: {lost}, so the search moves to the next frame")
             return
         if reply is None:
-            print(f"{name}: its share of the budget is spent, so the search moves to the next frame", flush=True)
+            search.decide(name, None, f"{name}: its share of the budget is spent, so the search moves to the next frame")
             return
         frame["overview"] = "done"
         for tile, _ in opened[answered:]:
@@ -572,7 +583,7 @@ def search_frame(search, frame, note, earned):
         answered = len(opened)
         calls = tool_calls_in(reply)
         if not calls:
-            print(f"{name}: Ember answered without a tool call, so the search moves to the next frame", flush=True)
+            search.decide(name, None, f"{name}: Ember answered without a tool call, so the search moves to the next frame")
             return
         conversation += reply["output"]
         for call in calls:
@@ -598,23 +609,23 @@ def tool_step(search, frame, call, opened):
         arguments = json.loads(call["arguments"])
         tile = arguments.get("tile")
         if call["name"] == "move_to_next_frame":
-            print(f"{name}: move to the next frame", flush=True)
+            search.decide(name, None, f"{name}: move to the next frame")
             return None
         if type(tile) is not int or tile not in range(9):
             raise ValueError("tile must be a whole number from 0 to 8")
         if call["name"] not in TOOL_STEPS:
             raise ValueError("there is no such tool")
     except REFUSALS as refusal:
-        print(f"{name}: {call['name']} refused: {refusal}", flush=True)
+        search.decide(name, None, f"{name}: {call['name']} refused: {refusal}")
         return f"Refused: {refusal}."
     verb, step = TOOL_STEPS[call["name"]]
     action = f"{verb} the {TILE_NAMES[tile]} tile ({tile})"
     try:
         detail, output = step(search, frame, tile, arguments, opened)
     except REFUSALS as refusal:
-        print(f"{name}: {action} refused: {refusal}", flush=True)
+        search.decide(name, tile, f"{name}: {action} refused: {refusal}")
         return f"Refused: {refusal}."
-    print(f"{name}: {action}{detail}", flush=True)
+    search.decide(name, tile, f"{name}: {action}{detail}")
     return output
 
 
@@ -883,7 +894,6 @@ def main(arguments=None, api=None):
     budget = round(args.budget * NANO)
     search = Search(api, budget, args.out, args.parallel, grounding=args.format == "grounding", retries=args.retries)
     ending = dict(outcome="finished", reason=None)
-    started = time.monotonic()
     try:
         if args.mode == "agent":
             run_agent(search, frames)
@@ -893,7 +903,7 @@ def main(arguments=None, api=None):
         ending = dict(outcome="spending cap", reason="the next request could have exceeded the budget")
     except Exception as error:
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
-    seconds = time.monotonic() - started
+    seconds = time.monotonic() - search.started
     search.log.close()
     settings = dict(model=MODEL, mode=args.mode, looks=args.looks, format=args.format, parallel=args.parallel,
                     retries=args.retries, spending_cap_nanodollars=budget)
