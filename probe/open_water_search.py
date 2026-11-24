@@ -26,6 +26,12 @@ The prompts, image preparation, output limit and answer readers are the ones use
 
 --format grounding asks for close-look marks in Meta's grounding format instead: points on a 0-1,000 grid over
 the image Ember received, forced into a JSON schema by structured output. Overviews keep the frozen prompt.
+
+--mode agent lets Ember run the search through tool calls instead of the fixed two-look method. Each frame gets one
+conversation that opens with its overview and a one-line note about the previous frame's sightings. Ember then
+calls three tools: look closer at a tile, report a sighting on the 0-1,000 grid of a close look it received, and
+move to the next frame. Each frame earns an equal share of the spending cap, and any unused share carries forward.
+No frame takes more than 4 close looks. Each tool call prints a line as it happens.
 """
 import argparse
 import base64
@@ -232,6 +238,160 @@ def flight_time(second):
     return f"{second // 60}:{second % 60:02}"
 
 
+AGENT_LOOKS = 4
+AGENT_PROMPT = ("Search this drone frame for people swimming or floating in the water. The image is the overview of "
+                "the whole frame, divided into a 3 x 3 grid of tiles numbered 0 to 8 in row-major order from the top "
+                "left. Look closer at the tiles most likely to hold a person, at most 4. Report each person you see "
+                "in a close look, then move to the next frame.")
+AGENT_TOOLS = [
+    {"type": "function", "name": "look_closer", "strict": True,
+     "description": "Open a close look at one tile of this frame. The close look arrives as the next image. "
+                    "At most 4 close looks per frame.",
+     "parameters": {"type": "object", "additionalProperties": False, "required": ["tile"],
+                    "properties": {"tile": {"type": "integer", "description": "tile number, 0 to 8"}}}},
+    {"type": "function", "name": "report_sighting", "strict": True,
+     "description": "Report a person swimming or floating in the water in a close look you have received. Give the "
+                    "point on a 0 to 1,000 grid over that close look's image, with (0,0) at the top left, x across "
+                    "and y down, and a confidence from 0 to 1.",
+     "parameters": {"type": "object", "additionalProperties": False, "required": ["tile", "x", "y", "confidence"],
+                    "properties": {"tile": {"type": "integer"}, "x": {"type": "number"}, "y": {"type": "number"},
+                                   "confidence": {"type": "number"}}}},
+    {"type": "function", "name": "move_to_next_frame", "strict": True,
+     "description": "Finish this frame and move to the next one.",
+     "parameters": {"type": "object", "additionalProperties": False, "required": [], "properties": {}}},
+]
+
+
+def run_agent(search, frames):
+    """Give each frame one conversation in which Ember searches it through tool calls.
+
+    Frame n of the flight may spend up to n equal shares of the spending cap, less what earlier frames spent, so
+    any unused share carries forward.
+    """
+    note = "This is the first frame of the flight."
+    for index, frame in enumerate(frames):
+        search_frame(search, frame, note, earned=search.budget * (index + 1) // len(frames))
+        note = previous_frame_note(frame)
+
+
+def search_frame(search, frame, note, earned):
+    """Run one frame's conversation until Ember moves on, or the frame's earned share cannot cover the next request.
+
+    A tile counts as checked only once a request carrying its close look has been answered.
+    """
+    name = frame["name"]
+    overview = prepare(frame["path"], rectangle(frame["width"], frame["height"], -1))
+    conversation = [user_message(AGENT_PROMPT + " " + note, overview)]
+    looks = 0
+    sent_tiles = []
+    while True:
+        body = {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
+                "tools": AGENT_TOOLS, "input": conversation}
+        reply = agent_request(search, frame, body, earned)
+        if reply is None:
+            print(f"{name}: its share of the budget is spent, so the search moves to the next frame", flush=True)
+            return
+        frame["overview"] = "done"
+        for tile in sent_tiles:
+            frame["tiles"].setdefault(tile, [])
+        sent_tiles = []
+        calls = [item for item in reply["output"] if item.get("type") == "function_call"]
+        if reply.get("status") != "completed" or not calls:
+            search.failures_in_a_row += 1
+            if search.failures_in_a_row >= FAILURE_LIMIT:
+                raise RuntimeError(f"{FAILURE_LIMIT} answers without a tool call in a row")
+            print(f"{name}: Ember answered without a tool call, so the search moves to the next frame", flush=True)
+            return
+        search.failures_in_a_row = 0
+        conversation += reply["output"]
+        close_looks = []
+        for call in calls:
+            action = call["name"]
+            try:
+                arguments = json.loads(call["arguments"])
+                tile = arguments.get("tile")
+                if call["name"] == "move_to_next_frame":
+                    print(f"{name}: move to the next frame", flush=True)
+                    return
+                if type(tile) is not int or tile not in range(9):
+                    raise ValueError("tile must be a whole number from 0 to 8")
+                where = f"the {TILE_NAMES[tile]} tile ({tile})"
+                if call["name"] == "look_closer":
+                    action = f"look closer at {where}"
+                    if looks == AGENT_LOOKS:
+                        raise ValueError(f"this frame has had its {AGENT_LOOKS} close looks")
+                    looks += 1
+                    rect = rectangle(frame["width"], frame["height"], tile)
+                    image = prepare(frame["path"], rect)
+                    (search.out / "crops" / f"{name}-t{tile}.jpg").write_bytes(image)
+                    close_looks.append(user_message(f"Close look at tile {tile} of this frame.", image))
+                    sent_tiles.append(tile)
+                    output = f"The close look at tile {tile} follows."
+                elif call["name"] == "report_sighting":
+                    x, y, confidence = arguments["x"], arguments["y"], arguments["confidence"]
+                    action = f"report a sighting in {where}"
+                    if tile not in frame["tiles"]:
+                        raise ValueError("you have not received a close look at that tile")
+                    if not all(type(n) in (int, float) for n in (x, y, confidence)) or not 0 <= confidence <= 1:
+                        raise ValueError("x and y must be numbers and confidence a number from 0 to 1")
+                    left, top, right, bottom = rectangle(frame["width"], frame["height"], tile)
+                    point = [grounding_format.to_frame(x, left, right), grounding_format.to_frame(y, top, bottom),
+                             confidence]
+                    frame["tiles"][tile].append(point)
+                    action += f" at x {point[0]:.0f}, y {point[1]:.0f}, confidence {confidence:.2f}"
+                    output = "Sighting recorded."
+                else:
+                    raise ValueError("there is no such tool")
+                print(f"{name}: {action}", flush=True)
+            except (ValueError, TypeError, KeyError) as refusal:
+                print(f"{name}: {action} refused: {refusal}", flush=True)
+                output = f"Refused: {refusal}."
+            conversation.append({"type": "function_call_output", "call_id": call["call_id"], "output": output})
+        conversation += close_looks
+
+
+def user_message(text, image):
+    return {"role": "user", "content": [
+        {"type": "input_text", "text": text},
+        {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}
+
+
+def agent_request(search, frame, body, earned):
+    """Send one turn of a frame's conversation and return Ember's reply, or None when the turn's worst-case cost
+    does not fit in what the frame has earned. Raise OutOfBudget when it does not fit in the spending cap."""
+    # Meta's input-token count leaves out the tool definitions, so count each of their characters as a token. That can
+    # only overestimate, which keeps the spending cap a guarantee.
+    input_tokens = search.api.count(body) + len(json.dumps(body["tools"]))
+    worst = price(input_tokens, 0, LIMIT)
+    if search.spent + worst > search.budget:
+        raise OutOfBudget()
+    if search.spent + worst > earned:
+        return None
+    started = time.time()
+    reply = search.api.generate(body)
+    finished = time.time()
+    usage = reply["usage"]
+    paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
+    search.spent += paid
+    call = dict(frame=frame["name"], paid_nanodollars=paid, usage=usage, seconds=round(finished - started, 3),
+                response=reply)
+    search.calls.append(call)
+    search.log.write(json.dumps(call) + "\n")
+    search.log.flush()
+    return reply
+
+
+def previous_frame_note(frame):
+    """One line about the frame's sightings, for the next frame's conversation."""
+    opened = len(frame["tiles"])
+    sightings = [(tile, confidence) for tile, points in sorted(frame["tiles"].items()) for _, _, confidence in points]
+    if not sightings:
+        return f"Previous frame: no sightings, with close looks at {opened} of 9 tiles."
+    listed = " and ".join(f"the {TILE_NAMES[tile]} tile at confidence {confidence:.2f}" for tile, confidence in sightings)
+    return (f"Previous frame: {'a sighting' if len(sightings) == 1 else 'sightings'} in {listed}, "
+            f"with close looks at {opened} of 9 tiles.")
+
+
 def reviewer_queue(record):
     """Up to five sightings per frame, ranked across the flight by confidence."""
     sizes = {frame["frame"]: (frame["width"], frame["height"]) for frame in record["coverage_timeline"]}
@@ -331,6 +491,9 @@ def main(arguments=None, api=None):
     parser.add_argument("--format", choices=("frozen", "grounding"), default="frozen",
                         help="how close looks ask for marks: the frozen prompts of the published runs (default), "
                              "or Meta's 0-1,000 grounding format with a JSON schema")
+    parser.add_argument("--mode", choices=("fixed", "agent"), default="fixed",
+                        help="who chooses the close looks: the fixed method of --looks per frame (default), or Ember "
+                             "through tool calls, with up to 4 close looks per frame")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     args = parser.parse_args(arguments)
     if api is None:
@@ -349,13 +512,16 @@ def main(arguments=None, api=None):
     search = Search(api, budget, args.out, grounding=args.format == "grounding")
     ending = dict(outcome="finished", reason=None)
     try:
-        run(search, frames, args.looks)
+        if args.mode == "agent":
+            run_agent(search, frames)
+        else:
+            run(search, frames, args.looks)
     except OutOfBudget:
         ending = dict(outcome="spending cap", reason="the next request could have exceeded the budget")
     except Exception as error:
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
     search.log.close()
-    settings = dict(model=MODEL, looks=args.looks, format=args.format, spending_cap_nanodollars=budget)
+    settings = dict(model=MODEL, mode=args.mode, looks=args.looks, format=args.format, spending_cap_nanodollars=budget)
     record = search_record(args.frames, settings, frames, search, ending)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
     queue = reviewer_queue(record)

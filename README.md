@@ -52,6 +52,8 @@ open results/report.html
 
 Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
 
+Add `--mode agent` to let Ember run the search through tool calls. Each photo gets one conversation that opens with its overview and a one-line note about the previous photo's sightings. Ember chooses which tiles to look at closely, at most 4 per photo, reports each sighting as a point on Meta's 0–1,000 grid over the close look it received, and moves to the next photo when it decides to. Each photo earns an equal share of `--budget`, and any share it leaves unused carries forward. The tool prints a line for each tool call as it happens. The fixed method stays the default unless agent mode beats it on the 30 validation photos.
+
 | File in `results/` | What it holds |
 |---|---|
 | `search-record.json` | The search record: every possible sighting in source-image pixels, the possible people they merge into with a handoff message for each, every tile's status for every photo, every Ember call with its tokens and cost, and how the run ended |

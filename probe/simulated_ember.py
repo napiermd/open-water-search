@@ -4,14 +4,21 @@
     ember = SimulatedEmber({("frame-01", -1): '{"tiles":[4,0]}', ("frame-01", 4): '{"points":[[0.5,0.5,0.9]]}'})
     status, printed = run_command([str(flight), "--out", str(out)], ember)
 
+In agent mode Ember answers with tool calls instead, scripted turn by turn for each frame:
+
+    ember = SimulatedEmber({}, conversations={"frame-01": [[("look_closer", {"tile": 4})], [("move_to_next_frame", {})]]})
+
 Fixture frames paint each tile of the 3 x 3 grid a flat colour that encodes the frame's place in the flight and
 the tile's number. The simulated Ember reads that colour back from the image it receives, so it knows which
 frame and tile every request shows, whatever order the requests arrive in. Nothing here opens a network
 connection, and run_command fails any test that tries.
 """
 import base64
+import copy
 import io
+import json
 import socket
+from collections import Counter
 from contextlib import contextmanager, redirect_stdout
 
 from PIL import Image
@@ -66,6 +73,26 @@ def answer(text, input_tokens=INPUT_TOKENS, output_tokens=100):
                       "output_tokens": output_tokens}}
 
 
+def tool_calls(call_ids, calls, input_tokens=INPUT_TOKENS, output_tokens=100):
+    """A completed Ember reply that makes each (tool name, arguments) call in calls, in order."""
+    return {"status": "completed",
+            "output": [{"type": "function_call", "call_id": call_id, "name": name, "arguments": json.dumps(arguments)}
+                       for call_id, (name, arguments) in zip(call_ids, calls)],
+            "usage": {"input_tokens": input_tokens, "input_tokens_details": {"cached_tokens": 0},
+                      "output_tokens": output_tokens}}
+
+
+def images_in(body):
+    """(frame name, tile) of every image in a request body, in order, with tile -1 for an overview."""
+    images = []
+    for item in body["input"]:
+        for part in item.get("content", []):
+            if part["type"] == "input_image":
+                with Image.open(io.BytesIO(base64.b64decode(part["image_url"].split(",", 1)[1]))) as image:
+                    images.append(identify(image.convert("RGB")))
+    return images
+
+
 class SimulatedEmber:
     """Stands in for runner.Meta.
 
@@ -73,26 +100,45 @@ class SimulatedEmber:
     answer text, a full reply such as one recorded from a paid run, or an exception to raise instead of
     replying. A request with no scripted reply raises KeyError, which the command treats as a failed request.
     requests holds the body of every request sent for an answer, in order.
+
+    conversations scripts agent mode, where each request carries tools and one frame's conversation so far. It maps
+    frame name to that frame's turns in order. A turn is a list of (tool name, arguments) calls, a full reply, or
+    an exception. A request past the end of a frame's script raises IndexError, which the command treats as a failed
+    request. A request that leaves one of Ember's earlier tool calls without its output fails the same way, as Meta
+    refuses it.
     """
 
-    def __init__(self, replies):
+    def __init__(self, replies, conversations=None):
         self.replies = replies
+        self.conversations = conversations or {}
+        self.turns_taken = Counter()
         self.requests = []
 
-    def reply_to(self, body):
-        content = body["input"][0]["content"]
-        url = next(part["image_url"] for part in content if part["type"] == "input_image")
-        with Image.open(io.BytesIO(base64.b64decode(url.split(",", 1)[1]))) as image:
-            reply = self.replies[identify(image.convert("RGB"))]
-        return answer(reply) if isinstance(reply, str) else reply
+    def reply_to(self, body, take=False):
+        frame, tile = images_in(body)[0]
+        if "tools" not in body:
+            reply = self.replies[frame, tile]
+            return answer(reply) if isinstance(reply, str) else reply
+        called = {item["call_id"] for item in body["input"] if item.get("type") == "function_call"}
+        answered = {item["call_id"] for item in body["input"] if item.get("type") == "function_call_output"}
+        if called != answered:
+            raise ValueError("a tool call has no output")
+        turn = self.turns_taken[frame]
+        reply = self.conversations[frame][turn]
+        if take:
+            self.turns_taken[frame] += 1
+        if isinstance(reply, list):
+            return tool_calls([f"{frame}-turn{turn}-call{n}" for n in range(len(reply))], reply)
+        return reply
 
     def count(self, body):
         reply = self.reply_to(body)
         return INPUT_TOKENS if isinstance(reply, Exception) else reply["usage"]["input_tokens"]
 
     def generate(self, body):
-        self.requests.append(body)
-        reply = self.reply_to(body)
+        # Keep the body as sent: the command goes on adding to a conversation after sending it.
+        self.requests.append(copy.deepcopy(body))
+        reply = self.reply_to(body, take=True)
         if isinstance(reply, Exception):
             raise reply
         return reply
