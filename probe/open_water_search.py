@@ -8,13 +8,18 @@ top-ranked tiles, one round at a time, until the per-frame look count or the spe
 worst-case cost of every request is checked against the spending cap before it is sent.
 
 RESULTS_DIR receives:
-  search-record.json  the search record: every possible sighting, the coverage timeline of every tile of
-                      every frame, every Ember call with its tokens and cost, and how the run ended
+  search-record.json  the search record: every possible sighting, the possible people they merge into with
+                      a handoff message for each, the coverage timeline of every tile of every frame, every
+                      Ember call with its tokens and cost, and how the run ended
   report.html         the reviewer queue and a coverage map of every frame, built from the search record
   queue.json          the reviewer queue: ranked sightings, up to five per frame, built from the search record
   coverage.json       the coverage timeline from the search record: per frame, the tiles Ember checked,
                       flagged, could not read, or never reached
   calls.jsonl         every Ember call, written as it happens
+
+The flight holds one frame per second. Sightings in frames at most two seconds apart and within 10% of the
+frame width of each other merge into one possible person. The run prints each possible person's handoff
+message, which code writes from the search record without calling Ember.
 
 The prompts, image preparation, output limit and answer readers are the ones used in the November 23
 30-frame run and its validation repeat.
@@ -23,6 +28,7 @@ import argparse
 import base64
 import html
 import json
+import math
 import os
 import time
 from itertools import groupby
@@ -37,6 +43,10 @@ TILE_NAMES = ["top left", "top center", "top right", "middle left", "center",
               "middle right", "bottom left", "bottom center", "bottom right"]
 REVIEW_LIMIT = 5
 FAILURE_LIMIT = 10
+# Sightings merge into one possible person when they are at most this many seconds apart
+# and within this fraction of the frame width of each other.
+MERGE_SECONDS = 2
+MERGE_DISTANCE = 0.1
 
 
 class OutOfBudget(Exception):
@@ -94,11 +104,12 @@ class Search:
 
 
 def load_frames(folder):
+    """The flight's frames in time order. A flight holds one frame per second, so each frame's place is its second."""
     frames = []
     for path in sorted(p for p in folder.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")):
         with Image.open(path) as image:
             width, height = image.size
-        frames.append(dict(path=path, name=path.stem, width=width, height=height,
+        frames.append(dict(path=path, name=path.stem, second=len(frames), width=width, height=height,
                            overview="awaiting overview", ranking=[], tiles={}))
     if not frames:
         raise SystemExit(f"No .jpg, .jpeg or .png frames in {folder}")
@@ -134,14 +145,74 @@ def search_record(flight, settings, frames, search, ending):
             else:
                 points = frame["tiles"][tile]
                 status = "flagged" if points else "checked, no sighting"
-                sightings += [dict(frame=frame["name"], tile=tile, x=x, y=y, confidence=c,
+                sightings += [dict(frame=frame["name"], second=frame["second"], tile=tile, x=x, y=y, confidence=c,
                                    crop=f"crops/{frame['name']}-t{tile}.jpg")
                               for x, y, c in points]
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
         coverage_timeline.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
                                       overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
     return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
-                sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending)
+                sightings=sightings, possible_people=possible_people(sightings, coverage_timeline),
+                calls=search.calls, spent_nanodollars=search.spent, ending=ending)
+
+
+def possible_people(sightings, coverage_timeline):
+    """Merge the flight's sightings into possible people, numbered in the order they were first seen.
+
+    A sighting joins the nearest possible person last seen one or two seconds earlier within 10% of the frame
+    width of that last sighting. Otherwise it starts a new possible person, so a gap of more than two seconds
+    splits one. A possible person takes at most one sighting per second, so two sightings in one frame stay two
+    possible people. Within a second, the most confident sightings join first.
+    """
+    widths = {frame["frame"]: frame["width"] for frame in coverage_timeline}
+    people = []
+    for second, in_this_second in groupby(sightings, key=lambda s: s["second"]):
+        can_join = [person for person in people if second - person[-1]["second"] <= MERGE_SECONDS]
+        for sighting in sorted(in_this_second, key=lambda s: -s["confidence"]):
+            reach = MERGE_DISTANCE * widths[sighting["frame"]]
+            near = [person for person in can_join if separation(person[-1], sighting) <= reach]
+            if near:
+                person = min(near, key=lambda person: separation(person[-1], sighting))
+                can_join.remove(person)
+            else:
+                person = []
+                people.append(person)
+            person.append(sighting)
+    merged = []
+    for number, person in enumerate(people, 1):
+        last = person[-1]
+        possible_person = dict(number=number, first_seen_second=person[0]["second"], last_seen_second=last["second"],
+                               first_frame=person[0]["frame"], last_frame=last["frame"],
+                               # Where the possible person was last seen, in pixels of that frame.
+                               position=dict(frame=last["frame"], x=last["x"], y=last["y"],
+                                             section=TILE_NAMES[last["tile"]]),
+                               confidence=max(s["confidence"] for s in person), sightings=person)
+        possible_person["handoff_message"] = handoff_message(possible_person, coverage_timeline)
+        merged.append(possible_person)
+    return merged
+
+
+def separation(first, second):
+    return math.dist((first["x"], first["y"]), (second["x"], second["y"]))
+
+
+def handoff_message(person, coverage_timeline):
+    """The fixed-format message a dispatcher reads to a boat crew, written from the search record without Ember.
+
+    A section whose close look could not be read counts as never searched.
+    """
+    position = person["position"]
+    frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
+    never_searched = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
+    # When the flight carries real position data, its latitude and longitude follow the section.
+    return (f"Possible person {person['number']}. First seen {flight_time(person['first_seen_second'])}, "
+            f"last seen {flight_time(person['last_seen_second'])} into the flight, "
+            f"in the {position['section']} section of {position['frame']}. "
+            f"Confidence {person['confidence']:.2f}. {never_searched} of the 9 sections of that frame were never searched.")
+
+
+def flight_time(second):
+    return f"{second // 60}:{second % 60:02}"
 
 
 def reviewer_queue(record):
@@ -272,6 +343,8 @@ def main(arguments=None, api=None):
     (args.out / "coverage.json").write_text(json.dumps(record["coverage_timeline"], indent=2))
     save_frames(args.out, frames)
     write_report(args.out, record)
+    for person in record["possible_people"]:
+        print(person["handoff_message"])
     how_it_ended = "Stopped early: " + ending["reason"] if ending["reason"] else "Finished."
     print(f"{len(frames)} frames, {len(queue)} sightings, {dollars(search.spent)} spent. {how_it_ended} "
           f"Search record: {args.out / 'search-record.json'}. Open {args.out / 'report.html'}")
