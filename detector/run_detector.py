@@ -83,9 +83,9 @@ def fetch_weights(path):
     return path
 
 
-def yolo(weights, device):
-    """predict() for the checkpoint, sending each image alone at 640 pixels and keeping boxes at 0.25 confidence
-    or more, and the seal's description of the model."""
+def yolo(weights, device, min_confidence=MIN_CONFIDENCE):
+    """predict() for the checkpoint, sending each image alone at 640 pixels and keeping boxes at min_confidence
+    or more (0.25 unless asked otherwise), and the seal's description of the model."""
     # Imported here so the tests and the search tool's checks run without ultralytics installed.
     import torch
     import ultralytics
@@ -95,12 +95,12 @@ def yolo(weights, device):
     model = ultralytics.YOLO(weights)
 
     def predict(images):
-        return [model.predict(image, imgsz=IMAGE_SIZE, conf=MIN_CONFIDENCE, device=device, verbose=False)[0]
+        return [model.predict(image, imgsz=IMAGE_SIZE, conf=min_confidence, device=device, verbose=False)[0]
                 .boxes.data.cpu().tolist() for image in images]
 
     about = dict(checkpoint=WEIGHTS_URL, sha256=WEIGHTS_SHA256, classes=model.names,
                  selected_on="SeaDronesSee val split (the checkpoint's training run picked best.pt on it)",
-                 image_size=IMAGE_SIZE, min_confidence=MIN_CONFIDENCE, device=device,
+                 image_size=IMAGE_SIZE, min_confidence=min_confidence, device=device,
                  ultralytics=ultralytics.__version__, torch=torch.__version__)
     return predict, about
 
@@ -112,8 +112,10 @@ def main():
     parser.add_argument("--tiles", action="store_true", help="send the nine 3 x 3 tiles instead of the whole photo")
     parser.add_argument("--weights", type=Path, default=ROOT / "detector" / "weights" / "seadronessee-yolo26m-best.pt")
     parser.add_argument("--device", default="mps")
+    parser.add_argument("--min-confidence", type=float, default=MIN_CONFIDENCE,
+                        help="keep boxes at this confidence or more (default 0.25); lower it to collect candidates")
     args = parser.parse_args()
-    predict, about = yolo(fetch_weights(args.weights), args.device)
+    predict, about = yolo(fetch_weights(args.weights), args.device, args.min_confidence)
     run(args.inputs.resolve(), args.out, args.tiles, predict, about)
 
 

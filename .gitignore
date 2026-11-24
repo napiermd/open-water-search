@@ -40,3 +40,4 @@ runs/*/report.html
 runs/*/scoring-only/labels
 mobdrone/*/labels
 mobdrone/*/*/labels
+mobdrone/inputs/images
