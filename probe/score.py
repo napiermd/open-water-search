@@ -7,6 +7,8 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 CHECKPOINTS=[10_000_000,25_000_000,50_000_000,100_000_000,250_000_000]
+SIGHTINGS_PER_PHOTO=5
+DETECTOR_MIN_CONFIDENCE=0.25
 
 def grid_points(record):
     """Recover a close look answered on Meta's documented 0-1000 image grid instead of fractions.
@@ -59,6 +61,47 @@ def matching(points,boxes):
         visit(i,set())
     return {i:j for j,i in owners.items()}
 
+def score_photo(sightings,labeled):
+    """The one scoring rule, applied alike to Ember's sightings and a detector's boxes.
+
+    sightings are [x, y, confidence] in original-image pixels and labeled is the photo's [(class, box)].
+    The photo keeps its five most confident sightings. A kept sighting is found when it lands inside a labeled
+    swimmer box, and each box is found once. Boats, jet skis, life-saving gear and buoys never count as found."""
+    kept=sorted(sightings,key=lambda p:-p[2])[:SIGHTINGS_PER_PHOTO]
+    people=[b for c,b in labeled if c==0]
+    others=[b for c,b in labeled if c!=0]
+    pairs=matching(kept,people)
+    unmatched=Counter()
+    for i,p in enumerate(kept):
+        if i not in pairs:
+            kind='duplicate' if any(contains(p,b) for b in people) else 'wrong_class' if any(contains(p,b) for b in others) else 'background'
+            unmatched[kind]+=1
+    return dict(found=len(pairs),missed=len(people)-len(pairs),queue=kept,matches=pairs,unmatched=dict(unmatched),boxes=people)
+
+def score_sightings(sightings,frames,labels):
+    """Scorecard for sightings per photo ({frame: [[x, y, confidence], ...]}). A photo with none found nobody."""
+    photos={f['frame']:score_photo(sightings.get(f['frame'],[]),labels[f['frame']]) for f in frames}
+    return dict(photos=len(frames),appearances=sum(len(p['boxes']) for p in photos.values()),
+                found=sum(p['found'] for p in photos.values()),missed=sum(p['missed'] for p in photos.values()),
+                unmatched=sum(sum(p['unmatched'].values()) for p in photos.values()),frames=photos)
+
+def record_sightings(record):
+    """The photos of a search record written by open_water_search.py, and its sightings per photo."""
+    sightings={}
+    for s in record['sightings']:
+        sightings.setdefault(s['frame'],[]).append([s['x'],s['y'],s['confidence']])
+    return record['coverage_timeline'],sightings
+
+def detector_sightings(photos):
+    """The photos of a detector run, and the sightings its boxes give per photo.
+
+    photos lists each photo in flight order as {frame, width, height, boxes}, with boxes [x1, y1, x2, y2,
+    confidence, class] in original-image pixels and class 0 for a swimmer. Swimmer boxes at 0.25 confidence or
+    more become sightings at each box's center. score_photo then keeps the five most confident."""
+    sightings={p['frame']:[[(x1+x2)/2,(y1+y2)/2,c] for x1,y1,x2,y2,c,cls in p['boxes'] if cls==0 and c>=DETECTOR_MIN_CONFIDENCE]
+               for p in photos}
+    return photos,sightings
+
 def groundtruth(root,frames):
     manifest=json.loads((root/"manifest.json").read_text())["frames"]
     if [r["frame"] for r in manifest]!=[f["frame"] for f in frames]:
@@ -109,19 +152,14 @@ def report(rows,frames,labels):
         inspected=[r for r in calls if r['tile']>=0 and 'points' in r['evidence']]
         rects=[r['evidence']['rect'] for r in inspected]
         all_points=[p for r in inspected for p in r['evidence']['points']]
-        points=sorted(all_points,key=lambda p:-p[2])[:5]
-        people=[b for c,b in labels[fid] if c==0]
-        others=[b for c,b in labels[fid] if c!=0]
+        photo=score_photo(all_points,labels[fid])
+        people=photo['boxes']
         vessels=[b for c,b in labels[fid] if c in (1,2)]
-        pairs=matching(points,people)
-        unmatched=Counter()
-        for i,p in enumerate(points):
-            if i not in pairs:
-                kind='duplicate' if any(contains(p,b) for b in people) else 'wrong_class' if any(contains(p,b) for b in others) else 'background'
-                unmatched[kind]+=1
-        found=len(pairs)
-        totals.update(dict(found=found,appearances=len(people),missed=len(people)-found,unmatched=sum(unmatched.values()),
-                           close_frames=int(bool(rects)),unmatched_on_vessel_only_frames=sum(unmatched.values()) if vessels and not people else 0))
+        pairs=photo['matches']
+        found=photo['found']
+        unmatched=sum(photo['unmatched'].values())
+        totals.update(dict(found=found,appearances=len(people),missed=photo['missed'],unmatched=unmatched,
+                           close_frames=int(bool(rects)),unmatched_on_vessel_only_frames=unmatched if vessels and not people else 0))
         current=set()
         centers=[]
         for j,b in enumerate(people):
@@ -141,8 +179,7 @@ def report(rows,frames,labels):
         if len(people)>=2:
             multi['all' if found==len(people) else 'some' if found else 'none']+=1
         coverage='complete' if len(rects)==9 else 'partial' if rects else 'unreadable' if any('failure' in r['evidence'] for r in calls) else 'uninspected'
-        detail[fid]=dict(found=found,missed=len(people)-found,queue=points,matches=pairs,unmatched=dict(unmatched),
-                         tiles=[r['tile'] for r in inspected],coverage=coverage,boxes=people)
+        detail[fid]=dict(photo,tiles=[r['tile'] for r in inspected],coverage=coverage)
         rank=next((r['evidence'].get('tiles',[]) for r in calls if r['tile']==-1),[])
         if any(r['arm']=='chosen' for r in rows):
             order=[(index+k)%9 for k in range(9)]
@@ -205,9 +242,8 @@ def order_table(trace,frames,labels,looks=(1,2,3,9)):
                 total=0
                 for index,f in enumerate(frames):
                     fid=f['frame']
-                    people=[b for c,b in labels[fid] if c==0]
                     points=[p for t in order(policy,index,fid)[:k] for p in answers.get((source,fid,t),{}).get('points',[])]
-                    total+=len(matching(sorted(points,key=lambda p:-p[2])[:5],people))
+                    total+=score_photo(points,labels[fid])['found']
                 finds[source][policy][k]=total
     beats=lambda other:all(finds[s]['ember'][1]>finds[s][other][1] for s in finds)
     return dict(looks=list(looks),finds=finds,appearances=sum(c==0 for f in frames for c,_ in labels[f['frame']]),
@@ -216,24 +252,35 @@ def order_table(trace,frames,labels,looks=(1,2,3,9)):
                 ember_beats_center_at_one_look=beats('center'),ember_beats_grid_at_one_look=beats('grid'))
 
 def load_sealed(base):
-    """Return the verified trace and frames of the sealed run under base (ROOT or ROOT/'validation')."""
+    """Return the verified trace and frames of the sealed run under base (ROOT or ROOT/'validation').
+
+    Raises ValueError for a trace or manifest that does not match its seal."""
     live=base/'live'
     seal=json.loads((live/'seal.json').read_text())
     if (live/'trace.json').exists():
         raw=(live/'trace.json').read_bytes()
-        assert hashlib.sha256(raw).hexdigest()==seal['sha256']
+        if hashlib.sha256(raw).hexdigest()!=seal['sha256']:
+            raise ValueError("trace does not match its seal")
     else:
         # Public copy: response IDs removed by redact.py, everything used for scoring unchanged.
         raw=(live/'trace-redacted.json').read_bytes()
         redaction=json.loads((live/'redaction.json').read_text())
-        assert redaction['original_sha256']==seal['sha256']
-        assert hashlib.sha256(raw).hexdigest()==redaction['redacted_sha256']
+        if redaction['original_sha256']!=seal['sha256'] or hashlib.sha256(raw).hexdigest()!=redaction['redacted_sha256']:
+            raise ValueError("redacted trace does not match its seal")
     manifest=(base/'inputs/manifest.json').read_bytes()
-    assert hashlib.sha256(manifest).hexdigest()==seal['manifest']
+    if hashlib.sha256(manifest).hexdigest()!=seal['manifest']:
+        raise ValueError("input manifest does not match its seal")
     return json.loads(raw),json.loads(manifest)['frames']
 
 if __name__=='__main__':
     import sys
+    readers=dict(record=record_sightings,detector=detector_sightings)
+    if sys.argv[1:2] and sys.argv[1] in readers:
+        # python score.py record SEARCH_RECORD SCORING_DIR, or detector BOXES_JSON SCORING_DIR, prints a scorecard.
+        source,scoring=map(Path,sys.argv[2:4])
+        frames,sightings=readers[sys.argv[1]](json.loads(source.read_text()))
+        print(json.dumps(score_sightings(sightings,frames,groundtruth(scoring,frames)),indent=2,sort_keys=True))
+        sys.exit()
     base=ROOT/'validation' if sys.argv[1:]==['validation'] else ROOT
     live=base/'live'
     trace,frames=load_sealed(base)
