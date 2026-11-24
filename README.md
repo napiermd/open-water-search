@@ -189,6 +189,10 @@ To make your own sealed run on macOS, move `live/` or `validation/live/` aside. 
 
 The traces are Ember's replies as returned, minus Meta's response and message IDs. `redaction.json` gives the SHA-256 of each original trace, which matches its `seal.json`, and of the redacted copy. No API key is stored anywhere in the repository. The SeaDronesSee images and labels are not included. `fetch_frames.py` downloads them from the mirror at revision `deb1f872` and checks each one against the SHA-256 recorded in the manifests. The two screenshots in `docs/` show one validation frame on the landing page.
 
+The MOBDrone videos, frames and labels are not included either. `mobdrone/frames.json` lists the 300 frames of unseen footage, by video, frame number and time, with the SHA-256 of each of the 66 source videos. `select_mobdrone.py` chose them from video names and frame counts alone, with a fixed seed, and the list was committed before any frame or label was viewed. `python probe/fetch_mobdrone.py DATA_DIR` downloads the videos and the people-only labels from Zenodo, checks them against Zenodo's MD5 and the recorded SHA-256, and unpacks the videos into `DATA_DIR/videos`.
+
 ## Credits and license
 
 Frames and labels come from SeaDronesSee (Varga, Kiefer, Messmer and Zell, University of Tübingen; [arXiv:2105.01922](https://arxiv.org/abs/2105.01922)), released under CC0 and read here through the [dronefreak/SeaDronesSee](https://huggingface.co/datasets/dronefreak/SeaDronesSee) mirror. The code is MIT licensed.
+
+The unseen footage comes from MOBDrone (Cafarelli, Ciampi, Vadicamo, Gennaro, Berton, Paterni, Benvenuti, Passera and Falchi; [arXiv:2203.07973](https://arxiv.org/abs/2203.07973)), released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) on [Zenodo](https://doi.org/10.5281/zenodo.5996890). This repository lists frame numbers and hashes only and does not modify the dataset.
