@@ -8,7 +8,9 @@ probe/fetch_frames.py has downloaded them.
 
 The landing page also gets the live two-minute run from runs/live-clip: every line the command printed with
 its time, each second's final tile statuses, and the handoff message for each possible person, with the
-labeled MOBDrone people that merge-rule-check.json found under it.
+labeled MOBDrone people that merge-rule-check.json found under it. It gets the same from runs/live-detector-check,
+the one-command detector-then-Ember run on that clip, with each second's outcome: Ember kept a flag, dismissed every
+flag, or the detector flagged nothing.
 """
 import json
 import re
@@ -21,6 +23,7 @@ RUNS = {
     "probe": (ROOT, "First run · 30 SeaDronesSee training frames", "../"),
 }
 LIVE_CLIP = ROOT / "runs/live-clip"
+LIVE_CHECK = ROOT / "runs/live-detector-check"
 # A printed line about one second of the flight: its overview, or a close look at a named tile.
 FRAME_LINE = re.compile(r"second-(\d+): (?:overview|close look at the (.+?):)")
 
@@ -48,12 +51,33 @@ def live_clip():
             entry["tile"] = TILE_NAMES.index(match[2]) if match[2] else -1
         printed.append(entry)
     timeline = [[tile["status"] for tile in second["tiles"]] for second in record["coverage_timeline"]]
-    merge_check = json.loads((LIVE_CLIP / "merge-rule-check.json").read_text())
+    return dict(printed=printed, timeline=timeline, people=possible_people(LIVE_CLIP))
+
+
+def possible_people(run):
+    """Each possible person in a sealed run, with the labeled MOBDrone people merge-rule-check.json found under it."""
+    record = json.loads((run / "search-record-redacted.json").read_text())
+    merge_check = json.loads((run / "merge-rule-check.json").read_text())
     held = {row["number"]: row["labeled_people"] for row in merge_check["by_possible_person"]}
-    people = [dict(number=person["number"], first=person["first_seen_second"], last=person["last_seen_second"],
-                   message=person["handoff_message"], labeled_people=held[person["number"]])
-              for person in record["possible_people"]]
-    return dict(printed=printed, timeline=timeline, people=people)
+    return [dict(number=person["number"], first=person["first_seen_second"], last=person["last_seen_second"],
+                 message=person["handoff_message"], labeled_people=held[person["number"]])
+            for person in record["possible_people"]]
+
+
+def live_check():
+    record = json.loads((LIVE_CHECK / "search-record-redacted.json").read_text())
+    timeline = []
+    for second in record["coverage_timeline"]:
+        statuses = {flag["status"] for flag in second["flags"]}
+        timeline.append("kept" if "kept" in statuses else "dismissed" if statuses else "none")
+    printed = []
+    for row in map(json.loads, (LIVE_CHECK / "terminal.jsonl").read_text().splitlines()):
+        entry = dict(t=row["t"], line=row["line"])
+        match = re.match(r"second-(\d+): ", row["line"])
+        if match:
+            entry["second"] = int(match[1])
+        printed.append(entry)
+    return dict(printed=printed, timeline=timeline, people=possible_people(LIVE_CHECK))
 
 
 def main():
@@ -74,6 +98,9 @@ def main():
     clip = live_clip()
     (out / "live-clip.json").write_text(json.dumps(clip))
     print("live-clip", len(clip["timeline"]), "seconds", len(clip["printed"]), "printed lines")
+    check = live_check()
+    (out / "live-detector-check.json").write_text(json.dumps(check))
+    print("live-detector-check", len(check["timeline"]), "seconds", len(check["printed"]), "printed lines")
 
 
 if __name__ == "__main__":

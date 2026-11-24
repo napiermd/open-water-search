@@ -2,7 +2,8 @@ import {
   TILE_NAMES, center, element, insideTile, loadRun, loadSwimmers, matching, placeBox, placePoint, plural, searchAt, tileRect,
 } from "./common.js";
 
-// The page opens with the live two-minute MOBDrone run, replayed from what the command printed and when.
+// The page replays two live runs on the same two-minute MOBDrone clip from what the command printed and when:
+// the detector, then Ember, and Ember's own search.
 // The photo diagrams below it draw validation frame 2 from the sealed run: Ember's ranking of the nine tiles,
 // its first two close looks, and the fixed grid's first two close looks on the same photo.
 const FRAME_INDEX = 1;
@@ -10,8 +11,10 @@ const LOOKS = 2;
 const REPLAY_SPEED = 8;
 const SHOWN_LINES = 40;
 const STATUS_CLASS = { "not checked": "never", "checked, no sighting": "clear", flagged: "flagged", unreadable: "unreadable" };
+const CHECK_CLASS = { kept: "flagged", dismissed: "clear", none: "never" };
 const byId = id => document.getElementById(id);
-let playback = 0;
+const playback = { id: 0 };
+const checkPlayback = { id: 0 };
 
 function clock(seconds) {
   const whole = Math.floor(seconds);
@@ -59,13 +62,13 @@ function showPrinted(entry, clip, cells) {
   while (printed.children.length > SHOWN_LINES) printed.firstChild.remove();
 }
 
-function playFlight(clip, cells) {
-  cancelAnimationFrame(playback);
-  byId("flight-printed").replaceChildren();
-  for (const cell of cells.flat()) cell.className = "";
-  const finished = () => { byId("flight-clock").textContent = "Finished · recorded run, replayed at " + REPLAY_SPEED + "×"; };
+// Shows each recorded line at its time, sped up, and keeps the clock below the printed lines current.
+// Each replay has its own animation frame in frames, so the two runs on the page play independently.
+function replay(printed, show, clockNode, frames) {
+  cancelAnimationFrame(frames.id);
+  const finished = () => { clockNode.textContent = "Finished · recorded run, replayed at " + REPLAY_SPEED + "×"; };
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    for (const entry of clip.printed) showPrinted(entry, clip, cells);
+    for (const entry of printed) show(entry);
     finished();
     return;
   }
@@ -73,15 +76,58 @@ function playFlight(clip, cells) {
   let next = 0;
   const step = now => {
     const elapsed = (now - started) / 1000 * REPLAY_SPEED;
-    while (next < clip.printed.length && clip.printed[next].t <= elapsed) showPrinted(clip.printed[next++], clip, cells);
-    if (next === clip.printed.length) {
+    while (next < printed.length && printed[next].t <= elapsed) show(printed[next++]);
+    if (next === printed.length) {
       finished();
       return;
     }
-    byId("flight-clock").textContent = clock(elapsed) + " into the run · replayed at " + REPLAY_SPEED + "×";
-    playback = requestAnimationFrame(step);
+    clockNode.textContent = clock(elapsed) + " into the run · replayed at " + REPLAY_SPEED + "×";
+    frames.id = requestAnimationFrame(step);
   };
-  playback = requestAnimationFrame(step);
+  frames.id = requestAnimationFrame(step);
+}
+
+function playFlight(clip, cells) {
+  byId("flight-printed").replaceChildren();
+  for (const cell of cells.flat()) cell.className = "";
+  replay(clip.printed, entry => showPrinted(entry, clip, cells), byId("flight-clock"), playback);
+}
+
+// Prints one recorded line of the detector-then-Ember run and fills in its second on the strip.
+function showCheckLine(entry, run, cells) {
+  const line = element("li");
+  line.append(element("span", "at", clock(entry.t)), entry.line);
+  if (entry.second === undefined) {
+    line.className = entry.line.startsWith("Possible person") ? "handoff" : "summary";
+  } else {
+    const outcome = run.timeline[entry.second];
+    cells[entry.second].className = CHECK_CLASS[outcome];
+    if (outcome === "kept") line.className = "sighting";
+  }
+  const printed = byId("check-printed");
+  printed.append(line);
+  while (printed.children.length > SHOWN_LINES) printed.firstChild.remove();
+}
+
+function playCheck(run, cells) {
+  byId("check-printed").replaceChildren();
+  // Seconds the detector left unflagged get no Ember request, so they show from the start.
+  cells.forEach((cell, second) => { cell.className = run.timeline[second] === "none" ? "never" : ""; });
+  replay(run.printed, entry => showCheckLine(entry, run, cells), byId("check-clock"), checkPlayback);
+}
+
+async function startCheck() {
+  const run = await loadRun("live-detector-check");
+  const cells = run.timeline.map(() => element("span"));
+  byId("check-timeline").replaceChildren(...cells);
+  const kept = run.timeline.filter(outcome => outcome === "kept").length;
+  const none = run.timeline.filter(outcome => outcome === "none").length;
+  byId("check-timeline").setAttribute("aria-label", "One cell per second of the " + run.timeline.length + "-second flight. Ember kept a flag in "
+    + kept + " seconds, dismissed every flag in " + (run.timeline.length - kept - none) + ", and the detector flagged nothing in " + none + ".");
+  const again = byId("check-replay");
+  again.hidden = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  again.addEventListener("click", () => playCheck(run, cells));
+  playCheck(run, cells);
 }
 
 function showPeople(clip) {
@@ -237,5 +283,6 @@ async function startSteps() {
 }
 
 const loadFailed = "The recorded run couldn’t load. Serve this folder over HTTP and reload.";
+startCheck().catch(() => { byId("check-clock").textContent = loadFailed; });
 startFlight().catch(() => { byId("flight-clock").textContent = loadFailed; });
 startSteps().catch(() => { byId("steps-note").textContent = loadFailed; });
