@@ -1,0 +1,127 @@
+{
+  "identity": "MOBDrone track IDs: one ID is one person; IDs labeled in the same second are different people; IDs never labeled together are unknown; boxes without an ID are left out",
+  "seconds": 120,
+  "labeled_people": 4,
+  "possible_people": 15,
+  "sightings": {
+    "on_a_labeled_person": 110,
+    "on_a_box_without_a_track_id": 0,
+    "on_no_labeled_person": 44
+  },
+  "joined_two_different_people": 0,
+  "joined_people_never_labeled_together": 0,
+  "labeled_people_sighted": 4,
+  "labeled_people_split": 4,
+  "splits": {
+    "after_a_gap_of_more_than_2_seconds": 0,
+    "within_2_seconds": 6
+  },
+  "by_possible_person": [
+    {
+      "number": 1,
+      "first_seen_second": 6,
+      "last_seen_second": 36,
+      "labeled_people": [
+        2
+      ]
+    },
+    {
+      "number": 2,
+      "first_seen_second": 19,
+      "last_seen_second": 19,
+      "labeled_people": [
+        2
+      ]
+    },
+    {
+      "number": 3,
+      "first_seen_second": 25,
+      "last_seen_second": 37,
+      "labeled_people": [
+        3
+      ]
+    },
+    {
+      "number": 4,
+      "first_seen_second": 37,
+      "last_seen_second": 60,
+      "labeled_people": [
+        3
+      ]
+    },
+    {
+      "number": 5,
+      "first_seen_second": 40,
+      "last_seen_second": 41,
+      "labeled_people": []
+    },
+    {
+      "number": 6,
+      "first_seen_second": 45,
+      "last_seen_second": 59,
+      "labeled_people": []
+    },
+    {
+      "number": 7,
+      "first_seen_second": 63,
+      "last_seen_second": 71,
+      "labeled_people": []
+    },
+    {
+      "number": 8,
+      "first_seen_second": 74,
+      "last_seen_second": 77,
+      "labeled_people": []
+    },
+    {
+      "number": 9,
+      "first_seen_second": 76,
+      "last_seen_second": 84,
+      "labeled_people": [
+        4
+      ]
+    },
+    {
+      "number": 10,
+      "first_seen_second": 80,
+      "last_seen_second": 84,
+      "labeled_people": []
+    },
+    {
+      "number": 11,
+      "first_seen_second": 84,
+      "last_seen_second": 99,
+      "labeled_people": [
+        4
+      ]
+    },
+    {
+      "number": 12,
+      "first_seen_second": 87,
+      "last_seen_second": 91,
+      "labeled_people": []
+    },
+    {
+      "number": 13,
+      "first_seen_second": 94,
+      "last_seen_second": 118,
+      "labeled_people": [
+        5
+      ]
+    },
+    {
+      "number": 14,
+      "first_seen_second": 101,
+      "last_seen_second": 101,
+      "labeled_people": [
+        5
+      ]
+    },
+    {
+      "number": 15,
+      "first_seen_second": 114,
+      "last_seen_second": 119,
+      "labeled_people": []
+    }
+  ]
+}
