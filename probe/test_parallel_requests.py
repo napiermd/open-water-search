@@ -127,6 +127,7 @@ class ParallelFlight(unittest.TestCase):
         lost = [call for call in record["calls"] if call["frame"] == "frame-02"]
         self.assertEqual(len(lost), 1)
         self.assertIn("request lost after 2 tries: TimeoutError", lost[0]["answer"]["failure"])
+        self.assertIs(lost[0]["answer"]["lost"], True)
         # A lost request may still be billed, so its worst case counts toward what was spent.
         self.assertGreater(lost[0]["paid_nanodollars"], 0)
         self.assertEqual(record["spent_nanodollars"], sum(call["paid_nanodollars"] for call in record["calls"]))

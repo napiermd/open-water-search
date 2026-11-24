@@ -159,6 +159,37 @@ class AgentMode(unittest.TestCase):
         self.assertEqual(ember.most_in_flight, 1)
         self.assertLessEqual(ember.most_committed, cap)
 
+    def test_a_lost_request_loses_only_what_it_carried_and_the_search_moves_to_the_next_frame(self):
+        timeout = TimeoutError("The read operation timed out")
+        status, printed, record, _ = self.search({"frame-01": [[look(4)], timeout, timeout],
+                                                  "frame-02": [[look(0)], [MOVE_ON]]}, 2)
+        self.assertEqual(status, 0)
+        self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
+        self.assertIn("frame-01: request lost after 2 tries: TimeoutError: The read operation timed out, "
+                      "so the search moves to the next frame", printed.splitlines())
+        # The lost request carried the close look at tile 4, so only that tile is unreadable.
+        self.assertEqual(self.statuses(record, 0), ["not checked"] * 4 + ["unreadable"] + ["not checked"] * 4)
+        self.assertEqual(self.statuses(record, 1), ["checked, no sighting"] + ["not checked"] * 8)
+        lost = record["calls"][1]
+        self.assertEqual((lost["frame"], lost["answer"]["lost"]), ("frame-01", True))
+        # A lost request may still be billed, so its worst case moves from reserved to spent.
+        self.assertEqual(lost["paid_nanodollars"], WORST)
+        self.assertEqual(record["spent_nanodollars"], 3 * PAID + WORST)
+
+    def test_a_lost_first_request_leaves_the_frames_overview_unreadable(self):
+        timeout = TimeoutError("The read operation timed out")
+        status, _, record, _ = self.search({"frame-01": [timeout, timeout], "frame-02": [[MOVE_ON]]}, 2)
+        self.assertEqual(status, 0)
+        self.assertEqual([frame["overview"] for frame in record["coverage_timeline"]], ["unreadable", "done"])
+
+    def test_ten_unreadable_answers_in_a_row_end_the_run(self):
+        reset = ConnectionResetError("simulated reset")
+        conversations = {f"frame-{number:02}": [reset] for number in range(1, 12)}
+        status, _, record, _ = self.search(conversations, 11, "--retries", "0")
+        self.assertEqual(status, 1)
+        self.assertEqual(record["ending"], {"outcome": "failed", "reason": "RuntimeError: 10 unreadable answers in a row"})
+        self.assertEqual(len(record["calls"]), 10)
+
     def test_the_fixed_two_look_method_stays_the_default(self):
         folder = TemporaryDirectory()
         self.addCleanup(folder.cleanup)

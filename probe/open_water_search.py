@@ -95,7 +95,7 @@ class Stopped(Exception):
 
 
 class Lost(Exception):
-    """A request that timed out or lost its connection on every try. Only its own overview or tile is lost."""
+    """A request that timed out, lost its connection or met a 5xx on every try. Only that request is lost."""
 
 
 def is_transient(error):
@@ -150,7 +150,7 @@ def spacing(limits):
 def decision_line(name, tile, answer):
     """One line for the live view: what this request was and what Ember answered."""
     if "failure" in answer:
-        what = "unreadable" if "lost" not in answer["failure"] else answer["failure"]
+        what = answer["failure"] if answer.get("lost") else "unreadable"
         return f"{name}: {'overview' if tile < 0 else 'close look at the ' + TILE_NAMES[tile]}: {what}"
     if tile < 0:
         ranking = answer.get("tiles", [])
@@ -261,17 +261,8 @@ class Search:
         else:
             frame["ranking"] = event.get("tiles", [])
             frame["overview"] = "done" if frame["ranking"] else "unreadable"
-        with self.lock:
-            self.reserved -= worst
-            self.spent += paid
-            self.lock.notify_all()
-            self.calls.append(call)
-            self.log.write(json.dumps(call) + "\n")
-            self.log.flush()
-            print(decision_line(frame["name"], tile, event), flush=True)
-            self.failures_in_a_row = self.failures_in_a_row + 1 if "failure" in event else 0
-            if self.failures_in_a_row >= FAILURE_LIMIT:
-                raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
+        print(decision_line(frame["name"], tile, event), flush=True)
+        self.finish(call, worst, failed="failure" in event)
 
     def record_lost(self, frame, tile, worst, lost):
         """Store a lost request as an unreadable overview or tile and carry on. Meta may still bill a request whose
@@ -282,16 +273,21 @@ class Search:
             frame["ranking"] = []
             frame["overview"] = "unreadable"
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=worst, usage=None, seconds=None,
-                    answer=dict(failure=f"request lost after {self.tries} tries: {lost}"))
+                    answer=dict(failure=str(lost), lost=True))
+        print(decision_line(frame["name"], tile, call["answer"]), flush=True)
+        self.finish(call, worst, failed=True)
+
+    def finish(self, call, worst, failed):
+        """Settle a request: release its worst-case reservation, count what it cost as spent, and add the call to the
+        search record and calls.jsonl. The run ends after FAILURE_LIMIT unreadable answers in a row."""
         with self.lock:
             self.reserved -= worst
-            self.spent += worst
+            self.spent += call["paid_nanodollars"]
             self.lock.notify_all()
             self.calls.append(call)
             self.log.write(json.dumps(call) + "\n")
             self.log.flush()
-            print(decision_line(frame["name"], tile, call["answer"]), flush=True)
-            self.failures_in_a_row += 1
+            self.failures_in_a_row = self.failures_in_a_row + 1 if failed else 0
             if self.failures_in_a_row >= FAILURE_LIMIT:
                 raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
 
@@ -327,19 +323,22 @@ class Search:
                 return method(body)
             except RateLimited as limited:
                 transient = None
-                backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
-                with self.lock:
-                    self.next_send = max(self.next_send, time.monotonic() + (limited.retry_after or 0) + backoff)
+                self.back_off(attempt, limited.retry_after or 0)
             except Exception as error:
                 if not is_transient(error):
                     raise
                 transient = error
-                backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
-                with self.lock:
-                    self.next_send = max(self.next_send, time.monotonic() + backoff)
+                self.back_off(attempt)
         if transient is not None:
-            raise Lost(f"{type(transient).__name__}: {transient}") from transient
+            raise Lost(f"request lost after {self.tries} tries: {type(transient).__name__}: {transient}") from transient
         raise RuntimeError(f"Meta answered 429 to {self.tries} tries in a row")
+
+    def back_off(self, attempt, retry_after=0):
+        """Hold every request back for retry_after seconds, then a back-off from FIRST_BACKOFF that doubles with
+        each try, with up to 50% jitter either way."""
+        backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
+        with self.lock:
+            self.next_send = max(self.next_send, time.monotonic() + retry_after + backoff)
 
 
 def cut_into_seconds(video):
@@ -544,7 +543,8 @@ def run_agent(search, frames):
 def search_frame(search, frame, note, earned):
     """Run one frame's conversation until Ember moves on, or the frame's earned share cannot cover the next request.
 
-    A tile counts as checked only once a request carrying its close look has been answered.
+    A tile counts as checked only once a request carrying its close look has been answered. A lost request leaves
+    the close looks it carried unreadable, or the overview when it was the frame's first, and the search moves on.
     """
     name = frame["name"]
     overview = prepare(frame["path"], rectangle(frame["width"], frame["height"], -1))
@@ -554,7 +554,15 @@ def search_frame(search, frame, note, earned):
     while True:
         body = {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
                 "tools": AGENT_TOOLS, "input": conversation}
-        reply = agent_request(search, frame, body, earned)
+        try:
+            reply = agent_request(search, frame, body, earned)
+        except Lost as lost:
+            if frame["overview"] == "awaiting overview":
+                frame["overview"] = "unreadable"
+            for tile in sent_tiles:
+                frame["tiles"][tile] = None
+            print(f"{name}: {lost}, so the search moves to the next frame", flush=True)
+            return
         if reply is None:
             print(f"{name}: its share of the budget is spent, so the search moves to the next frame", flush=True)
             return
@@ -562,14 +570,10 @@ def search_frame(search, frame, note, earned):
         for tile in sent_tiles:
             frame["tiles"].setdefault(tile, [])
         sent_tiles = []
-        calls = [item for item in reply.get("output", []) if item.get("type") == "function_call"]
-        if reply.get("status") != "completed" or not calls:
-            search.failures_in_a_row += 1
-            if search.failures_in_a_row >= FAILURE_LIMIT:
-                raise RuntimeError(f"{FAILURE_LIMIT} answers without a tool call in a row")
+        calls = tool_calls_in(reply)
+        if not calls:
             print(f"{name}: Ember answered without a tool call, so the search moves to the next frame", flush=True)
             return
-        search.failures_in_a_row = 0
         conversation += reply["output"]
         close_looks = []
         for call in calls:
@@ -628,38 +632,48 @@ def agent_request(search, frame, body, earned):
     does not fit in what the frame has earned. Raise OutOfBudget when it does not fit in the spending cap.
 
     The request goes through the same rate-limit pacing and spending-cap reservation as the fixed method's. Agent
-    mode sends one request at a time, so each request takes the next turn.
+    mode sends one request at a time, so each request takes the next turn. A request lost on every try is recorded
+    as the fixed method records one, then raises Lost.
     """
-    # Meta's input-token count leaves out the tool definitions, so count each of their characters as a token. That can
-    # only overestimate, which keeps the spending cap a guarantee.
-    input_tokens = search.within_rate_limits(search.api.count, body) + len(json.dumps(body["tools"]))
-    worst = price(input_tokens, 0, LIMIT)
-    # Once the spending cap itself has no room, reserve() stops the run. Short of that, a frame that has spent what it
-    # earned moves on.
-    if earned < search.spent + worst <= search.budget:
-        return None
-    search.reserve(search.next_turn, worst)
-    started = time.time()
-    reply = search.within_rate_limits(search.api.generate, body)
+    worst = 0
+    try:
+        # Meta's input-token count leaves out the tool definitions, so count each of their characters as a token.
+        # That can only overestimate, which keeps the spending cap a guarantee.
+        input_tokens = search.within_rate_limits(search.api.count, body) + len(json.dumps(body["tools"]))
+        worst = price(input_tokens, 0, LIMIT)
+        # Once the spending cap itself has no room, reserve() stops the run. Short of that, a frame that has spent
+        # what it earned moves on.
+        if earned < search.spent + worst <= search.budget:
+            return None
+        search.reserve(search.next_turn, worst)
+        started = time.time()
+        reply = search.within_rate_limits(search.api.generate, body)
+    except Lost as lost:
+        # Meta may still bill a request whose reply never arrived, so its worst-case cost counts as spent.
+        search.finish(dict(frame=frame["name"], paid_nanodollars=worst, usage=None, seconds=None,
+                           answer=dict(failure=str(lost), lost=True)), worst, failed=True)
+        raise
     finished = time.time()
     usage = reply["usage"]
     paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
     call = dict(frame=frame["name"], paid_nanodollars=paid, usage=usage, seconds=round(finished - started, 3),
                 response=reply)
-    with search.lock:
-        search.reserved -= worst
-        search.spent += paid
-        search.lock.notify_all()
-        search.calls.append(call)
-        search.log.write(json.dumps(call) + "\n")
-        search.log.flush()
+    search.finish(call, worst, failed=not tool_calls_in(reply))
     return reply
+
+
+def tool_calls_in(reply):
+    """Ember's tool calls in a completed reply. An unfinished reply counts as unreadable, with none."""
+    if reply.get("status") != "completed":
+        return []
+    return [item for item in reply.get("output", []) if item.get("type") == "function_call"]
 
 
 def previous_frame_note(frame):
     """One line about the frame's sightings, for the next frame's conversation."""
     opened = len(frame["tiles"])
-    sightings = [(tile, confidence) for tile, points in sorted(frame["tiles"].items()) for _, _, confidence in points]
+    sightings = [(tile, confidence) for tile, points in sorted(frame["tiles"].items())
+                 for _, _, confidence in points or []]
     if not sightings:
         return f"Previous frame: no sightings, with close looks at {opened} of 9 tiles."
     listed = " and ".join(f"the {TILE_NAMES[tile]} tile at confidence {confidence:.2f}" for tile, confidence in sightings)
