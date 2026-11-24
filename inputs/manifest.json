@@ -1,0 +1,257 @@
+{
+  "dataset": "SeaDronesSee detection training split",
+  "mirror": "https://huggingface.co/datasets/dronefreak/SeaDronesSee/tree/deb1f872",
+  "selection": {
+    "training_pool": 400,
+    "excluded_previously_referenced_ids": [
+      "3448",
+      "3457",
+      "3645"
+    ],
+    "eligible": 397,
+    "method": "Order eligible training paths by the ascending SHA-256 hex digest of the UTF-8 seed followed by the POSIX path relative to images/train. Take the first 30.",
+    "seed": "open-water-search-probe-v1|20261121|"
+  },
+  "frames": [
+    {
+      "frame": "frame-01",
+      "image": "images/frame-01.jpg",
+      "source": "shard_001/4850.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "a2a3d077defa6af48fb2a450f4a1250869171b50df9552b92e0a774140747655"
+    },
+    {
+      "frame": "frame-02",
+      "image": "images/frame-02.jpg",
+      "source": "shard_000/13781.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "cc1b4cbda17c45a16382341914fe51bcb875d3d16d313a16b466f2dbbcd14a9f"
+    },
+    {
+      "frame": "frame-03",
+      "image": "images/frame-03.jpg",
+      "source": "shard_002/7595.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "164023e77ff9927c6aa07d75fa532b4ab9e0ccf7a4b07718cb7c9c6f34aaad80"
+    },
+    {
+      "frame": "frame-04",
+      "image": "images/frame-04.jpg",
+      "source": "shard_001/2883.jpg",
+      "width": 5456,
+      "height": 3632,
+      "sha256": "cbf98c5dbb9ca67435150e51f4fd70caaee5cc75cd8f39b9599ce63d160c1ad7"
+    },
+    {
+      "frame": "frame-05",
+      "image": "images/frame-05.jpg",
+      "source": "shard_001/3432.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "35f4089a11f5cff996a9004ad52733375fce367abd354c1bb2aa8e3cb2124b35"
+    },
+    {
+      "frame": "frame-06",
+      "image": "images/frame-06.jpg",
+      "source": "shard_001/2499.jpg",
+      "width": 5456,
+      "height": 3632,
+      "sha256": "b001711a9b68d2777dfc7f1fcc7fa00b5bc17cdfecd55ab87779773c95c13360"
+    },
+    {
+      "frame": "frame-07",
+      "image": "images/frame-07.jpg",
+      "source": "shard_002/8447.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5dbe1963bde5681b688f319e607d5f416a94f4f5f4e9fbc734dbb43bc206a6c5"
+    },
+    {
+      "frame": "frame-08",
+      "image": "images/frame-08.jpg",
+      "source": "shard_001/16517.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e957ca0736a51cf6cb7fd87edb58659132279acc573e94fff7f06c198ff8c2ca"
+    },
+    {
+      "frame": "frame-09",
+      "image": "images/frame-09.jpg",
+      "source": "shard_002/8455.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "da2f4c788e247a9cadd79060292f44c79697404b7fff7d71b1530459c262c38e"
+    },
+    {
+      "frame": "frame-10",
+      "image": "images/frame-10.jpg",
+      "source": "shard_000/10361.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c6c5f0220c2912e46b561559c421da161546f817339648ad3d510e5f0d081f0e"
+    },
+    {
+      "frame": "frame-11",
+      "image": "images/frame-11.jpg",
+      "source": "shard_000/13362.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4220526a5eaaaa0be037b2b0eda48e025b4a0e079a70631f6b10d0c10e7a534a"
+    },
+    {
+      "frame": "frame-12",
+      "image": "images/frame-12.jpg",
+      "source": "shard_002/8008.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c8de816bc96200b222335829601030c1c8fe82262c119f1c87115a7683415b70"
+    },
+    {
+      "frame": "frame-13",
+      "image": "images/frame-13.jpg",
+      "source": "shard_002/5496.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "56d5e2ef632c9f2cb542e295b1906939b598bd6eb7abba00798a4f93b0b993d8"
+    },
+    {
+      "frame": "frame-14",
+      "image": "images/frame-14.jpg",
+      "source": "shard_002/6467.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "9a6ebca6036f9b7198cf525430ed511b189a4950256c3e06c060f14044ef84e7"
+    },
+    {
+      "frame": "frame-15",
+      "image": "images/frame-15.jpg",
+      "source": "shard_002/5850.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "0dd59f5cc1fcb99ae5519b2cacd0e004fb85bd98759e1973941d24b56f056799"
+    },
+    {
+      "frame": "frame-16",
+      "image": "images/frame-16.jpg",
+      "source": "shard_001/16312.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "85db6ac36b7d975e4b438b5faec5514c052e4bbfd7214041a8dfc6415bb9d44b"
+    },
+    {
+      "frame": "frame-17",
+      "image": "images/frame-17.jpg",
+      "source": "shard_001/16655.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e8e457eb6e9353d1af86ac1a29c487909fea7a48ab338903d8438a308e333a42"
+    },
+    {
+      "frame": "frame-18",
+      "image": "images/frame-18.jpg",
+      "source": "shard_000/12954.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "ee8527585f764bbb0fd08648859aa12e77b23eca9e3c6e124b6aaca25fc79d38"
+    },
+    {
+      "frame": "frame-19",
+      "image": "images/frame-19.jpg",
+      "source": "shard_000/14971.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "05fb83d35c28f7d538eada8695bcd28012c822fa1f7078776c2938f490d3967c"
+    },
+    {
+      "frame": "frame-20",
+      "image": "images/frame-20.jpg",
+      "source": "shard_002/5873.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "71afa51cb45d51114cd2d3931b3b01c1ffde325be0e5d7d85397c732a24ddd93"
+    },
+    {
+      "frame": "frame-21",
+      "image": "images/frame-21.jpg",
+      "source": "shard_000/13147.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "7d0dbb9777e7bf3bb1eaf46ffdca0b70bd4390418b37c6787159e59678035d6d"
+    },
+    {
+      "frame": "frame-22",
+      "image": "images/frame-22.jpg",
+      "source": "shard_000/15193.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "2d9bd515992869486a581259339be64e64c07ceff1e7a49b89df6434559ab659"
+    },
+    {
+      "frame": "frame-23",
+      "image": "images/frame-23.jpg",
+      "source": "shard_000/12300.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "37a4a2502d265b8ec129f5c28acd82a90c6a72307189d9b5eb0f19a0f9caf5ce"
+    },
+    {
+      "frame": "frame-24",
+      "image": "images/frame-24.jpg",
+      "source": "shard_001/3901.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "374508bff036e8d44e40016c2a27169ae3a99ee7ed89f432a1cee9cf4a61c8d3"
+    },
+    {
+      "frame": "frame-25",
+      "image": "images/frame-25.jpg",
+      "source": "shard_000/14998.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "71adc0f2023c77e3861f93b36155f5d14bdb809d21c31128ba2168d41bbd3d1f"
+    },
+    {
+      "frame": "frame-26",
+      "image": "images/frame-26.jpg",
+      "source": "shard_000/12357.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6999d5c50a0d215656597ff3f9b1bf1c693fe671bca018f2a9368734c4a2c15d"
+    },
+    {
+      "frame": "frame-27",
+      "image": "images/frame-27.jpg",
+      "source": "shard_002/8434.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "fd2fedacf12e1a4e58cd8a38553d987b487185d3570e14c745bfa0c348f5ab42"
+    },
+    {
+      "frame": "frame-28",
+      "image": "images/frame-28.jpg",
+      "source": "shard_001/3965.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "abc8d7fc080399e3e2f867a361d60726c4b65736e84f3754e3650c36a1d3853a"
+    },
+    {
+      "frame": "frame-29",
+      "image": "images/frame-29.jpg",
+      "source": "shard_000/11990.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "503e2b32374f6c791d523a785149c8d6c9dbea65013e441294cdc76e745a8dab"
+    },
+    {
+      "frame": "frame-30",
+      "image": "images/frame-30.jpg",
+      "source": "shard_002/7649.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f9aba400c9074a49df452f0f0f59da56a961452504e7ece09f048c7535542fcb"
+    }
+  ]
+}

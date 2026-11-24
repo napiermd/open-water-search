@@ -1,0 +1,9 @@
+{
+  "amended_at": "2026-11-23T19:13:23-0800",
+  "old_policy_sha256": "6fc28ca6b538dc2bed3ea6baf12fa517b63a31cf4aef90cee98eec1c4501e45f",
+  "new_policy_sha256": "a4343bbb9557db5b46898e60cd410fccf354edcac2493eee9376ef7904b197b8",
+  "calls_before_amendment": 11,
+  "spend_before_amendment_nanodollars": 1058100,
+  "unresolved_reservations": 0,
+  "reason": "Ember answered empty close looks with a bare JSON list ([]) instead of {\"points\": []}. The reader now accepts a bare list as the points list (or the tile ranking for an overview), and saved replies are re-read with the same rule. Prompts, images, model settings, budget and tile order are unchanged and apply equally to both searches. Raw replies are preserved in the ledger."
+}

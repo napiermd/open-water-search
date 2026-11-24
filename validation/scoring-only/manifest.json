@@ -1,0 +1,155 @@
+{
+  "format": "YOLO normalized xywh, class 0 = swimmer",
+  "frames": [
+    {
+      "frame": "frame-01",
+      "label": "labels/frame-01.txt",
+      "sha256": "c5ec879c8e7a92f65a1420c6b9deb8a584c1d1c92fe26bdd75deb09f82e9ad89"
+    },
+    {
+      "frame": "frame-02",
+      "label": "labels/frame-02.txt",
+      "sha256": "cd14c657796237871a989311ea6bbf25fe1ee463eda680fe4f0f0494e911a41e"
+    },
+    {
+      "frame": "frame-03",
+      "label": "labels/frame-03.txt",
+      "sha256": "d58cc5b8c8367a8eefc343610f3ee28c63daf20b639179671c6fc8db7f3449f2"
+    },
+    {
+      "frame": "frame-04",
+      "label": "labels/frame-04.txt",
+      "sha256": "72dcefd8f7185091eba1a0d9693238454870492f9bf57f8d5b3b2cc2f33ba7c7"
+    },
+    {
+      "frame": "frame-05",
+      "label": "labels/frame-05.txt",
+      "sha256": "55e8ca0b2c9adeaa3632c1a9ab9b0b0216e9a7f8efddeb6f784b2ea7f5d12ca3"
+    },
+    {
+      "frame": "frame-06",
+      "label": "labels/frame-06.txt",
+      "sha256": "94fce60efb36edaa80126991613f27d92b1587e2510f09891a2eaca78babf3e3"
+    },
+    {
+      "frame": "frame-07",
+      "label": "labels/frame-07.txt",
+      "sha256": "7aea0969ae85a8d14fefea4fbdc64c3a17c02191eaa4f8b543017484adea0416"
+    },
+    {
+      "frame": "frame-08",
+      "label": "labels/frame-08.txt",
+      "sha256": "05739f7ccfaf155f707f14da14cf6f39bc01d19b16ab92a14df522e6018252d2"
+    },
+    {
+      "frame": "frame-09",
+      "label": "labels/frame-09.txt",
+      "sha256": "4b4b39f7b71071892ded86e1595729075dfebd5efecfa5b10f9eba9fa6508e43"
+    },
+    {
+      "frame": "frame-10",
+      "label": "labels/frame-10.txt",
+      "sha256": "19943ddd7a38d6325530ab61d105452f6f9b6e0510011d0b93b3d295d1d2c2d3"
+    },
+    {
+      "frame": "frame-11",
+      "label": "labels/frame-11.txt",
+      "sha256": "f303c2ba45beb5e1adcbf0f1893b9e6e9f789ce9fe7810f4a06236c58eb50a58"
+    },
+    {
+      "frame": "frame-12",
+      "label": "labels/frame-12.txt",
+      "sha256": "a93e6d7d96ed5b8cdb930d029f95dcc1df633ad21c9d9bc8d3e26fa11aa4846a"
+    },
+    {
+      "frame": "frame-13",
+      "label": "labels/frame-13.txt",
+      "sha256": "1030c818ec290ac262046524c21b164f54148ae552c6008ae11460c3128b2890"
+    },
+    {
+      "frame": "frame-14",
+      "label": "labels/frame-14.txt",
+      "sha256": "cef650b891ff8c834fe361fe5e1313358ec14c62392e85dc21683f1d03ac44ea"
+    },
+    {
+      "frame": "frame-15",
+      "label": "labels/frame-15.txt",
+      "sha256": "2ec0eac2d57422257a0a0a0d9d39793c48fceef90c369faedb1c3cbeaf0b10c5"
+    },
+    {
+      "frame": "frame-16",
+      "label": "labels/frame-16.txt",
+      "sha256": "a41e627cc5e9b2aa581b76074c354ef4b40d340e72846d8230b9a334cfa6328b"
+    },
+    {
+      "frame": "frame-17",
+      "label": "labels/frame-17.txt",
+      "sha256": "d3492061ed551a83075b3dc5cad62a56da691228d6e28f3d691003e05a52ef63"
+    },
+    {
+      "frame": "frame-18",
+      "label": "labels/frame-18.txt",
+      "sha256": "cd4c7a9d799e2772638fbcfffd94ae57c764fd03377ab3720f888141f6504f41"
+    },
+    {
+      "frame": "frame-19",
+      "label": "labels/frame-19.txt",
+      "sha256": "2d80f491f800a45f373625c450ecb7c0c6b3fabb80a4fdc6c702ec56c2f951e3"
+    },
+    {
+      "frame": "frame-20",
+      "label": "labels/frame-20.txt",
+      "sha256": "f99d8fecc1c59d655acec3061ee1b22bbd212b8a9c789425af7b0efba9378000"
+    },
+    {
+      "frame": "frame-21",
+      "label": "labels/frame-21.txt",
+      "sha256": "d59242f0dd7928cd15b430a2f411316b455c3546b71d4f0ef1d1cbc13bab8bfb"
+    },
+    {
+      "frame": "frame-22",
+      "label": "labels/frame-22.txt",
+      "sha256": "4fd3cc90752035669b8232a3f26c8529d3d35b7e7880d7b760b50e578140946e"
+    },
+    {
+      "frame": "frame-23",
+      "label": "labels/frame-23.txt",
+      "sha256": "7c7446161d80142436f9835ddeb3a13d2418b19cfbeea6f516498663d994c970"
+    },
+    {
+      "frame": "frame-24",
+      "label": "labels/frame-24.txt",
+      "sha256": "bebacf02a4c49507b18d0787c7f7996640deee85eaede86445e64160f255ca1c"
+    },
+    {
+      "frame": "frame-25",
+      "label": "labels/frame-25.txt",
+      "sha256": "5d3c18590ee0ee03b6fe27d8c99ced531419bb9bf59af293535b763e2aeda924"
+    },
+    {
+      "frame": "frame-26",
+      "label": "labels/frame-26.txt",
+      "sha256": "4ed2c3d9c1d1ab3f66e224163d5cd7aa2d7e611f7b2ec93e23e23e669ac79b5a"
+    },
+    {
+      "frame": "frame-27",
+      "label": "labels/frame-27.txt",
+      "sha256": "5bccf33ed44ee6a6de7f4845964c044e364518c59ecf7bfb22af521601613569"
+    },
+    {
+      "frame": "frame-28",
+      "label": "labels/frame-28.txt",
+      "sha256": "e1c88a82e88c5acaf0487e4d689e296b1540e9400354380c28dd520f7c244e9f"
+    },
+    {
+      "frame": "frame-29",
+      "label": "labels/frame-29.txt",
+      "sha256": "5b7facb32729025e4d38a32e65ef7563e9dc10533a069da022a36ffe240aec2e"
+    },
+    {
+      "frame": "frame-30",
+      "label": "labels/frame-30.txt",
+      "sha256": "aeb1903fdf72a717913346a80aa5db05e4f42ee06b5dab5d9e54a31c81997a61"
+    }
+  ]
+}

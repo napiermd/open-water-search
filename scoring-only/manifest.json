@@ -1,0 +1,155 @@
+{
+  "format": "YOLO normalized xywh, class 0 = swimmer",
+  "frames": [
+    {
+      "frame": "frame-01",
+      "label": "labels/frame-01.txt",
+      "sha256": "bf9df65e0be28688b6b85ce1270d7f32e0a516d8ec48df27f9197713c5bd61b5"
+    },
+    {
+      "frame": "frame-02",
+      "label": "labels/frame-02.txt",
+      "sha256": "63ffac602d4588f83e0121ebd9de71958ccd696bacbde2663c11e0a34b3a85dd"
+    },
+    {
+      "frame": "frame-03",
+      "label": "labels/frame-03.txt",
+      "sha256": "aa6799ccf57a58660abc5aa126060e5a69075fb79ce6cb8fa1aafcbee5202983"
+    },
+    {
+      "frame": "frame-04",
+      "label": "labels/frame-04.txt",
+      "sha256": "e7a1493abc667c85323796e4315f3473fac659bd7c266b71173c1826c6ce2f7f"
+    },
+    {
+      "frame": "frame-05",
+      "label": "labels/frame-05.txt",
+      "sha256": "5375462efdc2dd2528770142a829a96c612723e5bae373ac82f8137f85dc5343"
+    },
+    {
+      "frame": "frame-06",
+      "label": "labels/frame-06.txt",
+      "sha256": "ee4e21613c187fd146e7fbfcd3ddac12fa86b774683c947f80ee448761f8fa77"
+    },
+    {
+      "frame": "frame-07",
+      "label": "labels/frame-07.txt",
+      "sha256": "9a8e7f3fc06e22685dc742044e5bb34af0432914331694467d634a3db4e64cf7"
+    },
+    {
+      "frame": "frame-08",
+      "label": "labels/frame-08.txt",
+      "sha256": "5fe7ccd9ba81b28c19787a41f920a1b7e14cc9fba479f2410cabbdbbfb8f16fe"
+    },
+    {
+      "frame": "frame-09",
+      "label": "labels/frame-09.txt",
+      "sha256": "8586b7e8be88817885af510b35a14acab7e87041190c410f6c077ee75f755daf"
+    },
+    {
+      "frame": "frame-10",
+      "label": "labels/frame-10.txt",
+      "sha256": "8a9b00915261defe862457658dc3978f1de06f97b116b24a5cc18ed5cb2a87c8"
+    },
+    {
+      "frame": "frame-11",
+      "label": "labels/frame-11.txt",
+      "sha256": "c2ed112393ac22d36fcd08e734b69333eb7b03ffb78a897be27ef05937e47eaf"
+    },
+    {
+      "frame": "frame-12",
+      "label": "labels/frame-12.txt",
+      "sha256": "179037a83496c8988caffb1e36b4b66c957b87b1b5ce17d2e0a65d1a090d2f6f"
+    },
+    {
+      "frame": "frame-13",
+      "label": "labels/frame-13.txt",
+      "sha256": "be45cfe5866e31c8a56c9cc421665e9edb728569ec3d13fc804cb80f8b03dbd5"
+    },
+    {
+      "frame": "frame-14",
+      "label": "labels/frame-14.txt",
+      "sha256": "97c3aad616f19e202190fcbca6d975e98df3e1f7b3c5c0cdb37174dedd840ef9"
+    },
+    {
+      "frame": "frame-15",
+      "label": "labels/frame-15.txt",
+      "sha256": "742ca268113c80ecfecd1ff857be5ea3e540cedee44b28e727984b8f42c99995"
+    },
+    {
+      "frame": "frame-16",
+      "label": "labels/frame-16.txt",
+      "sha256": "5964186246117e517052da6bbb5aa06887d818d7cab111a9ec7b7cd19bd2ae4a"
+    },
+    {
+      "frame": "frame-17",
+      "label": "labels/frame-17.txt",
+      "sha256": "da82951862f306304f9d1152664d30309f0c8853ac6cd4f40ff0d0ead627861c"
+    },
+    {
+      "frame": "frame-18",
+      "label": "labels/frame-18.txt",
+      "sha256": "3be84961e9b354aac8d8bc34eee42d9d5d2e59ec2c859b4c0b249e8c480a973f"
+    },
+    {
+      "frame": "frame-19",
+      "label": "labels/frame-19.txt",
+      "sha256": "5dee4ddfdb585e628ab9f1346f1e4501984f90f71cb49ff87ca09ef3ac894c62"
+    },
+    {
+      "frame": "frame-20",
+      "label": "labels/frame-20.txt",
+      "sha256": "d6c62bff8749def9126a63d0c6c3449155ecb04cbcabad46838473f737f5ea4b"
+    },
+    {
+      "frame": "frame-21",
+      "label": "labels/frame-21.txt",
+      "sha256": "0479b861b60485ec284c8848c062787162d51b848fa446320e97587f1bcc31bd"
+    },
+    {
+      "frame": "frame-22",
+      "label": "labels/frame-22.txt",
+      "sha256": "761c64abf7eb80bc0567127a9ab09e28d1d62f9a577b62d8317b446109cea74c"
+    },
+    {
+      "frame": "frame-23",
+      "label": "labels/frame-23.txt",
+      "sha256": "c6f51244f950721543bd438eff60aa13e28ba904fe3fe4f21b75fffa56cbe68d"
+    },
+    {
+      "frame": "frame-24",
+      "label": "labels/frame-24.txt",
+      "sha256": "6649ed93560d964bfce115683ae41514ef892191591b658e835edb4bf5f45d0c"
+    },
+    {
+      "frame": "frame-25",
+      "label": "labels/frame-25.txt",
+      "sha256": "9b76ae7c84b4039c908aa377742f01b5f8895fca32c5aff60bc8e7a556ab16bc"
+    },
+    {
+      "frame": "frame-26",
+      "label": "labels/frame-26.txt",
+      "sha256": "2bde3bf0d41e56e6e32816d27500ba8df666413b77707a0db6f5b73194c932d3"
+    },
+    {
+      "frame": "frame-27",
+      "label": "labels/frame-27.txt",
+      "sha256": "9314645e0df390e2d0c66f27a7955461d078e1a8f7d81adc41eee9ba255f2ed4"
+    },
+    {
+      "frame": "frame-28",
+      "label": "labels/frame-28.txt",
+      "sha256": "4e0fe311f5a5948c798285b74115fd00e6b67d77e5e1363cc3b1e4af84b08d2d"
+    },
+    {
+      "frame": "frame-29",
+      "label": "labels/frame-29.txt",
+      "sha256": "65542e625f7ba09e9d4d530ae535e5cec436e5f48db0261b2b9db90541b776aa"
+    },
+    {
+      "frame": "frame-30",
+      "label": "labels/frame-30.txt",
+      "sha256": "2b53889fb241c8a910e40f6b686e4c908c94b267b7d2593b8a5f671cc32fba5a"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Dataset files: download them with probe/fetch_frames.py
+inputs/images/
+scoring-only/labels/
+validation/inputs/images/
+validation/scoring-only/labels/
+
+# Run state and secrets
+*.key
+.env
+live/ledger.sqlite
+validation/live/ledger.sqlite
+live/trace.json
+validation/live/trace.json
+live/*-overview.jpg
+validation/live/*-overview.jpg
+results/
+__pycache__/
+.DS_Store

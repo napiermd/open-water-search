@@ -1,0 +1,5 @@
+{
+  "original_sha256": "19c7886a15bd4abab9e65ebcea5449693c0ab9fd6fdd8195006e383ef125ef31",
+  "redacted_sha256": "ba988d9a0e16a31d60ff49da330a7777c70400f2ccec7da8522503f5bf1dbc81",
+  "removed": "response.id and output[].id from every call"
+}

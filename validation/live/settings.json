@@ -1,0 +1,14 @@
+{
+  "dataset": "validation",
+  "route": "https://api.meta.ai/v1/responses",
+  "model": "muse-ember-1.0",
+  "reasoning": "minimal",
+  "max_output_tokens": 2000,
+  "max_image_edge": 1000,
+  "jpeg_quality": 90,
+  "manifest_sha256": "65c987f6fe7ee68d1fad51d3e5edcdf730b6b9e823e4e07a2a9c68085e318713",
+  "overview_prompt_sha256": "49b9c4ee167518b9231eb1ac1e7fef5166263a34d0410101a1b911f646de74ff",
+  "close_look_prompt_sha256": "066b25a8fdd134ba66468fc31df913e2a8c72abc5907abc4ed66e844eefb468b",
+  "per_arm_cap_nano": 245000000,
+  "probe_cap_nano": 490000000
+}

@@ -1,0 +1,258 @@
+[
+  {
+    "frame": "frame-01",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      3,
+      1,
+      7,
+      5,
+      0,
+      2,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "frame": "frame-02",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      3,
+      5,
+      0,
+      1,
+      2,
+      4,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "frame": "frame-03",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      8,
+      5,
+      7,
+      4,
+      6,
+      2,
+      3,
+      1,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "flagged"
+      }
+    ]
+  },
+  {
+    "frame": "frame-04",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      5,
+      3,
+      4,
+      0,
+      1,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  }
+]
