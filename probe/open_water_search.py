@@ -650,9 +650,9 @@ def handoff_message(person, coverage_timeline):
     frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
     if "flags" in frame:
         counts = Counter(flag["status"] for flag in frame["flags"])
-        coverage = (f'Ember described it as "{person["sightings"][-1]["what"]}". The detector flagged '
-                    f'{len(frame["flags"])} spots in that frame, and Ember kept {counts["kept"]} and dismissed '
-                    f'{counts["dismissed"]}.')
+        spots = f'{len(frame["flags"])} {"spot" if len(frame["flags"]) == 1 else "spots"}'
+        coverage = (f'Ember described it as "{person["sightings"][-1]["what"]}". The detector flagged {spots} in '
+                    f'that frame, and Ember kept {counts["kept"]} and dismissed {counts["dismissed"]}.')
         if counts["unreadable"]:
             coverage += f' {counts["unreadable"]} could not be read.'
     else:
@@ -950,11 +950,13 @@ def drone_positions(record):
 
 DETECTOR_REPORT_CSS = """.what { font-style: italic; }
 .flag { position: absolute; box-sizing: border-box; border: 2px solid #f5f3eb; }
-.flag em { position: absolute; left: 0; top: 100%; white-space: nowrap; font: 600 .72rem/1.2 system-ui; font-style: normal; color: #172f2e; background: #f5f3ebd9; padding: .1rem .3rem; }
+.flag em { position: absolute; left: 100%; top: 0; font: 700 .7rem/1 system-ui; font-style: normal; color: #172f2e; background: #f5f3eb; padding: .1rem .2rem; }
+.verdicts { margin: .4rem 0 0; padding-left: 1.6rem; font-size: .9rem; }
 .flag.kept { border: 3px solid #ffdd75; }
 .flag.unreadable { border: 2px dashed #ff8a3d; }
 .dismissed { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 1rem; }
 .dismissed img { display: block; width: 100%; height: auto; }
+.dismissed p { font-size: .85rem; overflow-wrap: anywhere; }
 """
 
 
@@ -969,25 +971,31 @@ def tile_map(frame):
         note = f"{unchecked} of 9 tiles never got a close look."
     else:
         note = "Awaiting an overview." if frame["overview"] == "awaiting overview" else "Ember's overview could not be read, so no tile got a close look."
-    return cells, note
+    return cells, note, ""
 
 
 def flag_map(frame):
-    """The detector's flags drawn on the frame, each labelled with Ember's verdict, and a note on how many it kept."""
+    """The detector's flags drawn on the frame and numbered, a note on how many Ember kept, and Ember's verdict on
+    each numbered flag in its own words."""
     esc = html.escape
-    boxes = []
-    for flag in frame["flags"]:
+    boxes, verdicts = [], []
+    for number, flag in enumerate(frame["flags"], 1):
         x1, y1, x2, y2 = flag["box"]
-        label = flag["what"] if "what" in flag else flag["status"]
         boxes.append(f'<span class="flag {flag["status"]}" style="left:{100 * x1 / frame["width"]:.2f}%;'
                      f'top:{100 * y1 / frame["height"]:.2f}%;width:{100 * (x2 - x1) / frame["width"]:.2f}%;'
-                     f'height:{100 * (y2 - y1) / frame["height"]:.2f}%"><em>{esc(label)}</em></span>')
+                     f'height:{100 * (y2 - y1) / frame["height"]:.2f}%"><em>{number}</em></span>')
+        if flag["status"] == "unreadable":
+            verdict = "check could not be read"
+        else:
+            verdict = f'{"keep" if flag["status"] == "kept" else "dismiss"} {flag["ember_confidence"]:.2f}, <i>“{esc(flag["what"])}”</i>'
+        verdicts.append(f'<li>{verdict} · detector {flag["detector_confidence"]:.2f}</li>')
     counts = Counter(flag["status"] for flag in frame["flags"])
-    note = (f"The detector scanned the whole frame and flagged {len(frame['flags'])} spots. "
+    spots = f"{len(frame['flags'])} {'spot' if len(frame['flags']) == 1 else 'spots'}"
+    note = (f"The detector scanned the whole frame and flagged {spots}. "
             f"Ember kept {counts['kept']} and dismissed {counts['dismissed']}.")
     if counts["unreadable"]:
         note += f" {counts['unreadable']} could not be read."
-    return "".join(boxes), note
+    return "".join(boxes), note, f'<ol class="verdicts">{"".join(verdicts)}</ol>' if verdicts else ""
 
 
 def dismissed_flags(coverage):
@@ -995,7 +1003,7 @@ def dismissed_flags(coverage):
     esc = html.escape
     items = "".join(
         f'<li><a href="#{esc(frame["frame"])}"><img src="{esc(flag["crop"])}" alt="Crop Ember dismissed in {esc(frame["frame"])}"></a>'
-        f'<p>{esc(frame["frame"])} · detector {flag["detector_confidence"]:.2f}</p><p class="what">Ember: “{esc(flag["what"])}”, {flag["ember_confidence"]:.2f}</p></li>'
+        f'<p class="muted">{esc(frame["frame"])} · detector {flag["detector_confidence"]:.2f}</p><p class="what">Ember: “{esc(flag["what"])}”, {flag["ember_confidence"]:.2f}</p></li>'
         for frame in coverage for flag in frame["flags"] if flag["status"] == "dismissed")
     return ("<h2>Flags Ember dismissed</h2><p>Ember can be wrong. Each of these was a detector flag that Ember said "
             "holds no person. Open one to check it yourself.</p>"
@@ -1018,9 +1026,9 @@ def write_report(out, record):
     maps = []
     for frame in coverage:
         if "flags" in frame:
-            cells, note = flag_map(frame)
+            cells, note, verdicts = flag_map(frame)
         else:
-            cells, note = tile_map(frame)
+            cells, note, verdicts = tile_map(frame)
         pins = "".join(
             f'<span class="pin" style="left:{100 * s["x"] / frame["width"]:.2f}%;top:{100 * s["y"] / frame["height"]:.2f}%"></span>'
             for s in queue if s["frame"] == frame["frame"])
@@ -1030,7 +1038,7 @@ def write_report(out, record):
         elif has_positions:
             note += " No position data for this frame."
         maps.append(f'<section id="{esc(frame["frame"])}"><h3>{esc(frame["frame"])}</h3><p>{note}</p>'
-                    f'<div class="photo"><img src="frames/{esc(frame["frame"])}.jpg" alt="{esc(frame["frame"])} with its coverage map">{cells}{pins}</div></section>')
+                    f'<div class="photo"><img src="frames/{esc(frame["frame"])}.jpg" alt="{esc(frame["frame"])} with its coverage map">{cells}{pins}</div>{verdicts}</section>')
     status = f"Stopped early: {esc(stopped)}." if stopped else "Finished."
     if detector_check:
         extra_css, dismissed = DETECTOR_REPORT_CSS, dismissed_flags(coverage)

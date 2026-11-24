@@ -1,16 +1,50 @@
 # Open Water Search
 
-**Turn a drone flight into a search record a rescue crew can act on.**
+**A trained detector flags every second of a drone flight. Muse Ember checks each flag, says what it is, and the crew gets a search record built from what Ember kept.**
 
-Point Open Water Search at a flight, as a video or a folder of photos one second apart. Muse Ember looks over every second and takes close looks at the water most likely to hold someone. The tool returns a search record: the possible people, a coverage timeline of the water nobody searched, and a handoff message for each possible person that a dispatcher can read to a crew.
+On 300 MOBDrone frames the detector had never seen, Ember's check kept the same 210 people and cut false alarms from 166 to 38, **77% fewer, for $0.03**. The pass rule was committed before the run.
+
+~~~
+python probe/open_water_search.py flight.mp4 --mode detector-check --detector-python detector-venv/bin/python --out results --budget 0.10
+~~~
 
 Built during the Muse Ember Hackathon. The project started on November 23, 2026.
 
 **Try it in your browser:** [How it works](https://open-water-search.vercel.app) · [Take over a search](https://open-water-search.vercel.app/judge) · [Compare Ember with a fixed grid](https://open-water-search.vercel.app/replay). All three pages replay recorded runs, so clicking around costs nothing.
 
-![Open Water Search landing page: the live two-minute run printing Ember's decisions and handoff messages above the coverage timeline it filled in](docs/landing.jpg)
+## The result: Ember checks the detector's flags
 
-## A flight in, a search record out
+A free YOLO26m detector trained on SeaDronesSee finds most people in drone footage, but on water it hasn't seen it also flags rocks, driftwood, life rings and birds. In `--mode detector-check`, the detector scans every frame first, keeping every swimmer box at 0.05 confidence or more, at most 12 per frame. Ember then gets one request per flagged frame. Each flag arrives as a 224-pixel crop, and structured output makes Ember answer three questions for every crop: is a person in the water at its centre, how sure is it, and what is there.
+
+![Five detector flags. Ember dismissed a rock, driftwood and a life ring, kept a person floating on their back, and wrongly called a swimmer a seagull](docs/ember-check-examples.png)
+
+~~~mermaid
+flowchart LR
+    flight["Flight: video or photos,<br/>one per second"] --> detector["Trained detector<br/>scans every frame whole,<br/>flags up to 12 spots"]
+    detector --> ember["Muse Ember<br/>one request per flagged frame:<br/>person? how sure? what is it?"]
+    ember -->|keep| record["Search record<br/>possible people with Ember's words,<br/>a handoff message for each"]
+    ember -->|dismiss| reopen["Dismissed flags<br/>kept in the report<br/>for a person to reopen"]
+~~~
+
+**The test** (`runs/verify-mobdrone`). 300 MOBDrone frames, with 297 labeled people, chosen from video names and frame counts alone. Every frame is at least two seconds from any frame used before. The plan and pass rule were committed (82d5225) before any Ember call. The rule compares Ember's check with the detector alone at the highest confidence that still finds as many people.
+
+| 297 labeled people in 300 new MOBDrone frames | Found | False alarms |
+|---|---|---|
+| Detector alone at 0.30, set to find as many | 210 | 166 |
+| **Detector, then Ember** | **210** | **38** |
+| Detector alone at 0.62, set to raise about as few false alarms | 125 | 36 |
+
+Ember made 207 requests for $0.0318. A false alarm is any mark with no labeled person under it. Of Ember's 38, 20 are on empty water and 18 are second marks on a person already found.
+
+**Where it did not help.** On 1,517 SeaDronesSee validation photos, the footage the detector was trained on, the same check lost. It found 3,904 people with 291 false alarms, while the detector's own threshold found 3,910 with 104 (`runs/verify-confirm`, $0.2690). So the detector does the first pass, and Ember's check earns its keep on water the detector doesn't know. The 300 MOBDrone frames come from the same 61 videos as an earlier 300-frame test, so this shows the result repeating on new moments of that footage. It does not show it holds on other footage.
+
+**What Ember gets wrong.** Both versions still miss 87 of the 297. Ember dismissed 40 flags that were real people, calling them a dark shape, a bird or an animal. That is why the report lists every dismissed flag with its crop and Ember's words.
+
+**The one command reproduces the sealed run.** Running `--mode detector-check` on the same 300 frames, with the detector run fresh and Ember's sealed answers replayed, sent all 207 requests byte for byte as sealed and scored 210 found with 38 false alarms. `python runs/verify-mobdrone/replay_one_command.py OUT detector-venv/bin/python` repeats it with no network and no key.
+
+## Ember's own search: a flight in, a search record out
+
+Without `--mode detector-check`, Ember searches each frame alone: one overview ranks the nine sections of a 3 × 3 grid, then close looks go to the top-ranked ones. This was the project's first approach. It lost to the trained detector on both tests below, which is why the headline mode lets the detector go first. It needs no detector and no GPU, and it stays the default.
 
 ~~~mermaid
 flowchart LR
@@ -85,7 +119,7 @@ Every photo in the SeaDronesSee validation split ran as one flight through the d
 - **Speed:** 35.1 photos a minute over the whole run (2,646 s), short of the 60 a minute needed to keep pace with one photo a second. The live clip reached 46.9.
 - **Reliability:** every overview was read, with no lost requests and no unreadable answers. The first attempt ended after 57 calls when one request timed out. The fix (one retry, then only that request is lost) is in commit e68172f, and that attempt's $0.0208 is counted in the project's spending.
 
-## The trained detector is more accurate
+## Ember alone loses to the trained detector
 
 A YOLO26m detector trained on SeaDronesSee (`detector/`, AGPL-3.0) found more people with fewer false marks than Ember on both tests, under the same scoring rule. On SeaDronesSee its checkpoint was chosen on the same validation split it was scored on, so its numbers there lean optimistic. MOBDrone is footage neither had seen, and the detector won there too:
 
@@ -168,6 +202,7 @@ From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 
 
 ## What this does not show
 
+- **Detector, then Ember on other footage.** The passing test used new frames from the same MOBDrone videos as an earlier test. On SeaDronesSee, the detector's own footage, Ember's check lost to the detector's threshold.
 - **Keeping pace with a drone.** The search reached 35.1 photos a minute on the scale run and 46.9 on the live clip, short of one photo a second.
 - **Equal spend with each search's own answers.** In the frozen-prompt runs we planned this head-to-head too, and it does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
 - **Reviewer speed.** There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.
@@ -189,6 +224,16 @@ Point it at a flight: a video file, which the tool cuts into one frame per secon
 
 If the flight has the drone's GPS position for its photos, pass it with `--positions positions.json`: a JSON file whose `frames` object maps each photo's name (without extension, or `second-00000`, `second-00001` and so on for a video) to `{"latitude": ..., "longitude": ...}` in decimal degrees, or to `null` when that photo has none. Each handoff message then gives the drone position at sighting, and the report maps where the drone was. The tool doesn't compute the person's own coordinates, because the flight data has no camera field of view and measures altitude from the takeoff point. Photos without position data get no coordinates. Without the file, the search record says position data was unavailable and the report shows no map. `probe/write_positions.py` writes this file for SeaDronesSee frames from the dataset's CC0 `instances_val.json`, and `validation/inputs/positions.json` is its output for the 30 validation photos, 22 of which have a position.
 
+Add `--mode detector-check` to have the trained detector flag every frame first and Ember check each flag. It needs a Python with ultralytics for the detector, passed as `--detector-python`, and the detector runs as its own program, so the MIT search tool imports nothing from the AGPL-3.0 `detector/` folder:
+
+~~~
+python -m venv detector-venv
+detector-venv/bin/pip install ultralytics==8.4.218
+python probe/open_water_search.py flight.mp4 --mode detector-check --detector-python detector-venv/bin/python --out results --budget 0.10
+~~~
+
+The detector downloads its pinned weights on first use and runs on the Apple GPU by default. Pass `--detector-device cpu`, or a CUDA device number, elsewhere. It keeps swimmer boxes at 0.05 confidence or more, at most 12 per frame, and Ember gets one request per frame that has any. The tool prints Ember's verdict on each flag in its own words as the answers arrive. Kept flags become sightings, and they merge into possible people the same way. Each handoff message quotes what Ember said and how many of that frame's flags it kept and dismissed. The report lists every dismissed flag with its crop, so a reviewer can reopen it, and `detector-boxes.json` holds every box the detector returned. The detector runs before any Ember call, so a missing ultralytics stops the run before it spends anything. On the 300 MOBDrone frames, the check cost about $0.0001 per frame.
+
 Add `--mode agent` to let Ember run the search through tool calls. Each frame gets one conversation that opens with its overview and a one-line note about the previous frame's sightings. Ember chooses which tiles to look at closely, at most 4 per frame, reports each sighting as a point on Meta's 0–1,000 grid over the close look it received, and moves to the next frame when it decides to. Each frame earns an equal share of `--budget`, and any share it leaves unused carries forward. The tool prints a line for each tool call as it happens. It lost to the fixed method on the 30 validation photos, so the fixed method stays the default.
 
 | File in `results/` | What it holds |
@@ -198,6 +243,7 @@ Add `--mode agent` to let Ember run the search through tool calls. Each frame ge
 | `queue.json` | Up to five sightings per frame, in source-image pixels, built from the search record |
 | `coverage.json` | Every section's status for every frame, from the search record |
 | `calls.jsonl` | Every Ember request, with its token usage, cost and answer |
+| `detector-boxes.json` | In `--mode detector-check`, every box the detector returned for every frame |
 
 With the default grounding format, an overview plus two close looks cost about $0.00062 per photo on the scale run, or about $2.23 per hour of footage at one photo a second. The search record also records photos per minute.
 
@@ -268,6 +314,9 @@ The November 24 runs, with the cost each run folder's README reports. Every call
 | Scale run, 4,641 calls (`runs/scale-run`) | $0.9571 |
 | MOBDrone, 300 frames (`runs/mobdrone-300`) | $0.1364 |
 | Live two-minute clip (`runs/live-clip`) | $0.0531 |
+| Detector, then Ember: 300 MOBDrone frames and 30 validation photos (`runs/verify-check`) | $0.0391 |
+| Detector, then Ember: confirmation on 1,517 validation photos, failed (`runs/verify-confirm`) | $0.2690 |
+| Detector, then Ember: 300 new MOBDrone frames, passed (`runs/verify-mobdrone`) | $0.0318 |
 
 ## Reproduce the numbers
 
@@ -296,9 +345,9 @@ To make your own sealed run on macOS, move `live/` or `validation/live/` aside. 
 
 ## What is and isn't here
 
-The traces are Ember's replies as returned, minus Meta's response and message IDs. `redaction.json` gives the SHA-256 of each original trace, which matches its `seal.json`, and of the redacted copy. No API key is stored anywhere in the repository. The SeaDronesSee images and labels are not included. `fetch_frames.py` downloads them from the mirror at revision `deb1f872` and checks each one against the SHA-256 recorded in the manifests. The two screenshots in `docs/` show the landing page: the live clip's replay and one validation frame.
+The traces are Ember's replies as returned, minus Meta's response and message IDs. `redaction.json` gives the SHA-256 of each original trace, which matches its `seal.json`, and of the redacted copy. No API key is stored anywhere in the repository. The SeaDronesSee images and labels are not included. `fetch_frames.py` downloads them from the mirror at revision `deb1f872` and checks each one against the SHA-256 recorded in the manifests. `docs/` holds a screenshot of the landing page, the search steps on one validation frame, and the five MOBDrone crops of the detector-check result.
 
-The MOBDrone videos, frames and labels are not included either. `mobdrone/frames.json` lists the 300 frames of unseen footage, by video, frame number and time, with the SHA-256 of each of the 66 source videos. `select_mobdrone.py` chose them from video names and frame counts alone, with a fixed seed, and the list was committed before any frame or label was viewed. `python probe/fetch_mobdrone.py DATA_DIR` downloads the videos and the people-only labels from Zenodo, checks them against Zenodo's MD5 and the recorded SHA-256, unpacks the videos into `DATA_DIR/videos`, and checks that the label file has an entry for every frame of every video, the 300 chosen ones included.
+The MOBDrone videos, frames and labels are not included either, apart from the five 224-pixel crops in `docs/ember-check-examples.png`, credited to MOBDrone's authors under CC BY 4.0. `mobdrone/frames.json` lists the 300 frames of unseen footage, by video, frame number and time, with the SHA-256 of each of the 66 source videos. `select_mobdrone.py` chose them from video names and frame counts alone, with a fixed seed, and the list was committed before any frame or label was viewed. `python probe/fetch_mobdrone.py DATA_DIR` downloads the videos and the people-only labels from Zenodo, checks them against Zenodo's MD5 and the recorded SHA-256, unpacks the videos into `DATA_DIR/videos`, and checks that the label file has an entry for every frame of every video, the 300 chosen ones included.
 
 `python probe/extract_mobdrone.py DATA_DIR SAMPLE_DIR` then takes each of the 300 frames by its frame number and saves it in `SAMPLE_DIR/images` under a name that keeps the list's order, so the folder searches as a flight. It converts the frame's person boxes into a YOLO label file with class 0, the class scored as a swimmer, and writes `mobdrone/inputs/manifest.json` and `mobdrone/scoring-only/manifest.json` with the SHA-256 of every photo and label. `probe/cut_mobdrone_clip.py` cuts the two-minute clip for the live run and labels each second the search tool will cut from it, with MOBDrone's track IDs. `probe/check_merge_rule.py SEARCH_RECORD SCORING_DIR` counts how often the possible-person merge rule joined two different labeled people and how often it split one.
 

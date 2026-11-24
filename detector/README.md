@@ -2,7 +2,7 @@
 
 A published detector trained on SeaDronesSee runs locally, at no cost, on the same validation photos as Ember, and `probe/score.py detector` scores its boxes under the same rule as Ember's sightings.
 
-This folder is licensed under AGPL-3.0 (see [LICENSE](LICENSE)) because the detector code (ultralytics) and the checkpoint are AGPL-3.0. The rest of the repository keeps its own license. The search tool imports nothing from this folder, and `test_run_detector.py` checks that.
+This folder is licensed under AGPL-3.0 (see [LICENSE](LICENSE)) because the detector code (ultralytics) and the checkpoint are AGPL-3.0. The rest of the repository keeps its own license. The search tool imports nothing from this folder, and `test_run_detector.py` checks that. `open_water_search.py --mode detector-check` runs `run_detector.py` as its own program, with the Python given by `--detector-python`, and reads the `boxes.json` it writes.
 
 ## The detector
 
