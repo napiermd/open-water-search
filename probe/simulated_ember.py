@@ -18,13 +18,15 @@ import copy
 import io
 import json
 import socket
+import threading
+import time
 from collections import Counter
 from contextlib import contextmanager, redirect_stdout
 
 from PIL import Image
 
 import open_water_search
-from runner import rectangle
+from runner import LIMIT, price, rectangle
 
 # Colour steps survive JPEG compression and resizing of flat tiles. Red and blue hold the frame index, green the tile.
 FRAME_STEP = 8
@@ -98,27 +100,52 @@ class SimulatedEmber:
 
     replies maps (frame name, tile) to what Ember returns for that request, with tile -1 for the overview:
     answer text, a full reply such as one recorded from a paid run, or an exception to raise instead of
-    replying. A request with no scripted reply raises KeyError, which the command treats as a failed request.
-    requests holds the body of every request sent for an answer, in order.
+    replying. A list scripts successive tries of the same request, such as a 429 and then an answer; the
+    last entry repeats. A request with no scripted reply raises KeyError, which the command treats as a
+    failed request.
 
     conversations scripts agent mode, where each request carries tools and one frame's conversation so far. It maps
-    frame name to that frame's turns in order. A turn is a list of (tool name, arguments) calls, a full reply, or
-    an exception. A request past the end of a frame's script raises IndexError, which the command treats as a failed
-    request. A request that leaves one of Ember's earlier tool calls without its output fails the same way, as Meta
-    refuses it.
+    frame name to Ember's successive replies to that frame's requests. A reply is a list of (tool name, arguments)
+    calls, a full reply, or an exception such as a 429. A request past the end of a frame's script raises
+    IndexError, which the command treats as a failed request. A request that leaves one of Ember's earlier tool
+    calls without its output fails the same way, as Meta refuses it.
+
+    latency maps (frame name, tile) to the seconds Ember takes to answer that request; others answer at once.
+    limits stands for Meta's rate-limit headers, as open_water_search.Ember reads them.
+
+    While it runs it notes every request sent, with when it was sent, the most requests in flight at once,
+    and the most ever committed: what was paid so far plus the worst-case cost of every request in flight.
+    requests holds the body of every request sent for an answer, in the order they were sent.
     """
 
-    def __init__(self, replies, conversations=None):
+    def __init__(self, replies, latency=None, limits=None, conversations=None):
         self.replies = replies
+        self.latency = latency or {}
+        self.limits = limits
         self.conversations = conversations or {}
         self.turns_taken = Counter()
+        self.lock = threading.Lock()
+        self.sent = []
+        self.in_flight = []
+        self.paid = 0
+        self.most_in_flight = 0
+        self.most_committed = 0
         self.requests = []
 
+    def request_in(self, body):
+        """(frame name, tile) of the request's first image. In agent mode that is the frame's overview."""
+        return images_in(body)[0]
+
     def reply_to(self, body, take=False):
-        frame, tile = images_in(body)[0]
-        if "tools" not in body:
-            reply = self.replies[frame, tile]
-            return answer(reply) if isinstance(reply, str) else reply
+        request = self.request_in(body)
+        if "tools" in body:
+            return self.next_turn(request[0], body, take)
+        reply = self.replies[request]
+        if isinstance(reply, list):
+            reply = reply.pop(0) if take and len(reply) > 1 else reply[0]
+        return answer(reply) if isinstance(reply, str) else reply
+
+    def next_turn(self, frame, body, take):
         called = {item["call_id"] for item in body["input"] if item.get("type") == "function_call"}
         answered = {item["call_id"] for item in body["input"] if item.get("type") == "function_call_output"}
         if called != answered:
@@ -136,12 +163,29 @@ class SimulatedEmber:
         return INPUT_TOKENS if isinstance(reply, Exception) else reply["usage"]["input_tokens"]
 
     def generate(self, body):
-        # Keep the body as sent: the command goes on adding to a conversation after sending it.
-        self.requests.append(copy.deepcopy(body))
-        reply = self.reply_to(body, take=True)
+        request = self.request_in(body)
+        worst = price(self.count(body), 0, LIMIT)
+        with self.lock:
+            reply = self.reply_to(body, take=True)
+            self.sent.append((time.monotonic(), request))
+            # Keep the body as sent: the command goes on adding to a conversation after sending it.
+            self.requests.append(copy.deepcopy(body))
+            self.in_flight.append(worst)
+            self.most_in_flight = max(self.most_in_flight, len(self.in_flight))
+            self.most_committed = max(self.most_committed, self.paid + sum(self.in_flight))
+        time.sleep(self.latency.get(request, 0))
+        with self.lock:
+            self.in_flight.remove(worst)
+            if not isinstance(reply, Exception):
+                usage = reply["usage"]
+                self.paid += price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"],
+                                   usage["output_tokens"])
         if isinstance(reply, Exception):
             raise reply
         return reply
+
+    def times_sent(self, request):
+        return [when for when, sent in self.sent if sent == request]
 
 
 @contextmanager
@@ -157,8 +201,14 @@ def refuse_network():
         socket.socket.connect = connect
 
 
-def run_command(arguments, ember):
-    """Run the real command with ember in place of Meta. Returns its exit status and what it printed."""
+def run_command(arguments, ember, as_given=False):
+    """Run the real command with ember in place of Meta. Returns its exit status and what it printed.
+
+    Scripted answers are written in the frozen prompts' fractions, so the command runs with --format frozen unless
+    a test names a format itself or passes as_given=True to run the arguments exactly as written.
+    """
+    if not as_given and "--format" not in arguments:
+        arguments = [*arguments, "--format", "frozen"]
     printed = io.StringIO()
     status = 0
     with redirect_stdout(printed), refuse_network():

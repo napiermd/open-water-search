@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from open_water_search import AGENT_TOOLS
+from open_water_search import AGENT_TOOLS, RateLimited
 from runner import LIMIT, NANO, price
 from simulated_ember import INPUT_TOKENS, SimulatedEmber, images_in, run_command, write_flight
 
@@ -147,6 +147,17 @@ class AgentMode(unittest.TestCase):
         self.assertEqual(record["spent_nanodollars"], PAID)
         # The close look at tile 4 never reached Ember, so that water stays unchecked.
         self.assertEqual(self.statuses(record, 0)[4], "not checked")
+
+    def test_requests_go_one_at_a_time_through_the_rate_limit_retry_and_the_spending_cap_reservation(self):
+        cap = 3 * WORST
+        status, _, record, ember = self.search({"frame-01": [RateLimited(None), [look(4)], [MOVE_ON]],
+                                                "frame-02": [[MOVE_ON]]}, 2, "--budget", budget(cap))
+        self.assertEqual(status, 0)
+        self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
+        self.assertEqual(len(ember.requests), 4)
+        self.assertEqual(len(record["calls"]), 3)
+        self.assertEqual(ember.most_in_flight, 1)
+        self.assertLessEqual(ember.most_committed, cap)
 
     def test_the_fixed_two_look_method_stays_the_default(self):
         folder = TemporaryDirectory()
