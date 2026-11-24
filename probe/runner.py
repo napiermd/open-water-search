@@ -168,8 +168,17 @@ class Meta:
     def post(self,route,payload):
         req=urllib.request.Request("https://api.meta.ai/v1/responses"+route,
             data=json.dumps(payload).encode(),headers={"Authorization":"Bearer "+self.key,"Content-Type":"application/json"})
-        with self.client.open(req,timeout=90) as res:
-            return json.load(res)
+        try:
+            with self.client.open(req,timeout=90) as res:
+                return json.load(res)
+        except urllib.error.HTTPError as error:
+            if error.code!=429:
+                raise
+            # Meta asks clients to back off after a 429 rate-limit reply. Wait once, then retry once.
+            wait=error.headers.get("Retry-After","")
+            time.sleep(min(int(wait) if wait.isdigit() else 10,60))
+            with self.client.open(req,timeout=90) as res:
+                return json.load(res)
 
     def count(self,body):
         n=self.post("/input_tokens",{k:body[k] for k in ("model","input")})["input_tokens"]
