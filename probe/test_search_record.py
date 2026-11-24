@@ -116,11 +116,11 @@ class ScriptedFlight(unittest.TestCase):
     def test_a_failed_request_writes_the_record_and_exits_with_status_1(self):
         replies = {("frame-01", -1): '{"tiles":[4,0]}', ("frame-02", -1): '{"tiles":[4,0]}',
                    ("frame-01", 4): '{"points":[[0.5,0.5,0.9]]}',
-                   ("frame-02", 4): ConnectionResetError("simulated reset")}
+                   ("frame-02", 4): PermissionError("simulated refusal")}
         status, printed, record, out = self.search(replies)
         self.assertEqual(status, 1)
-        self.assertEqual(record["ending"], {"outcome": "failed", "reason": "ConnectionResetError: simulated reset"})
-        self.assertIn("Stopped early: ConnectionResetError: simulated reset", printed)
+        self.assertEqual(record["ending"], {"outcome": "failed", "reason": "PermissionError: simulated refusal"})
+        self.assertIn("Stopped early: PermissionError: simulated refusal", printed)
         self.assertEqual([(call["frame"], call["tile"]) for call in record["calls"]],
                          [("frame-01", -1), ("frame-02", -1), ("frame-01", 4)])
         self.assertEqual(record["spent_nanodollars"], 360_000)
