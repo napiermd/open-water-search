@@ -873,7 +873,8 @@ def main(arguments=None, api=None):
                              "with up to 4 close looks per frame and sightings on the 0-1,000 grid. --looks, "
                              "--parallel and --format apply to the fixed method only")
     parser.add_argument("--retries", type=int, default=1, choices=range(0, 8), metavar="0-7",
-                        help="times to retry a request after a 429 rate-limit reply (default 1)")
+                        help="times to retry a request after a 429 rate-limit reply, a timeout, a dropped connection "
+                             "or a 5xx reply (default 1)")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     parser.add_argument("--positions", type=Path,
                         help="JSON file of the drone's latitude and longitude for each frame, keyed by frame name")

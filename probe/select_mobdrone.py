@@ -18,6 +18,8 @@ import sys
 from fractions import Fraction
 from pathlib import Path
 
+from fetch_mobdrone import digest
+
 OUT = Path(__file__).resolve().parents[1] / "mobdrone/frames.json"
 SEED = "open-water-search-mobdrone-2026-11-24"
 FRAMES = 300
@@ -26,14 +28,6 @@ VIDEOS = 66
 
 def ordering(*parts):
     return int(hashlib.sha256("/".join([SEED, *map(str, parts)]).encode()).hexdigest(), 16)
-
-
-def sha(path):
-    digest = hashlib.sha256()
-    with path.open("rb") as file:
-        for block in iter(lambda: file.read(1 << 20), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def count_frames(path):
@@ -57,7 +51,7 @@ def main(folder, out):
     videos, frames = [], []
     for path in paths:
         count, rate = count_frames(path)
-        videos.append(dict(video=path.name, sha256=sha(path), frame_count=count, frame_rate=rate))
+        videos.append(dict(video=path.name, sha256=digest(path, "sha256"), frame_count=count, frame_rate=rate))
         picks = FRAMES // VIDEOS + (path.name in extra)
         for stretch in range(picks):
             start, end = stretch * count // picks, (stretch + 1) * count // picks
@@ -80,7 +74,7 @@ def main(folder, out):
         frames=frames,
     ), indent=2) + "\n")
     print(f"chose {len(frames)} frames from {len(videos)} videos")
-    print("frame list sha256", sha(out))
+    print("frame list sha256", digest(out, "sha256"))
 
 
 if __name__ == "__main__":

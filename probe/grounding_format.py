@@ -1,7 +1,8 @@
 """Meta's grounding format for close looks: each mark is a point on a 0-1,000 grid over the image Ember received.
 
 Structured output on the Responses API (text.format with a JSON schema) forces every answer into the MARKS shape.
-The frozen prompts in runner.py stay the default. The command uses this format only when asked to.
+The command asks for close-look marks in this format by default. --format frozen keeps the published prompts in
+runner.py.
 """
 import json
 import math

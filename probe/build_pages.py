@@ -38,6 +38,8 @@ def call(record):
 def live_clip():
     record = json.loads((LIVE_CLIP / "search-record-redacted.json").read_text())
     printed = []
+    # The sealed live clip's search record predates the decision log, so its printed lines come from terminal.jsonl
+    # and each line's second and tile are read back from its text.
     for row in map(json.loads, (LIVE_CLIP / "terminal.jsonl").read_text().splitlines()):
         entry = dict(t=row["t"], line=row["line"])
         match = FRAME_LINE.match(row["line"])
