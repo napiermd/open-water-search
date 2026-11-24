@@ -42,3 +42,4 @@ mobdrone/*/labels
 mobdrone/*/*/labels
 mobdrone/inputs/images
 runs/verify-check/*/checks.jsonl
+runs/*/inputs/images
