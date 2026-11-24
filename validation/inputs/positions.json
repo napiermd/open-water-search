@@ -1,0 +1,406 @@
+{
+  "source": "SeaDronesSee Object Detection v2 instances_val.json, image meta (CC0 1.0): https://github.com/Ben93kie/SeaDronesSee/blob/main/OD/evaluation%20of%20OD%20V2/required%20files/instances_val.json",
+  "frames": {
+    "frame-01": {
+      "latitude": 47.672416,
+      "longitude": 9.269057,
+      "meta": {
+        "image_name": "DJI_0062_AND_0063.MP4_image12418.png",
+        "datetime(utc)": "2020-08-27 13:41:51",
+        "latitude": 47.672416,
+        "longitude": 9.269057,
+        "height_above_takeoff(meter)": 47.79766900335263,
+        "speed(m/s)": 0.0,
+        "xspeed(m/s)": 0.0,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 138.8,
+        "gimbal_heading(degrees)": 130.5,
+        "gimbal_pitch(degrees)": 36.1
+      }
+    },
+    "frame-02": null,
+    "frame-03": {
+      "latitude": 53.721410556669,
+      "longitude": 7.16202350436141,
+      "meta": {
+        "image_name": "DJI_0129.MP4_image5927.png",
+        "datetime(utc)": "2021-08-21 11:27:05",
+        "latitude": 53.721410556669,
+        "longitude": 7.16202350436141,
+        "height_above_takeoff(meter)": 96.39529899420909,
+        "speed(m/s)": 3.599903442109969,
+        "xspeed(m/s)": -0.09999731783638802,
+        "yspeed(m/s)": 3.599903442109969,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 327.1,
+        "gimbal_heading(degrees)": 332.5,
+        "gimbal_pitch(degrees)": 71.3
+      }
+    },
+    "frame-04": null,
+    "frame-05": {
+      "latitude": 53.721611885069706,
+      "longitude": 7.16177036379781,
+      "meta": {
+        "image_name": "DJI_0129.MP4_image5712.png",
+        "datetime(utc)": "2021-08-21 11:26:58",
+        "latitude": 53.721611885069706,
+        "longitude": 7.16177036379781,
+        "height_above_takeoff(meter)": 96.09531362389515,
+        "speed(m/s)": 4.9998658918194,
+        "xspeed(m/s)": -4.9998658918194,
+        "yspeed(m/s)": -0.19999463567277603,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 69.3,
+        "gimbal_heading(degrees)": 74.9,
+        "gimbal_pitch(degrees)": 71.3
+      }
+    },
+    "frame-06": {
+      "latitude": 47.671986,
+      "longitude": 9.26795,
+      "meta": {
+        "image_name": "DJI_0032_merged.MP4_image5674.png",
+        "datetime(utc)": "2020-08-25 12:19:34",
+        "latitude": 47.671986,
+        "longitude": 9.26795,
+        "height_above_takeoff(meter)": 9.699526973483694,
+        "speed(m/s)": 2.719927045149754,
+        "xspeed(m/s)": -1.5999570853822083,
+        "yspeed(m/s)": 2.1999409924005366,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 64.1,
+        "gimbal_heading(degrees)": 47.0,
+        "gimbal_pitch(degrees)": 13.8
+      }
+    },
+    "frame-07": null,
+    "frame-08": {
+      "latitude": 53.72070888500589,
+      "longitude": 7.16248297269101,
+      "meta": {
+        "image_name": "DJI_0114.MP4_image4959.png",
+        "datetime(utc)": "2021-08-20 13:17:58",
+        "latitude": 53.72070888500589,
+        "longitude": 7.16248297269101,
+        "height_above_takeoff(meter)": 31.898444376714412,
+        "speed(m/s)": 2.1099434063477873,
+        "xspeed(m/s)": -1.0999704962002683,
+        "yspeed(m/s)": 1.7999517210549845,
+        "zspeed(m/s)": 0.09999731783638802,
+        "compass_heading(degrees)": 31.6,
+        "gimbal_heading(degrees)": 35.5,
+        "gimbal_pitch(degrees)": 26.7
+      }
+    },
+    "frame-09": null,
+    "frame-10": {
+      "latitude": 47.672964,
+      "longitude": 9.269172,
+      "meta": {
+        "image_name": "DJI_0003.mov_image793.png",
+        "datetime(utc)": "2020-08-25 13:23:52",
+        "latitude": 47.672964,
+        "longitude": 9.269172,
+        "height_above_takeoff(meter)": 30.298522401706794,
+        "speed(m/s)": 0.22399399195350914,
+        "xspeed(m/s)": 0.0,
+        "yspeed(m/s)": -0.19999463567277603,
+        "zspeed(m/s)": 0.09999731783638802,
+        "compass_heading(degrees)": 255.6,
+        "gimbal_heading(degrees)": 226.2,
+        "gimbal_pitch(degrees)": 83.4
+      }
+    },
+    "frame-11": {
+      "latitude": 47.672244,
+      "longitude": 9.270398,
+      "meta": {
+        "image_name": "DJI_0001.mov_image1234.png",
+        "datetime(utc)": "2020-08-27 12:02:24",
+        "latitude": 47.672244,
+        "longitude": 9.270398,
+        "height_above_takeoff(meter)": 50.097556842426094,
+        "speed(m/s)": 0.09999731783638802,
+        "xspeed(m/s)": 0.09999731783638802,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 293.6,
+        "gimbal_heading(degrees)": 288.1,
+        "gimbal_pitch(degrees)": 29.0
+      }
+    },
+    "frame-12": {
+      "latitude": 53.720621578743,
+      "longitude": 7.163616431515031,
+      "meta": {
+        "image_name": "DJI_0114.MP4_image5334.png",
+        "datetime(utc)": "2021-08-20 13:18:18",
+        "latitude": 53.720621578743,
+        "longitude": 7.163616431515031,
+        "height_above_takeoff(meter)": 31.598459006400486,
+        "speed(m/s)": 8.92976048278945,
+        "xspeed(m/s)": 2.399935628073312,
+        "yspeed(m/s)": 8.59976933392937,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 333.2,
+        "gimbal_heading(degrees)": 344.8,
+        "gimbal_pitch(degrees)": 26.7
+      }
+    },
+    "frame-13": {
+      "latitude": 53.72098210798221,
+      "longitude": 7.161032950924032,
+      "meta": {
+        "image_name": "DJI_0131.MP4_image5337.png",
+        "datetime(utc)": "2021-08-21 11:36:49",
+        "latitude": 53.72098210798221,
+        "longitude": 7.161032950924032,
+        "height_above_takeoff(meter)": 28.998585797013106,
+        "speed(m/s)": 0.6099836388019668,
+        "xspeed(m/s)": -0.599983907018328,
+        "yspeed(m/s)": -0.09999731783638802,
+        "zspeed(m/s)": -1.5999570853822083,
+        "compass_heading(degrees)": 11.7,
+        "gimbal_heading(degrees)": 18.2,
+        "gimbal_pitch(degrees)": 35.7
+      }
+    },
+    "frame-14": {
+      "latitude": 53.7208081643757,
+      "longitude": 7.163097624242541,
+      "meta": {
+        "image_name": "DJI_0113.MP4_image6412.png",
+        "datetime(utc)": "2021-08-20 13:13:15",
+        "latitude": 53.7208081643757,
+        "longitude": 7.163097624242541,
+        "height_above_takeoff(meter)": 36.098239561109416,
+        "speed(m/s)": 0.09999731783638802,
+        "xspeed(m/s)": 0.0,
+        "yspeed(m/s)": -0.09999731783638802,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 344.3,
+        "gimbal_heading(degrees)": 348.7,
+        "gimbal_pitch(degrees)": 24.6
+      }
+    },
+    "frame-15": null,
+    "frame-16": {
+      "latitude": 53.7217467944444,
+      "longitude": 7.16250296388889,
+      "meta": {
+        "date_time": "2021-08-27T14:43:38",
+        "gps_latitude_ref": 53.7217467944444,
+        "gps_longitude_ref": 7.16250296388889,
+        "altitude": 58.68,
+        "gimbal_pitch": 90.0,
+        "speed": -1,
+        "xspeed": -1,
+        "yspeed": -1,
+        "zspeed": -1
+      }
+    },
+    "frame-17": null,
+    "frame-18": {
+      "latitude": 47.672087,
+      "longitude": 9.267736,
+      "meta": {
+        "image_name": "DJI_0032_merged.MP4_image5464.png",
+        "datetime(utc)": "2020-08-25 12:19:27",
+        "latitude": 47.672087,
+        "longitude": 9.267736,
+        "height_above_takeoff(meter)": 9.899517220359646,
+        "speed(m/s)": 1.2079675994635672,
+        "xspeed(m/s)": -0.4999865891819401,
+        "yspeed(m/s)": 1.0999704962002683,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 91.6,
+        "gimbal_heading(degrees)": 75.5,
+        "gimbal_pitch(degrees)": 10.1
+      }
+    },
+    "frame-19": {
+      "latitude": 53.72089492920399,
+      "longitude": 7.16337411890144,
+      "meta": {
+        "image_name": "DJI_0113.MP4_image5700.png",
+        "datetime(utc)": "2021-08-20 13:12:54",
+        "latitude": 53.72089492920399,
+        "longitude": 7.16337411890144,
+        "height_above_takeoff(meter)": 36.098239561109416,
+        "speed(m/s)": 0.0,
+        "xspeed(m/s)": 0.0,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 322.8,
+        "gimbal_heading(degrees)": 327.1,
+        "gimbal_pitch(degrees)": 24.6
+      }
+    },
+    "frame-20": {
+      "latitude": 47.671772,
+      "longitude": 9.268394,
+      "meta": {
+        "image_name": "DJI_0032_merged.MP4_image6124.png",
+        "datetime(utc)": "2020-08-25 12:19:49",
+        "latitude": 47.671772,
+        "longitude": 9.268394,
+        "height_above_takeoff(meter)": 9.999512343797623,
+        "speed(m/s)": 0.09999731783638802,
+        "xspeed(m/s)": -0.09999731783638802,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 2.5,
+        "gimbal_heading(degrees)": 343.2,
+        "gimbal_pitch(degrees)": 16.0
+      }
+    },
+    "frame-21": {
+      "latitude": 47.672071,
+      "longitude": 9.26935,
+      "meta": {
+        "image_name": "DJI_0011.mov_image5562.png",
+        "datetime(utc)": "2020-08-27 12:53:44",
+        "latitude": 47.672071,
+        "longitude": 9.26935,
+        "height_above_takeoff(meter)": 8.899565985979883,
+        "speed(m/s)": 0.9999731783638802,
+        "xspeed(m/s)": 0.0,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.9999731783638802,
+        "compass_heading(degrees)": 267.3,
+        "gimbal_heading(degrees)": 260.6,
+        "gimbal_pitch(degrees)": 74.8
+      }
+    },
+    "frame-22": null,
+    "frame-23": {
+      "latitude": 47.672988,
+      "longitude": 9.26756,
+      "meta": {
+        "image_name": "DJI_0037_AND_0038_AND_0039_AND_0040.MP4_image26654.png",
+        "datetime(utc)": "2020-08-25 12:53:06",
+        "latitude": 47.672988,
+        "longitude": 9.26756,
+        "height_above_takeoff(meter)": 40.09804449862847,
+        "speed(m/s)": 2.699927581582476,
+        "xspeed(m/s)": 2.699927581582476,
+        "yspeed(m/s)": 0.0,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 98.0,
+        "gimbal_heading(degrees)": 92.2,
+        "gimbal_pitch(degrees)": 34.0
+      }
+    },
+    "frame-24": {
+      "latitude": 53.7207186874397,
+      "longitude": 7.16245509223087,
+      "meta": {
+        "image_name": "DJI_0114.MP4_image4922.png",
+        "datetime(utc)": "2021-08-20 13:17:57",
+        "latitude": 53.7207186874397,
+        "longitude": 7.16245509223087,
+        "height_above_takeoff(meter)": 31.898444376714412,
+        "speed(m/s)": 1.3899627179257934,
+        "xspeed(m/s)": -0.6999812248547161,
+        "yspeed(m/s)": 1.199967814036656,
+        "zspeed(m/s)": 0.09999731783638802,
+        "compass_heading(degrees)": 35.2,
+        "gimbal_heading(degrees)": 39.4,
+        "gimbal_pitch(degrees)": 26.7
+      }
+    },
+    "frame-25": {
+      "latitude": 47.67181,
+      "longitude": 9.268313,
+      "meta": {
+        "image_name": "DJI_0032_merged.MP4_image6029.png",
+        "datetime(utc)": "2020-08-25 12:19:46",
+        "latitude": 47.67181,
+        "longitude": 9.268313,
+        "height_above_takeoff(meter)": 9.899517220359646,
+        "speed(m/s)": 2.8019248457755923,
+        "xspeed(m/s)": -1.5999570853822083,
+        "yspeed(m/s)": 2.299938310236924,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 12.5,
+        "gimbal_heading(degrees)": 356.1,
+        "gimbal_pitch(degrees)": 18.3
+      }
+    },
+    "frame-26": {
+      "latitude": 53.7209655251437,
+      "longitude": 7.1610405636115,
+      "meta": {
+        "image_name": "DJI_0131.MP4_image5843.png",
+        "datetime(utc)": "2021-08-21 11:37:06",
+        "latitude": 53.7209655251437,
+        "longitude": 7.1610405636115,
+        "height_above_takeoff(meter)": 37.39817616580311,
+        "speed(m/s)": 3.449907465355386,
+        "xspeed(m/s)": 0.599983907018328,
+        "yspeed(m/s)": -3.3999088064371925,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 357.8,
+        "gimbal_heading(degrees)": 2.5,
+        "gimbal_pitch(degrees)": 34.9
+      }
+    },
+    "frame-27": null,
+    "frame-28": {
+      "latitude": 53.7214562353792,
+      "longitude": 7.16185560816904,
+      "meta": {
+        "image_name": "DJI_0129.MP4_image5833.png",
+        "datetime(utc)": "2021-08-21 11:27:02",
+        "latitude": 53.7214562353792,
+        "longitude": 7.16185560816904,
+        "height_above_takeoff(meter)": 96.39529899420909,
+        "speed(m/s)": 4.239886276262852,
+        "xspeed(m/s)": -3.0999168529280285,
+        "yspeed(m/s)": 2.8999222172552526,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 12.9,
+        "gimbal_heading(degrees)": 18.0,
+        "gimbal_pitch(degrees)": 71.3
+      }
+    },
+    "frame-29": {
+      "latitude": 53.7221819074296,
+      "longitude": 7.15917426904945,
+      "meta": {
+        "image_name": "DJI_0106.MP4_image2112.png",
+        "datetime(utc)": "2021-08-19 11:13:44",
+        "latitude": 53.7221819074296,
+        "longitude": 7.15917426904945,
+        "height_above_takeoff(meter)": 28.298619932947272,
+        "speed(m/s)": 4.199887349128297,
+        "xspeed(m/s)": -0.8999758605274922,
+        "yspeed(m/s)": -4.099890031291909,
+        "zspeed(m/s)": 0.09999731783638802,
+        "compass_heading(degrees)": 174.9,
+        "gimbal_heading(degrees)": 185.7,
+        "gimbal_pitch(degrees)": 61.4
+      }
+    },
+    "frame-30": {
+      "latitude": 53.7209494697582,
+      "longitude": 7.16109383671435,
+      "meta": {
+        "image_name": "DJI_0131.MP4_image5995.png",
+        "datetime(utc)": "2021-08-21 11:37:11",
+        "latitude": 53.7209494697582,
+        "longitude": 7.16109383671435,
+        "height_above_takeoff(meter)": 37.39817616580311,
+        "speed(m/s)": 2.1099434063477873,
+        "xspeed(m/s)": -1.7999517210549845,
+        "yspeed(m/s)": 1.0999704962002683,
+        "zspeed(m/s)": 0.0,
+        "compass_heading(degrees)": 356.1,
+        "gimbal_heading(degrees)": 2.5,
+        "gimbal_pitch(degrees)": 34.9
+      }
+    }
+  }
+}
