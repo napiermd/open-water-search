@@ -40,3 +40,8 @@ runs/*/report.html
 runs/*/scoring-only/labels
 mobdrone/*/labels
 mobdrone/*/*/labels
+mobdrone/inputs/images
+runs/verify-check/*/checks.jsonl
+runs/verify-confirm/run/checks.jsonl
+runs/verify-mobdrone/run/checks.jsonl
+runs/*/inputs/images

@@ -1,0 +1,481 @@
+{
+  "appearances": 297,
+  "detector_then_ember": {
+    "found": 210,
+    "false_marks": 38
+  },
+  "detector_at_matching_confidence": {
+    "confidence": 0.3,
+    "found": 210,
+    "false_marks": 166
+  },
+  "passed": true,
+  "false_mark_reduction": 0.7711,
+  "detector_default_0_25": {
+    "confidence": 0.25,
+    "found": 219,
+    "false_marks": 176
+  },
+  "detector_with_about_as_many_false_marks": {
+    "confidence": 0.62,
+    "found": 125,
+    "false_marks": 36
+  },
+  "curve": [
+    {
+      "confidence": 0.05,
+      "found": 245,
+      "false_marks": 288
+    },
+    {
+      "confidence": 0.06,
+      "found": 243,
+      "false_marks": 269
+    },
+    {
+      "confidence": 0.07,
+      "found": 242,
+      "false_marks": 263
+    },
+    {
+      "confidence": 0.08,
+      "found": 240,
+      "false_marks": 251
+    },
+    {
+      "confidence": 0.09,
+      "found": 238,
+      "false_marks": 245
+    },
+    {
+      "confidence": 0.1,
+      "found": 236,
+      "false_marks": 241
+    },
+    {
+      "confidence": 0.11,
+      "found": 235,
+      "false_marks": 235
+    },
+    {
+      "confidence": 0.12,
+      "found": 235,
+      "false_marks": 225
+    },
+    {
+      "confidence": 0.13,
+      "found": 233,
+      "false_marks": 219
+    },
+    {
+      "confidence": 0.14,
+      "found": 230,
+      "false_marks": 211
+    },
+    {
+      "confidence": 0.15,
+      "found": 229,
+      "false_marks": 208
+    },
+    {
+      "confidence": 0.16,
+      "found": 229,
+      "false_marks": 205
+    },
+    {
+      "confidence": 0.17,
+      "found": 227,
+      "false_marks": 202
+    },
+    {
+      "confidence": 0.18,
+      "found": 227,
+      "false_marks": 200
+    },
+    {
+      "confidence": 0.19,
+      "found": 225,
+      "false_marks": 197
+    },
+    {
+      "confidence": 0.2,
+      "found": 222,
+      "false_marks": 192
+    },
+    {
+      "confidence": 0.21,
+      "found": 222,
+      "false_marks": 188
+    },
+    {
+      "confidence": 0.22,
+      "found": 222,
+      "false_marks": 183
+    },
+    {
+      "confidence": 0.23,
+      "found": 221,
+      "false_marks": 180
+    },
+    {
+      "confidence": 0.24,
+      "found": 221,
+      "false_marks": 178
+    },
+    {
+      "confidence": 0.25,
+      "found": 219,
+      "false_marks": 176
+    },
+    {
+      "confidence": 0.26,
+      "found": 217,
+      "false_marks": 172
+    },
+    {
+      "confidence": 0.27,
+      "found": 217,
+      "false_marks": 172
+    },
+    {
+      "confidence": 0.28,
+      "found": 217,
+      "false_marks": 169
+    },
+    {
+      "confidence": 0.29,
+      "found": 213,
+      "false_marks": 166
+    },
+    {
+      "confidence": 0.3,
+      "found": 210,
+      "false_marks": 166
+    },
+    {
+      "confidence": 0.31,
+      "found": 209,
+      "false_marks": 162
+    },
+    {
+      "confidence": 0.32,
+      "found": 207,
+      "false_marks": 158
+    },
+    {
+      "confidence": 0.33,
+      "found": 206,
+      "false_marks": 152
+    },
+    {
+      "confidence": 0.34,
+      "found": 203,
+      "false_marks": 151
+    },
+    {
+      "confidence": 0.35,
+      "found": 202,
+      "false_marks": 149
+    },
+    {
+      "confidence": 0.36,
+      "found": 200,
+      "false_marks": 146
+    },
+    {
+      "confidence": 0.37,
+      "found": 199,
+      "false_marks": 146
+    },
+    {
+      "confidence": 0.38,
+      "found": 199,
+      "false_marks": 142
+    },
+    {
+      "confidence": 0.39,
+      "found": 196,
+      "false_marks": 141
+    },
+    {
+      "confidence": 0.4,
+      "found": 194,
+      "false_marks": 138
+    },
+    {
+      "confidence": 0.41,
+      "found": 191,
+      "false_marks": 135
+    },
+    {
+      "confidence": 0.42,
+      "found": 186,
+      "false_marks": 133
+    },
+    {
+      "confidence": 0.43,
+      "found": 184,
+      "false_marks": 132
+    },
+    {
+      "confidence": 0.44,
+      "found": 179,
+      "false_marks": 131
+    },
+    {
+      "confidence": 0.45,
+      "found": 176,
+      "false_marks": 129
+    },
+    {
+      "confidence": 0.46,
+      "found": 172,
+      "false_marks": 128
+    },
+    {
+      "confidence": 0.47,
+      "found": 170,
+      "false_marks": 123
+    },
+    {
+      "confidence": 0.48,
+      "found": 167,
+      "false_marks": 120
+    },
+    {
+      "confidence": 0.49,
+      "found": 162,
+      "false_marks": 117
+    },
+    {
+      "confidence": 0.5,
+      "found": 160,
+      "false_marks": 113
+    },
+    {
+      "confidence": 0.51,
+      "found": 156,
+      "false_marks": 108
+    },
+    {
+      "confidence": 0.52,
+      "found": 154,
+      "false_marks": 104
+    },
+    {
+      "confidence": 0.53,
+      "found": 152,
+      "false_marks": 96
+    },
+    {
+      "confidence": 0.54,
+      "found": 148,
+      "false_marks": 92
+    },
+    {
+      "confidence": 0.55,
+      "found": 146,
+      "false_marks": 81
+    },
+    {
+      "confidence": 0.56,
+      "found": 143,
+      "false_marks": 76
+    },
+    {
+      "confidence": 0.57,
+      "found": 140,
+      "false_marks": 70
+    },
+    {
+      "confidence": 0.58,
+      "found": 139,
+      "false_marks": 60
+    },
+    {
+      "confidence": 0.59,
+      "found": 135,
+      "false_marks": 51
+    },
+    {
+      "confidence": 0.6,
+      "found": 130,
+      "false_marks": 45
+    },
+    {
+      "confidence": 0.61,
+      "found": 128,
+      "false_marks": 42
+    },
+    {
+      "confidence": 0.62,
+      "found": 125,
+      "false_marks": 36
+    },
+    {
+      "confidence": 0.63,
+      "found": 120,
+      "false_marks": 32
+    },
+    {
+      "confidence": 0.64,
+      "found": 114,
+      "false_marks": 28
+    },
+    {
+      "confidence": 0.65,
+      "found": 112,
+      "false_marks": 24
+    },
+    {
+      "confidence": 0.66,
+      "found": 111,
+      "false_marks": 23
+    },
+    {
+      "confidence": 0.67,
+      "found": 106,
+      "false_marks": 20
+    },
+    {
+      "confidence": 0.68,
+      "found": 99,
+      "false_marks": 17
+    },
+    {
+      "confidence": 0.69,
+      "found": 94,
+      "false_marks": 16
+    },
+    {
+      "confidence": 0.7,
+      "found": 93,
+      "false_marks": 12
+    },
+    {
+      "confidence": 0.71,
+      "found": 89,
+      "false_marks": 10
+    },
+    {
+      "confidence": 0.72,
+      "found": 85,
+      "false_marks": 8
+    },
+    {
+      "confidence": 0.73,
+      "found": 81,
+      "false_marks": 4
+    },
+    {
+      "confidence": 0.74,
+      "found": 75,
+      "false_marks": 3
+    },
+    {
+      "confidence": 0.75,
+      "found": 67,
+      "false_marks": 2
+    },
+    {
+      "confidence": 0.76,
+      "found": 59,
+      "false_marks": 2
+    },
+    {
+      "confidence": 0.77,
+      "found": 50,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.78,
+      "found": 32,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.79,
+      "found": 23,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.8,
+      "found": 19,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.81,
+      "found": 13,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.82,
+      "found": 8,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.83,
+      "found": 4,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.84,
+      "found": 1,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.85,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.86,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.87,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.88,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.89,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.9,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.91,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.92,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.93,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.94,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.95,
+      "found": 0,
+      "false_marks": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "model": "muse-ember-1.0",
+  "photos": 300,
+  "photos_checked": 207,
+  "photos_not_checked": 0,
+  "candidates": 694,
+  "ending": "finished",
+  "spent_nanodollars": 31762332,
+  "settings": {
+    "max_candidates": 12,
+    "crop_scale": 3,
+    "min_crop": 96,
+    "crop_pixels": 224,
+    "prompt": "Each numbered image is a crop from a drone photo of open water, centred on something a detector flagged. For every crop, say whether a person in the water is at its centre, how confident you are from 0 to 1, and in a few words what is there."
+  }
+}

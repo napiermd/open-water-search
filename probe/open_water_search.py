@@ -44,10 +44,20 @@ calls three tools: look closer at a tile, report a sighting on the 0-1,000 grid 
 move to the next frame. Each frame earns an equal share of the spending cap, and any unused share carries forward.
 No frame takes more than 4 close looks. Requests go one at a time, since each turn follows from the last, and each
 tool call prints a line as it happens.
+
+--mode detector-check runs a trained detector over every frame first, then has Ember check what it flagged. The
+detector is detector/run_detector.py, a YOLO26m checkpoint trained on SeaDronesSee. It runs as its own program with
+--detector-python, a Python that has ultralytics installed, so this tool imports nothing from the AGPL-3.0 detector
+folder. A frame's flags are its swimmer boxes at 0.05 confidence or more, at most 12, most confident first. Each
+flag becomes a crop three times its size, and one request per frame asks Ember, through structured output, whether
+each crop holds a person in the water, how sure it is and what is there (probe/flag_check.py, the check of the
+sealed run in runs/verify-mobdrone). Flags Ember keeps become sightings, with its words. Flags it dismisses stay in
+the search record and the report, so a reviewer can reopen them. RESULTS_DIR also receives detector-boxes.json.
 """
 import argparse
 import atexit
 import base64
+import hashlib
 import html
 import json
 import math
@@ -55,19 +65,22 @@ import os
 import random
 import shutil
 import subprocess
+import sys
 import threading
 import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
+from collections import Counter
 from itertools import groupby
 from pathlib import Path
 from tempfile import mkdtemp
 
 from PIL import Image
 
+import flag_check
 import grounding_format
-from runner import INSPECT, LIMIT, MODEL, NANO, OVERVIEW, Meta, interpret, prepare, price, rectangle
+from runner import INSPECT, LIMIT, MODEL, NANO, OVERVIEW, ROOT, Meta, interpret, prepare, price, rectangle
 from score import grid_points
 
 TILE_NAMES = ["top left", "top center", "top right", "middle left", "center",
@@ -85,6 +98,11 @@ MERGE_DISTANCE = 0.1
 # Metres per degree of latitude, and per degree of longitude at the equator.
 METRES_PER_DEGREE_NORTH = 110_574
 METRES_PER_DEGREE_EAST = 111_320
+# In detector-check mode each frame gets one request, for all of its detector flags, in place of a tile.
+FLAGS = "flags"
+DETECTOR = ROOT / "detector" / "run_detector.py"
+# The detector settings of the sealed run in runs/verify-mobdrone: keep boxes at this confidence or more.
+FLAG_CONFIDENCE = 0.05
 
 
 class OutOfBudget(Exception):
@@ -163,6 +181,18 @@ def decision_line(name, tile, answer):
     return f"{name}: close look at the {TILE_NAMES[tile]}: {len(points)} possible {'person' if len(points) == 1 else 'people'}, confidence {marks}"
 
 
+def flag_line(name, flags):
+    """One line for the live view: Ember's verdict on each detector flag in the frame, in its own words."""
+    verdicts = []
+    for flag in flags:
+        if flag["status"] == "unreadable":
+            verdicts.append("unreadable")
+        else:
+            verdict = "keep" if flag["status"] == "kept" else "dismiss"
+            verdicts.append(f'{verdict} {flag["ember_confidence"]:.2f} "{flag["what"]}"')
+    return f"{name}: {len(flags)} detector {'flag' if len(flags) == 1 else 'flags'}: " + " · ".join(verdicts)
+
+
 def dollars(nanodollars):
     return "$" + format(nanodollars / NANO, ".4f")
 
@@ -208,7 +238,10 @@ class Search:
     def ask(self, frame, tile, turn):
         """Send one overview (tile -1) or close look and store its answer in the frame. Any error stops the run."""
         try:
-            self.send_and_read(frame, tile, turn)
+            if tile == FLAGS:
+                self.check_flags(frame, turn)
+            else:
+                self.send_and_read(frame, tile, turn)
         except Exception:
             with self.lock:
                 self.stopped = True
@@ -267,17 +300,62 @@ class Search:
         self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, event))
         self.finish(call, worst, failed="failure" in event)
 
+    def check_flags(self, frame, turn):
+        """Send all of one frame's detector flags to Ember as numbered crops, and store its verdict on each flag."""
+        boxes = [flag["box"] for flag in frame["flags"]]
+        with Image.open(frame["path"]) as opened:
+            image = opened.convert("RGB")
+        body = flag_check.request_body(image, boxes)
+        try:
+            input_tokens = self.within_rate_limits(self.api.count, body)
+        except Lost as lost:
+            self.reserve(turn, 0)
+            self.record_lost(frame, FLAGS, 0, lost)
+            return
+        # Meta's input-token count leaves out the schema, so count each of its characters as a token.
+        worst = price(input_tokens + len(json.dumps(body["text"])), 0, LIMIT)
+        self.reserve(turn, worst)
+        started = time.time()
+        try:
+            reply = self.within_rate_limits(self.api.generate, body)
+        except Lost as lost:
+            self.record_lost(frame, FLAGS, worst, lost)
+            return
+        finished = time.time()
+        usage = reply["usage"]
+        paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
+        verdicts = flag_check.read_checks(reply, len(boxes))
+        for number, (flag, verdict) in enumerate(zip(frame["flags"], verdicts or [None] * len(boxes)), 1):
+            flag["crop"] = f"crops/{frame['name']}-flag{number}.jpg"
+            (self.out / flag["crop"]).write_bytes(flag_check.crop_jpeg(image, flag["box"]))
+            if verdict is None:
+                flag["status"] = "unreadable"
+            else:
+                flag.update(status="kept" if verdict[0] else "dismissed", ember_confidence=verdict[1], what=verdict[2])
+        answer = dict(verdicts=verdicts, response=reply, started=started, finished=finished)
+        if verdicts is None:
+            answer["failure"] = "unusable response"
+        call = dict(frame=frame["name"], tile=FLAGS, paid_nanodollars=paid, usage=usage,
+                    seconds=round(finished - started, 3), answer=answer)
+        self.decide(frame["name"], None, flag_line(frame["name"], frame["flags"]))
+        self.finish(call, worst, failed=verdicts is None)
+
     def record_lost(self, frame, tile, worst, lost):
         """Store a lost request as an unreadable overview or tile and carry on. Meta may still bill a request whose
         reply never arrived, so its worst-case cost counts as spent: the spending cap stays a guarantee."""
-        if tile >= 0:
-            frame["tiles"][tile] = None
-        else:
-            frame["ranking"] = []
-            frame["overview"] = "unreadable"
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=worst, usage=None, seconds=None,
                     answer=dict(failure=str(lost), lost=True))
-        self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, call["answer"]))
+        if tile == FLAGS:
+            for flag in frame["flags"]:
+                flag["status"] = "unreadable"
+            self.decide(frame["name"], None, f"{frame['name']}: check of {len(frame['flags'])} detector flags: {lost}")
+        else:
+            if tile >= 0:
+                frame["tiles"][tile] = None
+            else:
+                frame["ranking"] = []
+                frame["overview"] = "unreadable"
+            self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, call["answer"]))
         self.finish(call, worst, failed=True)
 
     def decide(self, frame_name, tile, text):
@@ -408,6 +486,72 @@ def run(search, frames, looks):
                         if round_number < len(frame["ranking"])])
 
 
+def run_detector(frames, python, device):
+    """Run the trained detector over every frame and return its boxes.json: per frame, its boxes in frame pixels.
+
+    The detector is AGPL-3.0 and this tool is MIT, so it runs detector/run_detector.py as its own program with
+    python, which needs ultralytics, and imports nothing from it (ADR 0012). It downloads its pinned weights on
+    first use.
+    """
+    folder = Path(mkdtemp(prefix="open-water-search-detector-"))
+    atexit.register(shutil.rmtree, folder, ignore_errors=True)
+    listed = [dict(frame=frame["name"], image=str(frame["path"].resolve()), width=frame["width"], height=frame["height"],
+                   sha256=hashlib.sha256(frame["path"].read_bytes()).hexdigest()) for frame in frames]
+    (folder / "manifest.json").write_text(json.dumps(dict(frames=listed)))
+    advice = "Pass --detector-python with a Python that has ultralytics installed (see detector/README.md)."
+    try:
+        subprocess.run([str(python), str(DETECTOR), str(folder / "manifest.json"), str(folder / "out"),
+                        "--min-confidence", str(FLAG_CONFIDENCE), "--device", device],
+                       check=True, capture_output=True, text=True)
+    except FileNotFoundError:
+        raise SystemExit(f"{python} was not found. {advice}")
+    except subprocess.CalledProcessError as error:
+        raise SystemExit(f"The detector failed: {error.stderr.strip()[-1500:]}\n{advice}")
+    return json.loads((folder / "out" / "boxes.json").read_text())
+
+
+def run_detector_check(search, frames, photos):
+    """Give each frame its detector flags, then send each flagged frame's flags to Ember, up to parallel at once."""
+    boxes = {photo["frame"]: photo for photo in photos}
+    for frame in frames:
+        frame["overview"] = "detector scan"
+        frame["flags"] = [dict(box=box[:4], detector_confidence=box[4], status="awaiting check")
+                          for box in flag_check.candidates(boxes[frame["name"]])]
+    flagged = [frame for frame in frames if frame["flags"]]
+    search.decide(None, None, f"detector: {sum(len(frame['flags']) for frame in frames)} flags in "
+                              f"{len(flagged)} of {len(frames)} frames")
+    search.ask_all([(frame, FLAGS) for frame in flagged])
+
+
+def tile_containing(width, height, x, y):
+    """The 3 x 3 section of the frame holding the point, for naming where a sighting is."""
+    for tile in range(9):
+        left, top, right, bottom = rectangle(width, height, tile)
+        if left <= x <= right and top <= y <= bottom:
+            return tile
+    raise ValueError(f"({x}, {y}) is outside the {width} x {height} frame")
+
+
+def flag_entry(frame):
+    """A frame's place in the coverage timeline in detector-check mode, and the sightings Ember kept.
+
+    The detector scanned the whole frame, so there are no tiles: the entry lists every flag with Ember's verdict.
+    """
+    flags, sightings = [], []
+    for number, flag in enumerate(frame["flags"], 1):
+        flags.append(dict(number=number, **flag))
+        if flag["status"] != "kept":
+            continue
+        x, y = (flag["box"][0] + flag["box"][2]) / 2, (flag["box"][1] + flag["box"][3]) / 2
+        sightings.append(dict(frame=frame["name"], second=frame["second"],
+                              tile=tile_containing(frame["width"], frame["height"], x, y), x=x, y=y,
+                              confidence=flag["ember_confidence"], what=flag["what"], crop=flag["crop"],
+                              crop_rect=list(flag_check.crop_square(frame["width"], frame["height"], flag["box"]))))
+    entry = dict(second=frame["second"], frame=frame["name"], width=frame["width"], height=frame["height"],
+                 overview=frame["overview"], flags=flags)
+    return entry, sightings
+
+
 def search_record(flight, settings, frames, search, ending, seconds):
     """Everything the run found and spent for the flight. The other results are views of this record.
 
@@ -416,6 +560,13 @@ def search_record(flight, settings, frames, search, ending, seconds):
     """
     sightings, coverage_timeline = [], []
     for frame in frames:
+        if "flags" in frame:
+            entry, kept = flag_entry(frame)
+            sightings += kept
+            if "drone_position" in frame:
+                entry["drone_position"] = frame["drone_position"]
+            coverage_timeline.append(entry)
+            continue
         tiles = []
         for tile in range(9):
             if tile not in frame["tiles"]:
@@ -497,7 +648,16 @@ def handoff_message(person, coverage_timeline):
     """
     position = person["position"]
     frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
-    uninspected = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
+    if "flags" in frame:
+        counts = Counter(flag["status"] for flag in frame["flags"])
+        spots = f'{len(frame["flags"])} {"spot" if len(frame["flags"]) == 1 else "spots"}'
+        coverage = (f'Ember described it as "{person["sightings"][-1]["what"]}". The detector flagged {spots} in '
+                    f'that frame, and Ember kept {counts["kept"]} and dismissed {counts["dismissed"]}.')
+        if counts["unreadable"]:
+            coverage += f' {counts["unreadable"]} could not be read.'
+    else:
+        uninspected = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
+        coverage = f"{uninspected} of the 9 sections of that frame are uninspected water."
     where = ""
     if "drone_position_at_sighting" in position:
         drone = position["drone_position_at_sighting"]
@@ -508,7 +668,7 @@ def handoff_message(person, coverage_timeline):
     return (f"Possible person {person['number']}. First seen {flight_time(person['first_seen_second'])}, "
             f"last seen {flight_time(person['last_seen_second'])} into the flight, "
             f"in the {position['section']} section of {position['frame']}.{where} "
-            f"Confidence {person['confidence']:.2f}. {uninspected} of the 9 sections of that frame are uninspected water.")
+            f"Confidence {person['confidence']:.2f}. {coverage}")
 
 
 def flight_time(second):
@@ -726,10 +886,14 @@ def reviewer_queue(record):
     queue = []
     for name, sightings in groupby(record["sightings"], key=lambda s: s["frame"]):
         for s in sorted(sightings, key=lambda s: -s["confidence"])[:REVIEW_LIMIT]:
-            left, top, right, bottom = rectangle(*sizes[name], s["tile"])
-            queue.append(dict(frame=name, tile=s["tile"], tile_name=TILE_NAMES[s["tile"]],
-                              x=round(s["x"], 1), y=round(s["y"], 1), confidence=s["confidence"], crop=s["crop"],
-                              crop_x=(s["x"] - left) / (right - left), crop_y=(s["y"] - top) / (bottom - top)))
+            # A close look's crop is its tile. A detector flag's crop is the square Ember checked around it.
+            left, top, right, bottom = s.get("crop_rect") or rectangle(*sizes[name], s["tile"])
+            item = dict(frame=name, tile=s["tile"], tile_name=TILE_NAMES[s["tile"]],
+                        x=round(s["x"], 1), y=round(s["y"], 1), confidence=s["confidence"], crop=s["crop"],
+                        crop_x=(s["x"] - left) / (right - left), crop_y=(s["y"] - top) / (bottom - top))
+            if "what" in s:
+                item["what"] = s["what"]
+            queue.append(item)
     queue.sort(key=lambda s: -s["confidence"])
     for rank, sighting in enumerate(queue, 1):
         sighting["rank"] = rank
@@ -784,38 +948,112 @@ def drone_positions(record):
             f'{"".join(plain + yellow)}</svg>')
 
 
+DETECTOR_REPORT_CSS = """.what { font-style: italic; }
+.flag { position: absolute; box-sizing: border-box; border: 2px solid #f5f3eb; }
+.flag em { position: absolute; left: 100%; top: 0; font: 700 .7rem/1 system-ui; font-style: normal; color: #172f2e; background: #f5f3eb; padding: .1rem .2rem; }
+.verdicts { margin: .4rem 0 0; padding-left: 1.6rem; font-size: .9rem; }
+.flag.kept { border: 3px solid #ffdd75; }
+.flag.unreadable { border: 2px dashed #ff8a3d; }
+.dismissed { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 1rem; }
+.dismissed img { display: block; width: 100%; height: auto; }
+.dismissed p { font-size: .85rem; overflow-wrap: anywhere; }
+"""
+
+
+def tile_map(frame):
+    """The frame's nine tiles, each shaded by what happened to it, and a note on how many never got a close look."""
+    esc = html.escape
+    cells = "".join(
+        f'<span class="tile {t["status"].split(",")[0].replace(" ", "-")}" style="left:{100 * (t["tile"] % 3) / 3:.4f}%;top:{100 * (t["tile"] // 3) / 3:.4f}%">'
+        f'<em>{esc(t["status"])}</em></span>' for t in frame["tiles"])
+    unchecked = sum(t["status"] == "not checked" for t in frame["tiles"])
+    if frame["overview"] == "done":
+        note = f"{unchecked} of 9 tiles never got a close look."
+    else:
+        note = "Awaiting an overview." if frame["overview"] == "awaiting overview" else "Ember's overview could not be read, so no tile got a close look."
+    return cells, note, ""
+
+
+def flag_map(frame):
+    """The detector's flags drawn on the frame and numbered, a note on how many Ember kept, and Ember's verdict on
+    each numbered flag in its own words."""
+    esc = html.escape
+    boxes, verdicts = [], []
+    for number, flag in enumerate(frame["flags"], 1):
+        x1, y1, x2, y2 = flag["box"]
+        boxes.append(f'<span class="flag {flag["status"]}" style="left:{100 * x1 / frame["width"]:.2f}%;'
+                     f'top:{100 * y1 / frame["height"]:.2f}%;width:{100 * (x2 - x1) / frame["width"]:.2f}%;'
+                     f'height:{100 * (y2 - y1) / frame["height"]:.2f}%"><em>{number}</em></span>')
+        if flag["status"] == "unreadable":
+            verdict = "check could not be read"
+        else:
+            verdict = f'{"keep" if flag["status"] == "kept" else "dismiss"} {flag["ember_confidence"]:.2f}, <i>“{esc(flag["what"])}”</i>'
+        verdicts.append(f'<li>{verdict} · detector {flag["detector_confidence"]:.2f}</li>')
+    counts = Counter(flag["status"] for flag in frame["flags"])
+    spots = f"{len(frame['flags'])} {'spot' if len(frame['flags']) == 1 else 'spots'}"
+    note = (f"The detector scanned the whole frame and flagged {spots}. "
+            f"Ember kept {counts['kept']} and dismissed {counts['dismissed']}.")
+    if counts["unreadable"]:
+        note += f" {counts['unreadable']} could not be read."
+    return "".join(boxes), note, f'<ol class="verdicts">{"".join(verdicts)}</ol>' if verdicts else ""
+
+
+def dismissed_flags(coverage):
+    """Every flag Ember dismissed, with its crop and words, so a reviewer can reopen it."""
+    esc = html.escape
+    items = "".join(
+        f'<li><a href="#{esc(frame["frame"])}"><img src="{esc(flag["crop"])}" alt="Crop Ember dismissed in {esc(frame["frame"])}"></a>'
+        f'<p class="muted">{esc(frame["frame"])} · detector {flag["detector_confidence"]:.2f}</p><p class="what">Ember: “{esc(flag["what"])}”, {flag["ember_confidence"]:.2f}</p></li>'
+        for frame in coverage for flag in frame["flags"] if flag["status"] == "dismissed")
+    return ("<h2>Flags Ember dismissed</h2><p>Ember can be wrong. Each of these was a detector flag that Ember said "
+            "holds no person. Open one to check it yourself.</p>"
+            f'<ol class="dismissed">{items or "<li><p>None.</p></li>"}</ol>')
+
+
 def write_report(out, record):
     queue = reviewer_queue(record)
     coverage = record["coverage_timeline"]
+    detector_check = any("flags" in frame for frame in coverage)
     has_positions = any("drone_position" in frame for frame in coverage)
     stopped = record["ending"]["reason"]
     esc = html.escape
     cards = "".join(
-        f'<li><a href="#{esc(s["frame"])}"><span class="photo"><img src="{esc(s["crop"])}" alt="Close look at the {esc(s["tile_name"])} tile of {esc(s["frame"])}">'
+        f'<li><a href="#{esc(s["frame"])}"><span class="photo"><img src="{esc(s["crop"])}" alt="{"Crop Ember checked in" if "what" in s else "Close look at"} the {esc(s["tile_name"])} tile of {esc(s["frame"])}">'
         f'<span class="pin" style="left:{100 * s["crop_x"]:.2f}%;top:{100 * s["crop_y"]:.2f}%"></span></span></a>'
-        f'<p><b>#{s["rank"]}</b> {esc(s["frame"])} · {esc(s["tile_name"])} · confidence {s["confidence"]:.2f}</p></li>'
+        f'<p><b>#{s["rank"]}</b> {esc(s["frame"])} · {esc(s["tile_name"])} · confidence {s["confidence"]:.2f}</p>'
+        + (f'<p class="what">Ember: “{esc(s["what"])}”</p>' if "what" in s else "") + '</li>'
         for s in queue) or "<li><p>No sightings to review.</p></li>"
     maps = []
     for frame in coverage:
-        cells = "".join(
-            f'<span class="tile {t["status"].split(",")[0].replace(" ", "-")}" style="left:{100 * (t["tile"] % 3) / 3:.4f}%;top:{100 * (t["tile"] // 3) / 3:.4f}%">'
-            f'<em>{esc(t["status"])}</em></span>' for t in frame["tiles"])
+        if "flags" in frame:
+            cells, note, verdicts = flag_map(frame)
+        else:
+            cells, note, verdicts = tile_map(frame)
         pins = "".join(
             f'<span class="pin" style="left:{100 * s["x"] / frame["width"]:.2f}%;top:{100 * s["y"] / frame["height"]:.2f}%"></span>'
             for s in queue if s["frame"] == frame["frame"])
-        unchecked = sum(t["status"] == "not checked" for t in frame["tiles"])
-        if frame["overview"] == "done":
-            note = f"{unchecked} of 9 tiles never got a close look."
-        else:
-            note = "Awaiting an overview." if frame["overview"] == "awaiting overview" else "Ember's overview could not be read, so no tile got a close look."
         if "drone_position" in frame:
             drone = frame["drone_position"]
             note += f" Drone position latitude {drone['latitude']:.5f}, longitude {drone['longitude']:.5f}."
         elif has_positions:
             note += " No position data for this frame."
         maps.append(f'<section id="{esc(frame["frame"])}"><h3>{esc(frame["frame"])}</h3><p>{note}</p>'
-                    f'<div class="photo"><img src="frames/{esc(frame["frame"])}.jpg" alt="{esc(frame["frame"])} with its coverage map">{cells}{pins}</div></section>')
+                    f'<div class="photo"><img src="frames/{esc(frame["frame"])}.jpg" alt="{esc(frame["frame"])} with its coverage map">{cells}{pins}</div>{verdicts}</section>')
     status = f"Stopped early: {esc(stopped)}." if stopped else "Finished."
+    if detector_check:
+        extra_css, dismissed = DETECTOR_REPORT_CSS, dismissed_flags(coverage)
+        intro = ("Each card shows the crop Ember checked around a detector flag, with its mark and its words. Open a card "
+                 "to see the flag on the full frame. The detector can miss people, and Ember can dismiss one, so the "
+                 "flags it dismissed are listed after the map.")
+        legend = ("The detector scanned every frame whole. Yellow boxes are flags Ember kept, white boxes flags it "
+                  "dismissed, and dashed boxes flags whose check could not be read. Each box carries Ember's words.")
+    else:
+        extra_css, dismissed = "", ""
+        intro = ("Each card shows the close look Ember received, with its mark. Open a card to see that mark on the full "
+                 "frame. Water Ember checked without reporting anyone can still hold a swimmer, and shaded tiles never "
+                 "got a close look.")
+        legend = ("Yellow tiles hold a sighting. Blue tiles were checked with nothing reported. Shaded tiles are water "
+                  "nobody has looked at closely yet.")
     (out / "report.html").write_text(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reviewer queue · Open Water Search</title>
@@ -840,22 +1078,24 @@ a {{ color: #1b594c; }}
 .tile.flagged {{ border: 3px solid #ffdd75; }}
 .tile.checked {{ border: 2px solid #8ce8ec; }}
 .tile.unreadable {{ border: 2px dashed #ff8a3d; }}
-</style></head><body>
+{extra_css}</style></head><body>
 <h1>Reviewer queue</h1>
 <p class="muted">{len(coverage)} frames · {len(queue)} sightings to review · {dollars(record["spent_nanodollars"])} spent on Muse Ember. {status}</p>
-<p>Each card shows the close look Ember received, with its mark. Open a card to see that mark on the full frame. Water Ember checked without reporting anyone can still hold a swimmer, and shaded tiles never got a close look.</p>
+<p>{intro}</p>
 <h2>Sightings, highest confidence first</h2>
 <ol class="queue">{cards}</ol>
 <h2>Coverage map</h2>
-<p>Yellow tiles hold a sighting. Blue tiles were checked with nothing reported. Shaded tiles are water nobody has looked at closely yet.</p>
+<p>{legend}</p>
 <div class="maps">{"".join(maps)}</div>
-{drone_positions(record)}
+{dismissed}{drone_positions(record)}
 </body></html>
 """)
 
 
-def main(arguments=None, api=None):
-    """Run the command. Offline tests pass a simulated Ember as api; otherwise it calls Meta with MODEL_API_KEY."""
+def main(arguments=None, api=None, detect=None):
+    """Run the command. Offline tests pass a simulated Ember as api, and for detector-check mode a stand-in detector
+    as detect, which takes the frames and returns boxes.json. Otherwise it calls Meta with MODEL_API_KEY and runs
+    detector/run_detector.py."""
     parser = argparse.ArgumentParser(description="Search a drone flight for swimmers with Muse Ember.")
     parser.add_argument("frames", type=Path, metavar="flight",
                         help="video file of the flight, or folder of its .jpg, .jpeg or .png photos, one per second")
@@ -868,10 +1108,17 @@ def main(arguments=None, api=None):
     parser.add_argument("--format", choices=("grounding", "frozen"), default="grounding",
                         help="how close looks ask for marks: Meta's 0-1,000 grounding format with a JSON schema "
                              "(default), or the frozen prompts of the published one-zoom runs")
-    parser.add_argument("--mode", choices=("fixed", "agent"), default="fixed",
-                        help="who chooses the close looks: the fixed method (default), or Ember through tool calls, "
-                             "with up to 4 close looks per frame and sightings on the 0-1,000 grid. --looks, "
-                             "--parallel and --format apply to the fixed method only")
+    parser.add_argument("--mode", choices=("fixed", "agent", "detector-check"), default="fixed",
+                        help="who chooses the close looks: the fixed method (default), Ember through tool calls, "
+                             "with up to 4 close looks per frame and sightings on the 0-1,000 grid, or "
+                             "detector-check, where a trained detector flags every frame and Ember checks each flag. "
+                             "--looks and --format apply to the fixed method only, and --parallel to fixed and "
+                             "detector-check")
+    parser.add_argument("--detector-python", type=Path, default=Path(sys.executable),
+                        help="for detector-check: a Python with ultralytics installed, which runs "
+                             "detector/run_detector.py (default: this Python)")
+    parser.add_argument("--detector-device", default="mps",
+                        help="for detector-check: where the detector runs, mps (default), cpu or a CUDA device number")
     parser.add_argument("--retries", type=int, default=1, choices=range(0, 8), metavar="0-7",
                         help="times to retry a request after a 429 rate-limit reply, a timeout, a dropped connection "
                              "or a 5xx reply (default 1)")
@@ -890,6 +1137,17 @@ def main(arguments=None, api=None):
     frames = load_frames(cut_into_seconds(args.frames) if args.frames.is_file() else args.frames)
     if args.positions:
         read_positions(args.positions, frames)
+    if args.out.exists():
+        raise SystemExit(f"{args.out} already exists. Give --out a new folder.")
+    detector_seconds = 0
+    if args.mode == "detector-check":
+        # The detector runs before any Ember call, so a missing ultralytics stops the run before it spends anything.
+        if detect is None:
+            def detect(frames):
+                return run_detector(frames, args.detector_python, args.detector_device)
+        detector_started = time.monotonic()
+        photos = detect(frames)
+        detector_seconds = time.monotonic() - detector_started
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
@@ -899,16 +1157,23 @@ def main(arguments=None, api=None):
     try:
         if args.mode == "agent":
             run_agent(search, frames)
+        elif args.mode == "detector-check":
+            (args.out / "detector-boxes.json").write_text(json.dumps(photos))
+            run_detector_check(search, frames, photos)
         else:
             run(search, frames, args.looks)
     except OutOfBudget:
         ending = dict(outcome="spending cap", reason="the next request could have exceeded the budget")
     except Exception as error:
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
-    seconds = time.monotonic() - search.started
+    seconds = time.monotonic() - search.started + detector_seconds
     search.log.close()
     settings = dict(model=MODEL, mode=args.mode, looks=args.looks, format=args.format, parallel=args.parallel,
                     retries=args.retries, spending_cap_nanodollars=budget)
+    if args.mode == "detector-check":
+        settings["detector"] = dict(program="detector/run_detector.py", min_confidence=FLAG_CONFIDENCE,
+                                    most_flags_per_frame=flag_check.MAX_CANDIDATES, device=args.detector_device,
+                                    seconds=round(detector_seconds, 3))
     record = search_record(args.frames, settings, frames, search, ending, seconds)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
     queue = reviewer_queue(record)
