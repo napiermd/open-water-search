@@ -94,6 +94,17 @@ class Stopped(Exception):
     """Another request ended the run before this one was sent."""
 
 
+class Lost(Exception):
+    """A request that timed out or lost its connection on every try. Only its own overview or tile is lost."""
+
+
+def is_transient(error):
+    """A timeout, a dropped connection or a 5xx from Meta: worth one more try, and never a reason to end the run."""
+    if isinstance(error, urllib.error.HTTPError):
+        return error.code >= 500
+    return isinstance(error, (TimeoutError, ConnectionError, urllib.error.URLError))
+
+
 class RateLimited(Exception):
     """Meta answered 429. retry_after is its Retry-After header in seconds, or None without one."""
 
@@ -197,7 +208,12 @@ class Search:
                     {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}]}
         if grounding:
             body["text"] = {"format": grounding_format.MARKS}
-        input_tokens = self.within_rate_limits(self.api.count, body)
+        try:
+            input_tokens = self.within_rate_limits(self.api.count, body)
+        except Lost as lost:
+            self.reserve(turn, 0)
+            self.record_lost(frame, tile, 0, lost)
+            return
         if grounding:
             # Meta's input-token count leaves out the schema, so count each of its characters as a token. That can
             # only overestimate, which keeps the spending cap a guarantee.
@@ -205,7 +221,11 @@ class Search:
         worst = price(input_tokens, 0, LIMIT)
         self.reserve(turn, worst)
         started = time.time()
-        reply = self.within_rate_limits(self.api.generate, body)
+        try:
+            reply = self.within_rate_limits(self.api.generate, body)
+        except Lost as lost:
+            self.record_lost(frame, tile, worst, lost)
+            return
         finished = time.time()
         usage = reply["usage"]
         paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
@@ -237,6 +257,27 @@ class Search:
             if self.failures_in_a_row >= FAILURE_LIMIT:
                 raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
 
+    def record_lost(self, frame, tile, worst, lost):
+        """Store a lost request as an unreadable overview or tile and carry on. Meta may still bill a request whose
+        reply never arrived, so its worst-case cost counts as spent: the spending cap stays a guarantee."""
+        if tile >= 0:
+            frame["tiles"][tile] = None
+        else:
+            frame["ranking"] = []
+            frame["overview"] = "unreadable"
+        call = dict(frame=frame["name"], tile=tile, paid_nanodollars=worst, usage=None, seconds=None,
+                    answer=dict(failure=f"request lost after {self.tries} tries: {lost}"))
+        with self.lock:
+            self.reserved -= worst
+            self.spent += worst
+            self.lock.notify_all()
+            self.calls.append(call)
+            self.log.write(json.dumps(call) + "\n")
+            self.log.flush()
+            self.failures_in_a_row += 1
+            if self.failures_in_a_row >= FAILURE_LIMIT:
+                raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
+
     def reserve(self, turn, worst):
         """Reserve a request's worst-case cost against the spending cap, in request order.
 
@@ -256,7 +297,9 @@ class Search:
 
     def within_rate_limits(self, method, body):
         """Call Ember, spacing requests out when the rate-limit headers run low. After a 429, every request
-        waits at least Retry-After, then a back-off that doubles with each 429 this request meets."""
+        waits at least Retry-After, then a back-off that doubles with each 429 this request meets. A timeout, dropped
+        connection or 5xx gets the same back-off; if every try meets one, the request is Lost."""
+        transient = None
         for attempt in range(self.tries):
             with self.lock:
                 now = time.monotonic()
@@ -266,9 +309,19 @@ class Search:
             try:
                 return method(body)
             except RateLimited as limited:
+                transient = None
                 backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
                 with self.lock:
                     self.next_send = max(self.next_send, time.monotonic() + (limited.retry_after or 0) + backoff)
+            except Exception as error:
+                if not is_transient(error):
+                    raise
+                transient = error
+                backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
+                with self.lock:
+                    self.next_send = max(self.next_send, time.monotonic() + backoff)
+        if transient is not None:
+            raise Lost(f"{type(transient).__name__}: {transient}") from transient
         raise RuntimeError(f"Meta answered 429 to {self.tries} tries in a row")
 
 
