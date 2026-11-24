@@ -37,3 +37,6 @@ runs/*/calls.jsonl
 runs/*/crops/
 runs/*/frames/
 runs/*/report.html
+runs/*/scoring-only/labels
+mobdrone/*/labels
+mobdrone/*/*/labels

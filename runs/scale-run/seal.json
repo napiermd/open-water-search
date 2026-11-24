@@ -1,0 +1,22 @@
+{
+  "search_record_sha256": "993e2be0337dd54a831918f4dcbd4564c3c7371b1008fdc19cb84ba9f1db7bb2",
+  "calls_sha256": "4934ee15845e9b1d9a378dd1b2702dc322d8280234a703c8e842b0dc83e902e2",
+  "search_record_redacted_sha256": "a7af5718488c83b76cf6c8cc7834908b89f5ad5abe1745a8d2593c4a7a193957",
+  "calls_redacted_sha256": "2e18d9296aa53f7bf1a9b560350ff135b00994756e5a845145ea9c8caebd5a8a",
+  "removed": "response.id and output[].id from every call",
+  "settings": {
+    "model": "muse-ember-1.0",
+    "mode": "fixed",
+    "looks": 2,
+    "format": "grounding",
+    "parallel": 8,
+    "retries": 1,
+    "spending_cap_nanodollars": 1470000000
+  },
+  "spent_nanodollars": 957080076,
+  "ending": {
+    "outcome": "finished",
+    "reason": null
+  },
+  "calls": 4641
+}
