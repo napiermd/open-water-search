@@ -2,9 +2,9 @@
   "identity": "MOBDrone track IDs: one ID is one person; IDs labeled in the same second are different people; IDs never labeled together are unknown; boxes without an ID are left out",
   "seconds": 120,
   "labeled_people": 4,
-  "possible_people": 6,
+  "possible_people": 8,
   "sightings": {
-    "on_a_labeled_person": 105,
+    "on_a_labeled_person": 101,
     "on_a_box_without_a_track_id": 0,
     "on_no_labeled_person": 0
   },
@@ -13,14 +13,14 @@
   "labeled_people_sighted": 4,
   "labeled_people_split": 2,
   "splits": {
-    "after_a_gap_of_more_than_2_seconds": 2,
-    "within_2_seconds": 0
+    "after_a_gap_of_more_than_2_seconds": 3,
+    "within_2_seconds": 1
   },
   "by_possible_person": [
     {
       "number": 1,
-      "first_seen_second": 7,
-      "last_seen_second": 26,
+      "first_seen_second": 8,
+      "last_seen_second": 22,
       "labeled_people": [
         2
       ]
@@ -28,13 +28,21 @@
     {
       "number": 2,
       "first_seen_second": 25,
+      "last_seen_second": 26,
+      "labeled_people": [
+        2
+      ]
+    },
+    {
+      "number": 3,
+      "first_seen_second": 26,
       "last_seen_second": 60,
       "labeled_people": [
         3
       ]
     },
     {
-      "number": 3,
+      "number": 4,
       "first_seen_second": 29,
       "last_seen_second": 35,
       "labeled_people": [
@@ -42,7 +50,7 @@
       ]
     },
     {
-      "number": 4,
+      "number": 5,
       "first_seen_second": 76,
       "last_seen_second": 98,
       "labeled_people": [
@@ -50,7 +58,7 @@
       ]
     },
     {
-      "number": 5,
+      "number": 6,
       "first_seen_second": 94,
       "last_seen_second": 94,
       "labeled_people": [
@@ -58,8 +66,16 @@
       ]
     },
     {
-      "number": 6,
-      "first_seen_second": 97,
+      "number": 7,
+      "first_seen_second": 98,
+      "last_seen_second": 101,
+      "labeled_people": [
+        5
+      ]
+    },
+    {
+      "number": 8,
+      "first_seen_second": 103,
       "last_seen_second": 118,
       "labeled_people": [
         5

@@ -58,7 +58,7 @@
       <p>On November 24 the command ran on a two-minute MOBDrone clip, one frame per second: the detector over every frame, then Ember on each frame it flagged. This is what it printed, with Ember’s words for every flag, ending with the handoff messages.</p>
       <figure class="flight check-flight">
         <div class="flight-head">
-          <code>python probe/open_water_search.py clip.mp4 --mode detector-check --detector-python detector-venv/bin/python --out runs/live-detector-check --budget 0.05</code>
+          <code>python3 -u probe/open_water_search.py clip.mp4 --mode detector-check --detector-python detector-venv/bin/python --out runs/live-detector-check --budget 0.05</code>
           <button type="button" id="check-replay" class="replay" hidden>Replay</button>
         </div>
         <ol id="check-printed" class="printed" aria-label="What the command printed"></ol>
@@ -70,21 +70,21 @@
           <li><span class="swatch clear"></span>Ember dismissed every flag</li>
           <li><span class="swatch never"></span>The detector flagged nothing</li>
         </ul>
-        <figcaption>Recorded on November 24: 99 Ember requests for $0.0081 under a $0.05 cap, 192 seconds from start to finish, including cutting the video and 16 seconds for the detector. The command above is shown with shortened paths, and the exact one is in <a href="https://github.com/napiermd/open-water-search/tree/main/runs/live-detector-check">runs/live-detector-check</a>.</figcaption>
+        <figcaption>Recorded on November 24: 99 Ember requests for $0.0080 under a $0.05 cap, 57 seconds from start to finish for two minutes of footage, including cutting the video and 8 seconds for the detector. A first take of the same command found 105 with 6 possible people (<a href="https://github.com/napiermd/open-water-search/tree/main/runs/live-detector-check-first-take">runs/live-detector-check-first-take</a>).</figcaption>
       </figure>
       <div class="table-wrap">
         <table class="numbers">
           <thead><tr><th scope="col">Same clip, 116 labeled person appearances</th><th scope="col">Found</th><th scope="col">False alarms</th><th scope="col">Possible people, for 4 labeled</th><th scope="col">Cost</th></tr></thead>
           <tbody>
             <tr><th scope="row">Detector alone, as published (0.25)</th><td>114</td><td>1</td><td>not run</td><td>$0</td></tr>
-            <tr><th scope="row">Detector, then Ember</th><td>105</td><td>0</td><td>6</td><td>$0.0081</td></tr>
+            <tr><th scope="row">Detector, then Ember</th><td>101</td><td>0</td><td>8</td><td>$0.0080</td></tr>
             <tr><th scope="row">Ember’s own search</th><td>107</td><td>47</td><td>15</td><td>$0.0531</td></tr>
           </tbody>
         </table>
       </div>
       <ul class="facts-list">
-        <li><strong>On this clip the detector alone did best.</strong> It raised one false alarm in two minutes, so Ember’s check had almost nothing to remove. It also dismissed 9 real sightings, calling six of them a bird, a duck or a seal and three a person off the centre of the crop. The 300 frames above, where the detector raised 166 false alarms, are the test of what the check is for.</li>
-        <li><strong>The handoff got cleaner than Ember’s own search.</strong> The 105 sightings merged into 6 possible people for the clip’s 4 labeled people, and every one holds a labeled person. Ember’s own search left 15, and 7 of them held no one. The merge rule never joined two different people. It split two people after gaps of more than two seconds.</li>
+        <li><strong>On this clip the detector alone did best.</strong> It raised one false alarm in two minutes, so Ember’s check had almost nothing to remove. It also dismissed 13 real sightings, calling eight of them a duck, a bird, a seal or a dolphin, four a person away from the centre of the crop, and one a dark floating shape. The 300 frames above, where the detector raised 166 false alarms, are the test of what the check is for.</li>
+        <li><strong>The handoff got cleaner than Ember’s own search.</strong> The 101 sightings merged into 8 possible people for the clip’s 4 labeled people, and every one holds a labeled person. Ember’s own search left 15, and 7 of them held no one. The merge rule never joined two different people. It split two of them, four times in all, three after gaps of more than two seconds.</li>
       </ul>
     </section>
 

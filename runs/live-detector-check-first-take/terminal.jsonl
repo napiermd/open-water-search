@@ -1,0 +1,107 @@
+{"t": 27.521, "line": "detector: 115 flags in 99 of 120 frames"}
+{"t": 31.099, "line": "second-00013: 1 detector flag: keep 0.92 \"Snorkeler floating on surface\""}
+{"t": 31.101, "line": "second-00007: 1 detector flag: keep 0.85 \"person floating on back\""}
+{"t": 31.142, "line": "second-00008: 1 detector flag: keep 0.92 \"person floating on back\""}
+{"t": 31.151, "line": "second-00006: 1 detector flag: dismiss 0.90 \"open water, person right of centre\""}
+{"t": 31.227, "line": "second-00012: 1 detector flag: dismiss 0.95 \"duck swimming\""}
+{"t": 31.297, "line": "second-00010: 1 detector flag: keep 0.85 \"Person floating on back in water\""}
+{"t": 31.526, "line": "second-00011: 1 detector flag: keep 0.85 \"person floating on back, snorkel visible\""}
+{"t": 31.635, "line": "second-00009: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 35.136, "line": "second-00014: 1 detector flag: keep 0.90 \"swimmer floating on back\""}
+{"t": 35.365, "line": "second-00019: 1 detector flag: keep 0.95 \"person swimming prone\""}
+{"t": 35.367, "line": "second-00017: 1 detector flag: keep 0.92 \"swimmer floating on back\""}
+{"t": 35.411, "line": "second-00020: 1 detector flag: keep 0.70 \"person floating face down in water\""}
+{"t": 35.505, "line": "second-00018: 1 detector flag: keep 0.85 \"person swimming on back in open water\""}
+{"t": 35.603, "line": "second-00015: 1 detector flag: keep 0.80 \"person floating on back\""}
+{"t": 35.604, "line": "second-00021: 1 detector flag: keep 0.75 \"person swimming on back\""}
+{"t": 35.833, "line": "second-00016: 1 detector flag: keep 0.90 \"Person floating swimming\""}
+{"t": 37.929, "line": "second-00023: 1 detector flag: keep 0.75 \"person snorkelling prone\""}
+{"t": 37.931, "line": "second-00022: 1 detector flag: keep 0.90 \"person floating swimming in water\""}
+{"t": 37.968, "line": "second-00024: 1 detector flag: dismiss 0.92 \"large bird in flight over water\""}
+{"t": 38.139, "line": "second-00025: 2 detector flags: keep 0.65 \"person face down in dark wetsuit\" \u00b7 keep 0.90 \"person floating with legs up\""}
+{"t": 38.45, "line": "second-00028: 1 detector flag: keep 0.90 \"Person upside down, legs up in water\""}
+{"t": 38.748, "line": "second-00026: 2 detector flags: keep 0.90 \"Person floating, legs up, pink top\" \u00b7 keep 0.85 \"Person floating on back, dark wetsuit\""}
+{"t": 38.984, "line": "second-00027: 1 detector flag: keep 0.95 \"person diving head down\""}
+{"t": 39.811, "line": "second-00029: 2 detector flags: keep 0.95 \"person diving head down\" \u00b7 keep 0.70 \"person floating face down\""}
+{"t": 40.925, "line": "second-00031: 2 detector flags: keep 0.92 \"Person floating on back\" \u00b7 keep 0.75 \"Person swimming in water\""}
+{"t": 41.057, "line": "second-00032: 2 detector flags: keep 0.65 \"person diving, legs up with white feet\" \u00b7 keep 0.90 \"person floating, legs up with white feet\""}
+{"t": 41.074, "line": "second-00030: 2 detector flags: keep 0.92 \"person floating on back\" \u00b7 keep 0.88 \"person swimming in water\""}
+{"t": 41.904, "line": "second-00033: 2 detector flags: keep 0.90 \"person floating on back\" \u00b7 keep 0.70 \"person floating diagonally\""}
+{"t": 42.104, "line": "second-00034: 2 detector flags: keep 0.85 \"Person floating inverted legs up\" \u00b7 dismiss 0.90 \"Seabird on water surface\""}
+{"t": 42.206, "line": "second-00037: 1 detector flag: keep 0.90 \"Person floating in water legs raised\""}
+{"t": 42.719, "line": "second-00035: 2 detector flags: keep 0.90 \"person floating in water\" \u00b7 keep 0.95 \"person inverted in water\""}
+{"t": 43.063, "line": "second-00036: 2 detector flags: keep 0.95 \"person diving, legs up\" \u00b7 dismiss 0.90 \"open water ripples, partial object left edge\""}
+{"t": 43.911, "line": "second-00039: 1 detector flag: keep 0.98 \"person floating head down legs up\""}
+{"t": 43.915, "line": "second-00040: 1 detector flag: keep 0.92 \"person diving upside down in water\""}
+{"t": 44.055, "line": "second-00038: 1 detector flag: keep 0.98 \"person in water on back, legs up\""}
+{"t": 44.728, "line": "second-00041: 1 detector flag: keep 0.95 \"person diving head down\""}
+{"t": 44.73, "line": "second-00042: 1 detector flag: keep 0.90 \"person floating face down\""}
+{"t": 134.818, "line": "second-00045: 1 detector flag: keep 0.97 \"person floating face-down in water\""}
+{"t": 135.002, "line": "second-00043: 1 detector flag: keep 0.97 \"Person floating in water\""}
+{"t": 135.017, "line": "second-00050: 1 detector flag: keep 0.97 \"swimmer face-down with flippers\""}
+{"t": 135.119, "line": "second-00047: 1 detector flag: keep 0.95 \"person floating face down\""}
+{"t": 135.131, "line": "second-00049: 1 detector flag: keep 0.92 \"person floating on back in water\""}
+{"t": 135.169, "line": "second-00048: 1 detector flag: keep 0.90 \"person legs up swimming in water\""}
+{"t": 135.265, "line": "second-00044: 1 detector flag: keep 0.95 \"person floating on back in water\""}
+{"t": 135.265, "line": "second-00046: 1 detector flag: keep 0.95 \"person floating on back with fins\""}
+{"t": 137.307, "line": "second-00051: 1 detector flag: keep 0.85 \"person in dark wetsuit floating in water\""}
+{"t": 137.335, "line": "second-00053: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 138.048, "line": "second-00052: 1 detector flag: keep 0.90 \"person floating in water\""}
+{"t": 138.636, "line": "second-00055: 1 detector flag: keep 0.97 \"person floating on back in water\""}
+{"t": 138.701, "line": "second-00057: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 138.751, "line": "second-00056: 1 detector flag: keep 0.95 \"Person floating on back\""}
+{"t": 138.814, "line": "second-00054: 1 detector flag: keep 0.97 \"person floating in water\""}
+{"t": 139.105, "line": "second-00058: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 140.385, "line": "second-00059: 1 detector flag: keep 0.95 \"person floating in water\""}
+{"t": 140.478, "line": "second-00076: 1 detector flag: keep 0.95 \"person floating swimming in water\""}
+{"t": 141.315, "line": "second-00060: 1 detector flag: keep 0.97 \"person floating face down in water\""}
+{"t": 167.115, "line": "second-00080: 1 detector flag: keep 0.95 \"Swimmer floating on back\""}
+{"t": 167.15, "line": "second-00083: 1 detector flag: keep 0.95 \"person floating on back in water\""}
+{"t": 167.229, "line": "second-00078: 1 detector flag: keep 0.85 \"person floating on back in water\""}
+{"t": 167.254, "line": "second-00082: 1 detector flag: keep 0.90 \"person floating on back\""}
+{"t": 167.315, "line": "second-00077: 1 detector flag: keep 0.92 \"person swimming on back\""}
+{"t": 167.414, "line": "second-00081: 1 detector flag: keep 0.92 \"Person floating in water\""}
+{"t": 167.562, "line": "second-00079: 1 detector flag: keep 0.97 \"person floating in wetsuit\""}
+{"t": 167.944, "line": "second-00084: 1 detector flag: keep 0.98 \"person floating on back in water\""}
+{"t": 169.375, "line": "second-00085: 1 detector flag: keep 0.95 \"Person in wetsuit floating on back\""}
+{"t": 169.426, "line": "second-00086: 1 detector flag: keep 0.90 \"person floating on back in water\""}
+{"t": 170.181, "line": "second-00087: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 170.415, "line": "second-00088: 1 detector flag: keep 0.97 \"person in dark wetsuit floating in open water\""}
+{"t": 170.754, "line": "second-00091: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 170.988, "line": "second-00090: 1 detector flag: keep 0.90 \"person floating on back in water\""}
+{"t": 171.077, "line": "second-00089: 1 detector flag: keep 0.92 \"person floating on back in water\""}
+{"t": 171.078, "line": "second-00092: 1 detector flag: keep 0.90 \"person floating on back\""}
+{"t": 173.278, "line": "second-00093: 1 detector flag: keep 0.90 \"person floating on back\""}
+{"t": 173.288, "line": "second-00095: 2 detector flags: keep 0.95 \"person floating on back\" \u00b7 dismiss 0.75 \"seal or animal swimming\""}
+{"t": 173.75, "line": "second-00098: 2 detector flags: keep 0.92 \"person floating on back in water\" \u00b7 dismiss 0.85 \"water bird swimming\""}
+{"t": 173.928, "line": "second-00096: 2 detector flags: keep 0.95 \"person floating in water\" \u00b7 dismiss 0.75 \"bird or marine animal at surface\""}
+{"t": 173.973, "line": "second-00094: 2 detector flags: keep 0.96 \"swimmer in dark wetsuit floating\" \u00b7 keep 0.55 \"elongated dark figure in water\""}
+{"t": 174.102, "line": "second-00097: 2 detector flags: keep 0.98 \"person floating on back\" \u00b7 keep 0.55 \"person swimming on back\""}
+{"t": 174.375, "line": "second-00099: 2 detector flags: keep 0.75 \"swimmer with white fins centre\" \u00b7 dismiss 0.90 \"partial legs at right edge\""}
+{"t": 175.282, "line": "second-00100: 1 detector flag: keep 0.85 \"person swimming on back\""}
+{"t": 175.507, "line": "second-00101: 1 detector flag: keep 0.95 \"person floating swimming in water\""}
+{"t": 176.326, "line": "second-00102: 1 detector flag: keep 0.72 \"swimmer with fins floating on surface\""}
+{"t": 176.415, "line": "second-00103: 1 detector flag: keep 0.75 \"person swimming on back\""}
+{"t": 176.737, "line": "second-00106: 1 detector flag: keep 0.95 \"person floating on back in water\""}
+{"t": 176.855, "line": "second-00107: 1 detector flag: keep 0.85 \"person swimming on stomach\""}
+{"t": 177.375, "line": "second-00105: 1 detector flag: keep 0.85 \"person swimming on back\""}
+{"t": 177.378, "line": "second-00104: 1 detector flag: keep 0.92 \"person floating on back\""}
+{"t": 177.678, "line": "second-00108: 1 detector flag: keep 0.90 \"person floating on back\""}
+{"t": 178.669, "line": "second-00109: 1 detector flag: keep 0.92 \"person floating on back\""}
+{"t": 178.949, "line": "second-00111: 1 detector flag: keep 0.98 \"person floating on back\""}
+{"t": 179.015, "line": "second-00110: 1 detector flag: keep 0.85 \"Person floating on back\""}
+{"t": 179.196, "line": "second-00112: 1 detector flag: keep 0.95 \"person floating face down in water\""}
+{"t": 179.469, "line": "second-00113: 1 detector flag: keep 0.95 \"person floating on back\""}
+{"t": 179.685, "line": "second-00115: 1 detector flag: keep 0.90 \"person floating on back in water\""}
+{"t": 179.744, "line": "second-00114: 1 detector flag: keep 0.98 \"person floating on back\""}
+{"t": 179.998, "line": "second-00116: 1 detector flag: keep 0.85 \"person floating on back\""}
+{"t": 181.04, "line": "second-00117: 1 detector flag: keep 0.85 \"person floating on back\""}
+{"t": 181.977, "line": "second-00118: 1 detector flag: keep 0.90 \"person floating in water\""}
+{"t": 182.489, "line": "second-00119: 1 detector flag: dismiss 0.90 \"swimmer right of centre\""}
+{"t": 191.693, "line": "Possible person 1. First seen 0:07, last seen 0:26 into the flight, in the middle left section of second-00026. Confidence 0.95. Ember described it as \"Person floating on back, dark wetsuit\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0."}
+{"t": 191.693, "line": "Possible person 2. First seen 0:25, last seen 1:00 into the flight, in the middle left section of second-00060. Confidence 0.98. Ember described it as \"person floating face down in water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0."}
+{"t": 191.693, "line": "Possible person 3. First seen 0:29, last seen 0:35 into the flight, in the middle left section of second-00035. Confidence 0.90. Ember described it as \"person floating in water\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0."}
+{"t": 191.694, "line": "Possible person 4. First seen 1:16, last seen 1:38 into the flight, in the middle right section of second-00098. Confidence 0.98. Ember described it as \"person floating on back in water\". The detector flagged 2 spots in that frame, and Ember kept 1 and dismissed 1."}
+{"t": 191.694, "line": "Possible person 5. First seen 1:34, last seen 1:34 into the flight, in the bottom left section of second-00094. Confidence 0.55. Ember described it as \"elongated dark figure in water\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0."}
+{"t": 191.694, "line": "Possible person 6. First seen 1:37, last seen 1:58 into the flight, in the middle right section of second-00118. Confidence 0.98. Ember described it as \"person floating in water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0."}
+{"t": 191.694, "line": "120 frames, 105 sightings, $0.0081 spent. Finished. Search record: ../../repo/open-water-search/runs/live-detector-check/search-record.json. Open ../../repo/open-water-search/runs/live-detector-check/report.html"}

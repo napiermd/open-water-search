@@ -66,7 +66,7 @@
         "status": "dismissed",
         "crop": "crops/second-00006-flag1.jpg",
         "ember_confidence": 0.9,
-        "what": "open water, person right of centre"
+        "what": "person floating right of centre"
       }
     ]
   },
@@ -86,10 +86,10 @@
           424.75
         ],
         "detector_confidence": 0.5802,
-        "status": "kept",
+        "status": "dismissed",
         "crop": "crops/second-00007-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person floating on back"
+        "ember_confidence": 0.75,
+        "what": "duck swimming"
       }
     ]
   },
@@ -111,7 +111,7 @@
         "detector_confidence": 0.4741,
         "status": "kept",
         "crop": "crops/second-00008-flag1.jpg",
-        "ember_confidence": 0.92,
+        "ember_confidence": 0.88,
         "what": "person floating on back"
       }
     ]
@@ -134,7 +134,7 @@
         "detector_confidence": 0.6685,
         "status": "kept",
         "crop": "crops/second-00009-flag1.jpg",
-        "ember_confidence": 0.95,
+        "ember_confidence": 0.85,
         "what": "person floating on back"
       }
     ]
@@ -157,8 +157,8 @@
         "detector_confidence": 0.6881,
         "status": "kept",
         "crop": "crops/second-00010-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "Person floating on back in water"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -181,7 +181,7 @@
         "status": "kept",
         "crop": "crops/second-00011-flag1.jpg",
         "ember_confidence": 0.85,
-        "what": "person floating on back, snorkel visible"
+        "what": "person floating in water"
       }
     ]
   },
@@ -203,8 +203,8 @@
         "detector_confidence": 0.8121,
         "status": "dismissed",
         "crop": "crops/second-00012-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "duck swimming"
+        "ember_confidence": 0.97,
+        "what": "duck swimming in water"
       }
     ]
   },
@@ -226,8 +226,8 @@
         "detector_confidence": 0.8277,
         "status": "kept",
         "crop": "crops/second-00013-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "Snorkeler floating on surface"
+        "ember_confidence": 0.9,
+        "what": "swimmer floating on back"
       }
     ]
   },
@@ -249,8 +249,8 @@
         "detector_confidence": 0.7987,
         "status": "kept",
         "crop": "crops/second-00014-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "swimmer floating on back"
+        "ember_confidence": 0.75,
+        "what": "person swimming in water"
       }
     ]
   },
@@ -272,8 +272,8 @@
         "detector_confidence": 0.7826,
         "status": "kept",
         "crop": "crops/second-00015-flag1.jpg",
-        "ember_confidence": 0.8,
-        "what": "person floating on back"
+        "ember_confidence": 0.82,
+        "what": "person swimming prone with flippers"
       }
     ]
   },
@@ -296,7 +296,7 @@
         "status": "kept",
         "crop": "crops/second-00016-flag1.jpg",
         "ember_confidence": 0.9,
-        "what": "Person floating swimming"
+        "what": "person swimming face down"
       }
     ]
   },
@@ -319,7 +319,7 @@
         "status": "kept",
         "crop": "crops/second-00017-flag1.jpg",
         "ember_confidence": 0.92,
-        "what": "swimmer floating on back"
+        "what": "person swimming in water"
       }
     ]
   },
@@ -341,8 +341,8 @@
         "detector_confidence": 0.8267,
         "status": "kept",
         "crop": "crops/second-00018-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person swimming on back in open water"
+        "ember_confidence": 0.92,
+        "what": "person floating face down in wetsuit"
       }
     ]
   },
@@ -365,7 +365,7 @@
         "status": "kept",
         "crop": "crops/second-00019-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person swimming prone"
+        "what": "person floating/swimming in water"
       }
     ]
   },
@@ -387,8 +387,8 @@
         "detector_confidence": 0.4465,
         "status": "kept",
         "crop": "crops/second-00020-flag1.jpg",
-        "ember_confidence": 0.7,
-        "what": "person floating face down in water"
+        "ember_confidence": 0.65,
+        "what": "person swimming face down"
       }
     ]
   },
@@ -410,7 +410,7 @@
         "detector_confidence": 0.8067,
         "status": "kept",
         "crop": "crops/second-00021-flag1.jpg",
-        "ember_confidence": 0.75,
+        "ember_confidence": 0.85,
         "what": "person swimming on back"
       }
     ]
@@ -434,7 +434,7 @@
         "status": "kept",
         "crop": "crops/second-00022-flag1.jpg",
         "ember_confidence": 0.9,
-        "what": "person floating swimming in water"
+        "what": "person floating on water"
       }
     ]
   },
@@ -454,10 +454,10 @@
           378.97
         ],
         "detector_confidence": 0.8236,
-        "status": "kept",
+        "status": "dismissed",
         "crop": "crops/second-00023-flag1.jpg",
-        "ember_confidence": 0.75,
-        "what": "person snorkelling prone"
+        "ember_confidence": 0.92,
+        "what": "bird floating on water"
       }
     ]
   },
@@ -479,8 +479,8 @@
         "detector_confidence": 0.8248,
         "status": "dismissed",
         "crop": "crops/second-00024-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "large bird in flight over water"
+        "ember_confidence": 0.85,
+        "what": "Bird with wings spread over water"
       }
     ]
   },
@@ -502,8 +502,8 @@
         "detector_confidence": 0.7739,
         "status": "kept",
         "crop": "crops/second-00025-flag1.jpg",
-        "ember_confidence": 0.65,
-        "what": "person face down in dark wetsuit"
+        "ember_confidence": 0.85,
+        "what": "person swimming face down centre"
       },
       {
         "number": 2,
@@ -514,10 +514,10 @@
           187.94
         ],
         "detector_confidence": 0.7076,
-        "status": "kept",
+        "status": "dismissed",
         "crop": "crops/second-00025-flag2.jpg",
         "ember_confidence": 0.9,
-        "what": "person floating with legs up"
+        "what": "empty water centre, person at right edge"
       }
     ]
   },
@@ -539,8 +539,8 @@
         "detector_confidence": 0.7647,
         "status": "kept",
         "crop": "crops/second-00026-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "Person floating, legs up, pink top"
+        "ember_confidence": 0.95,
+        "what": "person floating legs up"
       },
       {
         "number": 2,
@@ -553,8 +553,8 @@
         "detector_confidence": 0.6421,
         "status": "kept",
         "crop": "crops/second-00026-flag2.jpg",
-        "ember_confidence": 0.85,
-        "what": "Person floating on back, dark wetsuit"
+        "ember_confidence": 0.9,
+        "what": "person floating in water"
       }
     ]
   },
@@ -577,7 +577,7 @@
         "status": "kept",
         "crop": "crops/second-00027-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person diving head down"
+        "what": "person upside down in water centre"
       }
     ]
   },
@@ -600,7 +600,7 @@
         "status": "kept",
         "crop": "crops/second-00028-flag1.jpg",
         "ember_confidence": 0.9,
-        "what": "Person upside down, legs up in water"
+        "what": "person diving legs up"
       }
     ]
   },
@@ -623,7 +623,7 @@
         "status": "kept",
         "crop": "crops/second-00029-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person diving head down"
+        "what": "person diving headfirst, legs up"
       },
       {
         "number": 2,
@@ -636,8 +636,8 @@
         "detector_confidence": 0.6696,
         "status": "kept",
         "crop": "crops/second-00029-flag2.jpg",
-        "ember_confidence": 0.7,
-        "what": "person floating face down"
+        "ember_confidence": 0.75,
+        "what": "person floating on back"
       }
     ]
   },
@@ -659,8 +659,8 @@
         "detector_confidence": 0.786,
         "status": "kept",
         "crop": "crops/second-00030-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "person floating on back"
+        "ember_confidence": 0.95,
+        "what": "person upside down floating legs up"
       },
       {
         "number": 2,
@@ -673,8 +673,8 @@
         "detector_confidence": 0.7582,
         "status": "kept",
         "crop": "crops/second-00030-flag2.jpg",
-        "ember_confidence": 0.88,
-        "what": "person swimming in water"
+        "ember_confidence": 0.9,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -696,8 +696,8 @@
         "detector_confidence": 0.8003,
         "status": "kept",
         "crop": "crops/second-00031-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "Person floating on back"
+        "ember_confidence": 0.95,
+        "what": "person floating on back center"
       },
       {
         "number": 2,
@@ -710,8 +710,8 @@
         "detector_confidence": 0.7867,
         "status": "kept",
         "crop": "crops/second-00031-flag2.jpg",
-        "ember_confidence": 0.75,
-        "what": "Person swimming in water"
+        "ember_confidence": 0.9,
+        "what": "person swimming on back center"
       }
     ]
   },
@@ -733,8 +733,8 @@
         "detector_confidence": 0.7992,
         "status": "kept",
         "crop": "crops/second-00032-flag1.jpg",
-        "ember_confidence": 0.65,
-        "what": "person diving, legs up with white feet"
+        "ember_confidence": 0.7,
+        "what": "Swimmer floating prone, limbs extended"
       },
       {
         "number": 2,
@@ -747,8 +747,8 @@
         "detector_confidence": 0.7929,
         "status": "kept",
         "crop": "crops/second-00032-flag2.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating, legs up with white feet"
+        "ember_confidence": 0.95,
+        "what": "Person floating on back, legs up"
       }
     ]
   },
@@ -770,8 +770,8 @@
         "detector_confidence": 0.8009,
         "status": "kept",
         "crop": "crops/second-00033-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating on back"
+        "ember_confidence": 0.97,
+        "what": "person floating inverted legs raised"
       },
       {
         "number": 2,
@@ -784,8 +784,8 @@
         "detector_confidence": 0.7813,
         "status": "kept",
         "crop": "crops/second-00033-flag2.jpg",
-        "ember_confidence": 0.7,
-        "what": "person floating diagonally"
+        "ember_confidence": 0.72,
+        "what": "person swimming horizontally in water"
       }
     ]
   },
@@ -807,8 +807,8 @@
         "detector_confidence": 0.8296,
         "status": "kept",
         "crop": "crops/second-00034-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "Person floating inverted legs up"
+        "ember_confidence": 0.95,
+        "what": "person floating face down in water"
       },
       {
         "number": 2,
@@ -822,7 +822,7 @@
         "status": "dismissed",
         "crop": "crops/second-00034-flag2.jpg",
         "ember_confidence": 0.9,
-        "what": "Seabird on water surface"
+        "what": "seabird in flight over water"
       }
     ]
   },
@@ -844,8 +844,8 @@
         "detector_confidence": 0.7929,
         "status": "kept",
         "crop": "crops/second-00035-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating in water"
+        "ember_confidence": 0.85,
+        "what": "person floating on back in water"
       },
       {
         "number": 2,
@@ -858,8 +858,8 @@
         "detector_confidence": 0.773,
         "status": "kept",
         "crop": "crops/second-00035-flag2.jpg",
-        "ember_confidence": 0.95,
-        "what": "person inverted in water"
+        "ember_confidence": 0.85,
+        "what": "person floating upside down in water"
       }
     ]
   },
@@ -882,7 +882,7 @@
         "status": "kept",
         "crop": "crops/second-00036-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person diving, legs up"
+        "what": "Person diving underwater, fins up"
       },
       {
         "number": 2,
@@ -896,7 +896,7 @@
         "status": "dismissed",
         "crop": "crops/second-00036-flag2.jpg",
         "ember_confidence": 0.9,
-        "what": "open water ripples, partial object left edge"
+        "what": "Open water with ripples only"
       }
     ]
   },
@@ -918,8 +918,8 @@
         "detector_confidence": 0.7927,
         "status": "kept",
         "crop": "crops/second-00037-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "Person floating in water legs raised"
+        "ember_confidence": 0.95,
+        "what": "person diving head down legs up"
       }
     ]
   },
@@ -942,7 +942,7 @@
         "status": "kept",
         "crop": "crops/second-00038-flag1.jpg",
         "ember_confidence": 0.98,
-        "what": "person in water on back, legs up"
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -964,8 +964,8 @@
         "detector_confidence": 0.7821,
         "status": "kept",
         "crop": "crops/second-00039-flag1.jpg",
-        "ember_confidence": 0.98,
-        "what": "person floating head down legs up"
+        "ember_confidence": 0.95,
+        "what": "person floating face down in water"
       }
     ]
   },
@@ -987,8 +987,8 @@
         "detector_confidence": 0.7963,
         "status": "kept",
         "crop": "crops/second-00040-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "person diving upside down in water"
+        "ember_confidence": 0.98,
+        "what": "person floating in water legs up"
       }
     ]
   },
@@ -1010,8 +1010,8 @@
         "detector_confidence": 0.7591,
         "status": "kept",
         "crop": "crops/second-00041-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person diving head down"
+        "ember_confidence": 0.9,
+        "what": "person diving head-down, legs up"
       }
     ]
   },
@@ -1033,8 +1033,8 @@
         "detector_confidence": 0.7779,
         "status": "kept",
         "crop": "crops/second-00042-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating face down"
+        "ember_confidence": 0.92,
+        "what": "person floating in water"
       }
     ]
   },
@@ -1056,8 +1056,8 @@
         "detector_confidence": 0.8056,
         "status": "kept",
         "crop": "crops/second-00043-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "Person floating in water"
+        "ember_confidence": 0.95,
+        "what": "person upside down legs up"
       }
     ]
   },
@@ -1080,7 +1080,7 @@
         "status": "kept",
         "crop": "crops/second-00044-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating on back in water"
+        "what": "Swimmer floating face down in water"
       }
     ]
   },
@@ -1102,8 +1102,8 @@
         "detector_confidence": 0.7971,
         "status": "kept",
         "crop": "crops/second-00045-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person floating face-down in water"
+        "ember_confidence": 0.95,
+        "what": "person diving headfirst"
       }
     ]
   },
@@ -1125,8 +1125,8 @@
         "detector_confidence": 0.8181,
         "status": "kept",
         "crop": "crops/second-00046-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back with fins"
+        "ember_confidence": 0.97,
+        "what": "Person floating/diving, legs up, dark wetsuit"
       }
     ]
   },
@@ -1149,7 +1149,7 @@
         "status": "kept",
         "crop": "crops/second-00047-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating face down"
+        "what": "person floating face-down in water"
       }
     ]
   },
@@ -1171,8 +1171,8 @@
         "detector_confidence": 0.8124,
         "status": "kept",
         "crop": "crops/second-00048-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person legs up swimming in water"
+        "ember_confidence": 0.75,
+        "what": "Person floating on back"
       }
     ]
   },
@@ -1194,8 +1194,8 @@
         "detector_confidence": 0.8215,
         "status": "kept",
         "crop": "crops/second-00049-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.95,
+        "what": "person floating in water"
       }
     ]
   },
@@ -1217,8 +1217,8 @@
         "detector_confidence": 0.8081,
         "status": "kept",
         "crop": "crops/second-00050-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "swimmer face-down with flippers"
+        "ember_confidence": 0.95,
+        "what": "Person swimming on back, centre"
       }
     ]
   },
@@ -1240,8 +1240,8 @@
         "detector_confidence": 0.8177,
         "status": "kept",
         "crop": "crops/second-00051-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person in dark wetsuit floating in water"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -1263,8 +1263,8 @@
         "detector_confidence": 0.7963,
         "status": "kept",
         "crop": "crops/second-00052-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating in water"
+        "ember_confidence": 0.95,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -1286,8 +1286,8 @@
         "detector_confidence": 0.7048,
         "status": "kept",
         "crop": "crops/second-00053-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.97,
+        "what": "person floating on back, legs up"
       }
     ]
   },
@@ -1309,8 +1309,8 @@
         "detector_confidence": 0.8125,
         "status": "kept",
         "crop": "crops/second-00054-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person floating in water"
+        "ember_confidence": 0.98,
+        "what": "person floating on back"
       }
     ]
   },
@@ -1332,8 +1332,8 @@
         "detector_confidence": 0.8027,
         "status": "kept",
         "crop": "crops/second-00055-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.95,
+        "what": "Person floating on back in water"
       }
     ]
   },
@@ -1356,7 +1356,7 @@
         "status": "kept",
         "crop": "crops/second-00056-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "Person floating on back"
+        "what": "person floating on back"
       }
     ]
   },
@@ -1378,8 +1378,8 @@
         "detector_confidence": 0.8016,
         "status": "kept",
         "crop": "crops/second-00057-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -1401,8 +1401,8 @@
         "detector_confidence": 0.8009,
         "status": "kept",
         "crop": "crops/second-00058-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.85,
+        "what": "person floating in water"
       }
     ]
   },
@@ -1425,7 +1425,7 @@
         "status": "kept",
         "crop": "crops/second-00059-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating in water"
+        "what": "person floating head down legs up"
       }
     ]
   },
@@ -1447,8 +1447,8 @@
         "detector_confidence": 0.8008,
         "status": "kept",
         "crop": "crops/second-00060-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person floating face down in water"
+        "ember_confidence": 0.95,
+        "what": "Person floating in water"
       }
     ]
   },
@@ -1590,8 +1590,8 @@
         "detector_confidence": 0.7706,
         "status": "kept",
         "crop": "crops/second-00076-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating swimming in water"
+        "ember_confidence": 0.92,
+        "what": "person floating/swimming on back"
       }
     ]
   },
@@ -1613,8 +1613,8 @@
         "detector_confidence": 0.7566,
         "status": "kept",
         "crop": "crops/second-00077-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "person swimming on back"
+        "ember_confidence": 0.9,
+        "what": "Swimmer floating in open water"
       }
     ]
   },
@@ -1636,8 +1636,8 @@
         "detector_confidence": 0.7171,
         "status": "kept",
         "crop": "crops/second-00078-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.98,
+        "what": "person floating on back"
       }
     ]
   },
@@ -1659,8 +1659,8 @@
         "detector_confidence": 0.6991,
         "status": "kept",
         "crop": "crops/second-00079-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person floating in wetsuit"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in wetsuit"
       }
     ]
   },
@@ -1682,8 +1682,8 @@
         "detector_confidence": 0.6923,
         "status": "kept",
         "crop": "crops/second-00080-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "Swimmer floating on back"
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
       }
     ]
   },
@@ -1705,8 +1705,8 @@
         "detector_confidence": 0.7283,
         "status": "kept",
         "crop": "crops/second-00081-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "Person floating in water"
+        "ember_confidence": 0.95,
+        "what": "person swimming on back in wetsuit"
       }
     ]
   },
@@ -1728,8 +1728,8 @@
         "detector_confidence": 0.734,
         "status": "kept",
         "crop": "crops/second-00082-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating on back"
+        "ember_confidence": 0.98,
+        "what": "person floating on back in wetsuit"
       }
     ]
   },
@@ -1752,7 +1752,7 @@
         "status": "kept",
         "crop": "crops/second-00083-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating on back in water"
+        "what": "person in wetsuit floating on back"
       }
     ]
   },
@@ -1774,8 +1774,8 @@
         "detector_confidence": 0.7474,
         "status": "kept",
         "crop": "crops/second-00084-flag1.jpg",
-        "ember_confidence": 0.98,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.97,
+        "what": "person floating on back"
       }
     ]
   },
@@ -1797,8 +1797,8 @@
         "detector_confidence": 0.7706,
         "status": "kept",
         "crop": "crops/second-00085-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "Person in wetsuit floating on back"
+        "ember_confidence": 0.92,
+        "what": "person floating in wetsuit"
       }
     ]
   },
@@ -1820,7 +1820,7 @@
         "detector_confidence": 0.777,
         "status": "kept",
         "crop": "crops/second-00086-flag1.jpg",
-        "ember_confidence": 0.9,
+        "ember_confidence": 0.95,
         "what": "person floating on back in water"
       }
     ]
@@ -1843,8 +1843,8 @@
         "detector_confidence": 0.7946,
         "status": "kept",
         "crop": "crops/second-00087-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in wetsuit"
       }
     ]
   },
@@ -1866,8 +1866,8 @@
         "detector_confidence": 0.8071,
         "status": "kept",
         "crop": "crops/second-00088-flag1.jpg",
-        "ember_confidence": 0.97,
-        "what": "person in dark wetsuit floating in open water"
+        "ember_confidence": 0.95,
+        "what": "person in wetsuit floating"
       }
     ]
   },
@@ -1889,8 +1889,8 @@
         "detector_confidence": 0.8048,
         "status": "kept",
         "crop": "crops/second-00089-flag1.jpg",
-        "ember_confidence": 0.92,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.97,
+        "what": "person floating in wetsuit"
       }
     ]
   },
@@ -1912,7 +1912,7 @@
         "detector_confidence": 0.8048,
         "status": "kept",
         "crop": "crops/second-00090-flag1.jpg",
-        "ember_confidence": 0.9,
+        "ember_confidence": 0.85,
         "what": "person floating on back in water"
       }
     ]
@@ -1936,7 +1936,7 @@
         "status": "kept",
         "crop": "crops/second-00091-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -1958,8 +1958,8 @@
         "detector_confidence": 0.7864,
         "status": "kept",
         "crop": "crops/second-00092-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating on back"
+        "ember_confidence": 0.95,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -1981,7 +1981,7 @@
         "detector_confidence": 0.8227,
         "status": "kept",
         "crop": "crops/second-00093-flag1.jpg",
-        "ember_confidence": 0.9,
+        "ember_confidence": 0.97,
         "what": "person floating on back"
       }
     ]
@@ -2004,8 +2004,8 @@
         "detector_confidence": 0.8081,
         "status": "kept",
         "crop": "crops/second-00094-flag1.jpg",
-        "ember_confidence": 0.96,
-        "what": "swimmer in dark wetsuit floating"
+        "ember_confidence": 0.97,
+        "what": "person floating on back"
       },
       {
         "number": 2,
@@ -2018,8 +2018,8 @@
         "detector_confidence": 0.7763,
         "status": "kept",
         "crop": "crops/second-00094-flag2.jpg",
-        "ember_confidence": 0.55,
-        "what": "elongated dark figure in water"
+        "ember_confidence": 0.88,
+        "what": "person swimming elongated"
       }
     ]
   },
@@ -2041,8 +2041,8 @@
         "detector_confidence": 0.7917,
         "status": "kept",
         "crop": "crops/second-00095-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.97,
+        "what": "person floating in open water"
       },
       {
         "number": 2,
@@ -2055,8 +2055,8 @@
         "detector_confidence": 0.7815,
         "status": "dismissed",
         "crop": "crops/second-00095-flag2.jpg",
-        "ember_confidence": 0.75,
-        "what": "seal or animal swimming"
+        "ember_confidence": 0.85,
+        "what": "waterbird swimming in open water"
       }
     ]
   },
@@ -2079,7 +2079,7 @@
         "status": "kept",
         "crop": "crops/second-00096-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating in water"
+        "what": "person floating face down"
       },
       {
         "number": 2,
@@ -2092,8 +2092,8 @@
         "detector_confidence": 0.7704,
         "status": "dismissed",
         "crop": "crops/second-00096-flag2.jpg",
-        "ember_confidence": 0.75,
-        "what": "bird or marine animal at surface"
+        "ember_confidence": 0.65,
+        "what": "seal swimming creating wake"
       }
     ]
   },
@@ -2115,7 +2115,7 @@
         "detector_confidence": 0.8046,
         "status": "kept",
         "crop": "crops/second-00097-flag1.jpg",
-        "ember_confidence": 0.98,
+        "ember_confidence": 0.95,
         "what": "person floating on back"
       },
       {
@@ -2127,10 +2127,10 @@
           738.18
         ],
         "detector_confidence": 0.7514,
-        "status": "kept",
+        "status": "dismissed",
         "crop": "crops/second-00097-flag2.jpg",
         "ember_confidence": 0.55,
-        "what": "person swimming on back"
+        "what": "dark elongated floating shape"
       }
     ]
   },
@@ -2152,7 +2152,7 @@
         "detector_confidence": 0.8246,
         "status": "kept",
         "crop": "crops/second-00098-flag1.jpg",
-        "ember_confidence": 0.92,
+        "ember_confidence": 0.98,
         "what": "person floating on back in water"
       },
       {
@@ -2164,10 +2164,10 @@
           716.39
         ],
         "detector_confidence": 0.8184,
-        "status": "dismissed",
+        "status": "kept",
         "crop": "crops/second-00098-flag2.jpg",
         "ember_confidence": 0.85,
-        "what": "water bird swimming"
+        "what": "person swimming in water"
       }
     ]
   },
@@ -2190,7 +2190,7 @@
         "status": "kept",
         "crop": "crops/second-00099-flag1.jpg",
         "ember_confidence": 0.75,
-        "what": "swimmer with white fins centre"
+        "what": "swimmer with white fins floating"
       },
       {
         "number": 2,
@@ -2204,7 +2204,7 @@
         "status": "dismissed",
         "crop": "crops/second-00099-flag2.jpg",
         "ember_confidence": 0.9,
-        "what": "partial legs at right edge"
+        "what": "legs with white fins at right edge"
       }
     ]
   },
@@ -2226,8 +2226,8 @@
         "detector_confidence": 0.7927,
         "status": "kept",
         "crop": "crops/second-00100-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person swimming on back"
+        "ember_confidence": 0.75,
+        "what": "person floating face-down in water"
       }
     ]
   },
@@ -2250,7 +2250,7 @@
         "status": "kept",
         "crop": "crops/second-00101-flag1.jpg",
         "ember_confidence": 0.95,
-        "what": "person floating swimming in water"
+        "what": "person floating in water"
       }
     ]
   },
@@ -2270,10 +2270,10 @@
           613.91
         ],
         "detector_confidence": 0.831,
-        "status": "kept",
+        "status": "dismissed",
         "crop": "crops/second-00102-flag1.jpg",
-        "ember_confidence": 0.72,
-        "what": "swimmer with fins floating on surface"
+        "ember_confidence": 0.85,
+        "what": "Dolphin swimming, not a person"
       }
     ]
   },
@@ -2319,7 +2319,7 @@
         "status": "kept",
         "crop": "crops/second-00104-flag1.jpg",
         "ember_confidence": 0.92,
-        "what": "person floating on back"
+        "what": "swimmer floating in water"
       }
     ]
   },
@@ -2342,7 +2342,7 @@
         "status": "kept",
         "crop": "crops/second-00105-flag1.jpg",
         "ember_confidence": 0.85,
-        "what": "person swimming on back"
+        "what": "person floating in water at centre"
       }
     ]
   },
@@ -2364,8 +2364,8 @@
         "detector_confidence": 0.7797,
         "status": "kept",
         "crop": "crops/second-00106-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back in water"
+        "ember_confidence": 0.85,
+        "what": "person floating on back"
       }
     ]
   },
@@ -2387,8 +2387,8 @@
         "detector_confidence": 0.7748,
         "status": "kept",
         "crop": "crops/second-00107-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person swimming on stomach"
+        "ember_confidence": 0.75,
+        "what": "swimmer floating prone in water"
       }
     ]
   },
@@ -2434,7 +2434,7 @@
         "status": "kept",
         "crop": "crops/second-00109-flag1.jpg",
         "ember_confidence": 0.92,
-        "what": "person floating on back"
+        "what": "Swimmer floating on back"
       }
     ]
   },
@@ -2456,8 +2456,8 @@
         "detector_confidence": 0.7571,
         "status": "kept",
         "crop": "crops/second-00110-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "Person floating on back"
+        "ember_confidence": 0.9,
+        "what": "person floating on back"
       }
     ]
   },
@@ -2479,7 +2479,7 @@
         "detector_confidence": 0.7201,
         "status": "kept",
         "crop": "crops/second-00111-flag1.jpg",
-        "ember_confidence": 0.98,
+        "ember_confidence": 0.97,
         "what": "person floating on back"
       }
     ]
@@ -2502,8 +2502,8 @@
         "detector_confidence": 0.702,
         "status": "kept",
         "crop": "crops/second-00112-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating face down in water"
+        "ember_confidence": 0.92,
+        "what": "person floating on back"
       }
     ]
   },
@@ -2525,8 +2525,8 @@
         "detector_confidence": 0.6259,
         "status": "kept",
         "crop": "crops/second-00113-flag1.jpg",
-        "ember_confidence": 0.95,
-        "what": "person floating on back"
+        "ember_confidence": 0.98,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -2548,7 +2548,7 @@
         "detector_confidence": 0.6212,
         "status": "kept",
         "crop": "crops/second-00114-flag1.jpg",
-        "ember_confidence": 0.98,
+        "ember_confidence": 0.9,
         "what": "person floating on back"
       }
     ]
@@ -2572,7 +2572,7 @@
         "status": "kept",
         "crop": "crops/second-00115-flag1.jpg",
         "ember_confidence": 0.9,
-        "what": "person floating on back in water"
+        "what": "person floating on back"
       }
     ]
   },
@@ -2594,8 +2594,8 @@
         "detector_confidence": 0.7364,
         "status": "kept",
         "crop": "crops/second-00116-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person floating on back"
+        "ember_confidence": 0.92,
+        "what": "person swimming on back"
       }
     ]
   },
@@ -2617,8 +2617,8 @@
         "detector_confidence": 0.7416,
         "status": "kept",
         "crop": "crops/second-00117-flag1.jpg",
-        "ember_confidence": 0.85,
-        "what": "person floating on back"
+        "ember_confidence": 0.92,
+        "what": "person floating on back in water"
       }
     ]
   },
@@ -2640,8 +2640,8 @@
         "detector_confidence": 0.7319,
         "status": "kept",
         "crop": "crops/second-00118-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "person floating in water"
+        "ember_confidence": 0.85,
+        "what": "swimmer floating prone in water"
       }
     ]
   },
@@ -2663,8 +2663,8 @@
         "detector_confidence": 0.6817,
         "status": "dismissed",
         "crop": "crops/second-00119-flag1.jpg",
-        "ember_confidence": 0.9,
-        "what": "swimmer right of centre"
+        "ember_confidence": 0.75,
+        "what": "small swimmer off-centre to the right, open water"
       }
     ]
   }
