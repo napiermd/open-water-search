@@ -549,8 +549,8 @@ def search_frame(search, frame, note, earned):
     name = frame["name"]
     overview = prepare(frame["path"], rectangle(frame["width"], frame["height"], -1))
     conversation = [user_message(AGENT_PROMPT + " " + note, overview)]
-    looks = 0
-    sent_tiles = []
+    opened = []  # (tile, image) of every close look this frame has opened, in order
+    answered = 0  # how many of them went out in requests that Ember answered
     while True:
         body = {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,
                 "tools": AGENT_TOOLS, "input": conversation}
@@ -559,7 +559,7 @@ def search_frame(search, frame, note, earned):
         except Lost as lost:
             if frame["overview"] == "awaiting overview":
                 frame["overview"] = "unreadable"
-            for tile in sent_tiles:
+            for tile, _ in opened[answered:]:
                 frame["tiles"][tile] = None
             print(f"{name}: {lost}, so the search moves to the next frame", flush=True)
             return
@@ -567,58 +567,82 @@ def search_frame(search, frame, note, earned):
             print(f"{name}: its share of the budget is spent, so the search moves to the next frame", flush=True)
             return
         frame["overview"] = "done"
-        for tile in sent_tiles:
+        for tile, _ in opened[answered:]:
             frame["tiles"].setdefault(tile, [])
-        sent_tiles = []
+        answered = len(opened)
         calls = tool_calls_in(reply)
         if not calls:
             print(f"{name}: Ember answered without a tool call, so the search moves to the next frame", flush=True)
             return
         conversation += reply["output"]
-        close_looks = []
         for call in calls:
-            action = call["name"]
-            try:
-                arguments = json.loads(call["arguments"])
-                tile = arguments.get("tile")
-                if call["name"] == "move_to_next_frame":
-                    print(f"{name}: move to the next frame", flush=True)
-                    return
-                if type(tile) is not int or tile not in range(9):
-                    raise ValueError("tile must be a whole number from 0 to 8")
-                where = f"the {TILE_NAMES[tile]} tile ({tile})"
-                if call["name"] == "look_closer":
-                    action = f"look closer at {where}"
-                    if looks == AGENT_LOOKS:
-                        raise ValueError(f"this frame has had its {AGENT_LOOKS} close looks")
-                    looks += 1
-                    rect = rectangle(frame["width"], frame["height"], tile)
-                    image = prepare(frame["path"], rect)
-                    (search.out / "crops" / f"{name}-t{tile}.jpg").write_bytes(image)
-                    close_looks.append(user_message(f"Close look at tile {tile} of this frame.", image))
-                    sent_tiles.append(tile)
-                    output = f"The close look at tile {tile} follows."
-                elif call["name"] == "report_sighting":
-                    action = f"report a sighting in {where}"
-                    x, y, confidence = arguments["x"], arguments["y"], arguments["confidence"]
-                    if tile not in frame["tiles"]:
-                        raise ValueError("you have not received a close look at that tile")
-                    if not all(type(n) in (int, float) for n in (x, y, confidence)) or not 0 <= confidence <= 1:
-                        raise ValueError("x and y must be numbers and confidence a number from 0 to 1")
-                    left, top, right, bottom = rectangle(frame["width"], frame["height"], tile)
-                    point = [grounding_format.to_frame(x, left, right), grounding_format.to_frame(y, top, bottom),
-                             confidence]
-                    frame["tiles"][tile].append(point)
-                    action += f" at x {point[0]:.0f}, y {point[1]:.0f}, confidence {confidence:.2f}"
-                    output = "Sighting recorded."
-                else:
-                    raise ValueError("there is no such tool")
-                print(f"{name}: {action}", flush=True)
-            except (ValueError, TypeError, KeyError, AttributeError) as refusal:
-                print(f"{name}: {action} refused: {refusal}", flush=True)
-                output = f"Refused: {refusal}."
+            output = tool_step(search, frame, call, opened)
+            if output is None:
+                return
             conversation.append({"type": "function_call_output", "call_id": call["call_id"], "output": output})
-        conversation += close_looks
+        conversation += [user_message(f"Close look at tile {tile} of this frame.", image)
+                         for tile, image in opened[answered:]]
+
+
+# What Ember's arguments can get wrong. A tool call that meets one is refused, and Ember is told why.
+REFUSALS = (ValueError, TypeError, KeyError, AttributeError)
+
+
+def tool_step(search, frame, call, opened):
+    """Carry out one of Ember's tool calls on the frame and print what it did, or why it was refused.
+
+    Returns the output for Ember, or None once Ember moves to the next frame.
+    """
+    name = frame["name"]
+    try:
+        arguments = json.loads(call["arguments"])
+        tile = arguments.get("tile")
+        if call["name"] == "move_to_next_frame":
+            print(f"{name}: move to the next frame", flush=True)
+            return None
+        if type(tile) is not int or tile not in range(9):
+            raise ValueError("tile must be a whole number from 0 to 8")
+        if call["name"] not in TOOL_STEPS:
+            raise ValueError("there is no such tool")
+    except REFUSALS as refusal:
+        print(f"{name}: {call['name']} refused: {refusal}", flush=True)
+        return f"Refused: {refusal}."
+    verb, step = TOOL_STEPS[call["name"]]
+    action = f"{verb} the {TILE_NAMES[tile]} tile ({tile})"
+    try:
+        detail, output = step(search, frame, tile, arguments, opened)
+    except REFUSALS as refusal:
+        print(f"{name}: {action} refused: {refusal}", flush=True)
+        return f"Refused: {refusal}."
+    print(f"{name}: {action}{detail}", flush=True)
+    return output
+
+
+def look_closer(search, frame, tile, arguments, opened):
+    """Open a close look at the tile. Its image goes to Ember with the next request."""
+    if len(opened) == AGENT_LOOKS:
+        raise ValueError(f"this frame has had its {AGENT_LOOKS} close looks")
+    image = prepare(frame["path"], rectangle(frame["width"], frame["height"], tile))
+    (search.out / "crops" / f"{frame['name']}-t{tile}.jpg").write_bytes(image)
+    opened.append((tile, image))
+    return "", f"The close look at tile {tile} follows."
+
+
+def report_sighting(search, frame, tile, arguments, opened):
+    """Record a sighting at a point on the 0-1,000 grid of a close look Ember has received."""
+    x, y, confidence = arguments["x"], arguments["y"], arguments["confidence"]
+    if tile not in frame["tiles"]:
+        raise ValueError("you have not received a close look at that tile")
+    if not all(type(n) in (int, float) for n in (x, y, confidence)) or not 0 <= confidence <= 1:
+        raise ValueError("x and y must be numbers and confidence a number from 0 to 1")
+    left, top, right, bottom = rectangle(frame["width"], frame["height"], tile)
+    point = [grounding_format.to_frame(x, left, right), grounding_format.to_frame(y, top, bottom), confidence]
+    frame["tiles"][tile].append(point)
+    return f" at x {point[0]:.0f}, y {point[1]:.0f}, confidence {confidence:.2f}", "Sighting recorded."
+
+
+# Each tool that works on one tile: how a printed line names what it asked for, and the step that carries it out.
+TOOL_STEPS = {"look_closer": ("look closer at", look_closer), "report_sighting": ("report a sighting in", report_sighting)}
 
 
 def user_message(text, image):
@@ -641,9 +665,12 @@ def agent_request(search, frame, body, earned):
         # That can only overestimate, which keeps the spending cap a guarantee.
         input_tokens = search.within_rate_limits(search.api.count, body) + len(json.dumps(body["tools"]))
         worst = price(input_tokens, 0, LIMIT)
-        # Once the spending cap itself has no room, reserve() stops the run. Short of that, a frame that has spent
-        # what it earned moves on.
-        if earned < search.spent + worst <= search.budget:
+        # Once the spending cap itself has no room, reserve() stops the run. Short of that, a frame whose next
+        # request could take it past what it has earned moves on.
+        committed = search.spent + worst
+        fits_the_cap = committed <= search.budget
+        fits_the_share = committed <= earned
+        if fits_the_cap and not fits_the_share:
             return None
         search.reserve(search.next_turn, worst)
         started = time.time()
