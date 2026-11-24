@@ -1,0 +1,22 @@
+{
+  "search_record_sha256": "45503e93eca84fd444476daebde7553b96ab3f83ea44869ae7581c62e2bb2d2f",
+  "calls_sha256": "ebdbbe17a15cecc859a22d8ff81d48cc1bbc4c28a9a849643128d4e91b41569c",
+  "search_record_redacted_sha256": "616ad5c219f2852038d5c227131fdf98f461423933ea1df0a4ed58f217a6144c",
+  "calls_redacted_sha256": "91f3c94f67604477d69823d660d3f67e7522110729cdf6b27013938ac249bbab",
+  "removed": "response.id and output[].id from every call",
+  "settings": {
+    "model": "muse-ember-1.0",
+    "mode": "agent",
+    "looks": 2,
+    "format": "grounding",
+    "parallel": 8,
+    "retries": 1,
+    "spending_cap_nanodollars": 19200000
+  },
+  "spent_nanodollars": 17815596,
+  "ending": {
+    "outcome": "spending cap",
+    "reason": "the next request could have exceeded the budget"
+  },
+  "calls": 51
+}

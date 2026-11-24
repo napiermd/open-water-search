@@ -4,6 +4,16 @@ scoring-only/labels/
 validation/inputs/images/
 validation/scoring-only/labels/
 
+# Detector weights download at run time. The full validation split is linked in from a local download.
+detector/weights/
+detector/seadronessee-val/inputs/images
+detector/seadronessee-val/scoring-only/labels
+
+# The MOBDrone sample and clip are linked in from local extractions (probe/extract_mobdrone.py, cut_mobdrone_clip.py).
+mobdrone/inputs/images
+mobdrone/scoring-only/labels
+mobdrone/clip/scoring-only/labels
+
 # Run state and secrets
 *.key
 .env
@@ -20,3 +30,13 @@ __pycache__/
 # Built website and Vercel link
 site/
 .vercel/
+
+# Paid-run folders publish only sealed, redacted files
+runs/*/search-record.json
+runs/*/calls.jsonl
+runs/*/crops/
+runs/*/frames/
+runs/*/report.html
+runs/*/scoring-only/labels
+mobdrone/*/labels
+mobdrone/*/*/labels
