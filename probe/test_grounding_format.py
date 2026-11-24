@@ -12,8 +12,8 @@ from tempfile import TemporaryDirectory
 
 from PIL import Image
 
-from runner import ROOT
-from simulated_ember import SimulatedEmber, run_command, write_flight
+from runner import LIMIT, NANO, ROOT, price
+from simulated_ember import INPUT_TOKENS, SimulatedEmber, run_command, write_flight
 
 
 def marks(*points):
@@ -88,6 +88,20 @@ class GroundingFormat(unittest.TestCase):
         _, requests = self.search((300, 200), 4, marks(), "--format", "grounding")
         self.assertEqual(prompt_and_image(requests[0])[0], sealed["overview_prompt_sha256"])
         self.assertNotIn("text", requests[0])
+
+
+    def test_the_spending_cap_counts_the_schema_that_metas_token_count_leaves_out(self):
+        # A budget with room for exactly one frozen close look after the overview has no room for the schema too.
+        frozen, _ = self.search((300, 200), 4, '{"points":[[0.5,0.5,0.9]]}')
+        overview = frozen["calls"][0]["paid_nanodollars"]
+        room = overview + price(INPUT_TOKENS, 0, LIMIT)
+        budget = f"{room / NANO:.9f}"
+        self.assertEqual(round(float(budget) * NANO), room)
+        within, _ = self.search((300, 200), 4, '{"points":[[0.5,0.5,0.9]]}', "--budget", budget)
+        self.assertEqual(within["ending"]["outcome"], "finished")
+        grounded, requests = self.search((300, 200), 4, marks((500, 500, 0.9)), "--format", "grounding", "--budget", budget)
+        self.assertEqual(grounded["ending"]["outcome"], "spending cap")
+        self.assertEqual(len(requests), 1)
 
 
 if __name__ == "__main__":

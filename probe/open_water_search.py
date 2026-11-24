@@ -74,7 +74,12 @@ class Search:
                     {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}]}
         if grounding:
             body["text"] = {"format": grounding_format.MARKS}
-        worst = price(self.api.count(body), 0, LIMIT)
+        input_tokens = self.api.count(body)
+        if grounding:
+            # Meta's input-token count leaves out the schema, so count each of its characters as a token. That can
+            # only overestimate, which keeps the spending cap a guarantee.
+            input_tokens += len(json.dumps(body["text"]))
+        worst = price(input_tokens, 0, LIMIT)
         if self.spent + worst > self.budget:
             raise OutOfBudget()
         started = time.time()
