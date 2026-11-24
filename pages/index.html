@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Open Water Search · Muse Ember finds the water worth a close look</title>
-  <meta name="description" content="Muse Ember looks at each whole drone photo once, picks the patch of water worth a close look, and hands the reviewer marked crops plus a map of the water nobody has checked.">
+  <title>Open Water Search · Turn a drone flight into a search record a rescue crew can act on</title>
+  <meta name="description" content="Open Water Search takes a drone flight, has Muse Ember search every second of it, and returns a search record: the possible people, a coverage timeline of the water nobody searched, and a handoff message for each possible person.">
   <link rel="stylesheet" href="pages.css">
   <link rel="stylesheet" href="index.css">
   <script type="module" src="index.js"></script>
@@ -17,49 +17,137 @@
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
-        <h1 id="hero-title">3,600 drone photos an hour, and each swimmer is a speck.</h1>
-        <p class="lede">In the image Muse Ember reads, a typical swimmer is about 11 pixels across. Open Water Search has Ember look at each whole photo once, choose the patch of water worth a close look, and mark anyone it finds. The person reviewing gets marked crops to check and a map of the water nobody has looked at closely yet.</p>
+        <h1 id="hero-title">Turn a drone flight into a search record a rescue crew can act on.</h1>
+        <p class="lede">Point Open Water Search at a flight, as a video or a folder of photos one second apart. Muse Ember looks over every second and takes close looks at the water most likely to hold someone. Out comes a search record: the possible people, a coverage timeline of the water nobody searched, and a handoff message for each possible person that a dispatcher can read to a crew.</p>
         <div class="actions">
-          <a class="primary" href="judge.html">Take over a search</a>
-          <a class="secondary" href="replay.html">Compare Ember with a fixed grid</a>
+          <a class="primary" href="#record-title">See the search record</a>
+          <a class="secondary" href="judge.html">Take over a search</a>
         </div>
-        <p class="muted small">Both pages replay a recorded Muse Ember run, so clicking around costs nothing.</p>
+        <p class="muted small">Everything on these pages replays recorded Muse Ember runs, so clicking around costs nothing.</p>
       </div>
-      <figure class="hero-figure">
-        <div id="hero-photo" class="photo"></div>
-        <figcaption id="hero-caption">Loading validation frame 2…</figcaption>
-        <ul class="legend" aria-label="Markings">
-          <li><span class="swatch chosen"></span>Ember’s close look, in order</li>
-          <li><span class="swatch point"></span>Ember’s mark</li>
-          <li><span class="swatch unchecked"></span>No close look yet</li>
+      <figure class="flight">
+        <div class="flight-head">
+          <code>python probe/open_water_search.py clip.mp4 --out runs/live-clip --budget 0.10</code>
+          <button type="button" id="flight-replay" class="replay" hidden>Replay</button>
+        </div>
+        <ol id="flight-printed" class="printed" aria-label="What the command printed"></ol>
+        <p id="flight-clock" class="clock">Loading the recorded run…</p>
+        <div id="flight-timeline" class="timeline" role="img" aria-label="Coverage timeline of the 120-second flight. Each second got close looks at two of the nine sections of its frame, and seven were never searched."></div>
+        <div class="timeline-axis" aria-hidden="true"><span>0:00</span><span>1:00</span><span>2:00</span></div>
+        <ul class="legend" aria-label="Coverage timeline">
+          <li><span class="swatch flagged"></span>Close look, possible person</li>
+          <li><span class="swatch clear"></span>Close look, no one marked</li>
+          <li><span class="swatch never"></span>Never searched</li>
         </ul>
+        <figcaption>A two-minute MOBDrone flight searched live on November 24, one frame per second. Above: Ember’s decisions as the command printed them. Below: the coverage timeline, one column per second and one cell for each of the frame’s nine sections, top left first.</figcaption>
       </figure>
     </section>
 
+    <section aria-labelledby="record-title">
+      <h2 id="record-title" class="section-title">The search record: 15 possible people, each with a handoff message</h2>
+      <p>Sightings in back-to-back seconds within 10% of the frame width become one possible person. Pick one to read its handoff message.</p>
+      <div class="record">
+        <div class="people-wrap">
+          <div class="people-head" aria-hidden="true"><span>#</span><span>Seen during the flight, 0:00 to 2:00</span><span>Labeled person</span></div>
+          <ol id="people" class="people" aria-label="Possible people"></ol>
+        </div>
+        <div class="handoff" aria-live="polite">
+          <h3 id="handoff-title">Handoff message</h3>
+          <p id="handoff-text" class="handoff-text"></p>
+          <p id="handoff-truth" class="handoff-truth"></p>
+        </div>
+      </div>
+      <ul class="facts-list">
+        <li><strong>107 of 116</strong> person appearances found (92%), with 47 marks with no person. Cost $0.0531, at 46.9 photos a minute including cutting the video.</li>
+        <li><strong>The merge rule never joined two different people.</strong> It split every one of the 4 labeled people, 6 times in all, each split within two seconds.</li>
+        <li><strong>7 of the 15 possible people hold no labeled person.</strong> MOBDrone labels only people, so some may be boats or buoys, and the rest are false sightings.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="scale-title">
+      <h2 id="scale-title" class="section-title">All 1,547 SeaDronesSee validation photos, searched as one flight</h2>
+      <p>The default method gave every photo one overview and two close looks, up to 8 requests at once, under a $1.47 spending cap.</p>
+      <dl class="facts">
+        <dt>Swimmers found</dt><dd>3,876 of 6,206 (62%). 2,330 missed.</dd>
+        <dt>Marks with no swimmer</dt><dd>874</dd>
+        <dt>Cost</dt><dd>$0.9571 for 4,641 calls, about $0.00062 per photo. At one photo a second, about $2.23 per hour of footage.</dd>
+        <dt>Speed</dt><dd>35.1 photos a minute over the 44-minute run, short of the 60 a minute needed to keep pace with one photo a second. The live clip ran at 46.9.</dd>
+        <dt>Reliability</dt><dd>Every overview was read, with no lost requests and no unreadable answers.</dd>
+      </dl>
+    </section>
+
+    <section aria-labelledby="detector-title">
+      <h2 id="detector-title" class="section-title">The trained detector is more accurate</h2>
+      <p>A YOLO26m detector trained on SeaDronesSee ran locally on the same photos, scored under the same rule. It found more people with fewer false marks on both tests. On SeaDronesSee its checkpoint was chosen on this same validation split, so those numbers lean optimistic. MOBDrone is footage neither had seen, and the detector still won.</p>
+      <div class="chart" role="img" aria-label="SeaDronesSee, 1,547 photos: the trained detector found 4,283 of 6,206 swimmers with 144 marks on no swimmer; Ember found 3,876 with 874. MOBDrone, 300 frames: the detector found 228 of 311 people with 194 marks on no person; Ember found 205 with 232.">
+        <div class="chart-group">
+          <p class="chart-label">SeaDronesSee validation, 1,547 photos</p>
+          <p class="chart-sub">Swimmers found, of 6,206</p>
+          <div class="bar-row"><span>Trained detector</span><span class="bar detector" style="--low: 4283; --high: 4283; --total: 6206"></span><b>4,283</b></div>
+          <div class="bar-row"><span>Ember</span><span class="bar ember" style="--low: 3876; --high: 3876; --total: 6206"></span><b>3,876</b></div>
+          <p class="chart-sub">Marks with no swimmer</p>
+          <div class="bar-row"><span>Trained detector</span><span class="bar detector" style="--low: 144; --high: 144; --total: 874"></span><b>144</b></div>
+          <div class="bar-row"><span>Ember</span><span class="bar ember" style="--low: 874; --high: 874; --total: 874"></span><b>874</b></div>
+        </div>
+        <div class="chart-group">
+          <p class="chart-label">MOBDrone, 300 frames new to both</p>
+          <p class="chart-sub">People found, of 311</p>
+          <div class="bar-row"><span>Trained detector</span><span class="bar detector" style="--low: 228; --high: 228; --total: 311"></span><b>228</b></div>
+          <div class="bar-row"><span>Ember</span><span class="bar ember" style="--low: 205; --high: 205; --total: 311"></span><b>205</b></div>
+          <p class="chart-sub">Marks with no person</p>
+          <div class="bar-row"><span>Trained detector</span><span class="bar detector" style="--low: 194; --high: 194; --total: 874"></span><b>194</b></div>
+          <div class="bar-row"><span>Ember</span><span class="bar ember" style="--low: 232; --high: 232; --total: 874"></span><b>232</b></div>
+        </div>
+      </div>
+      <p class="muted small">The detector ran two ways, on the whole photo and on the same 3 × 3 tiles Ember uses, and the better run is shown: the whole photo, on both sets. Its tiled run found 4,213 with 408 false marks on SeaDronesSee and 217 with 400 on MOBDrone. A mark counts when it lands inside a labeled box, each box once, at most five per photo. Ember’s false-mark bars use the same scale on both sets.</p>
+      <h3 class="offers-title">What Ember offers instead</h3>
+      <ul class="offers">
+        <li><strong>No training data.</strong> Ember was never trained on drone photos, and it found 205 of 311 people on footage new to it. Nothing has to be labeled or trained before a new camera or stretch of water can be searched.</li>
+        <li><strong>A search record and handoff a crew can act on.</strong> A flight comes back as possible people with times, a coverage timeline that shows the water nobody searched, and a handoff message for each possible person.</li>
+        <li><strong>A measured, capped cost.</strong> About $0.00062 per photo, about $2.23 per hour of footage at one photo a second. The detector runs free on a local GPU. The tool stops before any request could cross its spending cap.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="checks-title">
+      <h2 id="checks-title" class="section-title">Two checks on the 30 validation photos</h2>
+      <p><strong>Meta’s grounding format became the default.</strong> Asking for points on Meta’s 0–1,000 grid found 69 of 134 swimmers with one close look and 79 with two, with 13 marks on no swimmer. It had to reach 63, 74 and at most 24.</p>
+      <p><strong>Letting Ember choose its own close looks lost.</strong> At equal spend, agent mode found 54 swimmers against the fixed method’s 79. Each tool-calling step resends the frame’s conversation, so the same money bought 51 calls instead of 90, and 9 of the 30 photos never got a close look. The fixed method stays the default, and agent mode stays available with <code>--mode agent</code>.</p>
+      <div class="table-wrap">
+        <table class="numbers">
+          <thead><tr><th scope="col">134 swimmers, equal spend</th><th scope="col">Found</th><th scope="col">Marks with no swimmer</th><th scope="col">Calls</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Fixed method, grounding format</th><td>79</td><td>13</td><td>90</td></tr>
+            <tr><th scope="row">Agent mode</th><td>54</td><td>11</td><td>51</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section aria-labelledby="how-title">
-      <h2 id="how-title" class="section-title">How it works</h2>
+      <h2 id="how-title" class="section-title">How each second gets searched</h2>
+      <p id="steps-note" class="muted small">Shown on SeaDronesSee validation frame 2, from the first recorded runs.</p>
       <ol class="flow">
         <li>
-          <h3>One look at the whole photo</h3>
+          <h3>One look at the whole frame</h3>
           <div id="step-overview" class="photo"></div>
-          <p>Ember splits the photo into a 3 × 3 grid and ranks the nine tiles by how likely each is to hold a person in the water.</p>
+          <p>Ember splits the frame into a 3 × 3 grid and ranks the nine sections by how likely each is to hold a person in the water.</p>
         </li>
         <li>
-          <h3>Close looks at the top tiles</h3>
+          <h3>Close looks at the top sections</h3>
           <div id="step-crops" class="crops"></div>
-          <p>Ember gets a full-resolution crop of each top-ranked tile, one at a time, and marks anyone it sees. A budget caps the spend before every request.</p>
+          <p>Ember gets a full-resolution crop of each top-ranked section and marks anyone it sees. The tool reserves each request’s worst-case cost against the spending cap before sending it.</p>
         </li>
         <li>
-          <h3>A handoff the next person can use</h3>
+          <h3>Coverage the next person can trust</h3>
           <div id="step-handoff" class="photo"></div>
-          <p>The reviewer gets each mark as a crop and as a pin on the full photo. Water that never got a close look stays shaded, so nobody mistakes it for searched.</p>
+          <p>Each mark becomes a pin on the full frame. Sections that never got a close look stay shaded, and the coverage timeline keeps them for every second of the flight.</p>
         </li>
       </ol>
     </section>
 
     <section aria-labelledby="compare-title">
-      <h2 id="compare-title" class="section-title">Same two close looks, different water</h2>
-      <p>A fixed grid opens tiles in a preset order. Ember opens the ones it ranked highest. On this photo, that difference decides whether anyone gets found.</p>
+      <h2 id="compare-title" class="section-title">Where the first close look goes</h2>
+      <p>A fixed grid opens sections in a preset order. Ember opens the ones it ranked highest. On this frame, that difference decides whether anyone gets found.</p>
       <div class="compare">
         <figure><div id="compare-chosen" class="photo"></div><figcaption id="compare-chosen-caption"></figcaption></figure>
         <figure><div id="compare-grid" class="photo"></div><figcaption id="compare-grid-caption"></figcaption></figure>
@@ -80,8 +168,7 @@
           <div class="bar-row"><span>Fixed grid order</span><span class="bar grid" style="--low: 16; --high: 16"></span><b>16</b></div>
         </div>
       </div>
-      <p class="muted small">Every row uses the same recorded Ember answer for each crop, so only the order of the close looks differs. Ranges cover two passes over the frames. With all nine tiles opened, every order finds 77–78, so the gain comes from where the first looks go. The measure and its pass rule were written down before any call.</p>
-      <p>An overview plus two close looks cost about <strong>$0.00052 per photo</strong>, or $1.88 for an hour of footage at one photo a second.</p>
+      <p class="muted small">These runs used the original frozen prompts. Every row uses the same recorded Ember answer for each crop, so only the order of the close looks differs. Ranges cover two passes over the frames. With all nine tiles opened, every order finds 77–78, so the gain comes from where the first looks go. The measure and its pass rule were written down before any call.</p>
     </section>
 
     <section class="story" aria-labelledby="story-title">
@@ -92,23 +179,25 @@
     </section>
 
     <section aria-labelledby="run-title">
-      <h2 id="run-title" class="section-title">Run it on your own photos</h2>
+      <h2 id="run-title" class="section-title">Run it on your own flight</h2>
       <pre><code>pip install pillow
 export MODEL_API_KEY=your-meta-model-api-key
-python probe/open_water_search.py path/to/photos --out results --budget 0.05
+python probe/open_water_search.py flight.mp4 --out results --budget 0.10
 open results/report.html</code></pre>
-      <p>You get a report page with the reviewer queue and the coverage map, plus <code>queue.json</code>, <code>coverage.json</code> and <code>calls.jsonl</code> with every request and its cost. The tool stops before any request that could exceed <code>--budget</code>.</p>
+      <p>The flight can be a video, cut into one frame per second with ffmpeg, or a folder of photos one second apart. You get <code>search-record.json</code> with the possible people, the coverage timeline and every handoff message, a report page built from it, and <code>calls.jsonl</code> with every request and its cost. Add <code>--mode agent</code> to let Ember choose its own close looks.</p>
     </section>
 
     <section aria-labelledby="limits-title">
       <h2 id="limits-title" class="section-title">What this does not show yet</h2>
       <ul class="limits">
-        <li>When each search used its own answers at equal spend, the totals came out 78 to 77. That gap is within Ember’s own variation between passes, and both scorecards are published.</li>
+        <li>The search does not keep pace with a drone shooting one photo a second: 35.1 photos a minute on the scale run and 46.9 on the live clip.</li>
+        <li>The live clip carried no drone position, so its handoff messages give the time and the section of the frame. They give no map coordinates.</li>
+        <li>When Ember and a fixed grid each used their own answers at equal spend, the totals came out 78 to 77, within Ember’s own variation between passes.</li>
         <li>There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.</li>
       </ul>
     </section>
 
-    <p class="provenance">Built during the Muse Ember Hackathon, November 23 to December 2, 2026. Photos and labels: SeaDronesSee (CC0), by Varga, Kiefer, Messmer and Zell. Every Ember call is in the <a href="https://github.com/napiermd/open-water-search">public repository</a>.</p>
+    <p class="provenance">Built during the Muse Ember Hackathon, starting November 23, 2026. Photos and labels: SeaDronesSee (CC0), by Varga, Kiefer, Messmer and Zell. Unseen footage: MOBDrone (CC BY 4.0), by Cafarelli et al., <a href="https://arxiv.org/abs/2203.07973">arXiv 2203.07973</a>. Every Ember call is in the <a href="https://github.com/napiermd/open-water-search">public repository</a>.</p>
   </main>
 </body>
 </html>

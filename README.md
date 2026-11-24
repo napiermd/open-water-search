@@ -1,74 +1,138 @@
 # Open Water Search
 
-A drone shooting one photo a second makes 3,600 photos an hour. In the image Muse Ember reads, a typical swimmer in them is about 11 pixels across. Open Water Search has Ember look at each whole photo once, choose the patch of water worth a close look, and mark anyone it finds. The person reviewing gets marked crops to check and a map of the water nobody has looked at closely yet.
+**Turn a drone flight into a search record a rescue crew can act on.**
 
-Built during the Muse Ember Hackathon, November 23 to December 2, 2026.
+Point Open Water Search at a flight, as a video or a folder of photos one second apart. Muse Ember looks over every second and takes close looks at the water most likely to hold someone. The tool returns a search record: the possible people, a coverage timeline of the water nobody searched, and a handoff message for each possible person that a dispatcher can read to a crew.
 
-**Try it in your browser:** [How it works](https://open-water-search.vercel.app) · [Take over a search](https://open-water-search.vercel.app/judge) · [Compare Ember with a fixed grid](https://open-water-search.vercel.app/replay). All three pages replay a recorded run, so clicking around costs nothing.
+Built during the Muse Ember Hackathon. The project started on November 23, 2026.
 
-![Open Water Search landing page: a drone photo with Ember's two close looks outlined and the other seven tiles shaded](docs/landing.jpg)
+**Try it in your browser:** [How it works](https://open-water-search.vercel.app) · [Take over a search](https://open-water-search.vercel.app/judge) · [Compare Ember with a fixed grid](https://open-water-search.vercel.app/replay). All three pages replay recorded runs, so clicking around costs nothing.
 
-## How it works
+![Open Water Search landing page: the live two-minute run printing Ember's decisions and handoff messages above the coverage timeline it filled in](docs/landing.jpg)
 
-![The three steps on one real validation photo: Ember ranks the nine tiles, takes close looks at the top two, and hands off a map with pins and shaded unchecked water](docs/how-it-works.jpg)
+## A flight in, a search record out
 
 ~~~mermaid
 flowchart LR
-    photos["Folder of drone photos"] --> overview["1. Overview<br/>Ember sees each whole photo<br/>and ranks its 9 tiles"]
-    overview --> look["2. Close look<br/>Ember gets the next-ranked tile<br/>at full resolution and marks anyone it sees"]
-    look --> more{"More close looks<br/>per photo, and budget left?"}
-    more -- yes --> look
-    more -- no --> report["3. Handoff<br/>report.html: reviewer queue<br/>and coverage map"]
+    video["Flight as a video"] -->|"cut into one frame per second"| frames["One frame per second"]
+    folder["Flight as a folder of photos,<br/>one per second, in time order"] --> frames
+    frames --> fixed["Fixed method (default)<br/>one overview ranks the 9 sections,<br/>close looks at the top 2"]
+    frames -.->|"--mode agent"| agent["Agent option<br/>Ember picks up to 4 close looks<br/>per frame through tool calls"]
+    fixed --> sightings["Sightings"]
+    agent -.-> sightings
+    sightings -->|"back-to-back seconds,<br/>within 10% of the frame width"| people["Possible people"]
+    people --> record["Search record<br/>possible people · coverage timeline<br/>· a handoff message for each"]
 ~~~
 
-1. **Overview.** Every photo gets one Ember call that ranks the nine tiles of a 3 × 3 grid by how likely each is to hold a person in the water.
-2. **Close looks.** Each photo then gets a close look at its top-ranked tile, then its second, one round at a time, until the per-photo count (`--looks`, default 2) or the budget runs out. Before every request, the tool reserves the request's worst-case cost within `--budget`, so requests running at once can never cross it together.
-3. **Handoff.** The reviewer gets every mark as a crop and as a pin on the full photo, highest confidence first, and a coverage map showing which water got a close look.
+On November 24 the command searched a two-minute MOBDrone clip live, one frame per second:
 
-Every tile on the coverage map ends up in one of four states:
+~~~
+python3 probe/open_water_search.py clip.mp4 --out runs/live-clip --budget 0.10
+~~~
+
+It printed each overview and close look as its answer arrived, then a handoff message for each possible person. Every line, with its time, is in `runs/live-clip/terminal.jsonl`:
+
+~~~
+second-00009: close look at the middle right: 1 possible person, confidence 0.95
+...
+Possible person 1. First seen 0:06, last seen 0:36 into the flight, in the middle left section of second-00036. Confidence 0.98. 7 of the 9 sections of that frame were never searched.
+~~~
+
+| The live clip | Result |
+|---|---|
+| Seconds of footage | 120 |
+| Person appearances found | 107 of 116 (92%) |
+| Marks with no person | 47 |
+| Possible people | 15, for 4 labeled people |
+| Cost | $0.0531 |
+| Photos per minute | 46.9 (wall time 153.6 s, including cutting the video) |
+
+`probe/check_merge_rule.py` checked how sightings merged into possible people against MOBDrone's track IDs:
+
+- It never joined two different people.
+- All 4 labeled people were split into more than one possible person: 6 splits, all within two seconds.
+- 7 of the 15 possible people hold no labeled person. MOBDrone labels only people, so some may be boats or buoys, and the rest are false sightings.
+
+The clip carried no drone position, so its handoff messages give the time and the section of the frame. They give no map coordinates.
+
+Every section of every second ends the search in one of four states on the coverage timeline:
 
 ~~~mermaid
 stateDiagram-v2
     state "Not checked (shaded)" as unchecked
-    state "Flagged (yellow): Ember marked someone" as flagged
-    state "Checked, no sighting (blue)" as clear
-    state "Unreadable (dashed orange)" as unreadable
-    [*] --> unchecked: overview ranks the tile
+    state "Flagged: Ember marked someone" as flagged
+    state "Checked, no sighting" as clear
+    state "Unreadable: the answer couldn't be read" as unreadable
+    [*] --> unchecked: the overview ranks the section
     unchecked --> flagged: close look with a mark
     unchecked --> clear: close look, nothing marked
-    unchecked --> unreadable: close look, answer couldn't be read
+    unchecked --> unreadable: close look, unreadable answer
 ~~~
 
-A blue tile means Ember looked and reported no one. It does not mean the water is empty, and the reviewer can still open it.
+A section checked with no sighting means Ember looked and reported no one. It does not mean the water is empty.
 
-## Run it on your own photos
+## The scale run: all 1,547 SeaDronesSee validation photos
 
-~~~
-pip install pillow
-export MODEL_API_KEY=your-meta-model-api-key
-python probe/open_water_search.py path/to/photos --out results --budget 0.05
-open results/report.html
-~~~
+Every photo in the SeaDronesSee validation split ran as one flight through the default fixed method on November 24: one overview and two close looks per photo, grounding format, up to 8 requests at once, spending cap $1.47. The trained detector ran on the same photos for comparison (`runs/scale-run`, `detector/`).
 
-Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per photo, `--parallel` to change how many requests run at once (default 8), and `--key-file` instead of the environment variable if you prefer. The tool spaces requests out when Meta's rate-limit headers run low, and after a 429 it waits at least the Retry-After time, then backs off with jitter. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
+| 6,206 swimmers in 1,547 photos | Found | Missed | Marks with no swimmer | Cost | Time |
+|---|---|---|---|---|---|
+| Ember, fixed method | 3,876 (62%) | 2,330 | 874 | $0.9571 | 44 min |
+| Trained detector, whole photo at 640 | 4,283 (69%) | 1,923 | 144 | $0 (local) | about 2 min |
+| Trained detector, 3×3 tiles at 640 | 4,213 (68%) | 1,993 | 408 | $0 (local) | about 12 min |
 
-If the flight has the drone's GPS position for its photos, pass it with `--positions positions.json`: a JSON file whose `frames` object maps each photo's name (without extension, or `second-00000`, `second-00001` and so on for a video) to `{"latitude": ..., "longitude": ...}` in decimal degrees, or to `null` when that photo has none. Each handoff message then gives the drone position at sighting, and the report maps where the drone was. The tool doesn't compute the person's own coordinates, because the flight data has no camera field of view and measures altitude from the takeoff point. Photos without position data get no coordinates. Without the file, the search record says position data was unavailable and the report shows no map. `probe/write_positions.py` writes this file for SeaDronesSee frames from the dataset's CC0 `instances_val.json`, and `validation/inputs/positions.json` is its output for the 30 validation photos, 22 of which have a position.
+- **Cost:** $0.9571 for 4,641 calls, or about $0.00062 per photo. At one photo a second that is about $2.23 per hour of footage.
+- **Speed:** 35.1 photos a minute over the whole run (2,646 s), short of the 60 a minute needed to keep pace with one photo a second. The live clip reached 46.9.
+- **Reliability:** every overview was read, with no lost requests and no unreadable answers. The first attempt ended after 57 calls when one request timed out. The fix (one retry, then only that request is lost) is in commit e68172f, and that attempt's $0.0208 is counted in the project's spending.
 
-Add `--mode agent` to let Ember run the search through tool calls. Each photo gets one conversation that opens with its overview and a one-line note about the previous photo's sightings. Ember chooses which tiles to look at closely, at most 4 per photo, reports each sighting as a point on Meta's 0–1,000 grid over the close look it received, and moves to the next photo when it decides to. Each photo earns an equal share of `--budget`, and any share it leaves unused carries forward. The tool prints a line for each tool call as it happens. The fixed method stays the default unless agent mode beats it on the 30 validation photos.
+## The trained detector is more accurate
 
-| File in `results/` | What it holds |
-|---|---|
-| `search-record.json` | The search record: every possible sighting in source-image pixels, the possible people they merge into with a handoff message for each, every tile's status for every photo, every Ember call with its tokens and cost, and how the run ended |
-| `report.html` | The reviewer queue, highest confidence first, and a coverage map of every photo, built from the search record |
-| `queue.json` | Up to five sightings per photo, in source-image pixels, built from the search record |
-| `coverage.json` | Every tile's status for every photo, from the search record |
-| `calls.jsonl` | Every Ember request, with its token usage, cost and answer |
+A YOLO26m detector trained on SeaDronesSee (`detector/`, AGPL-3.0) found more people with fewer false marks than Ember on both tests, under the same scoring rule. On SeaDronesSee its checkpoint was chosen on the same validation split it was scored on, so its numbers there lean optimistic. MOBDrone is footage neither had seen, and the detector won there too:
 
-An overview plus two close looks cost about $0.00052 per photo in our runs, or $1.88 per 3,600 photos. Those runs sent one request at a time, about 4.4 seconds per photo. The tool now runs up to eight at once and records photos per minute in the search record.
+| 311 labeled people in 300 MOBDrone frames | Found | Missed | Marks with no person | Cost |
+|---|---|---|---|---|
+| Trained detector, whole photo at 640 | 228 | 83 | 194 | $0 (local) |
+| Trained detector, 3×3 tiles at 640 | 217 | 94 | 400 | $0 (local) |
+| Ember, fixed method | 205 | 106 | 232 | $0.1364 |
 
-## What we measured
+The 300 frames were spread across all 66 MOBDrone videos with a fixed seed and listed before any frame or label was viewed (`mobdrone/frames.json`). A mark counts when it lands inside a labeled box, each box counts once, and each photo keeps at most five marks. The detector's settings were fixed before any label was seen, and `detector/README.md` has both of its runs on every set.
 
-We compared three ways to spend close looks on the same photos, using the same recorded Ember answer for every crop, so only the order in which tiles are opened differs:
+What Ember offers instead:
+
+- **No training data.** Ember was never trained on drone photos and found 205 of the 311 people (66%) on footage new to it. Nothing has to be labeled or trained before a new camera or stretch of water can be searched.
+- **A search record and handoff a crew can act on.** A flight comes back as possible people with the seconds they were seen, a coverage timeline of the water nobody searched, and a handoff message for each possible person.
+- **A measured, capped cost.** About $0.00062 per photo, or about $2.23 per hour of footage at one photo a second, with the default grounding format. The detector runs free on a local GPU. The tool stops before any request could cross its spending cap.
+
+## Two checks on the 30 validation photos
+
+**Meta's grounding format became the default** (`runs/format-check`). Close looks asked for points on Meta's 0–1,000 grid, with structured output forcing a JSON schema. The pass rule was fixed in advance:
+
+| 134 swimmers | Pass rule | Result |
+|---|---|---|
+| Found with one close look | at least 63 | 69 |
+| Found with two close looks | at least 74 | 79 |
+| Marks with no swimmer, two close looks | at most 24 | 13 |
+
+**Letting Ember choose its own close looks lost** (`runs/agent-check`). With `--mode agent`, Ember saw each overview and chose its close looks through three tools: look closer at a tile, report a sighting, and move to the next frame. It had to beat the fixed method at the same total spend:
+
+| 134 swimmers, equal spend | Found | Marks with no swimmer | Calls |
+|---|---|---|---|
+| Fixed method, grounding format | 79 | 13 | 90 |
+| Agent mode | 54 | 11 | 51 |
+
+Each tool-calling step resends the frame's conversation and the tool definitions, so the same money bought 51 calls instead of 90, and 9 of the 30 photos never got a close look. The fixed method stays the default, and agent mode stays available.
+
+## How each second is searched
+
+![The steps on one real validation photo: Ember ranks the nine sections, takes close looks at the top two, and leaves pins with the other seven sections shaded](docs/how-it-works.jpg)
+
+1. **Overview.** Each frame gets one Ember call that ranks the nine sections of a 3 × 3 grid by how likely each is to hold a person in the water.
+2. **Close looks.** Each frame then gets a close look at its top-ranked section, then its second, one round at a time, until the per-frame count (`--looks`, default 2) or the spending cap runs out. Before every request, the tool reserves the request's worst-case cost within `--budget`, so requests running at once can never cross it together.
+3. **Search record.** Sightings in back-to-back seconds within 10% of the frame width merge into one possible person, and a gap of more than 2 seconds starts a new one. Code writes a handoff message for each possible person from the search record, and the coverage timeline keeps every section that never got a close look.
+
+## Supporting detail: where the first close look goes
+
+Before the scale run, we compared three ways to spend close looks on the same 30 photos, using the same recorded Ember answer for every crop, so only the order in which tiles are opened differs. These runs used the original frozen prompts.
 
 - **Ember picks the tile** from its one overview.
 - **Always zoom the center** first, then continue in grid order.
@@ -100,22 +164,48 @@ With all nine tiles opened, every order finds the same swimmers. The gain comes 
 | Always zoom the center first | 28–38 | 30–41 | 42–53 | 85–94 |
 | Fixed grid order | 7–10 | 18–24 | 36–44 | 85–94 |
 
-From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 first-run frames and 24 of 30 validation frames.
+From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 first-run frames and 24 of 30 validation frames. With the frozen prompts, an overview plus two close looks cost about $0.00052 per photo, or $1.88 per 3,600 photos. The current grounding-format default measured about $0.00062 per photo on the scale run, about $2.23 per hour of footage.
 
-### What this does not show
+## What this does not show
 
-- **Equal spend with each search's own answers.** We planned this head-to-head too, and it does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
-- **Speed.** There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.
+- **Keeping pace with a drone.** The search reached 35.1 photos a minute on the scale run and 46.9 on the live clip, short of one photo a second.
+- **Equal spend with each search's own answers.** In the frozen-prompt runs we planned this head-to-head too, and it does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
+- **Reviewer speed.** There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.
 
 ## Why the unchecked water matters
 
 On July 4, 2021, a Glendale, Wisconsin police drone found two paddleboarders on Lake Michigan and held a light on them while boats came in. The crew could reach the boats only through dispatch. Later, the officer told us: "Honestly, we didn't know if the boats knew." Finding someone is half the job. The other half is making sure the next person knows exactly where to look, and which water nobody has checked.
 
+## Run it on your own flight
+
+~~~
+pip install pillow
+export MODEL_API_KEY=your-meta-model-api-key
+python probe/open_water_search.py flight.mp4 --out results --budget 0.10
+open results/report.html
+~~~
+
+Point it at a flight: a video file, which the tool cuts into one frame per second with ffmpeg, or a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per frame, `--parallel` to change how many requests run at once (default 8), `--format frozen` for the original prompts, and `--key-file` instead of the environment variable if you prefer. The tool spaces requests out when Meta's rate-limit headers run low, and after a 429 it waits at least the Retry-After time, then backs off with jitter. If the spending cap is reached, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
+
+If the flight has the drone's GPS position for its photos, pass it with `--positions positions.json`: a JSON file whose `frames` object maps each photo's name (without extension, or `second-00000`, `second-00001` and so on for a video) to `{"latitude": ..., "longitude": ...}` in decimal degrees, or to `null` when that photo has none. Each handoff message then gives the drone position at sighting, and the report maps where the drone was. The tool doesn't compute the person's own coordinates, because the flight data has no camera field of view and measures altitude from the takeoff point. Photos without position data get no coordinates. Without the file, the search record says position data was unavailable and the report shows no map. `probe/write_positions.py` writes this file for SeaDronesSee frames from the dataset's CC0 `instances_val.json`, and `validation/inputs/positions.json` is its output for the 30 validation photos, 22 of which have a position.
+
+Add `--mode agent` to let Ember run the search through tool calls. Each frame gets one conversation that opens with its overview and a one-line note about the previous frame's sightings. Ember chooses which tiles to look at closely, at most 4 per frame, reports each sighting as a point on Meta's 0–1,000 grid over the close look it received, and moves to the next frame when it decides to. Each frame earns an equal share of `--budget`, and any share it leaves unused carries forward. The tool prints a line for each tool call as it happens. It lost to the fixed method on the 30 validation photos, so the fixed method stays the default.
+
+| File in `results/` | What it holds |
+|---|---|
+| `search-record.json` | The search record: every possible sighting in source-image pixels, the possible people they merge into with a handoff message for each, the coverage timeline with every section's status for every second, every Ember call with its tokens and cost, and how the run ended |
+| `report.html` | The reviewer queue, highest confidence first, and a coverage map of every frame, built from the search record |
+| `queue.json` | Up to five sightings per frame, in source-image pixels, built from the search record |
+| `coverage.json` | Every section's status for every frame, from the search record |
+| `calls.jsonl` | Every Ember request, with its token usage, cost and answer |
+
+With the default grounding format, an overview plus two close looks cost about $0.00062 per photo on the scale run, or about $2.23 per hour of footage at one photo a second. The search record also records photos per minute.
+
 ## The three web pages
 
 | Page | What you do there |
 |---|---|
-| [How it works](https://open-water-search.vercel.app) (`pages/index.html`) | See the three steps and the results on one real validation photo |
+| [How it works](https://open-water-search.vercel.app) (`pages/index.html`) | Watch the live two-minute run print Ember's decisions and fill in its coverage timeline, read the handoff message for each possible person, then see the scale run, the detector comparison and the steps on one real validation photo |
 | [Take over a search](https://open-water-search.vercel.app/judge) (`pages/judge.html`) | Ember has taken one overview, opened its top tile and flagged a possible swimmer. You mark it, dismiss it or say you can't tell. Then you pick the next tile, see Ember's recorded close look there, and reveal the labels. |
 | [Replay](https://open-water-search.vercel.app/replay) (`pages/replay.html`) | Put Ember and the fixed grid side by side on every frame of either run, at 1 to 9 close looks per frame, with spend and totals across all 30 frames |
 
@@ -150,13 +240,13 @@ python probe/fetch_frames.py
 python -m http.server 8000
 ~~~
 
-Then open `http://localhost:8000/pages/index.html`. `probe/build_pages.py` rebuilds `pages/runs/` from the sealed traces and reads no labels. The pages load labels in the browser from the files `fetch_frames.py` downloads.
+Then open `http://localhost:8000/pages/index.html`. `probe/build_pages.py` rebuilds `pages/runs/` from the sealed traces and from `runs/live-clip`, and reads no labels. The pages load labels in the browser from the files `fetch_frames.py` downloads.
 
 The hosted site comes from `python probe/build_site.py`, which copies the pages, the run data, and the frames resized to 2,400 pixels, along with their labels, into `site/`. Then `vercel deploy site --prod` publishes it. SeaDronesSee is CC0, so the site can carry frames and labels that this repository leaves out.
 
 ## Muse Ember usage
 
-Every call made for this project, from the token usage Meta returned with each answer:
+The November 23 runs used the frozen prompts. Their token usage, from the answers Meta returned:
 
 | | Calls | Input tokens | Cached input | Output tokens | Reasoning tokens | Cost |
 |---|---|---|---|---|---|---|
@@ -164,9 +254,20 @@ Every call made for this project, from the token usage Meta returned with each a
 | False start | 46 | 33,333 | 0 | 8,345 | 7,718 | $0.0075 |
 | Validation | 570 | 373,864 | 61,606 | 70,966 | 59,924 | $0.0670 |
 | Tool test | 12 | 7,632 | 0 | 3,116 | 2,712 | $0.0023 |
-| **Total** | **1,198** | **811,525** | **123,392** | **147,256** | **123,233** | **$0.1429** |
+| **Total, November 23** | **1,198** | **811,525** | **123,392** | **147,256** | **123,233** | **$0.1429** |
 
 Costs use Meta's published Muse Ember rates: $0.10 per million input tokens, $0.004 per million cached input tokens and $0.50 per million output tokens, below 200,000 tokens of context. Each call's prompt hash, image hash, timing, usage and raw answer are in the traces.
+
+The November 24 runs, with the cost each run folder's README reports. Every call's token usage and cost are in that folder's `calls-redacted.jsonl`.
+
+| Run | Cost |
+|---|---|
+| Format check, 90 calls (`runs/format-check`) | $0.0192 |
+| Agent check, 51 calls (`runs/agent-check`) | $0.0178 |
+| Scale run, first attempt, stopped by a timeout after 57 calls | $0.0208 |
+| Scale run, 4,641 calls (`runs/scale-run`) | $0.9571 |
+| MOBDrone, 300 frames (`runs/mobdrone-300`) | $0.1364 |
+| Live two-minute clip (`runs/live-clip`) | $0.0531 |
 
 ## Reproduce the numbers
 
@@ -181,6 +282,8 @@ python probe/score.py validation  # the same for validation/live/
 
 The order tables are under `order_table` in each `score.json`. `score.py` refuses to score unless the trace matches its seal.
 
+`python probe/score.py record SEARCH_RECORD SCORING_DIR` prints the scorecard for a search record under the same rule, and `python probe/score.py detector BOXES_JSON SCORING_DIR` does the same for the detector's boxes. Each folder under `runs/` keeps its published scorecard and the seal of its search record and calls log. `detector/README.md` has the detector's commands.
+
 To make your own sealed run on macOS, move `live/` or `validation/live/` aside. Then, with `MODEL_API_KEY` set, run `sh probe/isolate.sh runner.py --dataset probe --prior-nanodollars 0` from the repository root. The launcher uses `sandbox-exec` so the inference process cannot read the label folders. The runner caps a run at $0.49, reserves each request's worst-case cost before sending it, and stops after ten unreadable answers in a row. After a 429 rate-limit reply, it waits once and retries once, as Meta's rate-limit guidance asks.
 
 ## Run record
@@ -193,7 +296,7 @@ To make your own sealed run on macOS, move `live/` or `validation/live/` aside. 
 
 ## What is and isn't here
 
-The traces are Ember's replies as returned, minus Meta's response and message IDs. `redaction.json` gives the SHA-256 of each original trace, which matches its `seal.json`, and of the redacted copy. No API key is stored anywhere in the repository. The SeaDronesSee images and labels are not included. `fetch_frames.py` downloads them from the mirror at revision `deb1f872` and checks each one against the SHA-256 recorded in the manifests. The two screenshots in `docs/` show one validation frame on the landing page.
+The traces are Ember's replies as returned, minus Meta's response and message IDs. `redaction.json` gives the SHA-256 of each original trace, which matches its `seal.json`, and of the redacted copy. No API key is stored anywhere in the repository. The SeaDronesSee images and labels are not included. `fetch_frames.py` downloads them from the mirror at revision `deb1f872` and checks each one against the SHA-256 recorded in the manifests. The two screenshots in `docs/` show the landing page: the live clip's replay and one validation frame.
 
 The MOBDrone videos, frames and labels are not included either. `mobdrone/frames.json` lists the 300 frames of unseen footage, by video, frame number and time, with the SHA-256 of each of the 66 source videos. `select_mobdrone.py` chose them from video names and frame counts alone, with a fixed seed, and the list was committed before any frame or label was viewed. `python probe/fetch_mobdrone.py DATA_DIR` downloads the videos and the people-only labels from Zenodo, checks them against Zenodo's MD5 and the recorded SHA-256, unpacks the videos into `DATA_DIR/videos`, and checks that the label file has an entry for every frame of every video, the 300 chosen ones included.
 
