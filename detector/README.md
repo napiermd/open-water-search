@@ -21,7 +21,7 @@ Fixed on November 24, before any label was viewed:
 
 ## Results
 
-**The whole-photo run is the detector's result.** It found more swimmers than the tiled run on both sets, with fewer unmatched sightings.
+**The whole-photo run is the detector's result.** It found more swimmers than the tiled run on all three sets, with fewer unmatched sightings.
 
 | Photos | Run | Swimmers | Found | Missed | Unmatched sightings (background, duplicate, wrong class) |
 |---|---|---|---|---|---|
@@ -29,8 +29,12 @@ Fixed on November 24, before any label was viewed:
 | 30 published validation frames | Tiles | 134 | 80 | 54 | 12 (8, 3, 1) |
 | All 1,547 validation photos | **Whole photo** | 6,206 | **4,283** | 1,923 | 144 (126, 11, 7) |
 | All 1,547 validation photos | Tiles | 6,206 | 4,213 | 1,993 | 408 (272, 74, 62) |
+| 300 MOBDrone frames | **Whole photo** | 311 | **228** | 83 | 194 (190, 4, 0) |
+| 300 MOBDrone frames | Tiles | 311 | 217 | 94 | 400 (383, 17, 0) |
 
 With five sightings per photo, at most 96 of the 30 frames' 134 swimmers and 4,559 of the full split's 6,206 can be found. On the 30 frames, Ember's search found 63–64 swimmers with one close look per frame and 77–78 with all nine, under the same rule (see the main README).
+
+MOBDrone is footage the detector never trained or was selected on. Its label file has one class, person, and every person box is scored as a swimmer, the detector's class 0. The 311 people appear in 192 of the 300 frames, and 309 can be found under the five-sighting limit. MOBDrone labels no boats or gear, so a box on a boat counts as background and no sighting can be wrong class.
 
 ## Files
 
@@ -42,6 +46,7 @@ With five sightings per photo, at most 96 of the 30 frames' 134 swimmers and 4,5
 | `seadronessee-val/inputs/manifest.json` | Every photo of the split, with size and SHA-256 |
 | `seadronessee-val/scoring-only/manifest.json` | Every label file's SHA-256, in the scorer's layout |
 | `seadronessee-val/` | Runs on the full split |
+| `mobdrone-300/` | Runs on the 300 MOBDrone frames in `mobdrone/frames.json` (`mobdrone/inputs/manifest.json`, scored against `mobdrone/scoring-only`) |
 | `*/whole-photo-640/`, `*/tiles-640/` | `boxes.json` (per photo: frame, width, height, and boxes as x1, y1, x2, y2, confidence, class in photo pixels), `seal.json` (SHA-256 of `boxes.json` and of the inputs manifest, with the checkpoint, settings and versions) and `scorecard.json` (printed by `probe/score.py detector`) |
 
 ## Run it again
@@ -67,6 +72,13 @@ detector-venv/bin/python detector/run_detector.py detector/seadronessee-val/inpu
 detector-venv/bin/python detector/run_detector.py detector/seadronessee-val/inputs/manifest.json detector/seadronessee-val/tiles-640 --tiles
 python3 probe/score.py detector detector/seadronessee-val/whole-photo-640/boxes.json detector/seadronessee-val/scoring-only
 python3 probe/score.py detector detector/seadronessee-val/tiles-640/boxes.json detector/seadronessee-val/scoring-only
+
+# The 300 MOBDrone frames: fetch the videos with probe/fetch_mobdrone.py, then extract the frames and labels.
+python3 probe/extract_mobdrone.py DATA_DIR SAMPLE_DIR
+detector-venv/bin/python detector/run_detector.py mobdrone/inputs/manifest.json detector/mobdrone-300/whole-photo-640
+detector-venv/bin/python detector/run_detector.py mobdrone/inputs/manifest.json detector/mobdrone-300/tiles-640 --tiles
+python3 probe/score.py detector detector/mobdrone-300/whole-photo-640/boxes.json mobdrone/scoring-only
+python3 probe/score.py detector detector/mobdrone-300/tiles-640/boxes.json mobdrone/scoring-only
 ~~~
 
 `run_detector.py` refuses any photo whose SHA-256 or size differs from its manifest, and the scorer refuses any label that differs from its manifest. Running the whole-photo pass on the 30 frames twice on the same machine gave byte-identical `boxes.json`. Another GPU or library version may move boxes slightly, so compare against the seal.

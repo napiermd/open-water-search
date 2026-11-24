@@ -9,6 +9,11 @@ detector/weights/
 detector/seadronessee-val/inputs/images
 detector/seadronessee-val/scoring-only/labels
 
+# The MOBDrone sample and clip are linked in from local extractions (probe/extract_mobdrone.py, cut_mobdrone_clip.py).
+mobdrone/inputs/images
+mobdrone/scoring-only/labels
+mobdrone/clip/scoring-only/labels
+
 # Run state and secrets
 *.key
 .env

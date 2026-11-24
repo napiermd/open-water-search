@@ -1,0 +1,1507 @@
+{
+  "format": "YOLO normalized xywh, class 0 = person (MOBDrone's person boxes)",
+  "labels": "annotations_person_coco_classes.json",
+  "labels_md5": "c3c97f5518440489e686b63525fb6d3e",
+  "frames": [
+    {
+      "frame": "001-DJI_0804_0001_30m_1-000213",
+      "label": "labels/001-DJI_0804_0001_30m_1-000213.txt",
+      "sha256": "34cbb2bd52c5e5296c8a477a4fe32f3eb607d37cc25ee6e8c883993b211a3ffe"
+    },
+    {
+      "frame": "002-DJI_0804_0001_30m_1-000286",
+      "label": "labels/002-DJI_0804_0001_30m_1-000286.txt",
+      "sha256": "793230376bde510c747d5269d2674aad3f1771cd8b67ecf68f43cbb2aebcac19"
+    },
+    {
+      "frame": "003-DJI_0804_0001_30m_1-000533",
+      "label": "labels/003-DJI_0804_0001_30m_1-000533.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "004-DJI_0804_0001_30m_1-000824",
+      "label": "labels/004-DJI_0804_0001_30m_1-000824.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "005-DJI_0804_0001_30m_1-001161",
+      "label": "labels/005-DJI_0804_0001_30m_1-001161.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "006-DJI_0804_0001_30m_2-000077",
+      "label": "labels/006-DJI_0804_0001_30m_2-000077.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "007-DJI_0804_0001_30m_2-000283",
+      "label": "labels/007-DJI_0804_0001_30m_2-000283.txt",
+      "sha256": "d2e00575e9007539300d3f1700527f04d246756d81c657d8392a40fe2522dfa9"
+    },
+    {
+      "frame": "008-DJI_0804_0001_30m_2-000400",
+      "label": "labels/008-DJI_0804_0001_30m_2-000400.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "009-DJI_0804_0001_30m_2-000541",
+      "label": "labels/009-DJI_0804_0001_30m_2-000541.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "010-DJI_0804_0001_30m_2-000683",
+      "label": "labels/010-DJI_0804_0001_30m_2-000683.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "011-DJI_0804_0001_30m_3-000017",
+      "label": "labels/011-DJI_0804_0001_30m_3-000017.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "012-DJI_0804_0001_30m_3-000089",
+      "label": "labels/012-DJI_0804_0001_30m_3-000089.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "013-DJI_0804_0001_30m_3-000199",
+      "label": "labels/013-DJI_0804_0001_30m_3-000199.txt",
+      "sha256": "921afb656de59edd04488e8d71a7e9e495b3316d7640383e01c95e70e6893554"
+    },
+    {
+      "frame": "014-DJI_0804_0001_30m_3-000232",
+      "label": "labels/014-DJI_0804_0001_30m_3-000232.txt",
+      "sha256": "79da16db8f26be6187c63efbc082e539143f886936edbe792fd44a261c4bc1b6"
+    },
+    {
+      "frame": "015-DJI_0804_0002_30m_1-000108",
+      "label": "labels/015-DJI_0804_0002_30m_1-000108.txt",
+      "sha256": "3ba54e25b83768856fb87ca5f8c237a2c54d2a70b9465704af7a8583a70ff300"
+    },
+    {
+      "frame": "016-DJI_0804_0002_30m_1-000605",
+      "label": "labels/016-DJI_0804_0002_30m_1-000605.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "017-DJI_0804_0002_30m_1-000667",
+      "label": "labels/017-DJI_0804_0002_30m_1-000667.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "018-DJI_0804_0002_30m_1-001189",
+      "label": "labels/018-DJI_0804_0002_30m_1-001189.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "019-DJI_0804_0002_30m_1-001583",
+      "label": "labels/019-DJI_0804_0002_30m_1-001583.txt",
+      "sha256": "ab9e0bbdbc94ff4cfdeb2c3ecc5d5d7e8f6189cb8900a06e6a4290cb5b50d274"
+    },
+    {
+      "frame": "020-DJI_0804_0002_30m_2-000092",
+      "label": "labels/020-DJI_0804_0002_30m_2-000092.txt",
+      "sha256": "383290e86b264beac11a41d9ebce579f989b2c6c3bd350b8b420bec4b6acdced"
+    },
+    {
+      "frame": "021-DJI_0804_0002_30m_2-000479",
+      "label": "labels/021-DJI_0804_0002_30m_2-000479.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "022-DJI_0804_0002_30m_2-000992",
+      "label": "labels/022-DJI_0804_0002_30m_2-000992.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "023-DJI_0804_0002_30m_2-001507",
+      "label": "labels/023-DJI_0804_0002_30m_2-001507.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "024-DJI_0804_0003_10m-000122",
+      "label": "labels/024-DJI_0804_0003_10m-000122.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "025-DJI_0804_0003_10m-000324",
+      "label": "labels/025-DJI_0804_0003_10m-000324.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "026-DJI_0804_0003_10m-000530",
+      "label": "labels/026-DJI_0804_0003_10m-000530.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "027-DJI_0804_0003_10m-000825",
+      "label": "labels/027-DJI_0804_0003_10m-000825.txt",
+      "sha256": "52e6be29ef2c903460749a4cf91e55a152435775c529265908c5e5cb911f453b"
+    },
+    {
+      "frame": "028-DJI_0804_0004_20m-000092",
+      "label": "labels/028-DJI_0804_0004_20m-000092.txt",
+      "sha256": "cf1072c561d69fa6b14178b52b1288b4a2d7f9501288bd0b0925042b46fd7a7d"
+    },
+    {
+      "frame": "029-DJI_0804_0004_20m-000476",
+      "label": "labels/029-DJI_0804_0004_20m-000476.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "030-DJI_0804_0004_20m-000780",
+      "label": "labels/030-DJI_0804_0004_20m-000780.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "031-DJI_0804_0004_20m-000969",
+      "label": "labels/031-DJI_0804_0004_20m-000969.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "032-DJI_0804_0004_20m-001254",
+      "label": "labels/032-DJI_0804_0004_20m-001254.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "033-DJI_0804_0005_30m-000330",
+      "label": "labels/033-DJI_0804_0005_30m-000330.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "034-DJI_0804_0005_30m-000531",
+      "label": "labels/034-DJI_0804_0005_30m-000531.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "035-DJI_0804_0005_30m-000779",
+      "label": "labels/035-DJI_0804_0005_30m-000779.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "036-DJI_0804_0005_30m-001348",
+      "label": "labels/036-DJI_0804_0005_30m-001348.txt",
+      "sha256": "6631cb0a05907b75203ea3e9f444ed302b619e5ad6eae6dc984d2f0b67369c97"
+    },
+    {
+      "frame": "037-DJI_0804_0006_40m-000137",
+      "label": "labels/037-DJI_0804_0006_40m-000137.txt",
+      "sha256": "1d644aabb671519fe666ec77981f21d8aa180510cbd927b8b202c181eac5aa91"
+    },
+    {
+      "frame": "038-DJI_0804_0006_40m-000437",
+      "label": "labels/038-DJI_0804_0006_40m-000437.txt",
+      "sha256": "eeaca6d559b9ba194187c42a17402e239f81776b8d95bd8db55ded160b21e1a0"
+    },
+    {
+      "frame": "039-DJI_0804_0006_40m-000615",
+      "label": "labels/039-DJI_0804_0006_40m-000615.txt",
+      "sha256": "4865ffd6d39aab26159708a6214e333225ec2ea77dfdba64f06d06e67dee574f"
+    },
+    {
+      "frame": "040-DJI_0804_0006_40m-000977",
+      "label": "labels/040-DJI_0804_0006_40m-000977.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "041-DJI_0804_0006_40m-001424",
+      "label": "labels/041-DJI_0804_0006_40m-001424.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "042-DJI_0804_0007_50m-000003",
+      "label": "labels/042-DJI_0804_0007_50m-000003.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "043-DJI_0804_0007_50m-000311",
+      "label": "labels/043-DJI_0804_0007_50m-000311.txt",
+      "sha256": "10e0eeae02c76ee68fa3d08c5ad0c5d366a248b63784799c61c2126e3114302e"
+    },
+    {
+      "frame": "044-DJI_0804_0007_50m-000660",
+      "label": "labels/044-DJI_0804_0007_50m-000660.txt",
+      "sha256": "e60643e7606ea2f6eeebec66db29e0d3a393807f44bf046b6c2a1cd8a1d380aa"
+    },
+    {
+      "frame": "045-DJI_0804_0007_50m-001080",
+      "label": "labels/045-DJI_0804_0007_50m-001080.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "046-DJI_0804_0007_50m-001389",
+      "label": "labels/046-DJI_0804_0007_50m-001389.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "047-DJI_0804_0008_20m-000192",
+      "label": "labels/047-DJI_0804_0008_20m-000192.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "048-DJI_0804_0008_20m-000627",
+      "label": "labels/048-DJI_0804_0008_20m-000627.txt",
+      "sha256": "0c50242e571435319be2dd4a02bf06594e062e28c566fc649772d0671a84d21f"
+    },
+    {
+      "frame": "049-DJI_0804_0008_20m-000823",
+      "label": "labels/049-DJI_0804_0008_20m-000823.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "050-DJI_0804_0008_20m-001348",
+      "label": "labels/050-DJI_0804_0008_20m-001348.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "051-DJI_0804_0009_40m-000303",
+      "label": "labels/051-DJI_0804_0009_40m-000303.txt",
+      "sha256": "44c684b63e70ac46a540a6c6b125b0cb3f9ddf1dea16d2ae32b678da1a521417"
+    },
+    {
+      "frame": "052-DJI_0804_0009_40m-000555",
+      "label": "labels/052-DJI_0804_0009_40m-000555.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "053-DJI_0804_0009_40m-001068",
+      "label": "labels/053-DJI_0804_0009_40m-001068.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "054-DJI_0804_0009_40m-001409",
+      "label": "labels/054-DJI_0804_0009_40m-001409.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "055-DJI_0804_0009_40m-001523",
+      "label": "labels/055-DJI_0804_0009_40m-001523.txt",
+      "sha256": "9e9fbdbb25baf4e30e5168876f59e6bb9a0ddba4ecb34f4a635810ae7373cdc9"
+    },
+    {
+      "frame": "056-DJI_0804_0010_60m-000086",
+      "label": "labels/056-DJI_0804_0010_60m-000086.txt",
+      "sha256": "63dd727f82ff629a0fc4951062451dcac75a899758775806e9a4e6475c700395"
+    },
+    {
+      "frame": "057-DJI_0804_0010_60m-000448",
+      "label": "labels/057-DJI_0804_0010_60m-000448.txt",
+      "sha256": "e5dd02fb23acacc01cd3ee3e6d8c26328b2ee3dbb1c603b9e8989b170ac349bf"
+    },
+    {
+      "frame": "058-DJI_0804_0010_60m-000715",
+      "label": "labels/058-DJI_0804_0010_60m-000715.txt",
+      "sha256": "3f69af8434956badee9ac184d6ee1ec4d4e05271bcd50523386a70575588a5a8"
+    },
+    {
+      "frame": "059-DJI_0804_0010_60m-001103",
+      "label": "labels/059-DJI_0804_0010_60m-001103.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "060-DJI_0804_0010_60m-001548",
+      "label": "labels/060-DJI_0804_0010_60m-001548.txt",
+      "sha256": "327f53db133837384009c99f474ce2942ce868ba16f9d1dfcc88cc19efe276d2"
+    },
+    {
+      "frame": "061-DJI_0804_0011_30m_1-000332",
+      "label": "labels/061-DJI_0804_0011_30m_1-000332.txt",
+      "sha256": "cb47c71014b50b0ba45ad10b08d43a7137f5138b9968deb2fed706a95cb45bea"
+    },
+    {
+      "frame": "062-DJI_0804_0011_30m_1-000537",
+      "label": "labels/062-DJI_0804_0011_30m_1-000537.txt",
+      "sha256": "f208dc4d468fc78dd147de828fcadf24e2fb946d762bd834497a95c4a4233d55"
+    },
+    {
+      "frame": "063-DJI_0804_0011_30m_1-001009",
+      "label": "labels/063-DJI_0804_0011_30m_1-001009.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "064-DJI_0804_0011_30m_1-001312",
+      "label": "labels/064-DJI_0804_0011_30m_1-001312.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "065-DJI_0804_0011_30m_1-001698",
+      "label": "labels/065-DJI_0804_0011_30m_1-001698.txt",
+      "sha256": "26e88f143b5e078b95bec0e7e4567c296a09efe2f281c1c78d6dde44f78a4d28"
+    },
+    {
+      "frame": "066-DJI_0804_0011_30m_2-000123",
+      "label": "labels/066-DJI_0804_0011_30m_2-000123.txt",
+      "sha256": "4bc756f8b92ba92effef3acf451367b7b6a1fcbff5bbb688d8de026ce8b28760"
+    },
+    {
+      "frame": "067-DJI_0804_0011_30m_2-000385",
+      "label": "labels/067-DJI_0804_0011_30m_2-000385.txt",
+      "sha256": "34070575162ac287b55cb643050646ba99993f9ab8cef3017535deac9a241827"
+    },
+    {
+      "frame": "068-DJI_0804_0011_30m_2-000624",
+      "label": "labels/068-DJI_0804_0011_30m_2-000624.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "069-DJI_0804_0011_30m_2-000814",
+      "label": "labels/069-DJI_0804_0011_30m_2-000814.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "070-DJI_0804_0011_30m_2-001003",
+      "label": "labels/070-DJI_0804_0011_30m_2-001003.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "071-DJI_0804_0012_50m_1-000023",
+      "label": "labels/071-DJI_0804_0012_50m_1-000023.txt",
+      "sha256": "efde2f9b7b0e15e0297719e2f15f0c1a2e91b5f1def9b7b3e52c5ee6919d695a"
+    },
+    {
+      "frame": "072-DJI_0804_0012_50m_1-000628",
+      "label": "labels/072-DJI_0804_0012_50m_1-000628.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "073-DJI_0804_0012_50m_1-000923",
+      "label": "labels/073-DJI_0804_0012_50m_1-000923.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "074-DJI_0804_0012_50m_1-001462",
+      "label": "labels/074-DJI_0804_0012_50m_1-001462.txt",
+      "sha256": "abce74e6eaa67cf3a265507d95a7ba3c3a02e69ed341f492596da8638515e62b"
+    },
+    {
+      "frame": "075-DJI_0804_0012_50m_1-001962",
+      "label": "labels/075-DJI_0804_0012_50m_1-001962.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "076-DJI_0804_0012_50m_2-000004",
+      "label": "labels/076-DJI_0804_0012_50m_2-000004.txt",
+      "sha256": "6ca614f4083bb4463e68c35bc1db8f261efe4766dd166c98f46829c993345b84"
+    },
+    {
+      "frame": "077-DJI_0804_0012_50m_2-000020",
+      "label": "labels/077-DJI_0804_0012_50m_2-000020.txt",
+      "sha256": "5b04ff27505317534287bb9b349bea0f1a571f01c65227fcff2ad0fe4c837e19"
+    },
+    {
+      "frame": "078-DJI_0804_0012_50m_2-000037",
+      "label": "labels/078-DJI_0804_0012_50m_2-000037.txt",
+      "sha256": "1484836286e885f4143a203e9476fe21d5002fa2e2c7befa732e4675feb09901"
+    },
+    {
+      "frame": "079-DJI_0804_0012_50m_2-000045",
+      "label": "labels/079-DJI_0804_0012_50m_2-000045.txt",
+      "sha256": "4f0b16f11563c4826f1cc8ceb8adf4dd88eda7f7602acd40459d02ddcd65f137"
+    },
+    {
+      "frame": "080-DJI_0804_0012_50m_3-000206",
+      "label": "labels/080-DJI_0804_0012_50m_3-000206.txt",
+      "sha256": "53c73ecaeed1d04a1499991b10b297e5f982d083fda7f0ca73401d855bc087c9"
+    },
+    {
+      "frame": "081-DJI_0804_0012_50m_3-000365",
+      "label": "labels/081-DJI_0804_0012_50m_3-000365.txt",
+      "sha256": "e8ff402f83407d3b3eb639c729a38011fb158a179d268c52f25da2aa470a707a"
+    },
+    {
+      "frame": "082-DJI_0804_0012_50m_3-000784",
+      "label": "labels/082-DJI_0804_0012_50m_3-000784.txt",
+      "sha256": "df0ec0f0085aa8e706091f8557c232de3e036d2a3198a7e0d34022a3acd26285"
+    },
+    {
+      "frame": "083-DJI_0804_0012_50m_3-001421",
+      "label": "labels/083-DJI_0804_0012_50m_3-001421.txt",
+      "sha256": "4d9a27c2fe19583f73e64ac75f0538f3a64519ac52283bee2d9cc593d25094b0"
+    },
+    {
+      "frame": "084-DJI_0804_0012_50m_3-001479",
+      "label": "labels/084-DJI_0804_0012_50m_3-001479.txt",
+      "sha256": "09ae74b94105416af749dcbacd23d965faeb0ae5d5660a2b15f225bfdf85b34e"
+    },
+    {
+      "frame": "085-DJI_0804_0013_40m-000067",
+      "label": "labels/085-DJI_0804_0013_40m-000067.txt",
+      "sha256": "8069229f949bf0be827eea04894378cecca9703216d1a5cc9e23f1f7a4180082"
+    },
+    {
+      "frame": "086-DJI_0804_0013_40m-000349",
+      "label": "labels/086-DJI_0804_0013_40m-000349.txt",
+      "sha256": "0acdaa35a2bdd742d5040deaea1f634dce17af8179004846ed6493b82f18a181"
+    },
+    {
+      "frame": "087-DJI_0804_0013_40m-000408",
+      "label": "labels/087-DJI_0804_0013_40m-000408.txt",
+      "sha256": "52944483cd6c0aaa2e7287615abe821ed9479f143e0c5ca39e64966c7e69a214"
+    },
+    {
+      "frame": "088-DJI_0804_0013_40m-000638",
+      "label": "labels/088-DJI_0804_0013_40m-000638.txt",
+      "sha256": "17ff0ac28031e22f93acd257a4dbf52fd156d690b803f25643a9dd67ae8ce60c"
+    },
+    {
+      "frame": "089-DJI_0804_0013_40m-000879",
+      "label": "labels/089-DJI_0804_0013_40m-000879.txt",
+      "sha256": "cd8f503636acfb20bfe6796862e23e358f3c5f6addda74b4b42ad7acfcbc16a9"
+    },
+    {
+      "frame": "090-DJI_0804_0014_50m_1-000324",
+      "label": "labels/090-DJI_0804_0014_50m_1-000324.txt",
+      "sha256": "e870965a74499142acd9f73b0d9dc8a874371451608262da154252dbe7b0acb3"
+    },
+    {
+      "frame": "091-DJI_0804_0014_50m_1-000704",
+      "label": "labels/091-DJI_0804_0014_50m_1-000704.txt",
+      "sha256": "8799415e1933911ec781fa9a1b77416caacf1a7c7eec4615cb1c11c9ccbbd2d7"
+    },
+    {
+      "frame": "092-DJI_0804_0014_50m_1-000859",
+      "label": "labels/092-DJI_0804_0014_50m_1-000859.txt",
+      "sha256": "9a2b759c61ecc7caf7bdf0cf99d4da7d9db1f37a84fc2fa0939c6f548b624b9a"
+    },
+    {
+      "frame": "093-DJI_0804_0014_50m_1-001482",
+      "label": "labels/093-DJI_0804_0014_50m_1-001482.txt",
+      "sha256": "2fa184274369ea0f5d4c684e35a9cdd7ce5f878cb9697a8ec82312164cfa9b6c"
+    },
+    {
+      "frame": "094-DJI_0804_0014_50m_2-000000",
+      "label": "labels/094-DJI_0804_0014_50m_2-000000.txt",
+      "sha256": "2b1d206205a17fc812207ee60c484fbe8d1c185a03899e03ddda1fc36e6aaf02"
+    },
+    {
+      "frame": "095-DJI_0804_0014_50m_2-000426",
+      "label": "labels/095-DJI_0804_0014_50m_2-000426.txt",
+      "sha256": "6f3f6deceb1af1c3d6c78d182525849c32baa52a53eb2e1d1c39f6aa032094ff"
+    },
+    {
+      "frame": "096-DJI_0804_0014_50m_2-000797",
+      "label": "labels/096-DJI_0804_0014_50m_2-000797.txt",
+      "sha256": "5a64dfa42623c0c1b7417540b47c31831f91f87099db99d5b8728d3b18641959"
+    },
+    {
+      "frame": "097-DJI_0804_0014_50m_2-000947",
+      "label": "labels/097-DJI_0804_0014_50m_2-000947.txt",
+      "sha256": "afab755e610cfb0da73e4d934c2cde6b890f623b07454c771d69d2b608dccca3"
+    },
+    {
+      "frame": "098-DJI_0804_0014_50m_3-000016",
+      "label": "labels/098-DJI_0804_0014_50m_3-000016.txt",
+      "sha256": "5ea9751fc77db12cb91d0f39d18b7868958f2c35cc05aaf71760d8135f299ab0"
+    },
+    {
+      "frame": "099-DJI_0804_0014_50m_3-000238",
+      "label": "labels/099-DJI_0804_0014_50m_3-000238.txt",
+      "sha256": "6fda86ed08c58990690d5e1b95620edfd42715bcf830d06cc59e85c10dbfc03c"
+    },
+    {
+      "frame": "100-DJI_0804_0014_50m_3-000333",
+      "label": "labels/100-DJI_0804_0014_50m_3-000333.txt",
+      "sha256": "f1bdc2bc70b96a4994a4646d9735509580824af8e609044535d405b9caed0c85"
+    },
+    {
+      "frame": "101-DJI_0804_0014_50m_3-000498",
+      "label": "labels/101-DJI_0804_0014_50m_3-000498.txt",
+      "sha256": "553e5e86ca027ea29b6962719ef03dc0764b7a3b23a0d93256c4f6c0d1535e5a"
+    },
+    {
+      "frame": "102-DJI_0804_0015_30m-000602",
+      "label": "labels/102-DJI_0804_0015_30m-000602.txt",
+      "sha256": "8adefb681b6898205c7527a471e37c4a4c4083fc2dabab92909d1b3e93e0a25a"
+    },
+    {
+      "frame": "103-DJI_0804_0015_30m-001342",
+      "label": "labels/103-DJI_0804_0015_30m-001342.txt",
+      "sha256": "56a600004bbcc92d155e3b33b3303ef63a9ddfbe24d9747472cf2b26dfc86210"
+    },
+    {
+      "frame": "104-DJI_0804_0015_30m-002099",
+      "label": "labels/104-DJI_0804_0015_30m-002099.txt",
+      "sha256": "f4dc97e6ea363cc962d3461b352bb1ecdc33423cf41742ff36aa0bbed86e5e88"
+    },
+    {
+      "frame": "105-DJI_0804_0015_30m-002750",
+      "label": "labels/105-DJI_0804_0015_30m-002750.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "106-DJI_0804_0016_20m-000306",
+      "label": "labels/106-DJI_0804_0016_20m-000306.txt",
+      "sha256": "62afabffc536d7523042841268713ca6ac22e25f9c0cefa4552cfe49ec390999"
+    },
+    {
+      "frame": "107-DJI_0804_0016_20m-000595",
+      "label": "labels/107-DJI_0804_0016_20m-000595.txt",
+      "sha256": "61aa57c33ca8d66b2727fe1bc25d3c260c0fed4395b5a438d58a59f17fb52052"
+    },
+    {
+      "frame": "108-DJI_0804_0016_20m-001052",
+      "label": "labels/108-DJI_0804_0016_20m-001052.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "109-DJI_0804_0016_20m-001838",
+      "label": "labels/109-DJI_0804_0016_20m-001838.txt",
+      "sha256": "a44ec380e27783d19ddffffb8fc64528c164ab99e80e470708e69709f2b29ba7"
+    },
+    {
+      "frame": "110-DJI_0804_0017_40m-000035",
+      "label": "labels/110-DJI_0804_0017_40m-000035.txt",
+      "sha256": "0cc6eb33370cdff8c7b5a6b31afbb1c5b1816f30a99d6af94e00f2129ae02a9d"
+    },
+    {
+      "frame": "111-DJI_0804_0017_40m-000355",
+      "label": "labels/111-DJI_0804_0017_40m-000355.txt",
+      "sha256": "85fa5efbb567c3d4bba3b4c23264510c950fb9ee13a382b7a29bc4fb8f9ff437"
+    },
+    {
+      "frame": "112-DJI_0804_0017_40m-000745",
+      "label": "labels/112-DJI_0804_0017_40m-000745.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "113-DJI_0804_0017_40m-001032",
+      "label": "labels/113-DJI_0804_0017_40m-001032.txt",
+      "sha256": "90bbd0863c759495a43e74c27d2b9be0d770e9b5b9c8a731fe77f6bd388954c7"
+    },
+    {
+      "frame": "114-DJI_0804_0017_40m-001575",
+      "label": "labels/114-DJI_0804_0017_40m-001575.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "115-DJI_0804_0018_40m-000074",
+      "label": "labels/115-DJI_0804_0018_40m-000074.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "116-DJI_0804_0018_40m-000909",
+      "label": "labels/116-DJI_0804_0018_40m-000909.txt",
+      "sha256": "83ad92e37e77843b68b53ca9662386d5b644016bf9e91d0953d5941a3e4bd215"
+    },
+    {
+      "frame": "117-DJI_0804_0018_40m-001581",
+      "label": "labels/117-DJI_0804_0018_40m-001581.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "118-DJI_0804_0018_40m-002358",
+      "label": "labels/118-DJI_0804_0018_40m-002358.txt",
+      "sha256": "aecc344504a88ec5107593ecd4181aaef21b94ab309f252bb1ee8000ab0234a5"
+    },
+    {
+      "frame": "119-DJI_0915_0001_40m-000644",
+      "label": "labels/119-DJI_0915_0001_40m-000644.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "120-DJI_0915_0001_40m-000911",
+      "label": "labels/120-DJI_0915_0001_40m-000911.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "121-DJI_0915_0001_40m-002110",
+      "label": "labels/121-DJI_0915_0001_40m-002110.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "122-DJI_0915_0001_40m-002583",
+      "label": "labels/122-DJI_0915_0001_40m-002583.txt",
+      "sha256": "413820fa324529e4f60dc776bb71978ab8b5ed5485b425f69adfbc800a7c54e9"
+    },
+    {
+      "frame": "123-DJI_0915_0002_40m_1-000155",
+      "label": "labels/123-DJI_0915_0002_40m_1-000155.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "124-DJI_0915_0002_40m_1-000191",
+      "label": "labels/124-DJI_0915_0002_40m_1-000191.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "125-DJI_0915_0002_40m_1-000344",
+      "label": "labels/125-DJI_0915_0002_40m_1-000344.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "126-DJI_0915_0002_40m_1-000539",
+      "label": "labels/126-DJI_0915_0002_40m_1-000539.txt",
+      "sha256": "08593156535f62c6f307d99a5c3259d3ef3340c16cdbe8d4ea0008a71ac856f9"
+    },
+    {
+      "frame": "127-DJI_0915_0002_40m_1-000791",
+      "label": "labels/127-DJI_0915_0002_40m_1-000791.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "128-DJI_0915_0002_40m_2-000112",
+      "label": "labels/128-DJI_0915_0002_40m_2-000112.txt",
+      "sha256": "17b272046c3315d59baeda2c82d8b02e476cf503e874a43ff5a4766993e9f7a9"
+    },
+    {
+      "frame": "129-DJI_0915_0002_40m_2-000745",
+      "label": "labels/129-DJI_0915_0002_40m_2-000745.txt",
+      "sha256": "1cf8dfd67633c9c99613c7785bc79d94a9366ae8c77241fce49d5537ff2cf17a"
+    },
+    {
+      "frame": "130-DJI_0915_0002_40m_2-001510",
+      "label": "labels/130-DJI_0915_0002_40m_2-001510.txt",
+      "sha256": "b721a1a261ceb76a77c0e2b31751d0427c575fee85534aa3b5c5db091c93005a"
+    },
+    {
+      "frame": "131-DJI_0915_0002_40m_2-001587",
+      "label": "labels/131-DJI_0915_0002_40m_2-001587.txt",
+      "sha256": "484352ebc2b59d2edbfaddf0ffdd56d757a598f8343b2b7bd23aa9f0cb371f44"
+    },
+    {
+      "frame": "132-DJI_0915_0003_50m-000152",
+      "label": "labels/132-DJI_0915_0003_50m-000152.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "133-DJI_0915_0003_50m-000846",
+      "label": "labels/133-DJI_0915_0003_50m-000846.txt",
+      "sha256": "ec573b61c7042c41607fb9d9d0200e1b9ef4cb6fba0107eb91ac4f6abbee726d"
+    },
+    {
+      "frame": "134-DJI_0915_0003_50m-001540",
+      "label": "labels/134-DJI_0915_0003_50m-001540.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "135-DJI_0915_0003_50m-001900",
+      "label": "labels/135-DJI_0915_0003_50m-001900.txt",
+      "sha256": "5065924a9ddecc92ef43c63878d73538cf927db332651bcea5466b9c57d49b2d"
+    },
+    {
+      "frame": "136-DJI_0915_0003_50m-002564",
+      "label": "labels/136-DJI_0915_0003_50m-002564.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "137-DJI_0915_0004_50m-000662",
+      "label": "labels/137-DJI_0915_0004_50m-000662.txt",
+      "sha256": "796d8f78f6ae4baf468a55e640fc1d09f1af8960c6fdd7d3f65f3c20d0e5096c"
+    },
+    {
+      "frame": "138-DJI_0915_0004_50m-001435",
+      "label": "labels/138-DJI_0915_0004_50m-001435.txt",
+      "sha256": "4e373a5d1179dafdae5bab1e77f5755ccff48cc5755bb54396140959bb463a7c"
+    },
+    {
+      "frame": "139-DJI_0915_0004_50m-002124",
+      "label": "labels/139-DJI_0915_0004_50m-002124.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "140-DJI_0915_0004_50m-002677",
+      "label": "labels/140-DJI_0915_0004_50m-002677.txt",
+      "sha256": "d886dbd89d9e0ed06e265ca04ab5a4964724226d70da098d65f2146a644966d6"
+    },
+    {
+      "frame": "141-DJI_0915_0004_50m-003156",
+      "label": "labels/141-DJI_0915_0004_50m-003156.txt",
+      "sha256": "582248f3d81dc9eb82d9bab70131d59bb3b1c96742b178066610b5f392e9a101"
+    },
+    {
+      "frame": "142-DJI_0915_0005_60m-000559",
+      "label": "labels/142-DJI_0915_0005_60m-000559.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "143-DJI_0915_0005_60m-001217",
+      "label": "labels/143-DJI_0915_0005_60m-001217.txt",
+      "sha256": "18866fff55babd6ef651f44a1eda10b3456543c59656453990ca26ea7bd41891"
+    },
+    {
+      "frame": "144-DJI_0915_0005_60m-001883",
+      "label": "labels/144-DJI_0915_0005_60m-001883.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "145-DJI_0915_0005_60m-002715",
+      "label": "labels/145-DJI_0915_0005_60m-002715.txt",
+      "sha256": "45fa8d1df017b2946cd65dd2badbb3cf0dde3396ac284566d5f0b1f79e19f58a"
+    },
+    {
+      "frame": "146-DJI_0915_0006_60m_1-000005",
+      "label": "labels/146-DJI_0915_0006_60m_1-000005.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "147-DJI_0915_0006_60m_1-000156",
+      "label": "labels/147-DJI_0915_0006_60m_1-000156.txt",
+      "sha256": "2541ee5f725b4c59b05351c1c24ca32b6c9b2a95318612cdf8bb6cde940c71f8"
+    },
+    {
+      "frame": "148-DJI_0915_0006_60m_1-000312",
+      "label": "labels/148-DJI_0915_0006_60m_1-000312.txt",
+      "sha256": "4a69126316c62eea9931ea5910e9fa3ff0eb0e9195f03499dab8367fbc370539"
+    },
+    {
+      "frame": "149-DJI_0915_0006_60m_1-000420",
+      "label": "labels/149-DJI_0915_0006_60m_1-000420.txt",
+      "sha256": "de13a1d19ef9a27ce10534381fb287ecb012d69cc1d628150a0fa585127d1a1f"
+    },
+    {
+      "frame": "150-DJI_0915_0006_60m_1-000554",
+      "label": "labels/150-DJI_0915_0006_60m_1-000554.txt",
+      "sha256": "5112bffe6813508e9bb6529d957fb4b82aff1abca605136d6345ab06ea3622bb"
+    },
+    {
+      "frame": "151-DJI_0915_0006_60m_3-000010",
+      "label": "labels/151-DJI_0915_0006_60m_3-000010.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "152-DJI_0915_0006_60m_3-000144",
+      "label": "labels/152-DJI_0915_0006_60m_3-000144.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "153-DJI_0915_0006_60m_3-000297",
+      "label": "labels/153-DJI_0915_0006_60m_3-000297.txt",
+      "sha256": "6dbec5e2cc12cdd321cdf6044b4f2bf22fe1f3882f4bd798740b2e3f6bdf11fe"
+    },
+    {
+      "frame": "154-DJI_0915_0006_60m_3-000453",
+      "label": "labels/154-DJI_0915_0006_60m_3-000453.txt",
+      "sha256": "8485f7b816fcae297e5237a2a876364137dab60393e8d822aefa5c58b0b5748c"
+    },
+    {
+      "frame": "155-DJI_0915_0006_60m_4-000046",
+      "label": "labels/155-DJI_0915_0006_60m_4-000046.txt",
+      "sha256": "aa78663ffe1b2601620a57e9577538a4872f2629a1ec5768d83e0c3292c007c8"
+    },
+    {
+      "frame": "156-DJI_0915_0006_60m_4-000097",
+      "label": "labels/156-DJI_0915_0006_60m_4-000097.txt",
+      "sha256": "7cd8249ae4196baed8d71dedd7cedcc2fdb300592097a628a04c0bc5d15e6603"
+    },
+    {
+      "frame": "157-DJI_0915_0006_60m_4-000175",
+      "label": "labels/157-DJI_0915_0006_60m_4-000175.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "158-DJI_0915_0006_60m_4-000237",
+      "label": "labels/158-DJI_0915_0006_60m_4-000237.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "159-DJI_0915_0007_40-001322",
+      "label": "labels/159-DJI_0915_0007_40-001322.txt",
+      "sha256": "9d6a25c1c75ea385054f74227139be4454b071fa81231b1e14099434d1e9f897"
+    },
+    {
+      "frame": "160-DJI_0915_0007_40-001467",
+      "label": "labels/160-DJI_0915_0007_40-001467.txt",
+      "sha256": "074897db6e16d31f1238f170943e1cf018ccdc45674e6e9d61b99b8162540090"
+    },
+    {
+      "frame": "161-DJI_0915_0007_40-003534",
+      "label": "labels/161-DJI_0915_0007_40-003534.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "162-DJI_0915_0007_40-004235",
+      "label": "labels/162-DJI_0915_0007_40-004235.txt",
+      "sha256": "ffbef21e361b1a70e3394a8a5838abe0fe22e444863279c9a20f38aac3c9a127"
+    },
+    {
+      "frame": "163-DJI_0915_0008_50m-000254",
+      "label": "labels/163-DJI_0915_0008_50m-000254.txt",
+      "sha256": "78a09ebbdd0cb42176758de496b72cfd94f0f3f9ad3e6042f91e823ab14d1a05"
+    },
+    {
+      "frame": "164-DJI_0915_0008_50m-000614",
+      "label": "labels/164-DJI_0915_0008_50m-000614.txt",
+      "sha256": "0215d5726f9fb75d3f80db81d139d6724d2f2986e0e177f34bce2ddde927a6e2"
+    },
+    {
+      "frame": "165-DJI_0915_0008_50m-000883",
+      "label": "labels/165-DJI_0915_0008_50m-000883.txt",
+      "sha256": "0a4ee10cc11aa78c72ee3834c1733b0c04d44e8334171e5d634e7cb9394f689a"
+    },
+    {
+      "frame": "166-DJI_0915_0008_50m-001723",
+      "label": "labels/166-DJI_0915_0008_50m-001723.txt",
+      "sha256": "a73b74366146ef121ddde391be5fc9f25a65ee48f4356f58f345ef7c3497a302"
+    },
+    {
+      "frame": "167-DJI_0915_0008_50m-001771",
+      "label": "labels/167-DJI_0915_0008_50m-001771.txt",
+      "sha256": "1b9c4cbae3c914a1440acfe2f70fb8696285be63c58e5456fd9a83f3b970024f"
+    },
+    {
+      "frame": "168-DJI_0915_0009_60m_1-000186",
+      "label": "labels/168-DJI_0915_0009_60m_1-000186.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "169-DJI_0915_0009_60m_1-000420",
+      "label": "labels/169-DJI_0915_0009_60m_1-000420.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "170-DJI_0915_0009_60m_1-000674",
+      "label": "labels/170-DJI_0915_0009_60m_1-000674.txt",
+      "sha256": "ec16dcca25a960a0808a9ebf466826ccd4f32c42483bbce758e73d4b0906eec1"
+    },
+    {
+      "frame": "171-DJI_0915_0009_60m_1-000906",
+      "label": "labels/171-DJI_0915_0009_60m_1-000906.txt",
+      "sha256": "2431c78ce1e5eada5245a0f4c6c321b673d809c80758e532f84b087b5bd73a44"
+    },
+    {
+      "frame": "172-DJI_0915_0009_60m_1-001444",
+      "label": "labels/172-DJI_0915_0009_60m_1-001444.txt",
+      "sha256": "120f651e6b098c5596d127653707fb5b1d137fc853cd0d5ae39561c0c43feac3"
+    },
+    {
+      "frame": "173-DJI_0915_0009_60m_3-000235",
+      "label": "labels/173-DJI_0915_0009_60m_3-000235.txt",
+      "sha256": "9a4ae64b94e05e83e25c47179a893dd404f8d21c17627783f6f3d7e0784c6b76"
+    },
+    {
+      "frame": "174-DJI_0915_0009_60m_3-000710",
+      "label": "labels/174-DJI_0915_0009_60m_3-000710.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "175-DJI_0915_0009_60m_3-001004",
+      "label": "labels/175-DJI_0915_0009_60m_3-001004.txt",
+      "sha256": "bbead6b316a6de7ed5e4cf015e04b3360dcac7654f48c60f7e05cd95e50f7ab8"
+    },
+    {
+      "frame": "176-DJI_0915_0009_60m_3-001403",
+      "label": "labels/176-DJI_0915_0009_60m_3-001403.txt",
+      "sha256": "c24ac63f7fa6c0ed5d3e3e908f218d164ac12f8280e97b62ffaa22e70bc45c6c"
+    },
+    {
+      "frame": "177-DJI_0915_0009_60m_3-001878",
+      "label": "labels/177-DJI_0915_0009_60m_3-001878.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "178-DJI_0915_0009_60m_5-000031",
+      "label": "labels/178-DJI_0915_0009_60m_5-000031.txt",
+      "sha256": "b3614f570c913fbda9bcd8b1062c49ce5c406193490eb322c8362b2e7ae8cb32"
+    },
+    {
+      "frame": "179-DJI_0915_0009_60m_5-000073",
+      "label": "labels/179-DJI_0915_0009_60m_5-000073.txt",
+      "sha256": "d946223d8887b0bdb31c21996c4aeefedffbd53104be718adee7bfa8d8a10a82"
+    },
+    {
+      "frame": "180-DJI_0915_0009_60m_5-000106",
+      "label": "labels/180-DJI_0915_0009_60m_5-000106.txt",
+      "sha256": "24b020e5d1cff5168ccd327e608e44a6a06dff48863f8934485c0dd461b0c3ae"
+    },
+    {
+      "frame": "181-DJI_0915_0009_60m_5-000129",
+      "label": "labels/181-DJI_0915_0009_60m_5-000129.txt",
+      "sha256": "372f0aaa7c8c8a88ca039bbc4eda947c35112b7276b2f16696d2831f2a6160f8"
+    },
+    {
+      "frame": "182-DJI_0915_0009_60m_5-000163",
+      "label": "labels/182-DJI_0915_0009_60m_5-000163.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "183-DJI_0915_0010_60m-000443",
+      "label": "labels/183-DJI_0915_0010_60m-000443.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "184-DJI_0915_0010_60m-001060",
+      "label": "labels/184-DJI_0915_0010_60m-001060.txt",
+      "sha256": "f2a41f73119dfdc571dd7f3dc0a2ad427522bb4e200a1368fda0e90d6c7a8da2"
+    },
+    {
+      "frame": "185-DJI_0915_0010_60m-001422",
+      "label": "labels/185-DJI_0915_0010_60m-001422.txt",
+      "sha256": "d4667559796fffbd752968f8fbab106b342cd4d07fcec95aea9db3be72313884"
+    },
+    {
+      "frame": "186-DJI_0915_0010_60m-002441",
+      "label": "labels/186-DJI_0915_0010_60m-002441.txt",
+      "sha256": "74f672cc8b9c46e4e53042c0a61507a6a83655adb1be04ba8aa4fcce28c75f1a"
+    },
+    {
+      "frame": "187-DJI_0915_0011_30m-001424",
+      "label": "labels/187-DJI_0915_0011_30m-001424.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "188-DJI_0915_0011_30m-002432",
+      "label": "labels/188-DJI_0915_0011_30m-002432.txt",
+      "sha256": "a0a945332083fc0b0c73115a1578364848e6b2d688e6150ac257004239d82f21"
+    },
+    {
+      "frame": "189-DJI_0915_0011_30m-003999",
+      "label": "labels/189-DJI_0915_0011_30m-003999.txt",
+      "sha256": "1d12dc4440af9fd0a19c486beb62f64aad13e79d4d21ace7133699cbd28e91f0"
+    },
+    {
+      "frame": "190-DJI_0915_0011_30m-005846",
+      "label": "labels/190-DJI_0915_0011_30m-005846.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "191-DJI_0915_0012_30m-000519",
+      "label": "labels/191-DJI_0915_0012_30m-000519.txt",
+      "sha256": "803afe724d9e36ef24bcc9b5c1b39a522bd8a954582d6c69275ebbed053b3d8a"
+    },
+    {
+      "frame": "192-DJI_0915_0012_30m-000744",
+      "label": "labels/192-DJI_0915_0012_30m-000744.txt",
+      "sha256": "3e86cde8d161e16020385d1501b17f63040b8b742169a7aa7f36eb5ad35f3690"
+    },
+    {
+      "frame": "193-DJI_0915_0012_30m-001597",
+      "label": "labels/193-DJI_0915_0012_30m-001597.txt",
+      "sha256": "8835c88eab611dacd2658aa8a0c4aca92d8f89e9b3b90892be5b7d1940b90b11"
+    },
+    {
+      "frame": "194-DJI_0915_0012_30m-001837",
+      "label": "labels/194-DJI_0915_0012_30m-001837.txt",
+      "sha256": "45a457594490ce235f841b9b2fcc53e7c9a05ad3bf2b84b1ec99fc0a129fde3f"
+    },
+    {
+      "frame": "195-DJI_0915_0013_40m-000090",
+      "label": "labels/195-DJI_0915_0013_40m-000090.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "196-DJI_0915_0013_40m-001149",
+      "label": "labels/196-DJI_0915_0013_40m-001149.txt",
+      "sha256": "3f23570b9bdf102ca87271d1108b924c1eef769e0e893403e4d304efc6433b4e"
+    },
+    {
+      "frame": "197-DJI_0915_0013_40m-001487",
+      "label": "labels/197-DJI_0915_0013_40m-001487.txt",
+      "sha256": "d9eb5ea327cfd739c526c2ccb15e2abc94e13c8a3275664b9f8542983213eadc"
+    },
+    {
+      "frame": "198-DJI_0915_0013_40m-002210",
+      "label": "labels/198-DJI_0915_0013_40m-002210.txt",
+      "sha256": "d427efa08d597cdfefb931d360aea61d8f47d8f2b7719c41106a95dacd4e2ceb"
+    },
+    {
+      "frame": "199-DJI_0915_0013_40m-003180",
+      "label": "labels/199-DJI_0915_0013_40m-003180.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "200-DJI_0915_0014_40m-000428",
+      "label": "labels/200-DJI_0915_0014_40m-000428.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "201-DJI_0915_0014_40m-001559",
+      "label": "labels/201-DJI_0915_0014_40m-001559.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "202-DJI_0915_0014_40m-002034",
+      "label": "labels/202-DJI_0915_0014_40m-002034.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "203-DJI_0915_0014_40m-003075",
+      "label": "labels/203-DJI_0915_0014_40m-003075.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "204-DJI_0915_0014_40m-004348",
+      "label": "labels/204-DJI_0915_0014_40m-004348.txt",
+      "sha256": "6f51efb4075d5c099ec5108c6b2c7d1eca7d496b383737fd5fee5edd389f0ef4"
+    },
+    {
+      "frame": "205-DJI_0915_0015_50m-000792",
+      "label": "labels/205-DJI_0915_0015_50m-000792.txt",
+      "sha256": "e200da0f7aa4c02d1be12a1ce9de2ef14fa33c458d7ae93d217b02caf5eb0fe3"
+    },
+    {
+      "frame": "206-DJI_0915_0015_50m-002367",
+      "label": "labels/206-DJI_0915_0015_50m-002367.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "207-DJI_0915_0015_50m-002807",
+      "label": "labels/207-DJI_0915_0015_50m-002807.txt",
+      "sha256": "3e211a75462842a9eb530f2bf0811e569f94028b73d6386ea179241baa5e1f17"
+    },
+    {
+      "frame": "208-DJI_0915_0015_50m-005291",
+      "label": "labels/208-DJI_0915_0015_50m-005291.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "209-DJI_0915_0016_50m_1-000048",
+      "label": "labels/209-DJI_0915_0016_50m_1-000048.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "210-DJI_0915_0016_50m_1-000232",
+      "label": "labels/210-DJI_0915_0016_50m_1-000232.txt",
+      "sha256": "19d0f217008dbd01a032f662ff1aecd77886a0b1b04627a03f99815fc2e8608e"
+    },
+    {
+      "frame": "211-DJI_0915_0016_50m_1-000430",
+      "label": "labels/211-DJI_0915_0016_50m_1-000430.txt",
+      "sha256": "1302b6d94e900c8b68567a0857439b72858fffabc265c2c6f51075cdc81a6b69"
+    },
+    {
+      "frame": "212-DJI_0915_0016_50m_1-000746",
+      "label": "labels/212-DJI_0915_0016_50m_1-000746.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "213-DJI_0915_0016_50m_1-000890",
+      "label": "labels/213-DJI_0915_0016_50m_1-000890.txt",
+      "sha256": "6d88a6696a157f42f1e216cd4daafdf44ba845fee84620abbe3fc1b88afef7f6"
+    },
+    {
+      "frame": "214-DJI_0915_0016_50m_2-000053",
+      "label": "labels/214-DJI_0915_0016_50m_2-000053.txt",
+      "sha256": "9cb6b50692577c50f624aa9ad1917311b237e1b3c16358c0ad8f33a5e4da719c"
+    },
+    {
+      "frame": "215-DJI_0915_0016_50m_2-000078",
+      "label": "labels/215-DJI_0915_0016_50m_2-000078.txt",
+      "sha256": "3cbe52be6e4cf84cab0ddaaa1cdf5460ab4d001e651293e5f802abe6bc9976df"
+    },
+    {
+      "frame": "216-DJI_0915_0016_50m_2-000187",
+      "label": "labels/216-DJI_0915_0016_50m_2-000187.txt",
+      "sha256": "2568ad62f25cd5120a6ec257b6b19808d4937997b68c00041b70f6bcfa5a9a53"
+    },
+    {
+      "frame": "217-DJI_0915_0016_50m_2-000251",
+      "label": "labels/217-DJI_0915_0016_50m_2-000251.txt",
+      "sha256": "e9199b44e7d8d8985b15005f8b9416ed10c36252dd0805e59773f1c383f2c3a1"
+    },
+    {
+      "frame": "218-DJI_0915_0016_50m_2-000296",
+      "label": "labels/218-DJI_0915_0016_50m_2-000296.txt",
+      "sha256": "3c3360bfe950b8dc166485d55b249f457ba725a367c043a068ed6b72c2c5743e"
+    },
+    {
+      "frame": "219-DJI_0915_0016_50m_3-000150",
+      "label": "labels/219-DJI_0915_0016_50m_3-000150.txt",
+      "sha256": "d5f8f80961ca370b447f85cb8842c5b7e712ac32e633f40622a8672461c56239"
+    },
+    {
+      "frame": "220-DJI_0915_0016_50m_3-000321",
+      "label": "labels/220-DJI_0915_0016_50m_3-000321.txt",
+      "sha256": "da54c89e81dd3a849d327609ee84274925629bef2b6340485a475cd7e0805329"
+    },
+    {
+      "frame": "221-DJI_0915_0016_50m_3-000810",
+      "label": "labels/221-DJI_0915_0016_50m_3-000810.txt",
+      "sha256": "f5ec0f187a455b12bf71c80569f06c460b4df5b1bb7a831a08a935445e566c0a"
+    },
+    {
+      "frame": "222-DJI_0915_0016_50m_3-000869",
+      "label": "labels/222-DJI_0915_0016_50m_3-000869.txt",
+      "sha256": "5695e47642af17a8113906da7fd156d66b66c3a0993849ee52d2991672f7a421"
+    },
+    {
+      "frame": "223-DJI_0915_0017_60m-000252",
+      "label": "labels/223-DJI_0915_0017_60m-000252.txt",
+      "sha256": "40d6e3b0dbb88eafa6c8abd4ba98782f303f25be5f49e092e5ca1ce5821e2b01"
+    },
+    {
+      "frame": "224-DJI_0915_0017_60m-000517",
+      "label": "labels/224-DJI_0915_0017_60m-000517.txt",
+      "sha256": "887843dc38e14c14f9e2fee58fe4306b6ea1ec9f2cc23203e5b1eb922087697d"
+    },
+    {
+      "frame": "225-DJI_0915_0017_60m-000758",
+      "label": "labels/225-DJI_0915_0017_60m-000758.txt",
+      "sha256": "7c8efd1d41344929af0f47f41eb02313aef2c26a5529f6786cb27715d0a5976c"
+    },
+    {
+      "frame": "226-DJI_0915_0017_60m-000974",
+      "label": "labels/226-DJI_0915_0017_60m-000974.txt",
+      "sha256": "8ddacc15db16e4f47d41f6fb980e2225dfaf2c8860e250a93b108fb791c15df4"
+    },
+    {
+      "frame": "227-DJI_0915_0017_60m-001323",
+      "label": "labels/227-DJI_0915_0017_60m-001323.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "228-DJI_0915_0018_60m-000380",
+      "label": "labels/228-DJI_0915_0018_60m-000380.txt",
+      "sha256": "b21806df60c6ee20ae48c7310c55debde5faf997a6dffb4e1e5fc7e887a04842"
+    },
+    {
+      "frame": "229-DJI_0915_0018_60m-000696",
+      "label": "labels/229-DJI_0915_0018_60m-000696.txt",
+      "sha256": "a544d7b2e320b58371275c6eb970667a992404bcfb9b6f88d652bcdfe7822518"
+    },
+    {
+      "frame": "230-DJI_0915_0018_60m-001776",
+      "label": "labels/230-DJI_0915_0018_60m-001776.txt",
+      "sha256": "e191ba784bbc679da5e765d878ad5abbc35fe3b102083a853f90fdee125e1475"
+    },
+    {
+      "frame": "231-DJI_0915_0018_60m-002308",
+      "label": "labels/231-DJI_0915_0018_60m-002308.txt",
+      "sha256": "23c69f4705c130aafbfa76e2abf7345a6721d77d8fcc810b35a068aeac4b7db6"
+    },
+    {
+      "frame": "232-DJI_0915_0018_60m-002966",
+      "label": "labels/232-DJI_0915_0018_60m-002966.txt",
+      "sha256": "ed7923918bfae9201dc1b37def575ee80904bc8807077944dbb38824a591af3d"
+    },
+    {
+      "frame": "233-DJI_0915_0019_60m-000404",
+      "label": "labels/233-DJI_0915_0019_60m-000404.txt",
+      "sha256": "e98934f215134c05ff9e9f53b688e31b39cec45c6819137843fc449f57f38577"
+    },
+    {
+      "frame": "234-DJI_0915_0019_60m-000704",
+      "label": "labels/234-DJI_0915_0019_60m-000704.txt",
+      "sha256": "6c9788481bd1dab24da0e31c99fe882525d3ea1c0e1350c7d1da2cc3464d2439"
+    },
+    {
+      "frame": "235-DJI_0915_0019_60m-001020",
+      "label": "labels/235-DJI_0915_0019_60m-001020.txt",
+      "sha256": "fafcfdc2a39c03bc05d4e11e8b490b5c0b7071cfd47fabc53432c48baafb5fbc"
+    },
+    {
+      "frame": "236-DJI_0915_0019_60m-001664",
+      "label": "labels/236-DJI_0915_0019_60m-001664.txt",
+      "sha256": "31282b577287151720d8886f63e1a691c13abcd1ab933658006477ab87f8db31"
+    },
+    {
+      "frame": "237-DJI_0915_0020_30m-000005",
+      "label": "labels/237-DJI_0915_0020_30m-000005.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "238-DJI_0915_0020_30m-000432",
+      "label": "labels/238-DJI_0915_0020_30m-000432.txt",
+      "sha256": "04cc36b59f533c7aae44812519a3ab6f992b4fb78983fde809fc9dcc119ef446"
+    },
+    {
+      "frame": "239-DJI_0915_0020_30m-000684",
+      "label": "labels/239-DJI_0915_0020_30m-000684.txt",
+      "sha256": "3aee2670397fa174b160336097d35a275b8862a4fce3eae27b3df3303bf8c240"
+    },
+    {
+      "frame": "240-DJI_0915_0020_30m-000855",
+      "label": "labels/240-DJI_0915_0020_30m-000855.txt",
+      "sha256": "d9085e9089fa2df0b56d0f124a6615842a21900f67c295c24b2b115ca825b9c7"
+    },
+    {
+      "frame": "241-DJI_0915_0021_30m-000082",
+      "label": "labels/241-DJI_0915_0021_30m-000082.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "242-DJI_0915_0021_30m-000548",
+      "label": "labels/242-DJI_0915_0021_30m-000548.txt",
+      "sha256": "cefb1ffc68518502ac0cf848dd57323ef23351ad933041592e6db6e6f1fa30aa"
+    },
+    {
+      "frame": "243-DJI_0915_0021_30m-000665",
+      "label": "labels/243-DJI_0915_0021_30m-000665.txt",
+      "sha256": "a4043ddfeb32b1a9371ab1339c30b0a20ef11e331fb5270df5d2b1a57a4cf267"
+    },
+    {
+      "frame": "244-DJI_0915_0021_30m-001201",
+      "label": "labels/244-DJI_0915_0021_30m-001201.txt",
+      "sha256": "d496afe31f316c92f8c0c20bb340a714f61afa257f1484311196f5c2175e73bc"
+    },
+    {
+      "frame": "245-DJI_0915_0021_30m-001566",
+      "label": "labels/245-DJI_0915_0021_30m-001566.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "246-DJI_0915_0022_40m-000230",
+      "label": "labels/246-DJI_0915_0022_40m-000230.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "247-DJI_0915_0022_40m-000962",
+      "label": "labels/247-DJI_0915_0022_40m-000962.txt",
+      "sha256": "cba58b6328be4a69d1e575f24df138728ff502fdb516461e06d6c1b883e7a3f0"
+    },
+    {
+      "frame": "248-DJI_0915_0022_40m-001266",
+      "label": "labels/248-DJI_0915_0022_40m-001266.txt",
+      "sha256": "63836e97d46d991ff16ccecd0ba24dfe76a08b6dfd4753ba995fe8bc7b25be49"
+    },
+    {
+      "frame": "249-DJI_0915_0022_40m-002271",
+      "label": "labels/249-DJI_0915_0022_40m-002271.txt",
+      "sha256": "13eb9b4c73c5339e60674b2294c9e1b8119141247be08486bc10295c9975dbde"
+    },
+    {
+      "frame": "250-DJI_0915_0022_40m-002835",
+      "label": "labels/250-DJI_0915_0022_40m-002835.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "251-DJI_0915_0023_50m-000288",
+      "label": "labels/251-DJI_0915_0023_50m-000288.txt",
+      "sha256": "b075e58adec3aba65fa0c5d1619acb9da0fd5104b777b9b2ad0821b3993dc23d"
+    },
+    {
+      "frame": "252-DJI_0915_0023_50m-000825",
+      "label": "labels/252-DJI_0915_0023_50m-000825.txt",
+      "sha256": "fc20c3fb9749c3e43ec48b8924a644ff07f748af7a07dfbcf173941ab28a27cb"
+    },
+    {
+      "frame": "253-DJI_0915_0023_50m-001157",
+      "label": "labels/253-DJI_0915_0023_50m-001157.txt",
+      "sha256": "551e145bf4fa8f90e0cb1feed6a2d057c1d10de973a5c866487c74c3c9bdc629"
+    },
+    {
+      "frame": "254-DJI_0915_0023_50m-001391",
+      "label": "labels/254-DJI_0915_0023_50m-001391.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "255-DJI_0915_0023_50m-001931",
+      "label": "labels/255-DJI_0915_0023_50m-001931.txt",
+      "sha256": "2aaff94cb3a452704fdbef243b77e3bcc4295ad0af409c927a605c78d3526619"
+    },
+    {
+      "frame": "256-DJI_0915_0024_60m_1-000002",
+      "label": "labels/256-DJI_0915_0024_60m_1-000002.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "257-DJI_0915_0024_60m_1-000365",
+      "label": "labels/257-DJI_0915_0024_60m_1-000365.txt",
+      "sha256": "fbf1e423d25ad0cd6b74c81d7dcef6f682c0be69bc52721c550e422219770e0e"
+    },
+    {
+      "frame": "258-DJI_0915_0024_60m_1-000576",
+      "label": "labels/258-DJI_0915_0024_60m_1-000576.txt",
+      "sha256": "c6c99e23e4eb8cdf6e3a56354c7e9c3e077adce14768de9af5b5ec494868f4e1"
+    },
+    {
+      "frame": "259-DJI_0915_0024_60m_1-000779",
+      "label": "labels/259-DJI_0915_0024_60m_1-000779.txt",
+      "sha256": "7912a25eaf755a04f3ecc2be3f1e7177d52ce69b39681833a095222af897d797"
+    },
+    {
+      "frame": "260-DJI_0915_0024_60m_1-000987",
+      "label": "labels/260-DJI_0915_0024_60m_1-000987.txt",
+      "sha256": "570d290c7aadb3099a8918586ad31fc4a6b60617ccfd1e3d03d8646ff4c5a219"
+    },
+    {
+      "frame": "261-DJI_0915_0024_60m_2-000151",
+      "label": "labels/261-DJI_0915_0024_60m_2-000151.txt",
+      "sha256": "75726ea2c3b841d4aec85e25d1ef4425142f9d2ed04fb60ea7279350a5847532"
+    },
+    {
+      "frame": "262-DJI_0915_0024_60m_2-000214",
+      "label": "labels/262-DJI_0915_0024_60m_2-000214.txt",
+      "sha256": "2882091461293aa0e1a75d371643ba4af3d65309c54a9286657702b8335d405c"
+    },
+    {
+      "frame": "263-DJI_0915_0024_60m_2-000548",
+      "label": "labels/263-DJI_0915_0024_60m_2-000548.txt",
+      "sha256": "86f907991d9d141446996d4cfd679364cd45f6be0d252a33af9000613008f4dc"
+    },
+    {
+      "frame": "264-DJI_0915_0024_60m_2-000683",
+      "label": "labels/264-DJI_0915_0024_60m_2-000683.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "265-DJI_0915_0025_30m-000610",
+      "label": "labels/265-DJI_0915_0025_30m-000610.txt",
+      "sha256": "9d7d5defe7544a632305ad3704e13c981f24bf7adb0ae8237fc07b534a0b7d05"
+    },
+    {
+      "frame": "266-DJI_0915_0025_30m-000978",
+      "label": "labels/266-DJI_0915_0025_30m-000978.txt",
+      "sha256": "5ef0c5f497bf98b50dc81c780187f40711894ab5dc7d1fefa8e4010893c69f64"
+    },
+    {
+      "frame": "267-DJI_0915_0025_30m-001278",
+      "label": "labels/267-DJI_0915_0025_30m-001278.txt",
+      "sha256": "ad2e58a4278f1f5ece0680b335868506c538517e3e51705bfc77fd50c450dbc9"
+    },
+    {
+      "frame": "268-DJI_0915_0025_30m-002177",
+      "label": "labels/268-DJI_0915_0025_30m-002177.txt",
+      "sha256": "0b5c13ac20639f69c19a77012e9ef1641e0815733e53359ea751ee50f3d102e5"
+    },
+    {
+      "frame": "269-DJI_0915_0026_40m-000284",
+      "label": "labels/269-DJI_0915_0026_40m-000284.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "270-DJI_0915_0026_40m-000708",
+      "label": "labels/270-DJI_0915_0026_40m-000708.txt",
+      "sha256": "1e1e717d1567b79eaec1cfe30ccf257dda25d4b2245adb4e34c7216f57df625c"
+    },
+    {
+      "frame": "271-DJI_0915_0026_40m-000992",
+      "label": "labels/271-DJI_0915_0026_40m-000992.txt",
+      "sha256": "2f228d9a9a6aa783c4a6874784e156bc020c8e604390b4a2bde4b4d8ed3b1466"
+    },
+    {
+      "frame": "272-DJI_0915_0026_40m-001660",
+      "label": "labels/272-DJI_0915_0026_40m-001660.txt",
+      "sha256": "325e81e9645b1f321b27a8c922bb3bc185c809f3f6faae2b0b0d7823f31fa5f5"
+    },
+    {
+      "frame": "273-DJI_0915_0026_40m-001704",
+      "label": "labels/273-DJI_0915_0026_40m-001704.txt",
+      "sha256": "6e26b6b7a4947e82a7d6c8c0a6f5edc5bb1c2cc50eb16e63c111b71900f96017"
+    },
+    {
+      "frame": "274-DJI_0915_0027_50m-000405",
+      "label": "labels/274-DJI_0915_0027_50m-000405.txt",
+      "sha256": "4a50b0a55604ac65d300a7155119ce9795ea3d68c796af7914270eac7e455bc0"
+    },
+    {
+      "frame": "275-DJI_0915_0027_50m-000964",
+      "label": "labels/275-DJI_0915_0027_50m-000964.txt",
+      "sha256": "04de732e7f3c7f8c99ec9593029c0af97033e4bf898951f64e4d040701027134"
+    },
+    {
+      "frame": "276-DJI_0915_0027_50m-001422",
+      "label": "labels/276-DJI_0915_0027_50m-001422.txt",
+      "sha256": "c4113c9036cdee9b1a97079d8f2b81dca0084e18a19f2b75931baf11464f231d"
+    },
+    {
+      "frame": "277-DJI_0915_0027_50m-001880",
+      "label": "labels/277-DJI_0915_0027_50m-001880.txt",
+      "sha256": "e456ce64bcfe7a2ca9fe5e39a8ca48aa7a678ae59da13161fd88988a092cb84e"
+    },
+    {
+      "frame": "278-DJI_0915_0028_60m-000071",
+      "label": "labels/278-DJI_0915_0028_60m-000071.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "279-DJI_0915_0028_60m-000375",
+      "label": "labels/279-DJI_0915_0028_60m-000375.txt",
+      "sha256": "ad5fffa4286c97e68349b557187eda7630ce05d48c85d73ab5024cccb0708f58"
+    },
+    {
+      "frame": "280-DJI_0915_0028_60m-001058",
+      "label": "labels/280-DJI_0915_0028_60m-001058.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "281-DJI_0915_0028_60m-001321",
+      "label": "labels/281-DJI_0915_0028_60m-001321.txt",
+      "sha256": "91702fdbef565ef2a821a9d919056fda7bfada1fe2c902b7c74d31b6fb4d12ea"
+    },
+    {
+      "frame": "282-DJI_0915_0028_60m-001769",
+      "label": "labels/282-DJI_0915_0028_60m-001769.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "283-DJI_0915_0029_30m-000164",
+      "label": "labels/283-DJI_0915_0029_30m-000164.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "284-DJI_0915_0029_30m-000478",
+      "label": "labels/284-DJI_0915_0029_30m-000478.txt",
+      "sha256": "06b59b70d31edf9864ebb919cc71a972502eb0f7e223aab7cf5b93fcf27025fc"
+    },
+    {
+      "frame": "285-DJI_0915_0029_30m-000778",
+      "label": "labels/285-DJI_0915_0029_30m-000778.txt",
+      "sha256": "d71eb4030d061a73eec8f8e0d52af0f901b727d914153f4dcca18e680ddd6973"
+    },
+    {
+      "frame": "286-DJI_0915_0029_30m-001360",
+      "label": "labels/286-DJI_0915_0029_30m-001360.txt",
+      "sha256": "ac2a3995afa8009b9d181c1b6409d5e06d3ce65e01a8312d6375120955c0f325"
+    },
+    {
+      "frame": "287-DJI_0915_0029_30m-001812",
+      "label": "labels/287-DJI_0915_0029_30m-001812.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "288-DJI_0915_0030_20m_1-000346",
+      "label": "labels/288-DJI_0915_0030_20m_1-000346.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "289-DJI_0915_0030_20m_1-000629",
+      "label": "labels/289-DJI_0915_0030_20m_1-000629.txt",
+      "sha256": "70296da339a48a17e594a5441442ee9c0c000ab204f0c7f5b554cbb1e40a27bc"
+    },
+    {
+      "frame": "290-DJI_0915_0030_20m_1-001108",
+      "label": "labels/290-DJI_0915_0030_20m_1-001108.txt",
+      "sha256": "47dc33b3e1841f534787aaf46ae24b23a00392c15d1b0d544c35dfcc8020ff00"
+    },
+    {
+      "frame": "291-DJI_0915_0030_20m_1-001443",
+      "label": "labels/291-DJI_0915_0030_20m_1-001443.txt",
+      "sha256": "700a9a50bcd0a73062ab05bdfa4d8c23b5b3f3fba11de180a12a26769d548d99"
+    },
+    {
+      "frame": "292-DJI_0915_0030_20m_2-000079",
+      "label": "labels/292-DJI_0915_0030_20m_2-000079.txt",
+      "sha256": "80d55b1e43d973e73e02d6871a095780ea57a449c4b414b8b9298358a72b328f"
+    },
+    {
+      "frame": "293-DJI_0915_0030_20m_2-000176",
+      "label": "labels/293-DJI_0915_0030_20m_2-000176.txt",
+      "sha256": "fda6e48bd1babaf7e8268ff01471565a80f02642d5f53d2e5fc7490c86bedbb7"
+    },
+    {
+      "frame": "294-DJI_0915_0030_20m_2-000335",
+      "label": "labels/294-DJI_0915_0030_20m_2-000335.txt",
+      "sha256": "bf01bdaf40a94785dd7ea6329ef9ce9eb95b751d792064c2135b6e68c083e73a"
+    },
+    {
+      "frame": "295-DJI_0915_0030_20m_2-000495",
+      "label": "labels/295-DJI_0915_0030_20m_2-000495.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "296-DJI_0915_0031_20m-000596",
+      "label": "labels/296-DJI_0915_0031_20m-000596.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "297-DJI_0915_0031_20m-000891",
+      "label": "labels/297-DJI_0915_0031_20m-000891.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "298-DJI_0915_0031_20m-001212",
+      "label": "labels/298-DJI_0915_0031_20m-001212.txt",
+      "sha256": "652bba5968a4544a56d831b413a8132f798ed28aa5d880652613aa9a4ed1dec1"
+    },
+    {
+      "frame": "299-DJI_0915_0031_20m-002062",
+      "label": "labels/299-DJI_0915_0031_20m-002062.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "frame": "300-DJI_0915_0031_20m-002733",
+      "label": "labels/300-DJI_0915_0031_20m-002733.txt",
+      "sha256": "ba6901247d5774235386ec01bc61f89044385cb0d9b7f0361b775a1e768c4832"
+    }
+  ]
+}
