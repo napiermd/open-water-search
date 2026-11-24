@@ -102,7 +102,7 @@ class AgentMode(unittest.TestCase):
                                                   "frame-02": [[look(0)], [look(1)], [MOVE_ON]],
                                                   "frame-03": [[MOVE_ON]]}, 3, "--budget", budget(3 * share))
         self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
-        self.assertNotIn("share of the budget is spent", printed)
+        self.assertNotIn("share of the spending cap is spent", printed)
         self.assertEqual(self.statuses(record, 1)[:3], ["checked, no sighting"] * 2 + ["not checked"])
         self.assertEqual([call["frame"] for call in record["calls"]], ["frame-01"] + ["frame-02"] * 3 + ["frame-03"])
 
@@ -111,7 +111,7 @@ class AgentMode(unittest.TestCase):
         status, printed, record, ember = self.search({"frame-01": [[look(4)], [MOVE_ON]], "frame-02": [[MOVE_ON]]},
                                                      2, "--budget", budget(2 * share))
         self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
-        self.assertIn("frame-01: its share of the budget is spent, so the search moves to the next frame", printed)
+        self.assertIn("frame-01: its share of the spending cap is spent, so the search moves to the next frame", printed)
         # The close look at tile 4 never reached Ember, so that water stays unchecked.
         self.assertEqual(self.statuses(record, 0)[4], "not checked")
         self.assertEqual([images_in(request)[0] for request in ember.requests], [("frame-01", -1), ("frame-02", -1)])
@@ -127,7 +127,7 @@ class AgentMode(unittest.TestCase):
         self.assertEqual(self.statuses(record), ["not checked"] * 4 + ["flagged"] + ["not checked"] * 4)
         self.assertEqual([(s["tile"], s["confidence"]) for s in record["sightings"]], [(4, 0.9)])
         self.assertTrue(record["possible_people"][0]["handoff_message"].endswith(
-            "8 of the 9 sections of that frame were never searched."))
+            "8 of the 9 sections of that frame are uninspected water."))
 
     def test_the_spending_cap_counts_the_tool_definitions_that_metas_token_count_leaves_out(self):
         status, printed, record, ember = self.search({"frame-01": [[MOVE_ON]]}, 1,
@@ -200,7 +200,7 @@ class AgentMode(unittest.TestCase):
             ("frame-01", 4, "frame-01: look closer at the center tile (4)"),
             ("frame-01", 2, "frame-01: report a sighting in the top right tile (2) refused: "
                             "you have not received a close look at that tile"),
-            ("frame-01", None, "frame-01: its share of the budget is spent, so the search moves to the next frame"),
+            ("frame-01", None, "frame-01: its share of the spending cap is spent, so the search moves to the next frame"),
             ("frame-02", None, "frame-02: move to the next frame")])
         self.assertEqual(printed.splitlines()[:4], [entry["text"] for entry in log])
         self.assertEqual([entry["seconds"] for entry in log], sorted(entry["seconds"] for entry in log))

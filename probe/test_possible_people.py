@@ -63,19 +63,19 @@ class PossiblePeople(unittest.TestCase):
         messages = [p["handoff_message"] for p in record["possible_people"]]
         self.assertEqual(messages, [
             "Possible person 1. First seen 0:00, last seen 0:01 into the flight, in the center section of frame-02. "
-            "Confidence 0.90. 8 of the 9 sections of that frame were never searched.",
+            "Confidence 0.90. 8 of the 9 sections of that frame are uninspected water.",
             "Possible person 2. First seen 0:04, last seen 0:04 into the flight, in the center section of frame-05. "
-            "Confidence 0.90. 8 of the 9 sections of that frame were never searched."])
+            "Confidence 0.90. 8 of the 9 sections of that frame are uninspected water."])
         for message in messages:
             self.assertIn(message + "\n", printed)
         # One overview and one close look per frame, and nothing more.
         self.assertEqual(len(record["calls"]), 10)
 
-    def test_a_section_whose_close_look_could_not_be_read_counts_as_never_searched(self):
+    def test_a_section_whose_close_look_could_not_be_read_counts_as_uninspected_water(self):
         record, _ = self.search(['{"points":[[0.5,0.5,0.9]]}'],
                                 {("frame-01", -1): '{"tiles":[4,0]}', ("frame-01", 0): "not an answer"}, looks=2)
         self.assertTrue(record["possible_people"][0]["handoff_message"].endswith(
-            "8 of the 9 sections of that frame were never searched."))
+            "8 of the 9 sections of that frame are uninspected water."))
 
 
 if __name__ == "__main__":

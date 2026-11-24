@@ -490,14 +490,14 @@ def separation(first, second):
 def handoff_message(person, coverage_timeline):
     """The fixed-format message a dispatcher reads to a boat crew, written from the search record without Ember.
 
-    A section whose close look could not be read counts as never searched.
+    A section that never got a close look, or whose close look could not be read, is uninspected water.
 
     The flight data gives the drone's position but no camera field of view, and its altitude is measured from the
     takeoff point, so the person's own coordinates would be a guess. The message gives where the drone was.
     """
     position = person["position"]
     frame = next(frame for frame in coverage_timeline if frame["frame"] == position["frame"])
-    never_searched = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
+    uninspected = sum(tile["status"] in ("not checked", "unreadable") for tile in frame["tiles"])
     where = ""
     if "drone_position_at_sighting" in position:
         drone = position["drone_position_at_sighting"]
@@ -508,7 +508,7 @@ def handoff_message(person, coverage_timeline):
     return (f"Possible person {person['number']}. First seen {flight_time(person['first_seen_second'])}, "
             f"last seen {flight_time(person['last_seen_second'])} into the flight, "
             f"in the {position['section']} section of {position['frame']}.{where} "
-            f"Confidence {person['confidence']:.2f}. {never_searched} of the 9 sections of that frame were never searched.")
+            f"Confidence {person['confidence']:.2f}. {uninspected} of the 9 sections of that frame are uninspected water.")
 
 
 def flight_time(second):
@@ -575,7 +575,8 @@ def search_frame(search, frame, note, earned):
             search.decide(name, None, f"{name}: {lost}, so the search moves to the next frame")
             return
         if reply is None:
-            search.decide(name, None, f"{name}: its share of the budget is spent, so the search moves to the next frame")
+            search.decide(name, None,
+                          f"{name}: its share of the spending cap is spent, so the search moves to the next frame")
             return
         frame["overview"] = "done"
         for tile, _ in opened[answered:]:

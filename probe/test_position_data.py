@@ -49,7 +49,7 @@ class PositionData(unittest.TestCase):
                          "Possible person 1. First seen 0:00, last seen 0:00 into the flight, "
                          "in the center section of frame-01. Drone position at sighting latitude 47.67242, "
                          "longitude 9.26906. The person's own position could not be worked out from the flight data. "
-                         "Confidence 0.90. 8 of the 9 sections of that frame were never searched.")
+                         "Confidence 0.90. 8 of the 9 sections of that frame are uninspected water.")
         self.assertIn(person["handoff_message"] + "\n", printed)
 
     def test_a_frame_without_position_data_gets_no_coordinates_and_the_message_says_so(self):
@@ -61,7 +61,7 @@ class PositionData(unittest.TestCase):
         self.assertEqual(first["handoff_message"],
                          "Possible person 1. First seen 0:01, last seen 0:01 into the flight, "
                          "in the center section of frame-02. No position data for that frame. "
-                         "Confidence 0.90. 8 of the 9 sections of that frame were never searched.")
+                         "Confidence 0.90. 8 of the 9 sections of that frame are uninspected water.")
         self.assertNotIn("drone_position_at_sighting", second["position"])
         self.assertIn("No position data for that frame.", second["handoff_message"])
         self.assertEqual([frame.get("drone_position") for frame in record["coverage_timeline"]],
@@ -74,7 +74,7 @@ class PositionData(unittest.TestCase):
         self.assertEqual(record["possible_people"][0]["handoff_message"],
                          "Possible person 1. First seen 0:00, last seen 0:00 into the flight, "
                          "in the center section of frame-01. "
-                         "Confidence 0.90. 8 of the 9 sections of that frame were never searched.")
+                         "Confidence 0.90. 8 of the 9 sections of that frame are uninspected water.")
         for written in [printed] + [path.read_text() for path in out.iterdir() if path.is_file()]:
             self.assertNotIn("latitude", written)
             self.assertNotIn("drone_position", written)
