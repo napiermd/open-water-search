@@ -73,9 +73,21 @@ class GroundingFormat(unittest.TestCase):
                 self.assertEqual(record["coverage_timeline"][0]["tiles"][4]["status"], "unreadable")
                 self.assertEqual(record["sightings"], [])
 
-    def test_by_default_every_request_uses_the_sealed_frozen_prompts_without_a_schema(self):
+    def test_the_grounding_format_is_the_default(self):
+        folder = TemporaryDirectory()
+        self.addCleanup(folder.cleanup)
+        flight = write_flight(Path(folder.name) / "flight", [(300, 200)])
+        out = Path(folder.name) / "results"
+        ember = SimulatedEmber({("frame-01", -1): json.dumps({"tiles": [4]}), ("frame-01", 4): marks((500, 500, 0.9))})
+        status, _ = run_command([str(flight), "--out", str(out), "--looks", "1"], ember, as_given=True)
+        self.assertEqual(status, 0)
+        record = json.loads((out / "search-record.json").read_text())
+        self.assertEqual(record["settings"]["format"], "grounding")
+        self.assertEqual(ember.requests[1]["text"]["format"]["type"], "json_schema")
+
+    def test_the_frozen_format_sends_only_the_sealed_frozen_prompts_without_a_schema(self):
         sealed = json.loads((ROOT / "live" / "settings.json").read_text())
-        record, requests = self.search((300, 200), 4, '{"points":[[0.5,0.5,0.9]]}')
+        record, requests = self.search((300, 200), 4, '{"points":[[0.5,0.5,0.9]]}', "--format", "frozen")
         self.assertEqual([prompt_and_image(request)[0] for request in requests],
                          [sealed["overview_prompt_sha256"], sealed["close_look_prompt_sha256"]])
         self.assertFalse(any("text" in request for request in requests))

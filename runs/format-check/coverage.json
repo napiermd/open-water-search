@@ -1,0 +1,1952 @@
+[
+  {
+    "second": 0,
+    "frame": "frame-01",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      3,
+      1,
+      7,
+      0,
+      5,
+      6,
+      2,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 1,
+    "frame": "frame-02",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      3,
+      5,
+      6,
+      8,
+      4,
+      2,
+      0,
+      7,
+      1
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 2,
+    "frame": "frame-03",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      8,
+      7,
+      5,
+      4,
+      6,
+      3,
+      2,
+      1,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "flagged"
+      }
+    ]
+  },
+  {
+    "second": 3,
+    "frame": "frame-04",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      0,
+      5,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "flagged"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 4,
+    "frame": "frame-05",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      7,
+      5,
+      8,
+      1,
+      3,
+      6,
+      2,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 5,
+    "frame": "frame-06",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      6,
+      3,
+      7,
+      4,
+      0,
+      8,
+      1,
+      5,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "flagged"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 6,
+    "frame": "frame-07",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      1,
+      2,
+      4,
+      7,
+      0,
+      3,
+      5,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "flagged"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 7,
+    "frame": "frame-08",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      1,
+      3,
+      5,
+      7,
+      0,
+      2,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 8,
+    "frame": "frame-09",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      5,
+      3,
+      7,
+      0,
+      1,
+      4,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 9,
+    "frame": "frame-10",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      7,
+      8,
+      4,
+      5,
+      6,
+      3,
+      1,
+      2,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "checked, no sighting"
+      }
+    ]
+  },
+  {
+    "second": 10,
+    "frame": "frame-11",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      3,
+      7,
+      5,
+      6,
+      8,
+      1,
+      0,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 11,
+    "frame": "frame-12",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      3,
+      1,
+      5,
+      7,
+      0,
+      2,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 12,
+    "frame": "frame-13",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      5,
+      1,
+      3,
+      7,
+      0,
+      2,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 13,
+    "frame": "frame-14",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      7,
+      6,
+      8,
+      4,
+      3,
+      5,
+      1,
+      0,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 14,
+    "frame": "frame-15",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      4,
+      3,
+      7,
+      5,
+      1,
+      0,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 15,
+    "frame": "frame-16",
+    "width": 1231,
+    "height": 934,
+    "overview": "done",
+    "ranking": [
+      5,
+      8,
+      4,
+      7,
+      2,
+      1,
+      3,
+      6,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "flagged"
+      }
+    ]
+  },
+  {
+    "second": 16,
+    "frame": "frame-17",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      3,
+      4,
+      0,
+      1,
+      5,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 17,
+    "frame": "frame-18",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      7,
+      3,
+      5,
+      1,
+      0,
+      8,
+      6,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 18,
+    "frame": "frame-19",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      7,
+      4,
+      0,
+      3,
+      1,
+      5,
+      6,
+      2,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 19,
+    "frame": "frame-20",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      3,
+      2,
+      1,
+      5,
+      4,
+      0,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 20,
+    "frame": "frame-21",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      5,
+      1,
+      2,
+      7,
+      3,
+      8,
+      0,
+      6
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 21,
+    "frame": "frame-22",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      0,
+      5,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "flagged"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 22,
+    "frame": "frame-23",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      2,
+      7,
+      4,
+      1,
+      5,
+      0,
+      3,
+      6,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 23,
+    "frame": "frame-24",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      4,
+      3,
+      7,
+      1,
+      5,
+      6,
+      0,
+      8,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "flagged"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 24,
+    "frame": "frame-25",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      3,
+      2,
+      4,
+      5,
+      1,
+      0,
+      6,
+      7,
+      8
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "flagged"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 25,
+    "frame": "frame-26",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      8,
+      5,
+      4,
+      7,
+      2,
+      1,
+      6,
+      3,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "flagged"
+      }
+    ]
+  },
+  {
+    "second": 26,
+    "frame": "frame-27",
+    "width": 1920,
+    "height": 1080,
+    "overview": "done",
+    "ranking": [
+      7,
+      3,
+      6,
+      4,
+      5,
+      8,
+      0,
+      1,
+      2
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "flagged"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "not checked"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "flagged"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 27,
+    "frame": "frame-28",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      5,
+      8,
+      4,
+      7,
+      2,
+      1,
+      0,
+      3,
+      6
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "flagged"
+      }
+    ]
+  },
+  {
+    "second": 28,
+    "frame": "frame-29",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      2,
+      5,
+      4,
+      1,
+      8,
+      7,
+      3,
+      0,
+      6
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "not checked"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  },
+  {
+    "second": 29,
+    "frame": "frame-30",
+    "width": 3840,
+    "height": 2160,
+    "overview": "done",
+    "ranking": [
+      5,
+      4,
+      8,
+      7,
+      2,
+      1,
+      3,
+      6,
+      0
+    ],
+    "tiles": [
+      {
+        "tile": 0,
+        "name": "top left",
+        "status": "not checked"
+      },
+      {
+        "tile": 1,
+        "name": "top center",
+        "status": "not checked"
+      },
+      {
+        "tile": 2,
+        "name": "top right",
+        "status": "not checked"
+      },
+      {
+        "tile": 3,
+        "name": "middle left",
+        "status": "not checked"
+      },
+      {
+        "tile": 4,
+        "name": "center",
+        "status": "checked, no sighting"
+      },
+      {
+        "tile": 5,
+        "name": "middle right",
+        "status": "flagged"
+      },
+      {
+        "tile": 6,
+        "name": "bottom left",
+        "status": "not checked"
+      },
+      {
+        "tile": 7,
+        "name": "bottom center",
+        "status": "not checked"
+      },
+      {
+        "tile": 8,
+        "name": "bottom right",
+        "status": "not checked"
+      }
+    ]
+  }
+]
