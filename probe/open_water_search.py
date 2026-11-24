@@ -147,6 +147,21 @@ def spacing(limits):
     return min(60 / max(requests_left, 1), 60)
 
 
+def decision_line(name, tile, answer):
+    """One line for the live view: what this request was and what Ember answered."""
+    if "failure" in answer:
+        what = "unreadable" if "lost" not in answer["failure"] else answer["failure"]
+        return f"{name}: {'overview' if tile < 0 else 'close look at the ' + TILE_NAMES[tile]}: {what}"
+    if tile < 0:
+        ranking = answer.get("tiles", [])
+        return f"{name}: overview ranks the {TILE_NAMES[ranking[0]]} first" + (f", then the {TILE_NAMES[ranking[1]]}" if len(ranking) > 1 else "")
+    points = answer.get("points") or []
+    if not points:
+        return f"{name}: close look at the {TILE_NAMES[tile]}: no one marked"
+    marks = ", ".join(f"{point[2]:.2f}" for point in points)
+    return f"{name}: close look at the {TILE_NAMES[tile]}: {len(points)} possible {'person' if len(points) == 1 else 'people'}, confidence {marks}"
+
+
 def dollars(nanodollars):
     return "$" + format(nanodollars / NANO, ".4f")
 
@@ -253,6 +268,7 @@ class Search:
             self.calls.append(call)
             self.log.write(json.dumps(call) + "\n")
             self.log.flush()
+            print(decision_line(frame["name"], tile, event), flush=True)
             self.failures_in_a_row = self.failures_in_a_row + 1 if "failure" in event else 0
             if self.failures_in_a_row >= FAILURE_LIMIT:
                 raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
@@ -274,6 +290,7 @@ class Search:
             self.calls.append(call)
             self.log.write(json.dumps(call) + "\n")
             self.log.flush()
+            print(decision_line(frame["name"], tile, call["answer"]), flush=True)
             self.failures_in_a_row += 1
             if self.failures_in_a_row >= FAILURE_LIMIT:
                 raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
