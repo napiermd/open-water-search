@@ -22,7 +22,7 @@ flowchart LR
 ~~~
 
 1. **Overview.** Every photo gets one Ember call that ranks the nine tiles of a 3 × 3 grid by how likely each is to hold a person in the water.
-2. **Close looks.** Each photo then gets a close look at its top-ranked tile, then its second, one round at a time, until the per-photo count (`--looks`, default 2) or the budget runs out. Before every request, the tool checks that the request's worst-case cost fits within `--budget`.
+2. **Close looks.** Each photo then gets a close look at its top-ranked tile, then its second, one round at a time, until the per-photo count (`--looks`, default 2) or the budget runs out. Before every request, the tool reserves the request's worst-case cost within `--budget`, so requests running at once can never cross it together.
 3. **Handoff.** The reviewer gets every mark as a crop and as a pin on the full photo, highest confidence first, and a coverage map showing which water got a close look.
 
 Every tile on the coverage map ends up in one of four states:
@@ -50,7 +50,7 @@ python probe/open_water_search.py path/to/photos --out results --budget 0.05
 open results/report.html
 ~~~
 
-Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order. Use `--looks` to change the close looks per photo, and `--key-file` instead of the environment variable if you prefer. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
+Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names put them in time order. Use `--looks` to change the close looks per photo, `--parallel` to change how many requests run at once (default 8), and `--key-file` instead of the environment variable if you prefer. The tool spaces requests out when Meta's rate-limit headers run low, and after a 429 it waits at least the Retry-After time, then backs off with jitter. If the budget runs out, the tool stops and says so in the search record and the report. If a request fails, it also writes them for everything finished so far, then exits with status 1.
 
 | File in `results/` | What it holds |
 |---|---|
@@ -60,7 +60,7 @@ Point it at a flight: a folder of .jpg, .jpeg or .png photos whose file names pu
 | `coverage.json` | Every tile's status for every photo, from the search record |
 | `calls.jsonl` | Every Ember request, with its token usage, cost and answer |
 
-An overview plus two close looks cost about $0.00052 per photo in our runs, or $1.88 per 3,600 photos. Requests go one at a time, about 4.4 seconds per photo.
+An overview plus two close looks cost about $0.00052 per photo in our runs, or $1.88 per 3,600 photos. Those runs sent one request at a time, about 4.4 seconds per photo. The tool now runs up to eight at once and records photos per minute in the search record.
 
 ## What we measured
 

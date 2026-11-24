@@ -5,7 +5,10 @@
 FRAMES_DIR holds the flight's photos, ordered in time by file name. Every frame first gets one
 overview, in which Ember ranks the nine tiles of a 3 x 3 grid. Then each frame gets close looks at its
 top-ranked tiles, one round at a time, until the per-frame look count or the spending cap runs out. The
-worst-case cost of every request is checked against the spending cap before it is sent.
+worst-case cost of every request is reserved against the spending cap before it is sent.
+
+Up to eight requests run at once (--parallel). Requests are spaced out when Meta's rate-limit headers
+run low, and after a 429 the tool waits at least the Retry-After time, then backs off with jitter.
 
 RESULTS_DIR receives:
   search-record.json  the search record: every possible sighting, the coverage timeline of every tile of
@@ -24,7 +27,12 @@ import base64
 import html
 import json
 import os
+import random
+import threading
 import time
+import urllib.error
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from itertools import groupby
 from pathlib import Path
 
@@ -37,10 +45,61 @@ TILE_NAMES = ["top left", "top center", "top right", "middle left", "center",
               "middle right", "bottom left", "bottom center", "bottom right"]
 REVIEW_LIMIT = 5
 FAILURE_LIMIT = 10
+# After a 429: wait out Retry-After, then back off from half a second, doubling on each further 429.
+FIRST_BACKOFF = 0.5
+RATE_LIMIT_TRIES = 8
+RATE_LIMIT_HEADERS = dict(limit_requests="x-ratelimit-limit-requests", remaining_requests="x-ratelimit-remaining-requests",
+                          limit_tokens="x-ratelimit-limit-tokens", remaining_tokens="x-ratelimit-remaining-tokens")
 
 
 class OutOfBudget(Exception):
     pass
+
+
+class Stopped(Exception):
+    """Another request ended the run before this one was sent."""
+
+
+class RateLimited(Exception):
+    """Meta answered 429. retry_after is its Retry-After header in seconds, or None without one."""
+
+    def __init__(self, retry_after):
+        super().__init__(f"429, Retry-After {retry_after}")
+        self.retry_after = retry_after
+
+
+class Ember(Meta):
+    """The Meta client for this command. A 429 raises RateLimited for the search to wait out, in place of
+    runner.Meta's single fixed retry, and limits holds the rate-limit headers of the latest reply."""
+
+    limits = None
+
+    def post(self, route, payload):
+        request = urllib.request.Request("https://api.meta.ai/v1/responses" + route, data=json.dumps(payload).encode(),
+                                         headers={"Authorization": "Bearer " + self.key, "Content-Type": "application/json"})
+        try:
+            with self.client.open(request, timeout=90) as response:
+                values = {key: response.headers.get(name, "") for key, name in RATE_LIMIT_HEADERS.items()}
+                if all(value.isdigit() for value in values.values()):
+                    self.limits = {key: int(value) for key, value in values.items()}
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            if error.code != 429:
+                raise
+            wait = error.headers.get("Retry-After", "")
+            raise RateLimited(int(wait) if wait.isdigit() else None) from error
+
+
+def spacing(limits):
+    """Seconds between requests once a rate-limit header shows less than a tenth left: enough for what is
+    left to last a minute. Each request may use up to LIMIT output tokens."""
+    if limits is None:
+        return 0
+    if (limits["remaining_requests"] >= limits["limit_requests"] / 10
+            and limits["remaining_tokens"] >= limits["limit_tokens"] / 10):
+        return 0
+    requests_left = min(limits["remaining_requests"], limits["remaining_tokens"] // LIMIT)
+    return min(60 / max(requests_left, 1), 60)
 
 
 def dollars(nanodollars):
@@ -48,17 +107,50 @@ def dollars(nanodollars):
 
 
 class Search:
-    def __init__(self, api, budget_nano, out):
+    def __init__(self, api, budget_nano, out, parallel):
         self.api = api
         self.budget = budget_nano
         self.spent = 0
+        self.reserved = 0
         self.out = out
+        self.parallel = parallel
         self.calls = []
         self.log = (out / "calls.jsonl").open("a")
         self.failures_in_a_row = 0
+        # Guards the money, the request order, the pacing and the shared records across request threads.
+        self.lock = threading.Condition()
+        self.next_turn = 0
+        self.stopped = False
+        self.next_send = 0
 
-    def ask(self, frame, tile):
-        """Send one overview (tile -1) or close look, and return the read answer."""
+    def ask_all(self, requests):
+        """Send each (frame, tile) request, up to parallel at once, and wait for all of them.
+
+        Calls enter the search record in request order, whatever order they finish in. If any request
+        failed or met the spending cap, raise what the first of them in request order raised.
+        """
+        first_call = len(self.calls)
+        self.next_turn = 0
+        with ThreadPoolExecutor(self.parallel) as pool:
+            futures = [pool.submit(self.ask, frame, tile, turn) for turn, (frame, tile) in enumerate(requests)]
+        turn_of = {(frame["name"], tile): turn for turn, (frame, tile) in enumerate(requests)}
+        self.calls[first_call:] = sorted(self.calls[first_call:], key=lambda call: turn_of[call["frame"], call["tile"]])
+        errors = [future.exception() for future in futures if future.exception() is not None]
+        errors = [error for error in errors if not isinstance(error, Stopped)]
+        if errors:
+            raise errors[0]
+
+    def ask(self, frame, tile, turn):
+        """Send one overview (tile -1) or close look and store its answer in the frame. Any error stops the run."""
+        try:
+            self.send_and_read(frame, tile, turn)
+        except Exception:
+            with self.lock:
+                self.stopped = True
+                self.lock.notify_all()
+            raise
+
+    def send_and_read(self, frame, tile, turn):
         rect = rectangle(frame["width"], frame["height"], tile)
         image = prepare(frame["path"], rect)
         prompt = OVERVIEW if tile == -1 else INSPECT
@@ -66,15 +158,13 @@ class Search:
                 "input": [{"role": "user", "content": [
                     {"type": "input_text", "text": prompt},
                     {"type": "input_image", "image_url": "data:image/jpeg;base64," + base64.b64encode(image).decode()}]}]}
-        worst = price(self.api.count(body), 0, LIMIT)
-        if self.spent + worst > self.budget:
-            raise OutOfBudget()
+        worst = price(self.within_rate_limits(self.api.count, body), 0, LIMIT)
+        self.reserve(turn, worst)
         started = time.time()
-        reply = self.api.generate(body)
+        reply = self.within_rate_limits(self.api.generate, body)
         finished = time.time()
         usage = reply["usage"]
         paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
-        self.spent += paid
         event = interpret(dict(rect=rect, response=reply, started=started, finished=finished), tile)
         converted = grid_points(dict(tile=tile, evidence=event))
         if converted is not None:
@@ -82,15 +172,56 @@ class Search:
             event["points"] = converted
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=paid, usage=usage,
                     seconds=round(finished - started, 3), answer=event)
-        self.calls.append(call)
-        self.log.write(json.dumps(call) + "\n")
-        self.log.flush()
-        self.failures_in_a_row = self.failures_in_a_row + 1 if "failure" in event else 0
-        if self.failures_in_a_row >= FAILURE_LIMIT:
-            raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
         if tile >= 0:
             (self.out / "crops" / f"{frame['name']}-t{tile}.jpg").write_bytes(image)
-        return event
+            frame["tiles"][tile] = event.get("points")
+        else:
+            frame["ranking"] = event.get("tiles", [])
+            frame["overview"] = "done" if frame["ranking"] else "unreadable"
+        with self.lock:
+            self.reserved -= worst
+            self.spent += paid
+            self.lock.notify_all()
+            self.calls.append(call)
+            self.log.write(json.dumps(call) + "\n")
+            self.log.flush()
+            self.failures_in_a_row = self.failures_in_a_row + 1 if "failure" in event else 0
+            if self.failures_in_a_row >= FAILURE_LIMIT:
+                raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
+
+    def reserve(self, turn, worst):
+        """Reserve a request's worst-case cost against the spending cap, in request order.
+
+        When the worst case does not fit beside the requests in flight, wait for them to finish. Stop once it
+        does not fit with nothing in flight, which is where a run sending one request at a time would stop.
+        """
+        with self.lock:
+            self.lock.wait_for(lambda: self.stopped or (self.next_turn == turn and (
+                self.reserved == 0 or self.spent + self.reserved + worst <= self.budget)))
+            if self.stopped:
+                raise Stopped()
+            if self.spent + worst > self.budget:
+                raise OutOfBudget()
+            self.reserved += worst
+            self.next_turn += 1
+            self.lock.notify_all()
+
+    def within_rate_limits(self, method, body):
+        """Call Ember, spacing requests out when the rate-limit headers run low. After a 429, every request
+        waits at least Retry-After, then a back-off that doubles with each 429 this request meets."""
+        for attempt in range(RATE_LIMIT_TRIES):
+            with self.lock:
+                now = time.monotonic()
+                send_at = max(now, self.next_send)
+                self.next_send = send_at + spacing(self.api.limits)
+            time.sleep(send_at - now)
+            try:
+                return method(body)
+            except RateLimited as limited:
+                backoff = FIRST_BACKOFF * 2 ** attempt * random.uniform(0.5, 1.5)
+                with self.lock:
+                    self.next_send = max(self.next_send, time.monotonic() + (limited.retry_after or 0) + backoff)
+        raise RuntimeError(f"Meta answered 429 to {RATE_LIMIT_TRIES} tries in a row")
 
 
 def load_frames(folder):
@@ -107,21 +238,17 @@ def load_frames(folder):
 
 def run(search, frames, looks):
     """Overview every frame, then give each frame its next ranked close look, one round at a time."""
-    for frame in frames:
-        event = search.ask(frame, -1)
-        frame["ranking"] = event.get("tiles", [])
-        frame["overview"] = "done" if frame["ranking"] else "unreadable"
+    search.ask_all([(frame, -1) for frame in frames])
     for round_number in range(looks):
-        for frame in frames:
-            if round_number < len(frame["ranking"]):
-                tile = frame["ranking"][round_number]
-                frame["tiles"][tile] = search.ask(frame, tile).get("points")
+        search.ask_all([(frame, frame["ranking"][round_number]) for frame in frames
+                        if round_number < len(frame["ranking"])])
 
 
-def search_record(flight, settings, frames, search, ending):
+def search_record(flight, settings, frames, search, ending, seconds):
     """Everything the run found and spent for the flight. The other results are views of this record.
 
-    Sightings are in pixels of the original frame, in flight order and then tile order.
+    Sightings are in pixels of the original frame, in flight order and then tile order. Photos per minute
+    counts the frames that got their overview, over the seconds the search ran.
     """
     sightings, coverage_timeline = [], []
     for frame in frames:
@@ -140,8 +267,10 @@ def search_record(flight, settings, frames, search, ending):
             tiles.append(dict(tile=tile, name=TILE_NAMES[tile], status=status))
         coverage_timeline.append(dict(frame=frame["name"], width=frame["width"], height=frame["height"],
                                       overview=frame["overview"], ranking=frame["ranking"], tiles=tiles))
+    photos = sum(frame["overview"] != "awaiting overview" for frame in frames)
     return dict(flight=dict(source=str(flight)), settings=settings, coverage_timeline=coverage_timeline,
-                sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending)
+                sightings=sightings, calls=search.calls, spent_nanodollars=search.spent, ending=ending,
+                seconds=round(seconds, 3), photos_per_minute=round(photos * 60 / seconds, 1))
 
 
 def reviewer_queue(record):
@@ -240,6 +369,8 @@ def main(arguments=None, api=None):
     parser.add_argument("--budget", type=float, default=0.05, help="most to spend on Ember, in dollars (default 0.05)")
     parser.add_argument("--looks", type=int, default=2, choices=range(0, 10), metavar="0-9",
                         help="close looks per frame after its overview (default 2)")
+    parser.add_argument("--parallel", type=int, default=8, choices=range(1, 9), metavar="1-8",
+                        help="most requests to Ember at once (default 8)")
     parser.add_argument("--key-file", type=Path, help="file holding the Meta Model API key, instead of MODEL_API_KEY")
     args = parser.parse_args(arguments)
     if api is None:
@@ -247,7 +378,7 @@ def main(arguments=None, api=None):
             os.environ["MODEL_API_KEY"] = args.key_file.read_text().strip()
         if not os.environ.get("MODEL_API_KEY"):
             raise SystemExit("Set MODEL_API_KEY or pass --key-file.")
-        api = Meta()
+        api = Ember()
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
     frames = load_frames(args.frames)
@@ -255,17 +386,19 @@ def main(arguments=None, api=None):
     (args.out / "crops").mkdir()
     (args.out / "frames").mkdir()
     budget = round(args.budget * NANO)
-    search = Search(api, budget, args.out)
+    search = Search(api, budget, args.out, args.parallel)
     ending = dict(outcome="finished", reason=None)
+    started = time.monotonic()
     try:
         run(search, frames, args.looks)
     except OutOfBudget:
         ending = dict(outcome="spending cap", reason="the next request could have exceeded the budget")
     except Exception as error:
         ending = dict(outcome="failed", reason=f"{type(error).__name__}: {error}")
+    seconds = time.monotonic() - started
     search.log.close()
-    settings = dict(model=MODEL, looks=args.looks, spending_cap_nanodollars=budget)
-    record = search_record(args.frames, settings, frames, search, ending)
+    settings = dict(model=MODEL, looks=args.looks, parallel=args.parallel, spending_cap_nanodollars=budget)
+    record = search_record(args.frames, settings, frames, search, ending, seconds)
     (args.out / "search-record.json").write_text(json.dumps(record, indent=2))
     queue = reviewer_queue(record)
     (args.out / "queue.json").write_text(json.dumps(queue, indent=2))
