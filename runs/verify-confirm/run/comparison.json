@@ -1,0 +1,481 @@
+{
+  "appearances": 6072,
+  "detector_then_ember": {
+    "found": 3904,
+    "false_marks": 291
+  },
+  "detector_at_matching_confidence": {
+    "confidence": 0.4,
+    "found": 3910,
+    "false_marks": 104
+  },
+  "passed": false,
+  "false_mark_reduction": -1.7981,
+  "detector_default_0_25": {
+    "confidence": 0.25,
+    "found": 4197,
+    "false_marks": 141
+  },
+  "detector_with_about_as_many_false_marks": {
+    "confidence": 0.06,
+    "found": 4268,
+    "false_marks": 301
+  },
+  "curve": [
+    {
+      "confidence": 0.05,
+      "found": 4271,
+      "false_marks": 329
+    },
+    {
+      "confidence": 0.06,
+      "found": 4268,
+      "false_marks": 301
+    },
+    {
+      "confidence": 0.07,
+      "found": 4267,
+      "false_marks": 275
+    },
+    {
+      "confidence": 0.08,
+      "found": 4263,
+      "false_marks": 258
+    },
+    {
+      "confidence": 0.09,
+      "found": 4261,
+      "false_marks": 245
+    },
+    {
+      "confidence": 0.1,
+      "found": 4256,
+      "false_marks": 233
+    },
+    {
+      "confidence": 0.11,
+      "found": 4253,
+      "false_marks": 223
+    },
+    {
+      "confidence": 0.12,
+      "found": 4246,
+      "false_marks": 214
+    },
+    {
+      "confidence": 0.13,
+      "found": 4243,
+      "false_marks": 206
+    },
+    {
+      "confidence": 0.14,
+      "found": 4241,
+      "false_marks": 202
+    },
+    {
+      "confidence": 0.15,
+      "found": 4237,
+      "false_marks": 195
+    },
+    {
+      "confidence": 0.16,
+      "found": 4235,
+      "false_marks": 190
+    },
+    {
+      "confidence": 0.17,
+      "found": 4233,
+      "false_marks": 185
+    },
+    {
+      "confidence": 0.18,
+      "found": 4231,
+      "false_marks": 181
+    },
+    {
+      "confidence": 0.19,
+      "found": 4230,
+      "false_marks": 179
+    },
+    {
+      "confidence": 0.2,
+      "found": 4225,
+      "false_marks": 173
+    },
+    {
+      "confidence": 0.21,
+      "found": 4219,
+      "false_marks": 163
+    },
+    {
+      "confidence": 0.22,
+      "found": 4214,
+      "false_marks": 153
+    },
+    {
+      "confidence": 0.23,
+      "found": 4208,
+      "false_marks": 150
+    },
+    {
+      "confidence": 0.24,
+      "found": 4202,
+      "false_marks": 147
+    },
+    {
+      "confidence": 0.25,
+      "found": 4197,
+      "false_marks": 141
+    },
+    {
+      "confidence": 0.26,
+      "found": 4184,
+      "false_marks": 137
+    },
+    {
+      "confidence": 0.27,
+      "found": 4173,
+      "false_marks": 134
+    },
+    {
+      "confidence": 0.28,
+      "found": 4163,
+      "false_marks": 132
+    },
+    {
+      "confidence": 0.29,
+      "found": 4150,
+      "false_marks": 130
+    },
+    {
+      "confidence": 0.3,
+      "found": 4133,
+      "false_marks": 129
+    },
+    {
+      "confidence": 0.31,
+      "found": 4123,
+      "false_marks": 128
+    },
+    {
+      "confidence": 0.32,
+      "found": 4111,
+      "false_marks": 123
+    },
+    {
+      "confidence": 0.33,
+      "found": 4100,
+      "false_marks": 119
+    },
+    {
+      "confidence": 0.34,
+      "found": 4080,
+      "false_marks": 118
+    },
+    {
+      "confidence": 0.35,
+      "found": 4060,
+      "false_marks": 117
+    },
+    {
+      "confidence": 0.36,
+      "found": 4036,
+      "false_marks": 115
+    },
+    {
+      "confidence": 0.37,
+      "found": 4018,
+      "false_marks": 111
+    },
+    {
+      "confidence": 0.38,
+      "found": 3986,
+      "false_marks": 110
+    },
+    {
+      "confidence": 0.39,
+      "found": 3950,
+      "false_marks": 108
+    },
+    {
+      "confidence": 0.4,
+      "found": 3910,
+      "false_marks": 104
+    },
+    {
+      "confidence": 0.41,
+      "found": 3865,
+      "false_marks": 104
+    },
+    {
+      "confidence": 0.42,
+      "found": 3815,
+      "false_marks": 100
+    },
+    {
+      "confidence": 0.43,
+      "found": 3762,
+      "false_marks": 99
+    },
+    {
+      "confidence": 0.44,
+      "found": 3704,
+      "false_marks": 94
+    },
+    {
+      "confidence": 0.45,
+      "found": 3639,
+      "false_marks": 93
+    },
+    {
+      "confidence": 0.46,
+      "found": 3583,
+      "false_marks": 90
+    },
+    {
+      "confidence": 0.47,
+      "found": 3523,
+      "false_marks": 84
+    },
+    {
+      "confidence": 0.48,
+      "found": 3458,
+      "false_marks": 82
+    },
+    {
+      "confidence": 0.49,
+      "found": 3400,
+      "false_marks": 78
+    },
+    {
+      "confidence": 0.5,
+      "found": 3334,
+      "false_marks": 75
+    },
+    {
+      "confidence": 0.51,
+      "found": 3266,
+      "false_marks": 70
+    },
+    {
+      "confidence": 0.52,
+      "found": 3202,
+      "false_marks": 66
+    },
+    {
+      "confidence": 0.53,
+      "found": 3130,
+      "false_marks": 59
+    },
+    {
+      "confidence": 0.54,
+      "found": 3054,
+      "false_marks": 59
+    },
+    {
+      "confidence": 0.55,
+      "found": 2983,
+      "false_marks": 56
+    },
+    {
+      "confidence": 0.56,
+      "found": 2901,
+      "false_marks": 55
+    },
+    {
+      "confidence": 0.57,
+      "found": 2793,
+      "false_marks": 53
+    },
+    {
+      "confidence": 0.58,
+      "found": 2708,
+      "false_marks": 48
+    },
+    {
+      "confidence": 0.59,
+      "found": 2585,
+      "false_marks": 45
+    },
+    {
+      "confidence": 0.6,
+      "found": 2479,
+      "false_marks": 44
+    },
+    {
+      "confidence": 0.61,
+      "found": 2383,
+      "false_marks": 43
+    },
+    {
+      "confidence": 0.62,
+      "found": 2273,
+      "false_marks": 42
+    },
+    {
+      "confidence": 0.63,
+      "found": 2183,
+      "false_marks": 41
+    },
+    {
+      "confidence": 0.64,
+      "found": 2100,
+      "false_marks": 39
+    },
+    {
+      "confidence": 0.65,
+      "found": 2012,
+      "false_marks": 34
+    },
+    {
+      "confidence": 0.66,
+      "found": 1921,
+      "false_marks": 32
+    },
+    {
+      "confidence": 0.67,
+      "found": 1832,
+      "false_marks": 31
+    },
+    {
+      "confidence": 0.68,
+      "found": 1733,
+      "false_marks": 30
+    },
+    {
+      "confidence": 0.69,
+      "found": 1664,
+      "false_marks": 27
+    },
+    {
+      "confidence": 0.7,
+      "found": 1596,
+      "false_marks": 26
+    },
+    {
+      "confidence": 0.71,
+      "found": 1484,
+      "false_marks": 22
+    },
+    {
+      "confidence": 0.72,
+      "found": 1375,
+      "false_marks": 20
+    },
+    {
+      "confidence": 0.73,
+      "found": 1255,
+      "false_marks": 16
+    },
+    {
+      "confidence": 0.74,
+      "found": 1134,
+      "false_marks": 13
+    },
+    {
+      "confidence": 0.75,
+      "found": 993,
+      "false_marks": 11
+    },
+    {
+      "confidence": 0.76,
+      "found": 806,
+      "false_marks": 10
+    },
+    {
+      "confidence": 0.77,
+      "found": 617,
+      "false_marks": 7
+    },
+    {
+      "confidence": 0.78,
+      "found": 448,
+      "false_marks": 6
+    },
+    {
+      "confidence": 0.79,
+      "found": 316,
+      "false_marks": 4
+    },
+    {
+      "confidence": 0.8,
+      "found": 194,
+      "false_marks": 2
+    },
+    {
+      "confidence": 0.81,
+      "found": 105,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.82,
+      "found": 48,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.83,
+      "found": 10,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.84,
+      "found": 3,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.85,
+      "found": 1,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.86,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.87,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.88,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.89,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.9,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.91,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.92,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.93,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.94,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.95,
+      "found": 0,
+      "false_marks": 0
+    }
+  ]
+}
