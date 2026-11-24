@@ -93,29 +93,38 @@ async function start() {
     looksControl.append(label);
   }
   const select = byId("frame-select");
+  let latestRender = 0;
 
+  // Each change starts a new render. After every wait, a render stops if a newer one has started, so a slow
+  // download can't paint over a choice the viewer has already changed. The controls update as soon as the
+  // run data is in, and the panels once the labels are.
   async function render() {
-    const data = await runData(state.run);
+    const ticket = ++latestRender;
+    byId("view").setAttribute("aria-busy", "true");
+    const { run, reveal } = state;
+    const data = await runData(run);
+    if (ticket !== latestRender) return;
     const frames = data.frames;
     state.frame = Math.min(Math.max(state.frame, 1), frames.length);
-    if (select.dataset.run !== state.run) {
+    if (select.dataset.run !== run) {
       select.replaceChildren(...frames.map((frame, index) => {
         const option = element("option", "", "Frame " + (index + 1) + " of " + frames.length);
         option.value = String(index + 1);
         return option;
       }));
-      select.dataset.run = state.run;
+      select.dataset.run = run;
     }
-    for (const input of document.querySelectorAll("input[name=run]")) input.checked = input.value === state.run;
+    for (const input of document.querySelectorAll("input[name=run]")) input.checked = input.value === run;
     for (const input of document.querySelectorAll("input[name=looks]")) input.checked = Number(input.value) === state.looks;
-    byId("reveal").checked = state.reveal;
+    byId("reveal").checked = reveal;
     select.value = String(state.frame);
     byId("previous").disabled = state.frame === 1;
     byId("next").disabled = state.frame === frames.length;
-    history.replaceState(null, "", "?run=" + state.run + "&frame=" + state.frame + "&looks=" + state.looks + (state.reveal ? "&reveal=1" : ""));
+    history.replaceState(null, "", "?run=" + run + "&frame=" + state.frame + "&looks=" + state.looks + (reveal ? "&reveal=1" : ""));
 
-    const labels = state.reveal ? await runSwimmers(state.run) : null;
-    byId("label-note").textContent = state.reveal && !labels
+    const labels = reveal ? await runSwimmers(run) : null;
+    if (ticket !== latestRender) return;
+    byId("label-note").textContent = reveal && !labels
       ? "Swimmer labels aren’t downloaded yet. Run python probe/fetch_frames.py, then reload."
       : "";
     document.body.classList.toggle("revealed", Boolean(labels));
@@ -141,6 +150,7 @@ async function start() {
       row.append(element("td", "", SEARCH_NAMES[arm]), element("td", "", money(spent)), element("td", "", found), element("td", "", falseMarks));
       return row;
     }));
+    byId("view").setAttribute("aria-busy", "false");
   }
 
   document.addEventListener("change", event => {

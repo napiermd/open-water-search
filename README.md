@@ -15,7 +15,7 @@ python probe/open_water_search.py path/to/frames --out results --budget 0.05
 open results/report.html
 ```
 
-Point it at a folder of .jpg, .jpeg or .png frames. Each frame gets one overview, in which Ember ranks the nine tiles of a 3 x 3 grid, and then close looks at its top two tiles. Change the number with `--looks`, and pass the key with `--key-file` instead of the environment variable if you prefer. Before each request, the tool checks that the request's worst-case cost fits within `--budget`. If the budget runs out, the tool stops and says so in the report.
+Point it at a folder of .jpg, .jpeg or .png frames. Each frame gets one overview, in which Ember ranks the nine tiles of a 3 x 3 grid, and then close looks at its top two tiles. Change the number with `--looks`, and pass the key with `--key-file` instead of the environment variable if you prefer. Before each request, the tool checks that the request's worst-case cost fits within `--budget`. If the budget runs out, the tool stops and says so in the report. If a request fails, it also writes the report for everything finished so far, then exits with status 1.
 
 The results folder holds:
 

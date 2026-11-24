@@ -4,7 +4,6 @@ import {
 } from "./common.js";
 
 const byId = id => document.getElementById(id);
-const STEP_FOR_STAGE = { flag: "flag", crop: "flag", pin: "flag", pick: "pick", next: "pick", reveal: "reveal" };
 const DECISIONS = { swimmer: "You marked a swimmer", dismiss: "You dismissed the flag", unsure: "You couldn’t tell" };
 
 // A case qualifies when Ember's first close look flagged something and at least one labeled swimmer
@@ -40,6 +39,7 @@ async function start() {
   let caseIndex = Math.min(Math.max(Number(params.get("case")) || 1, 1), cases.length) - 1;
   let state;
   let current;
+  let latestLoad = 0;
 
   const image = byId("full");
   const layer = byId("layer");
@@ -71,22 +71,80 @@ async function start() {
     byId("crop-figure").hidden = false;
   }
 
-  function opened() {
-    return [current.first, ...(state.pick !== null && ["next", "reveal"].includes(state.stage) ? [state.pick] : [])];
+  // The judge flow. Every stage, and every way out of it, is listed here and nowhere else:
+  //   flag -> crop -> pin -> pick -> next -> reveal
+  //   crop -> pick when the judge dismisses the flag or can't tell
+  //   pin -> crop with Back, which keeps the pin in case the judge marks the swimmer again
+  //   reveal -> flag of the next case, or of this case again
+  // A stage names its progress step, its copy and buttons, the close look it shows, which input is live on
+  // the frame, and whether Ember's tile counts as reviewed and the picked tile as opened.
+  function view() {
+    const where = TILE_NAMES[current.first];
+    const decide = decision => () => {
+      state.decision = decision;
+      if (decision !== "swimmer") state.pin = null;
+      go(decision === "swimmer" ? "pin" : "pick");
+    };
+    const restart = index => () => load(index, { focus: true }).catch(showError);
+    switch (state.stage) {
+      case "flag":
+        return {
+          step: "flag", title: "Ember flagged something",
+          text: "Ember’s first close look went to the " + where + " tile. Open it and decide what you see.",
+          actions: [["Open Ember’s close look", "primary", () => go("crop")]],
+        };
+      case "crop":
+        return {
+          step: "flag", title: "Is this a swimmer?", reviewed: true,
+          text: "This is the close look Ember received, with its mark. Every choice keeps the search going.",
+          crop: [current.first, "Ember’s close look at the " + where + " tile"],
+          actions: [["Mark a swimmer", "primary", decide("swimmer")], ["Dismiss the flag", "secondary", decide("dismiss")], ["Can’t tell", "secondary", decide("unsure")]],
+        };
+      case "pin":
+        return {
+          step: "flag", title: "Place your pin", reviewed: true, input: "pin",
+          text: "Click the swimmer on the full frame so the next person knows exactly which one you mean.",
+          crop: [current.first, "Ember’s close look at the " + where + " tile"],
+          actions: [["Lock my pin", "primary", () => go("pick"), !state.pin], ["Back", "secondary", () => go("crop")]],
+        };
+      case "pick":
+        return {
+          step: "pick", title: "Where would you look next?", reviewed: true, input: "tiles",
+          text: "Ember has checked one tile. Pick any other tile for the next close look.",
+          actions: [["Open this tile", "primary", () => go("next"), state.pick === null]],
+        };
+      case "next":
+        return {
+          step: "pick", title: "Your next look", reviewed: true, pickOpened: true,
+          text: "This is Ember’s recorded close look at the tile you picked.",
+          crop: [state.pick, "Ember’s recorded close look at the " + TILE_NAMES[state.pick] + " tile · " + plural(pointsFor(current.frame, state.pick).length, "mark")],
+          actions: [["Reveal the labels", "primary", () => go("reveal")]],
+        };
+      case "reveal":
+        return {
+          step: "reveal", title: "What was there", reviewed: true, pickOpened: true, results: true,
+          text: "Labeled swimmers are now drawn on the frame.",
+          actions: [["Try another search", "primary", restart((caseIndex + 1) % cases.length)], ["Start this one over", "secondary", restart(caseIndex)]],
+        };
+    }
+    throw new Error("Unknown judge stage " + state.stage);
   }
 
-  function drawFrame() {
+  function opened(stage) {
+    return stage.pickOpened ? [current.first, state.pick] : [current.first];
+  }
+
+  function drawFrame(stage) {
     layer.replaceChildren();
     const frame = current.frame;
-    const reviewed = state.stage !== "flag";
     for (let tile = 0; tile < 9; tile++) {
       const node = element("div", "tile");
       placeBox(node, frameRect(tile), frame);
       if (tile === current.first) {
         node.classList.add("opened", "chosen");
-        if (reviewed) node.classList.add("reviewed");
-        node.append(element("span", "caption", reviewed ? "Ember checked · you reviewed" : "Ember checked"));
-      } else if (tile === state.pick && ["next", "reveal"].includes(state.stage)) {
+        if (stage.reviewed) node.classList.add("reviewed");
+        node.append(element("span", "caption", stage.reviewed ? "Ember checked · you reviewed" : "Ember checked"));
+      } else if (tile === state.pick && stage.pickOpened) {
         node.classList.add("pick", "reviewed");
         node.append(element("span", "caption", "Your next look"));
       } else {
@@ -94,10 +152,10 @@ async function start() {
       }
       layer.append(node);
     }
-    const marks = opened().flatMap(tile => pointsFor(frame, tile));
-    if (state.stage === "reveal") {
+    const marks = opened(stage).flatMap(tile => pointsFor(frame, tile));
+    if (stage.results) {
       const found = new Set(matching(marks, current.boxes).values());
-      const rects = opened().map(frameRect);
+      const rects = opened(stage).map(frameRect);
       current.boxes.forEach((box, index) => {
         const node = element("div", "box" + (found.has(index) ? "" : " missed"));
         placeBox(node, box, frame);
@@ -108,7 +166,7 @@ async function start() {
       });
     }
     for (const point of marks) {
-      const node = element("div", "mark" + (state.stage === "reveal" && !current.boxes.some(box => contains(point, box)) ? " false" : ""));
+      const node = element("div", "mark" + (stage.results && !current.boxes.some(box => contains(point, box)) ? " false" : ""));
       placePoint(node, point, frame);
       layer.append(node);
     }
@@ -118,7 +176,7 @@ async function start() {
       layer.append(pin);
     }
     byId("pin-key").hidden = !state.pin;
-    document.body.classList.toggle("revealed", state.stage === "reveal");
+    document.body.classList.toggle("revealed", Boolean(stage.results));
   }
 
   function setActions(buttons) {
@@ -143,7 +201,7 @@ async function start() {
     }
   }
 
-  function results() {
+  function results(stage) {
     const frame = current.frame;
     const flagPoints = pointsFor(frame, current.first);
     const top = [...flagPoints].sort((a, b) => b[2] - a[2])[0];
@@ -153,7 +211,7 @@ async function start() {
     const pickFound = matching(pointsFor(frame, state.pick), inPick).size;
     const secondRect = frameRect(current.ranking[1]);
     const inSecond = current.boxes.filter(box => insideTile(center(box), secondRect)).length;
-    const rects = opened().map(frameRect);
+    const rects = opened(stage).map(frameRect);
     const unchecked = current.boxes.filter(box => !rects.some(rect => insideTile(center(box), rect))).length;
     let call = DECISIONS[state.decision] + ".";
     if (state.decision === "swimmer") {
@@ -175,56 +233,47 @@ async function start() {
   }
 
   function render() {
-    const stage = state.stage;
+    const stage = view();
+    // Tests and agents can read the current stage here instead of inferring it from the copy.
+    document.body.dataset.stage = state.stage;
     for (const step of byId("steps").children) {
-      if (step.dataset.step === STEP_FOR_STAGE[stage]) step.setAttribute("aria-current", "step");
+      if (step.dataset.step === stage.step) step.setAttribute("aria-current", "step");
       else step.removeAttribute("aria-current");
     }
-    pinArea.hidden = stage !== "pin";
-    tileButtons.hidden = stage !== "pick";
-    byId("results").hidden = stage !== "reveal";
-    byId("crop-figure").hidden = !["crop", "pin", "next"].includes(stage);
+    pinArea.hidden = stage.input !== "pin";
+    tileButtons.hidden = stage.input !== "tiles";
+    byId("results").hidden = !stage.results;
+    byId("crop-figure").hidden = !stage.crop;
     for (const button of tileButtons.children) button.setAttribute("aria-pressed", String(Number(button.dataset.tile) === state.pick));
-    const where = TILE_NAMES[current.first];
-    const copy = {
-      flag: ["Ember flagged something", "Ember’s first close look went to the " + where + " tile. Open it and decide what you see."],
-      crop: ["Is this a swimmer?", "This is the close look Ember received, with its mark. Every choice keeps the search going."],
-      pin: ["Place your pin", "Click the swimmer on the full frame so the next person knows exactly which one you mean."],
-      pick: ["Where would you look next?", "Ember has checked one tile. Pick any other tile for the next close look."],
-      next: ["Your next look", "This is Ember’s recorded close look at the tile you picked."],
-      reveal: ["What was there", "Labeled swimmers are now drawn on the frame."],
-    }[stage];
-    byId("task-title").textContent = copy[0];
-    byId("task-text").textContent = copy[1];
-    if (stage === "crop" || stage === "pin") drawCrop(current.first, "Ember’s close look at the " + where + " tile");
-    if (stage === "next") drawCrop(state.pick, "Ember’s recorded close look at the " + TILE_NAMES[state.pick] + " tile · " + plural(pointsFor(current.frame, state.pick).length, "mark"));
-    if (stage === "reveal") results();
-    const decide = decision => () => {
-      state.decision = decision;
-      state.pin = null;
-      go(decision === "swimmer" ? "pin" : "pick");
-    };
-    setActions({
-      flag: [["Open Ember’s close look", "primary", () => go("crop")]],
-      crop: [["Mark a swimmer", "primary", decide("swimmer")], ["Dismiss the flag", "secondary", decide("dismiss")], ["Can’t tell", "secondary", decide("unsure")]],
-      pin: [["Lock my pin", "primary", () => go("pick"), !state.pin], ["Back", "secondary", () => go("crop")]],
-      pick: [["Open this tile", "primary", () => go("next"), state.pick === null]],
-      next: [["Reveal the labels", "primary", () => go("reveal")]],
-      reveal: [["Try another search", "primary", () => load((caseIndex + 1) % cases.length)], ["Start this one over", "secondary", () => load(caseIndex)]],
-    }[stage]);
-    drawFrame();
+    byId("task-title").textContent = stage.title;
+    byId("task-text").textContent = stage.text;
+    if (stage.crop) drawCrop(...stage.crop);
+    if (stage.results) results(stage);
+    setActions(stage.actions);
+    drawFrame(stage);
     history.replaceState(null, "", "?run=" + run + "&case=" + (caseIndex + 1));
   }
 
-  async function load(index) {
+  // Loading another case can overlap an earlier load that is still decoding its frame. Only the latest
+  // load may change the page, and its buttons stay off until the frame is ready.
+  async function load(index, { focus = false } = {}) {
+    const ticket = ++latestLoad;
+    byId("workspace").setAttribute("aria-busy", "true");
+    setActions([]);
     caseIndex = index;
     const first = cases[index].ranking[0];
     current = { ...cases[index], first };
     state = { stage: "flag", decision: null, pin: null, pick: null };
     if (image.getAttribute("src") !== current.frame.image) {
       image.src = current.frame.image;
-      await image.decode();
+      try {
+        await image.decode();
+      } catch (error) {
+        if (ticket !== latestLoad) return;
+        throw error;
+      }
     }
+    if (ticket !== latestLoad) return;
     image.alt = "Wide drone frame " + current.number + " of the " + (run === "validation" ? "validation" : "first") + " run";
     byId("frame-meta").textContent = "Search " + (index + 1) + " of " + cases.length + " · frame " + current.number + " of 30";
     tileButtons.replaceChildren(...Array.from({ length: 9 }, (_, tile) => {
@@ -243,6 +292,8 @@ async function start() {
     }));
     byId("status").textContent = "";
     render();
+    byId("workspace").setAttribute("aria-busy", "false");
+    if (focus) byId("task-title").focus({ preventScroll: true });
   }
 
   function placePin(x, y) {
@@ -274,8 +325,10 @@ async function start() {
   byId("loading").hidden = true;
 }
 
-start().catch(error => {
+function showError(error) {
   byId("loading").hidden = true;
   byId("error").textContent = error.message.startsWith("Swimmer labels") ? error.message : "The recorded search couldn’t load. Serve this folder over HTTP and reload.";
   byId("error").hidden = false;
-});
+}
+
+start().catch(showError);

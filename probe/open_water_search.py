@@ -223,18 +223,23 @@ def main():
     (args.out / "frames").mkdir()
     search = Search(Meta(), round(args.budget * NANO), args.out)
     stopped = None
+    failed = False
     try:
         run(search, frames, args.looks)
     except OutOfBudget:
         stopped = "the next request could have exceeded the budget"
     except Exception as error:
         stopped = f"{type(error).__name__}: {error}"
+        failed = True
     queue, coverage = summarize(frames)
     (args.out / "queue.json").write_text(json.dumps(queue, indent=2))
     (args.out / "coverage.json").write_text(json.dumps(coverage, indent=2))
     write_report(args.out, frames, queue, coverage, search.spent, stopped)
     ending = "Stopped early: " + stopped if stopped else "Finished."
     print(f"{len(frames)} frames, {len(queue)} sightings, {dollars(search.spent)} spent. {ending} Open {args.out / 'report.html'}")
+    # A budget stop is a normal ending. A failed request is not, so scripts and agents can tell from the exit status.
+    if failed:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
