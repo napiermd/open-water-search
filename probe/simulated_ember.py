@@ -72,10 +72,12 @@ class SimulatedEmber:
     replies maps (frame name, tile) to what Ember returns for that request, with tile -1 for the overview:
     answer text, a full reply such as one recorded from a paid run, or an exception to raise instead of
     replying. A request with no scripted reply raises KeyError, which the command treats as a failed request.
+    requests holds the body of every request sent for an answer, in order.
     """
 
     def __init__(self, replies):
         self.replies = replies
+        self.requests = []
 
     def reply_to(self, body):
         content = body["input"][0]["content"]
@@ -89,6 +91,7 @@ class SimulatedEmber:
         return INPUT_TOKENS if isinstance(reply, Exception) else reply["usage"]["input_tokens"]
 
     def generate(self, body):
+        self.requests.append(body)
         reply = self.reply_to(body)
         if isinstance(reply, Exception):
             raise reply
