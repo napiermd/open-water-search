@@ -1,0 +1,1880 @@
+{
+  "model": "muse-ember-1.0",
+  "route": "personal Meta Model API",
+  "edge_threshold": 0.65,
+  "complete": true,
+  "cohort": "Edge-enriched fresh windows. All 66 source videos had earlier still-image sampling.",
+  "changed_ids_require_source_review": false,
+  "accounting": {
+    "expected_jobs": 144,
+    "paid_nanodollars": 25493388,
+    "unresolved_reserved_nanodollars": 0,
+    "maximum_liability_nanodollars": 25493388,
+    "cap_nanodollars": 50000000,
+    "ledger_stop": null,
+    "whole": {
+      "usable": 83,
+      "unusable": 0,
+      "unresolved": 0,
+      "unattempted": 0
+    },
+    "edge": {
+      "usable": 61,
+      "unusable": 0,
+      "unresolved": 0,
+      "unattempted": 0
+    }
+  },
+  "full_manifest_track_audit": {
+    "selected_images": 86,
+    "person_boxes": 64,
+    "missing_track_boxes": 0,
+    "land_boxes": 0,
+    "clip_track_ids": 9,
+    "ids_reused_across_clips": {
+      "1": [
+        "DJI_0915_0004_50m.mp4",
+        "DJI_0915_0005_60m.mp4",
+        "DJI_0915_0008_50m.mp4",
+        "DJI_0915_0022_40m.mp4"
+      ],
+      "0": [
+        "DJI_0915_0005_60m.mp4",
+        "DJI_0915_0011_30m.mp4"
+      ],
+      "3": [
+        "DJI_0915_0013_40m.mp4",
+        "DJI_0915_0014_40m.mp4",
+        "DJI_0915_0031_20m.mp4"
+      ]
+    },
+    "one_second_track_jumps_over_tenth_width": []
+  },
+  "eligible_frames": 86,
+  "paired_frames": 86,
+  "omitted_frames": [],
+  "by_clip": {
+    "DJI_0915_0004_50m.mp4": {
+      "current": {
+        "eligible_seconds": 10,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 10,
+        "visible_person_seconds": 10,
+        "true_marks": 10,
+        "kept_marks": 10
+      },
+      "padded_edge": {
+        "eligible_seconds": 10,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1,
+        "ignored_marks": 0,
+        "person_seconds": 10,
+        "visible_person_seconds": 10,
+        "true_marks": 10,
+        "kept_marks": 11
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 0,
+        "true_marks": 0,
+        "kept_marks": 1
+      }
+    },
+    "DJI_0915_0005_60m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 2,
+        "found": 1,
+        "missed": 1,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 10,
+        "visible_person_seconds": 14,
+        "true_marks": 10,
+        "kept_marks": 10
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 2,
+        "found": 1,
+        "missed": 1,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1,
+        "ignored_marks": 0,
+        "person_seconds": 10,
+        "visible_person_seconds": 14,
+        "true_marks": 10,
+        "kept_marks": 11
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 0,
+        "true_marks": 0,
+        "kept_marks": 1
+      }
+    },
+    "DJI_0915_0008_50m.mp4": {
+      "current": {
+        "eligible_seconds": 4,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 4,
+        "visible_person_seconds": 4,
+        "true_marks": 4,
+        "kept_marks": 4
+      },
+      "padded_edge": {
+        "eligible_seconds": 4,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 4,
+        "visible_person_seconds": 4,
+        "true_marks": 4,
+        "kept_marks": 4
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 0,
+        "true_marks": 0,
+        "kept_marks": 0
+      }
+    },
+    "DJI_0915_0011_30m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 11,
+        "visible_person_seconds": 12,
+        "true_marks": 11,
+        "kept_marks": 11
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 12,
+        "visible_person_seconds": 12,
+        "true_marks": 12,
+        "kept_marks": 12
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 1,
+        "visible_person_seconds": 0,
+        "true_marks": 1,
+        "kept_marks": 1
+      }
+    },
+    "DJI_0915_0013_40m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 13,
+        "false_mark_seconds": 3,
+        "false_episodes": 10,
+        "ignored_marks": 0,
+        "person_seconds": 4,
+        "visible_person_seconds": 4,
+        "true_marks": 4,
+        "kept_marks": 17
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 12,
+        "false_mark_seconds": 3,
+        "false_episodes": 9,
+        "ignored_marks": 0,
+        "person_seconds": 4,
+        "visible_person_seconds": 4,
+        "true_marks": 4,
+        "kept_marks": 16
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": -1,
+        "false_mark_seconds": 0,
+        "false_episodes": -1,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 0,
+        "true_marks": 0,
+        "kept_marks": -1
+      }
+    },
+    "DJI_0915_0014_40m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 0,
+        "missed": 1,
+        "false_marks": 2,
+        "false_mark_seconds": 2,
+        "false_episodes": 2,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 3,
+        "true_marks": 0,
+        "kept_marks": 2
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 0,
+        "missed": 1,
+        "false_marks": 2,
+        "false_mark_seconds": 2,
+        "false_episodes": 2,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 3,
+        "true_marks": 0,
+        "kept_marks": 2
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 0,
+        "visible_person_seconds": 0,
+        "true_marks": 0,
+        "kept_marks": 0
+      }
+    },
+    "DJI_0915_0022_40m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 16,
+        "false_mark_seconds": 3,
+        "false_episodes": 13,
+        "ignored_marks": 0,
+        "person_seconds": 7,
+        "visible_person_seconds": 8,
+        "true_marks": 7,
+        "kept_marks": 23
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 16,
+        "false_mark_seconds": 3,
+        "false_episodes": 13,
+        "ignored_marks": 0,
+        "person_seconds": 8,
+        "visible_person_seconds": 8,
+        "true_marks": 8,
+        "kept_marks": 24
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 1,
+        "visible_person_seconds": 0,
+        "true_marks": 1,
+        "kept_marks": 1
+      }
+    },
+    "DJI_0915_0031_20m.mp4": {
+      "current": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 8,
+        "visible_person_seconds": 9,
+        "true_marks": 8,
+        "kept_marks": 8
+      },
+      "padded_edge": {
+        "eligible_seconds": 12,
+        "identities": 1,
+        "found": 1,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 9,
+        "visible_person_seconds": 9,
+        "true_marks": 9,
+        "kept_marks": 9
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "missed": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0,
+        "ignored_marks": 0,
+        "person_seconds": 1,
+        "visible_person_seconds": 0,
+        "true_marks": 1,
+        "kept_marks": 1
+      }
+    }
+  },
+  "totals": {
+    "current": {
+      "eligible_seconds": 86,
+      "identities": 9,
+      "found": 7,
+      "missed": 2,
+      "false_marks": 31,
+      "false_mark_seconds": 8,
+      "false_episodes": 25,
+      "ignored_marks": 0,
+      "person_seconds": 54,
+      "visible_person_seconds": 64,
+      "true_marks": 54,
+      "kept_marks": 85
+    },
+    "padded_edge": {
+      "eligible_seconds": 86,
+      "identities": 9,
+      "found": 7,
+      "missed": 2,
+      "false_marks": 32,
+      "false_mark_seconds": 10,
+      "false_episodes": 26,
+      "ignored_marks": 0,
+      "person_seconds": 57,
+      "visible_person_seconds": 64,
+      "true_marks": 57,
+      "kept_marks": 89
+    },
+    "delta": {
+      "eligible_seconds": 0,
+      "identities": 0,
+      "found": 0,
+      "missed": 0,
+      "false_marks": 1,
+      "false_mark_seconds": 2,
+      "false_episodes": 1,
+      "ignored_marks": 0,
+      "person_seconds": 3,
+      "visible_person_seconds": 0,
+      "true_marks": 3,
+      "kept_marks": 4
+    }
+  },
+  "identities": [
+    {
+      "video": "DJI_0915_0004_50m.mp4",
+      "track_id": 1,
+      "visible_seconds": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "padded_edge_hit_seconds": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0004_50m-second-00027",
+          "second": 27,
+          "i": 0,
+          "delivery_second": 27,
+          "point": [
+            1010.97,
+            708.855
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00028",
+          "second": 28,
+          "i": 1,
+          "delivery_second": 28,
+          "point": [
+            997.565,
+            745.505
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00029",
+          "second": 29,
+          "i": 3,
+          "delivery_second": 29,
+          "point": [
+            992.6,
+            790.82
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00030",
+          "second": 30,
+          "i": 0,
+          "delivery_second": 30,
+          "point": [
+            976.16,
+            830.95
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00031",
+          "second": 31,
+          "i": 1,
+          "delivery_second": 31,
+          "point": [
+            960.985,
+            874.915
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00032",
+          "second": 32,
+          "i": 0,
+          "delivery_second": 32,
+          "point": [
+            951.1600000000001,
+            901.8
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00033",
+          "second": 33,
+          "i": 1,
+          "delivery_second": 33,
+          "point": [
+            935.25,
+            924.9749999999999
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00034",
+          "second": 34,
+          "i": 1,
+          "delivery_second": 34,
+          "point": [
+            927.4849999999999,
+            950.3199999999999
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00035",
+          "second": 35,
+          "i": 3,
+          "delivery_second": 35,
+          "point": [
+            916.5,
+            946.005
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00036",
+          "second": 36,
+          "i": 0,
+          "delivery_second": 36,
+          "point": [
+            907.3499999999999,
+            930.0350000000001
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0004_50m-second-00027",
+          "second": 27,
+          "i": 0,
+          "delivery_second": 27,
+          "point": [
+            1010.97,
+            708.855
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00028",
+          "second": 28,
+          "i": 1,
+          "delivery_second": 28,
+          "point": [
+            997.565,
+            745.505
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00029",
+          "second": 29,
+          "i": 3,
+          "delivery_second": 29,
+          "point": [
+            992.6,
+            790.82
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00030",
+          "second": 30,
+          "i": 0,
+          "delivery_second": 30,
+          "point": [
+            976.16,
+            830.95
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00031",
+          "second": 31,
+          "i": 1,
+          "delivery_second": 31,
+          "point": [
+            960.985,
+            874.915
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00032",
+          "second": 32,
+          "i": 0,
+          "delivery_second": 32,
+          "point": [
+            951.1600000000001,
+            901.8
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00033",
+          "second": 33,
+          "i": 1,
+          "delivery_second": 33,
+          "point": [
+            935.25,
+            924.9749999999999
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00034",
+          "second": 34,
+          "i": 1,
+          "delivery_second": 34,
+          "point": [
+            927.4849999999999,
+            950.3199999999999
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00035",
+          "second": 35,
+          "i": 3,
+          "delivery_second": 35,
+          "point": [
+            916.5,
+            946.005
+          ]
+        },
+        {
+          "frame": "DJI_0915_0004_50m-second-00036",
+          "second": 36,
+          "i": 0,
+          "delivery_second": 36,
+          "point": [
+            907.3499999999999,
+            930.0350000000001
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0005_60m.mp4",
+      "track_id": 0,
+      "visible_seconds": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        34
+      ],
+      "padded_edge_hit_seconds": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        34
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0005_60m-second-00024",
+          "second": 24,
+          "i": 1,
+          "delivery_second": 24,
+          "point": [
+            1340.115,
+            948.875
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00025",
+          "second": 25,
+          "i": 1,
+          "delivery_second": 25,
+          "point": [
+            1346.5,
+            868.375
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00026",
+          "second": 26,
+          "i": 0,
+          "delivery_second": 26,
+          "point": [
+            1351.095,
+            787.785
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00027",
+          "second": 27,
+          "i": 0,
+          "delivery_second": 27,
+          "point": [
+            1353.2199999999998,
+            704.96
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00028",
+          "second": 28,
+          "i": 0,
+          "delivery_second": 28,
+          "point": [
+            1356.405,
+            619.0450000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00029",
+          "second": 29,
+          "i": 0,
+          "delivery_second": 29,
+          "point": [
+            1358.285,
+            531.2850000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00030",
+          "second": 30,
+          "i": 0,
+          "delivery_second": 30,
+          "point": [
+            1362.545,
+            444.33000000000004
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00031",
+          "second": 31,
+          "i": 0,
+          "delivery_second": 31,
+          "point": [
+            1367.1750000000002,
+            357.405
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00032",
+          "second": 32,
+          "i": 0,
+          "delivery_second": 32,
+          "point": [
+            1372.0900000000001,
+            269.315
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00034",
+          "second": 34,
+          "i": 0,
+          "delivery_second": 34,
+          "point": [
+            1384.335,
+            101.03
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0005_60m-second-00024",
+          "second": 24,
+          "i": 1,
+          "delivery_second": 24,
+          "point": [
+            1340.115,
+            948.875
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00025",
+          "second": 25,
+          "i": 1,
+          "delivery_second": 25,
+          "point": [
+            1346.5,
+            868.375
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00026",
+          "second": 26,
+          "i": 0,
+          "delivery_second": 26,
+          "point": [
+            1351.095,
+            787.785
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00027",
+          "second": 27,
+          "i": 0,
+          "delivery_second": 27,
+          "point": [
+            1353.2199999999998,
+            704.96
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00028",
+          "second": 28,
+          "i": 0,
+          "delivery_second": 28,
+          "point": [
+            1356.405,
+            619.0450000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00029",
+          "second": 29,
+          "i": 0,
+          "delivery_second": 29,
+          "point": [
+            1358.285,
+            531.2850000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00030",
+          "second": 30,
+          "i": 0,
+          "delivery_second": 30,
+          "point": [
+            1362.545,
+            444.33000000000004
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00031",
+          "second": 31,
+          "i": 0,
+          "delivery_second": 31,
+          "point": [
+            1367.1750000000002,
+            357.405
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00032",
+          "second": 32,
+          "i": 0,
+          "delivery_second": 32,
+          "point": [
+            1372.0900000000001,
+            269.315
+          ]
+        },
+        {
+          "frame": "DJI_0915_0005_60m-second-00034",
+          "second": 34,
+          "i": 0,
+          "delivery_second": 34,
+          "point": [
+            1384.335,
+            101.03
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0005_60m.mp4",
+      "track_id": 1,
+      "visible_seconds": [
+        32,
+        33,
+        34
+      ],
+      "current_found": false,
+      "padded_edge_found": false,
+      "current_hit_seconds": [],
+      "padded_edge_hit_seconds": [],
+      "current_hits": [],
+      "padded_edge_hits": []
+    },
+    {
+      "video": "DJI_0915_0008_50m.mp4",
+      "track_id": 1,
+      "visible_seconds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "padded_edge_hit_seconds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0008_50m-second-00000",
+          "second": 0,
+          "i": 0,
+          "delivery_second": 0,
+          "point": [
+            1878.6950000000002,
+            385.0
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00001",
+          "second": 1,
+          "i": 0,
+          "delivery_second": 1,
+          "point": [
+            1873.94,
+            385.875
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00002",
+          "second": 2,
+          "i": 0,
+          "delivery_second": 2,
+          "point": [
+            1869.06,
+            386.78999999999996
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00003",
+          "second": 3,
+          "i": 0,
+          "delivery_second": 3,
+          "point": [
+            1867.52,
+            387.75
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0008_50m-second-00000",
+          "second": 0,
+          "i": 0,
+          "delivery_second": 0,
+          "point": [
+            1878.6950000000002,
+            385.0
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00001",
+          "second": 1,
+          "i": 0,
+          "delivery_second": 1,
+          "point": [
+            1873.94,
+            385.875
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00002",
+          "second": 2,
+          "i": 0,
+          "delivery_second": 2,
+          "point": [
+            1869.06,
+            386.78999999999996
+          ]
+        },
+        {
+          "frame": "DJI_0915_0008_50m-second-00003",
+          "second": 3,
+          "i": 0,
+          "delivery_second": 3,
+          "point": [
+            1867.52,
+            387.75
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0011_30m.mp4",
+      "track_id": 0,
+      "visible_seconds": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "padded_edge_hit_seconds": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0011_30m-second-00016",
+          "second": 16,
+          "i": 0,
+          "delivery_second": 16,
+          "point": [
+            1441.26,
+            30.63
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00017",
+          "second": 17,
+          "i": 0,
+          "delivery_second": 17,
+          "point": [
+            1340.8249999999998,
+            46.425000000000004
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00018",
+          "second": 18,
+          "i": 0,
+          "delivery_second": 18,
+          "point": [
+            1245.595,
+            65.05
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00019",
+          "second": 19,
+          "i": 0,
+          "delivery_second": 19,
+          "point": [
+            1148.09,
+            77.47
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00020",
+          "second": 20,
+          "i": 0,
+          "delivery_second": 20,
+          "point": [
+            1057.205,
+            83.565
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00021",
+          "second": 21,
+          "i": 0,
+          "delivery_second": 21,
+          "point": [
+            971.645,
+            86.25
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00022",
+          "second": 22,
+          "i": 0,
+          "delivery_second": 22,
+          "point": [
+            887.3699999999999,
+            87.155
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00023",
+          "second": 23,
+          "i": 0,
+          "delivery_second": 23,
+          "point": [
+            799.5,
+            86.7
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00024",
+          "second": 24,
+          "i": 0,
+          "delivery_second": 24,
+          "point": [
+            714.64,
+            86.495
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00025",
+          "second": 25,
+          "i": 0,
+          "delivery_second": 25,
+          "point": [
+            622.625,
+            87.33500000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00026",
+          "second": 26,
+          "i": 0,
+          "delivery_second": 26,
+          "point": [
+            528.62,
+            88.11
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0011_30m-second-00015",
+          "second": 15,
+          "i": 0,
+          "delivery_second": 15,
+          "point": [
+            1537.29,
+            16.044999999999998
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00016",
+          "second": 16,
+          "i": 0,
+          "delivery_second": 16,
+          "point": [
+            1441.26,
+            30.63
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00017",
+          "second": 17,
+          "i": 0,
+          "delivery_second": 17,
+          "point": [
+            1340.8249999999998,
+            46.425000000000004
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00018",
+          "second": 18,
+          "i": 0,
+          "delivery_second": 18,
+          "point": [
+            1245.595,
+            65.05
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00019",
+          "second": 19,
+          "i": 0,
+          "delivery_second": 19,
+          "point": [
+            1148.09,
+            77.47
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00020",
+          "second": 20,
+          "i": 0,
+          "delivery_second": 20,
+          "point": [
+            1057.205,
+            83.565
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00021",
+          "second": 21,
+          "i": 0,
+          "delivery_second": 21,
+          "point": [
+            971.645,
+            86.25
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00022",
+          "second": 22,
+          "i": 0,
+          "delivery_second": 22,
+          "point": [
+            887.3699999999999,
+            87.155
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00023",
+          "second": 23,
+          "i": 0,
+          "delivery_second": 23,
+          "point": [
+            799.5,
+            86.7
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00024",
+          "second": 24,
+          "i": 0,
+          "delivery_second": 24,
+          "point": [
+            714.64,
+            86.495
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00025",
+          "second": 25,
+          "i": 0,
+          "delivery_second": 25,
+          "point": [
+            622.625,
+            87.33500000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0011_30m-second-00026",
+          "second": 26,
+          "i": 0,
+          "delivery_second": 26,
+          "point": [
+            528.62,
+            88.11
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0013_40m.mp4",
+      "track_id": 3,
+      "visible_seconds": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "padded_edge_hit_seconds": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0013_40m-second-00064",
+          "second": 64,
+          "i": 1,
+          "delivery_second": 64,
+          "point": [
+            546.615,
+            968.995
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00065",
+          "second": 65,
+          "i": 0,
+          "delivery_second": 65,
+          "point": [
+            569.375,
+            923.39
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00066",
+          "second": 66,
+          "i": 1,
+          "delivery_second": 66,
+          "point": [
+            607.66,
+            857.27
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00067",
+          "second": 67,
+          "i": 0,
+          "delivery_second": 67,
+          "point": [
+            649.775,
+            792.84
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0013_40m-second-00064",
+          "second": 64,
+          "i": 1,
+          "delivery_second": 64,
+          "point": [
+            546.615,
+            968.995
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00065",
+          "second": 65,
+          "i": 0,
+          "delivery_second": 65,
+          "point": [
+            569.375,
+            923.39
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00066",
+          "second": 66,
+          "i": 1,
+          "delivery_second": 66,
+          "point": [
+            607.66,
+            857.27
+          ]
+        },
+        {
+          "frame": "DJI_0915_0013_40m-second-00067",
+          "second": 67,
+          "i": 0,
+          "delivery_second": 67,
+          "point": [
+            649.775,
+            792.84
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0014_40m.mp4",
+      "track_id": 3,
+      "visible_seconds": [
+        54,
+        55,
+        56
+      ],
+      "current_found": false,
+      "padded_edge_found": false,
+      "current_hit_seconds": [],
+      "padded_edge_hit_seconds": [],
+      "current_hits": [],
+      "padded_edge_hits": []
+    },
+    {
+      "video": "DJI_0915_0022_40m.mp4",
+      "track_id": 1,
+      "visible_seconds": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "padded_edge_hit_seconds": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0022_40m-second-00053",
+          "second": 53,
+          "i": 0,
+          "delivery_second": 53,
+          "point": [
+            1058.095,
+            659.56
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00054",
+          "second": 54,
+          "i": 0,
+          "delivery_second": 54,
+          "point": [
+            1056.8200000000002,
+            709.95
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00055",
+          "second": 55,
+          "i": 0,
+          "delivery_second": 55,
+          "point": [
+            1053.74,
+            752.97
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00056",
+          "second": 56,
+          "i": 0,
+          "delivery_second": 56,
+          "point": [
+            1049.985,
+            797.615
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00057",
+          "second": 57,
+          "i": 0,
+          "delivery_second": 57,
+          "point": [
+            1045.4499999999998,
+            843.145
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00058",
+          "second": 58,
+          "i": 0,
+          "delivery_second": 58,
+          "point": [
+            1041.105,
+            890.915
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00059",
+          "second": 59,
+          "i": 0,
+          "delivery_second": 59,
+          "point": [
+            1031.1399999999999,
+            942.17
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0022_40m-second-00053",
+          "second": 53,
+          "i": 0,
+          "delivery_second": 53,
+          "point": [
+            1058.095,
+            659.56
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00054",
+          "second": 54,
+          "i": 0,
+          "delivery_second": 54,
+          "point": [
+            1056.8200000000002,
+            709.95
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00055",
+          "second": 55,
+          "i": 0,
+          "delivery_second": 55,
+          "point": [
+            1053.74,
+            752.97
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00056",
+          "second": 56,
+          "i": 0,
+          "delivery_second": 56,
+          "point": [
+            1049.985,
+            797.615
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00057",
+          "second": 57,
+          "i": 0,
+          "delivery_second": 57,
+          "point": [
+            1045.4499999999998,
+            843.145
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00058",
+          "second": 58,
+          "i": 0,
+          "delivery_second": 58,
+          "point": [
+            1041.105,
+            890.915
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00059",
+          "second": 59,
+          "i": 0,
+          "delivery_second": 59,
+          "point": [
+            1031.1399999999999,
+            942.17
+          ]
+        },
+        {
+          "frame": "DJI_0915_0022_40m-second-00060",
+          "second": 60,
+          "i": 0,
+          "delivery_second": 60,
+          "point": [
+            1022.425,
+            994.615
+          ]
+        }
+      ]
+    },
+    {
+      "video": "DJI_0915_0031_20m.mp4",
+      "track_id": 3,
+      "visible_seconds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "current_found": true,
+      "padded_edge_found": true,
+      "current_hit_seconds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "padded_edge_hit_seconds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "current_hits": [
+        {
+          "frame": "DJI_0915_0031_20m-second-00042",
+          "second": 42,
+          "i": 0,
+          "delivery_second": 42,
+          "point": [
+            1032.8400000000001,
+            483.98
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00043",
+          "second": 43,
+          "i": 0,
+          "delivery_second": 43,
+          "point": [
+            1003.995,
+            565.465
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00044",
+          "second": 44,
+          "i": 0,
+          "delivery_second": 44,
+          "point": [
+            994.0849999999999,
+            647.305
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00045",
+          "second": 45,
+          "i": 0,
+          "delivery_second": 45,
+          "point": [
+            973.905,
+            729.7750000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00046",
+          "second": 46,
+          "i": 0,
+          "delivery_second": 46,
+          "point": [
+            965.52,
+            811.235
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00047",
+          "second": 47,
+          "i": 0,
+          "delivery_second": 47,
+          "point": [
+            933.19,
+            856.96
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00048",
+          "second": 48,
+          "i": 0,
+          "delivery_second": 48,
+          "point": [
+            867.635,
+            911.005
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00049",
+          "second": 49,
+          "i": 0,
+          "delivery_second": 49,
+          "point": [
+            831.565,
+            951.26
+          ]
+        }
+      ],
+      "padded_edge_hits": [
+        {
+          "frame": "DJI_0915_0031_20m-second-00042",
+          "second": 42,
+          "i": 0,
+          "delivery_second": 42,
+          "point": [
+            1032.8400000000001,
+            483.98
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00043",
+          "second": 43,
+          "i": 0,
+          "delivery_second": 43,
+          "point": [
+            1003.995,
+            565.465
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00044",
+          "second": 44,
+          "i": 0,
+          "delivery_second": 44,
+          "point": [
+            994.0849999999999,
+            647.305
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00045",
+          "second": 45,
+          "i": 0,
+          "delivery_second": 45,
+          "point": [
+            973.905,
+            729.7750000000001
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00046",
+          "second": 46,
+          "i": 0,
+          "delivery_second": 46,
+          "point": [
+            965.52,
+            811.235
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00047",
+          "second": 47,
+          "i": 0,
+          "delivery_second": 47,
+          "point": [
+            933.19,
+            856.96
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00048",
+          "second": 48,
+          "i": 0,
+          "delivery_second": 48,
+          "point": [
+            867.635,
+            911.005
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00049",
+          "second": 49,
+          "i": 0,
+          "delivery_second": 49,
+          "point": [
+            831.565,
+            951.26
+          ]
+        },
+        {
+          "frame": "DJI_0915_0031_20m-second-00050",
+          "second": 50,
+          "i": 0,
+          "delivery_second": 50,
+          "point": [
+            783.5,
+            985.29
+          ]
+        }
+      ]
+    }
+  ],
+  "gained_ids": [],
+  "lost_ids": [],
+  "current_found_everyone_on_paired": false
+}

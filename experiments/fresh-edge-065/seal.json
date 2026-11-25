@@ -1,0 +1,28 @@
+{
+  "sha256": {
+    "PLAN.md": "64a616eff70b538df406e7ad9214ae34beb032b692ffbd257582f35309375faf",
+    "fresh.json": "8265eabefbaa04b1ab723ec50f09283651768c6ba1b7a44b7d46c03e8a992d7d",
+    "edges.json": "45bcf20aa19af98866afa5900ec0f9e0400da8528d1c4118ee8c08a2664607d3",
+    "inputs.json": "7be38ddf6fe0233e93fb52b7638d77db2c514408a964baad9cbe6735c4a42c46",
+    "exclusions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "audit.md": "5967cbb87ef829cd4ca2cc8217d689bcac29c8f480c23aa9afacaa6c8092362a",
+    "select_windows.py": "46ff953babb0b7d6ff6e933c85e0a41799f7616a791bf648f3e10ecfd538cddd",
+    "run_fresh.py": "5f45431e9c42ccda533da9d8591914cff32adf37e97fae83ee22425cb27585b6",
+    "../edge-padding/edge.py": "6aa9e243ea1faad6b6f8a74895008db8f22c6c7beeb43aa14ce6db70e0a732f5",
+    "../tile-flag-check/run.py": "1a2ee19dcce5b049d2d6e20f1d8d83eb1901a59aa9d8fbf9f64826d496f28e6b",
+    "../harder-pilot/run_pilot.py": "5b6df7c2707378e66dbf3acbc27820d849c1b8bd3ad03e81395a212ee331456c",
+    "../harder-pilot/score_pilot.py": "d4b65fa971336b82fe4bfc29fa466a43abb7ee62efacd6fe1e0ae49f0f7c44c2",
+    "../../probe/flag_check.py": "eaf32b6c5f1556f8344f3ef48dd39eb79e92a98f9f1ae03364ea9759a1e28f00",
+    "../../probe/score.py": "c3f3f296eb705576814b237ddd7c207de8f08f5ce5948e02ea2a9ee1769173e3",
+    "../../probe/runner.py": "77374f4ecc095f50c970ea8395e8362cebfbd3b1ddfff6166e91ac4d61d1a1d2",
+    "../../probe/open_water_search.py": "12a1fffa42ed7761945856341ddb7b439d4800853dea371652fec5e9288314b4",
+    "../lost-people/flight-ranking/rank_flights.py": "7d65a24e500e5a2ec39701d4a5a9ebaf0e8be33f49a66f8a94f9d1a3fb29c08c",
+    "lock.json": "e7bba96db831663af324318c0d81930829a248102dc0383f3e04f9875b09c8c9",
+    "ledger.sqlite": "55466f2fa44ec761b3f8141de7706ce7c758d3f06c17da01a07a438d86b25f99",
+    "verdicts.jsonl": "fa23742dbaeae9ae284b458215bb83777dd4862f3a6722a5429acaef76002a77",
+    "score_fresh.py": "0835ba1f14c984ffb4e21662254200c26508daca8e56d626f39239f06758ad62",
+    "summary.json": "d42c8f20106d691c4e9ab484d323a5774febeea46fe022025ccf592747866e4c",
+    "charges.json": "299f6987022a1b291b6bedbf3669a6585bea46183a1558a90348b549cf4b7fa8"
+  },
+  "annotations_sha256": "08b8050efec2972a98af831a17f691c09419674bc06e5876a5d004528cc2b0da"
+}

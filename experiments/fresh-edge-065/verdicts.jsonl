@@ -1,0 +1,594 @@
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00015", "i": 0, "yes": true, "nearby": false, "confidence": 0.65, "what": "person swimming at surface"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00015", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark manta-like marine animal near top, empty water at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00027", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark irregular patch, likely rock or seaweed"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00027", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark patches, likely rocks or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "swimmer with splashes arms visible"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock or submerged object"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks on sand"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 3, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark blob, rock or turtle"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "two small dark objects"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rocks off-centre right"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00027", "i": 6, "yes": false, "nearby": false, "confidence": 0.5, "what": "small dark speck"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00023", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "faint dark smudge on water surface"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00023", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "empty water, dark object offset right of centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00054", "i": 0, "yes": true, "nearby": false, "confidence": 0.6, "what": "dark swimmer with white fins"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock or seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "seaweed clumps in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 2, "yes": false, "nearby": false, "confidence": 0.9, "what": "buoy equipment at edge, water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "seaweed clumps in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 5, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark submerged rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry dark shadow in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 8, "yes": false, "nearby": false, "confidence": 0.8, "what": "tiny dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 9, "yes": false, "nearby": false, "confidence": 0.85, "what": "seaweed clumps in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00054", "i": 10, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry dark shadows in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00053", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "person floating on back in wetsuit"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00053", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "empty water, dark blur at top"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00053", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "empty water at centre, dark blur above centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark irregular rock or seaweed in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark submerged rocks or seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark blob, likely rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark fragment in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark spot in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00056", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "elongated dark seaweed or rock patch"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00056", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rock or debris patch in water, no person"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00056", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark patch in water, no distinct person"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00042", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0008_50m-second-00000", "i": 0, "yes": true, "nearby": false, "confidence": 0.85, "what": "Swimmer floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00016", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person swimming in turquoise water"}
+{"arm": "current", "frame": "whole/DJI_0915_0008_50m-second-00000", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating face-down legs visible"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00016", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00024", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark seaweed or debris patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00024", "i": 1, "yes": true, "nearby": false, "confidence": 0.7, "what": "person head in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00024", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark diffuse blob in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00028", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "dark irregular patch centre in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00028", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark patches above and below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock or debris blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 1, "yes": true, "nearby": false, "confidence": 0.95, "what": "person swimming on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 2, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark debris fragments in pale water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 3, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock or seaweed patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 4, "yes": false, "nearby": false, "confidence": 0.6, "what": "small dark debris speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 5, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark seaweed or rock patches in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 6, "yes": false, "nearby": false, "confidence": 0.5, "what": "small dark speck debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 7, "yes": false, "nearby": false, "confidence": 0.6, "what": "tiny dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00028", "i": 8, "yes": false, "nearby": false, "confidence": 0.6, "what": "small dark speck in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00055", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark marine animal in green water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00054", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "Person floating on back, arms outstretched"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00054", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark irregular object, possible boat or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00054", "i": 2, "yes": false, "nearby": false, "confidence": 0.45, "what": "Blurry faint dark shape in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00054", "i": 3, "yes": false, "nearby": false, "confidence": 0.6, "what": "Small dark blob in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00054", "i": 4, "yes": false, "nearby": false, "confidence": 0.75, "what": "Two dark patches, likely rocks or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark oval rock or kelp"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 1, "yes": false, "nearby": false, "confidence": 0.95, "what": "dolphin at left edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark rock or kelp"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 4, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurred dark debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 8, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark rock or animal"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 9, "yes": false, "nearby": false, "confidence": 0.6, "what": "tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 10, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark kelp or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00055", "i": 11, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurred dark shadow"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00054", "i": 0, "yes": true, "nearby": false, "confidence": 0.4, "what": "dark elongated shape at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00054", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry mottled water, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark elongated rock or shadow in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark irregular blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 2, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark blobs off-centre in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 4, "yes": false, "nearby": false, "confidence": 0.65, "what": "star-shaped dark patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "greenish dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00057", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "diagonal dark algae or rock in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00057", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rock or shadow in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00057", "i": 1, "yes": true, "nearby": false, "confidence": 0.55, "what": "possible person floating with limbs spread"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00057", "i": 2, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark submerged rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00043", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person swimming on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0008_50m-second-00001", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating face down"}
+{"arm": "current", "frame": "whole/DJI_0915_0008_50m-second-00001", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00017", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating face down in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00017", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00025", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark patch on water, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00025", "i": 1, "yes": true, "nearby": false, "confidence": 0.7, "what": "small dark head in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00029", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark irregular floating blob"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00029", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "multiple dark seaweed debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark elongated floating debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "small grey blob shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 2, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark patches in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 3, "yes": true, "nearby": false, "confidence": 0.95, "what": "swimmer with white fins"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "scattered dark patches algae"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 5, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark patches in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 6, "yes": false, "nearby": false, "confidence": 0.7, "what": "tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00029", "i": 7, "yes": false, "nearby": false, "confidence": 0.65, "what": "faint shadow streaks"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00056", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "white object on dark edge, water"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00025", "i": 0, "yes": true, "nearby": false, "confidence": 0.7, "what": "dark swimmer in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark irregular patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark faint patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 3, "yes": false, "nearby": false, "confidence": 0.95, "what": "partial dark-white object at left edge, not centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 6, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark shape below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 7, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry dark shapes at left edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark patch below centre in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 10, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark shape below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00056", "i": 11, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark greenish patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "person floating in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark debris blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark object"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 3, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark floating debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark floating debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00055", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark object"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00055", "i": 0, "yes": true, "nearby": false, "confidence": 0.45, "what": "dark elongated blob in centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00055", "i": 1, "yes": true, "nearby": false, "confidence": 0.35, "what": "small grey blob in centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0008_50m-second-00002", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating on back in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00044", "i": 0, "yes": true, "nearby": false, "confidence": 0.75, "what": "person swimming in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark rocks/debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 1, "yes": true, "nearby": false, "confidence": 0.55, "what": "possible person floating"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "small debris patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 3, "yes": false, "nearby": false, "confidence": 0.6, "what": "submerged rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 4, "yes": false, "nearby": false, "confidence": 0.65, "what": "ray or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00058", "i": 5, "yes": false, "nearby": false, "confidence": 0.7, "what": "green buoy/algae"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00018", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0008_50m-second-00002", "i": 0, "yes": true, "nearby": false, "confidence": 0.85, "what": "swimmer floating in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00018", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating face-down in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person swimming on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 1, "yes": false, "nearby": false, "confidence": 0.08, "what": "dark rock or shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 2, "yes": false, "nearby": false, "confidence": 0.08, "what": "two dark patches, rock shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 3, "yes": false, "nearby": false, "confidence": 0.1, "what": "dark submerged rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 4, "yes": false, "nearby": false, "confidence": 0.08, "what": "two dark patches, rock shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 5, "yes": false, "nearby": false, "confidence": 0.08, "what": "dark patches above and below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 6, "yes": false, "nearby": false, "confidence": 0.12, "what": "faint dark streaks, shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 7, "yes": false, "nearby": false, "confidence": 0.12, "what": "small dark patch, rock shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 8, "yes": false, "nearby": false, "confidence": 0.08, "what": "dark patches above and below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00030", "i": 9, "yes": false, "nearby": false, "confidence": 0.12, "what": "faint dark streaks, shadow"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00026", "i": 0, "yes": true, "nearby": false, "confidence": 0.35, "what": "dark elongated blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00026", "i": 0, "yes": true, "nearby": false, "confidence": 0.65, "what": "dark head and shoulders in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00026", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "grey underwater patch or shadow"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00030", "i": 0, "yes": true, "nearby": false, "confidence": 0.65, "what": "dark submerged shape in open water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00030", "i": 1, "yes": true, "nearby": false, "confidence": 0.55, "what": "small dark dot between water splashes"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00030", "i": 2, "yes": true, "nearby": false, "confidence": 0.55, "what": "small dark dot between water splashes"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00057", "i": 0, "yes": true, "nearby": false, "confidence": 0.35, "what": "small white shape in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00056", "i": 0, "yes": true, "nearby": false, "confidence": 0.65, "what": "dark human-shaped blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark submerged rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "Dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "Small dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 3, "yes": false, "nearby": false, "confidence": 0.75, "what": "Faint dark submerged shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark rock and seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 5, "yes": false, "nearby": false, "confidence": 0.9, "what": "Small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "Small dark submerged patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "White bird at left edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "Dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 10, "yes": false, "nearby": false, "confidence": 0.6, "what": "Blurry dark submerged shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00057", "i": 11, "yes": false, "nearby": false, "confidence": 0.6, "what": "Blurry dark submerged shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 1, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark elongated water object"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 2, "yes": true, "nearby": false, "confidence": 0.45, "what": "small dark blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 3, "yes": true, "nearby": false, "confidence": 0.5, "what": "small dark grey blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 4, "yes": true, "nearby": false, "confidence": 0.4, "what": "small dark blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 5, "yes": true, "nearby": false, "confidence": 0.45, "what": "small dark purple blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 6, "yes": true, "nearby": false, "confidence": 0.35, "what": "small grey curved blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00056", "i": 7, "yes": false, "nearby": false, "confidence": 0.6, "what": "green algae patch centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00045", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00059", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rock or debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock/debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "large dark rock algae patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark seaweed rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 4, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark spot in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock algae patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark seaweed fragment"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 8, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark debris in surf"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00059", "i": 9, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry dark underwater shape"}
+{"arm": "current", "frame": "edge/DJI_0915_0008_50m-second-00003", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00019", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "Person floating swimming on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00019", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "Person floating on back in open water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00031", "i": 0, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water, dark rock patches off centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00031", "i": 1, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water, dark rock patches off centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00027", "i": 0, "yes": true, "nearby": false, "confidence": 0.6, "what": "dark round head with limbs in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00027", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark elongated rock or shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark oval rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 1, "yes": true, "nearby": false, "confidence": 0.95, "what": "person in wetsuit floating"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "small grey rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 7, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00031", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "tiny speck in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00058", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "two white foot or flipper shapes at left edge of water, centre is empty water"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00027", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark oval object in water, no person visible"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark irregular blob, rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark underwater patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "blurry dark shapes in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark patches, rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark underwater patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark underwater patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "white flippers at left edge only"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark irregular patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "blurry dark underwater shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 10, "yes": false, "nearby": false, "confidence": 0.8, "what": "blurry dark streaks, not person"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00058", "i": 11, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark irregular underwater patch"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00057", "i": 0, "yes": true, "nearby": false, "confidence": 0.35, "what": "blurry dark shape centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00057", "i": 1, "yes": true, "nearby": false, "confidence": 0.55, "what": "small dark speck centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "Person floating on back, arms outstretched"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 1, "yes": false, "nearby": false, "confidence": 0.9, "what": "Dark irregular blob, likely debris or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "Small grey blob, no person shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 3, "yes": false, "nearby": false, "confidence": 0.7, "what": "Dark vertical blob, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark submerged blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark grey blob below centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "Small dark blob, no person shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "Blurry dark shapes upper left, empty centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "Blurry dark streaks, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 9, "yes": false, "nearby": false, "confidence": 0.85, "what": "Tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 10, "yes": false, "nearby": false, "confidence": 0.9, "what": "Tiny dark speck, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00057", "i": 11, "yes": false, "nearby": false, "confidence": 0.9, "what": "Small speck between dark blobs"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark elongated debris or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark seaweed debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark debris cluster off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 4, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark blob, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 5, "yes": false, "nearby": false, "confidence": 0.7, "what": "faint dark smudge, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark debris patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 7, "yes": false, "nearby": false, "confidence": 0.8, "what": "small round dark buoy or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 8, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rectangular object in foam"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 9, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark object and foam in white water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 10, "yes": false, "nearby": false, "confidence": 0.7, "what": "faint smudge, dark patches at edges"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00060", "i": 11, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark blob, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0008_50m-second-00003", "i": 0, "yes": true, "nearby": false, "confidence": 0.75, "what": "person floating in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00020", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "Person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00046", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "person swimming in open water"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00020", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "Person floating in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00028", "i": 0, "yes": true, "nearby": false, "confidence": 0.55, "what": "small dark swimmer in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "swimmer floating with arm raised"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark indistinct blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark elongated blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark blobs in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark blob below with faint object above"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 5, "yes": false, "nearby": false, "confidence": 0.9, "what": "small faint dark spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "faint dark shapes in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00032", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark green spot, edge blob"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00032", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock or algae patches in open water"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00032", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark rock or algae patches in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00047", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating face down in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark floating debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 2, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry dark blob off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "small grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "small grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark water patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 8, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry dark arc"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark water patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 10, "yes": false, "nearby": false, "confidence": 0.85, "what": "tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00058", "i": 11, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark shapes at bottom"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 0, "yes": false, "nearby": false, "confidence": 0.88, "what": "dark rock or seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 1, "yes": false, "nearby": false, "confidence": 0.82, "what": "scattered seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark water patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 5, "yes": true, "nearby": false, "confidence": 0.45, "what": "possible swimmer figure"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 6, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry dark water patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 8, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark water patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 9, "yes": false, "nearby": false, "confidence": 0.92, "what": "tiny speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 10, "yes": false, "nearby": false, "confidence": 0.85, "what": "seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00059", "i": 11, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark water patches"}
+{"arm": "current", "frame": "edge/DJI_0915_0031_20m-second-00047", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 0, "yes": false, "nearby": false, "confidence": 0.4, "what": "dark elongated blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 1, "yes": true, "nearby": false, "confidence": 0.5, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 2, "yes": true, "nearby": false, "confidence": 0.5, "what": "small dark figure"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 3, "yes": true, "nearby": false, "confidence": 0.5, "what": "dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 4, "yes": true, "nearby": false, "confidence": 0.4, "what": "dark blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 5, "yes": false, "nearby": false, "confidence": 0.3, "what": "blurry dark smudge"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 6, "yes": false, "nearby": false, "confidence": 0.4, "what": "dark irregular patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 7, "yes": true, "nearby": false, "confidence": 0.4, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 8, "yes": true, "nearby": false, "confidence": 0.5, "what": "dark figure in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 9, "yes": false, "nearby": false, "confidence": 0.7, "what": "cylindrical object on sand"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 10, "yes": false, "nearby": false, "confidence": 0.7, "what": "cylindrical object on sand"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00061", "i": 11, "yes": true, "nearby": false, "confidence": 0.3, "what": "tiny dark dot"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00021", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00021", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person swimming diving in teal water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00029", "i": 0, "yes": true, "nearby": false, "confidence": 0.55, "what": "small swimmer dark head white body at centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00029", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark elongated rock shadow right of centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00033", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark submerged rocks patches, no person"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00033", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark submerged rocks patches, no person"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00029", "i": 0, "yes": true, "nearby": false, "confidence": 0.6, "what": "dark swimmer shape in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock/debris blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 1, "yes": true, "nearby": false, "confidence": 0.95, "what": "swimmer with arm raised"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark seaweed/rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark kelp/rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 7, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark kelp/rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00033", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "tiny speck in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00059", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "Person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 0, "yes": true, "nearby": false, "confidence": 0.99, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark debris blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 2, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark rock debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "grey water debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark water patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 5, "yes": false, "nearby": false, "confidence": 0.9, "what": "two grey debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 6, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark water spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "greenish debris patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 8, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry faint water marks"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 9, "yes": false, "nearby": false, "confidence": 0.95, "what": "tiny dark dot"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 10, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark triangular spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00059", "i": 11, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry dark water smudge"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rock or seaweed blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "faint dark smudge, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 2, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark irregular rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 3, "yes": false, "nearby": false, "confidence": 0.7, "what": "grey rocks or seaweed clusters"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 4, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark round rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock fragment"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark seaweed or rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark seaweed cluster"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 8, "yes": false, "nearby": false, "confidence": 0.75, "what": "blurry underwater vegetation shadows"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "green seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 10, "yes": false, "nearby": false, "confidence": 0.8, "what": "faint dark smudge, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00060", "i": 11, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark diamond-shaped rock"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00062", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry green water, no clear person"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rocks seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark rocks seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 5, "yes": true, "nearby": false, "confidence": 0.4, "what": "small dark swimmer-like blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 6, "yes": true, "nearby": false, "confidence": 0.45, "what": "dark swimmer-like blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 7, "yes": true, "nearby": false, "confidence": 0.35, "what": "blurry submerged dark shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 8, "yes": true, "nearby": false, "confidence": 0.35, "what": "blurry submerged dark shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 9, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rocks seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 10, "yes": true, "nearby": false, "confidence": 0.4, "what": "tiny dark swimmer dot"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00062", "i": 11, "yes": false, "nearby": false, "confidence": 0.85, "what": "large dark rock seagrass"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00048", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "person swimming white top"}
+{"arm": "current", "frame": "edge/DJI_0915_0031_20m-second-00048", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person floating on back swimming"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00022", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person floating on back in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00022", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "swimmer floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock or debris blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 1, "yes": true, "nearby": false, "confidence": 0.9, "what": "swimmer in water with splashes"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark elongated rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water between two dark blobs"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 4, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water, blobs off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 5, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water between two blobs"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark debris spot"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00034", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "empty water between two blobs"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00030", "i": 0, "yes": true, "nearby": false, "confidence": 0.55, "what": "dark figure in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00030", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "empty water, object at right edge"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00034", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark water patches, no person at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00034", "i": 1, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark water patches, no person at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00030", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark blob in water, no person"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00060", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock or debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark seaweed or rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "multiple dark rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 4, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark water shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 9, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry underwater weed shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 10, "yes": false, "nearby": false, "confidence": 0.55, "what": "blurry dark streak in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00061", "i": 11, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry underwater weed shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 0, "yes": false, "nearby": false, "confidence": 0.95, "what": "swimmer at bottom, not centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark elongated blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark blobs in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 4, "yes": false, "nearby": false, "confidence": 0.9, "what": "blurry dark shapes in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark purple blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "green dark blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "blurry dark streaks in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 9, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark shape in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 10, "yes": false, "nearby": false, "confidence": 0.85, "what": "tiny dark specks in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00060", "i": 11, "yes": false, "nearby": false, "confidence": 0.9, "what": "blurry dark streaks in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 0, "yes": false, "nearby": false, "confidence": 0.1, "what": "dark elongated rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 1, "yes": false, "nearby": false, "confidence": 0.15, "what": "dark seaweed or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 2, "yes": false, "nearby": false, "confidence": 0.15, "what": "small dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 3, "yes": false, "nearby": false, "confidence": 0.05, "what": "boat tip at bottom edge only"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 4, "yes": false, "nearby": false, "confidence": 0.15, "what": "small dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 5, "yes": false, "nearby": false, "confidence": 0.15, "what": "dark rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 6, "yes": false, "nearby": false, "confidence": 0.2, "what": "small dark patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 7, "yes": false, "nearby": false, "confidence": 0.2, "what": "small dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 8, "yes": false, "nearby": false, "confidence": 0.2, "what": "tiny dark speck, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 9, "yes": false, "nearby": false, "confidence": 0.2, "what": "blurred dark shape, likely debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 10, "yes": false, "nearby": false, "confidence": 0.15, "what": "dark seaweed or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00063", "i": 11, "yes": false, "nearby": false, "confidence": 0.15, "what": "small dark floating debris or barrel"}
+{"arm": "current", "frame": "edge/DJI_0915_0031_20m-second-00049", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "Person swimming on back in white shirt"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00049", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "Swimmer floating on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00063", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "green water, small red/black/white object at bottom edge, no person at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00023", "i": 0, "yes": true, "nearby": false, "confidence": 0.98, "what": "person floating on back in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00023", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "person floating on back"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00035", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "Two dark debris-like patches in water, no person at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00035", "i": 1, "yes": false, "nearby": false, "confidence": 0.55, "what": "Two dark debris-like patches in water, no person at centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock on pale seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock on pale seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 2, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark rocks on seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 3, "yes": true, "nearby": false, "confidence": 0.97, "what": "person floating on back in wetsuit"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 4, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark rocks on seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 5, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark rocks on seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark rocks on seabed"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00035", "i": 7, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark rock on seabed"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00031", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark indistinct smudge in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00031", "i": 0, "yes": true, "nearby": false, "confidence": 0.7, "what": "swimmer with dark cap and wake"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00031", "i": 1, "yes": false, "nearby": false, "confidence": 0.95, "what": "empty water, grey object at right edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 0, "yes": true, "nearby": false, "confidence": 0.45, "what": "dark blob in water centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 1, "yes": false, "nearby": false, "confidence": 0.35, "what": "dark elongated rock/seal-like blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 2, "yes": false, "nearby": false, "confidence": 0.25, "what": "dark greenish seaweed-like blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 3, "yes": false, "nearby": false, "confidence": 0.3, "what": "dark rock-like blobs in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 4, "yes": true, "nearby": false, "confidence": 0.5, "what": "dark vertical shape centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 5, "yes": false, "nearby": false, "confidence": 0.2, "what": "small dark rock/debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 6, "yes": false, "nearby": false, "confidence": 0.3, "what": "two faint underwater streaks"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 7, "yes": true, "nearby": false, "confidence": 0.35, "what": "blurry dark shapes underwater"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 8, "yes": true, "nearby": false, "confidence": 0.4, "what": "small dark blob centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 9, "yes": false, "nearby": false, "confidence": 0.15, "what": "tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 10, "yes": false, "nearby": false, "confidence": 0.3, "what": "two faint underwater streaks"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00061", "i": 11, "yes": true, "nearby": false, "confidence": 0.35, "what": "blurry dark underwater shape"}
+{"arm": "current", "frame": "edge/DJI_0915_0013_40m-second-00064", "i": 0, "yes": true, "nearby": false, "confidence": 0.75, "what": "swimmer in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark rock or seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 1, "yes": true, "nearby": false, "confidence": 0.8, "what": "person swimming in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 3, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark debris in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 4, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 5, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 6, "yes": false, "nearby": false, "confidence": 0.9, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 7, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark shape only"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 9, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark shape only"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 10, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00064", "i": 11, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 0, "yes": false, "nearby": false, "confidence": 0.6, "what": "dark elongated debris or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark rock or seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "scattered seaweed or rock fragments"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 4, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock or weed"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 6, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 7, "yes": false, "nearby": false, "confidence": 0.65, "what": "faint dark smudge in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 8, "yes": false, "nearby": false, "confidence": 0.65, "what": "faint dark smudge in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 10, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark water patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00062", "i": 11, "yes": false, "nearby": false, "confidence": 0.85, "what": "tiny dark debris speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00024", "i": 0, "yes": true, "nearby": false, "confidence": 0.97, "what": "swimmer floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0031_20m-second-00050", "i": 0, "yes": false, "nearby": false, "confidence": 0.92, "what": "open water, partial figure at bottom edge, none at centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00024", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating on back in wetsuit"}
+{"arm": "current", "frame": "edge/DJI_0915_0031_20m-second-00050", "i": 0, "yes": true, "nearby": false, "confidence": 0.92, "what": "person floating face down in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0005_60m-second-00032", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "small dark floating object in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "swimmer with raised arm"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 3, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark rock fragments"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "small rock debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 5, "yes": false, "nearby": false, "confidence": 0.65, "what": "two dark rocks"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 6, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0004_50m-second-00036", "i": 7, "yes": false, "nearby": false, "confidence": 0.65, "what": "two dark rocks"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00036", "i": 0, "yes": false, "nearby": false, "confidence": 0.75, "what": "two dark water patches, centre empty"}
+{"arm": "current", "frame": "edge/DJI_0915_0004_50m-second-00036", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark water patch off-centre, centre empty water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00032", "i": 0, "yes": true, "nearby": false, "confidence": 0.62, "what": "swimmer head and shoulders"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00032", "i": 1, "yes": false, "nearby": false, "confidence": 0.58, "what": "dark buoy or rock"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00063", "i": 0, "yes": false, "nearby": false, "confidence": 0.9, "what": "Legs with white flippers at left edge, not centre"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00063", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "Dark algae or rock patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "kayaker with paddle"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 1, "yes": false, "nearby": false, "confidence": 0.9, "what": "submerged rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 2, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark rocks in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 3, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 4, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "tiny dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 6, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 7, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark rock blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 9, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark seaweed clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 10, "yes": false, "nearby": false, "confidence": 0.9, "what": "dark rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00065", "i": 11, "yes": false, "nearby": false, "confidence": 0.8, "what": "blurry water discoloration"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark algae rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 1, "yes": false, "nearby": false, "confidence": 0.7, "what": "small algae rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark algae rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 3, "yes": false, "nearby": false, "confidence": 0.95, "what": "swimmer legs at left edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry underwater rock algae"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "algae rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 7, "yes": false, "nearby": false, "confidence": 0.8, "what": "small algae patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 8, "yes": false, "nearby": false, "confidence": 0.8, "what": "small rock algae patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 9, "yes": false, "nearby": false, "confidence": 0.5, "what": "blurry underwater shadow rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 10, "yes": false, "nearby": false, "confidence": 0.6, "what": "tiny dark speck debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00063", "i": 11, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry underwater rock shadow"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 0, "yes": true, "nearby": false, "confidence": 0.6, "what": "dark head and shoulders in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 1, "yes": false, "nearby": false, "confidence": 0.4, "what": "blurry dark shadow or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 2, "yes": true, "nearby": false, "confidence": 0.55, "what": "dark swimmer body below algae"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 3, "yes": false, "nearby": false, "confidence": 0.4, "what": "small dark streak, not person"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 4, "yes": true, "nearby": false, "confidence": 0.65, "what": "dark body floating horizontally"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 5, "yes": true, "nearby": false, "confidence": 0.5, "what": "small dark head in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 6, "yes": true, "nearby": false, "confidence": 0.6, "what": "dark swimmer at centre left"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 7, "yes": false, "nearby": false, "confidence": 0.4, "what": "blurry dark specks, no person"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 8, "yes": false, "nearby": false, "confidence": 0.35, "what": "tiny dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 9, "yes": true, "nearby": false, "confidence": 0.5, "what": "small dark figure in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 10, "yes": false, "nearby": false, "confidence": 0.4, "what": "green algae or seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00062", "i": 11, "yes": false, "nearby": false, "confidence": 0.4, "what": "blurry underwater shadow or rock"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00025", "i": 0, "yes": true, "nearby": false, "confidence": 0.9, "what": "swimmer floating in open water"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00025", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating on back"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00033", "i": 0, "yes": false, "nearby": false, "confidence": 0.85, "what": "two dolphins or porpoises"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00033", "i": 1, "yes": false, "nearby": false, "confidence": 0.8, "what": "turtle at surface"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00064", "i": 0, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark rock or algae patch"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00064", "i": 1, "yes": true, "nearby": false, "confidence": 0.6, "what": "person partially visible in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 1, "yes": false, "nearby": false, "confidence": 0.5, "what": "elongated dark submerged shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 2, "yes": false, "nearby": false, "confidence": 0.6, "what": "purple-grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 3, "yes": false, "nearby": false, "confidence": 0.7, "what": "small round dark blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 4, "yes": false, "nearby": false, "confidence": 0.6, "what": "grey blob with green shape above"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "two faint dark shapes off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 6, "yes": false, "nearby": false, "confidence": 0.7, "what": "small grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "green irregular shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "tiny dark specks"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 9, "yes": false, "nearby": false, "confidence": 0.6, "what": "blurry dark green shapes"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00063", "i": 10, "yes": false, "nearby": false, "confidence": 0.8, "what": "blurry dark shapes off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 0, "yes": true, "nearby": false, "confidence": 0.45, "what": "dark elongated swimmer silhouette"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark rock or algae"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark water shadows"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "three-lobed rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "irregular dark algae patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 5, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "small dark rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark algae off-centre right"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 8, "yes": false, "nearby": false, "confidence": 0.9, "what": "boat edge at left margin"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 9, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark water streaks"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 10, "yes": false, "nearby": false, "confidence": 0.8, "what": "green algae patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00064", "i": 11, "yes": false, "nearby": false, "confidence": 0.85, "what": "jellyfish-like ring shadow"}
+{"arm": "current", "frame": "edge/DJI_0915_0011_30m-second-00026", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "person floating in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00034", "i": 0, "yes": true, "nearby": false, "confidence": 0.7, "what": "person swimming in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0005_60m-second-00034", "i": 1, "yes": false, "nearby": false, "confidence": 0.6, "what": "round buoy or floating object"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "dark irregular patch, likely rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 1, "yes": true, "nearby": false, "confidence": 0.95, "what": "person in dark clothing with red and white, floating"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark irregular blob, likely rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 3, "yes": false, "nearby": false, "confidence": 0.65, "what": "two dark patches, likely rocks or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 4, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark patch, likely seaweed or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 5, "yes": false, "nearby": false, "confidence": 0.7, "what": "small dark patch, likely seaweed or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 6, "yes": false, "nearby": false, "confidence": 0.55, "what": "blurry dark shadow in deep water"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark irregular patches, likely rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 8, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark patch, likely rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 9, "yes": false, "nearby": false, "confidence": 0.55, "what": "tiny dark speck, likely debris or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 10, "yes": false, "nearby": false, "confidence": 0.65, "what": "small dark patch, likely seaweed or rock"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00066", "i": 11, "yes": false, "nearby": false, "confidence": 0.55, "what": "blurry dark streak, likely shadow or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0011_30m-second-00026", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "Person floating on back in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0014_40m-second-00065", "i": 0, "yes": false, "nearby": false, "confidence": 0.55, "what": "small dark blob in water"}
+{"arm": "current", "frame": "edge/DJI_0915_0022_40m-second-00064", "i": 0, "yes": false, "nearby": false, "confidence": 0.65, "what": "open water texture, small dark speck"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 0, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark elongated seaweed/rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark clump in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 2, "yes": false, "nearby": false, "confidence": 0.7, "what": "blurry dark patch, off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark seaweed clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark seaweed patches above centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 5, "yes": false, "nearby": false, "confidence": 0.75, "what": "dark underwater vegetation, off-centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 6, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark elongated rock/seaweed patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark patch in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "small dark clump right of centre"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 9, "yes": false, "nearby": false, "confidence": 0.8, "what": "green-brown seaweed patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 10, "yes": false, "nearby": false, "confidence": 0.65, "what": "blurry dark shapes, not centred"}
+{"arm": "current", "frame": "whole/DJI_0915_0014_40m-second-00065", "i": 11, "yes": false, "nearby": false, "confidence": 0.9, "what": "tiny dark speck in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 0, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark irregular blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 1, "yes": false, "nearby": false, "confidence": 0.75, "what": "small dark rock or debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 2, "yes": false, "nearby": false, "confidence": 0.8, "what": "grey blob, green debris above"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 3, "yes": false, "nearby": false, "confidence": 0.8, "what": "dark purple patch, another at edge"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 4, "yes": false, "nearby": false, "confidence": 0.85, "what": "greenish debris above grey blob"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 5, "yes": false, "nearby": false, "confidence": 0.85, "what": "dark oval floating debris"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 6, "yes": false, "nearby": false, "confidence": 0.95, "what": "empty water, faint edge patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 7, "yes": false, "nearby": false, "confidence": 0.7, "what": "dark underwater shadow patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 8, "yes": false, "nearby": false, "confidence": 0.75, "what": "small grey blob in water"}
+{"arm": "current", "frame": "whole/DJI_0915_0022_40m-second-00064", "i": 9, "yes": false, "nearby": false, "confidence": 0.7, "what": "faint dark underwater shape"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 0, "yes": true, "nearby": false, "confidence": 0.95, "what": "Person swimming, red top, arms out"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 1, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark submerged rock or seaweed"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 2, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 3, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 4, "yes": false, "nearby": false, "confidence": 0.8, "what": "Small dark seaweed clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 5, "yes": false, "nearby": false, "confidence": 0.65, "what": "Blurry dark submerged shape, possibly animal"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 6, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 7, "yes": false, "nearby": false, "confidence": 0.85, "what": "Small dark seaweed clump"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 8, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock patch"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 9, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 10, "yes": false, "nearby": false, "confidence": 0.85, "what": "Dark seaweed or rock patches"}
+{"arm": "current", "frame": "whole/DJI_0915_0013_40m-second-00067", "i": 11, "yes": false, "nearby": false, "confidence": 0.8, "what": "Tiny dark speck in water"}

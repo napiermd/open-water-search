@@ -1,0 +1,1154 @@
+[
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00027",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 118500,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00028",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 154888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00029",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 129888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00030",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1120700,
+    "paid_nanodollars": 184388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00031",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 120388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00032",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 128888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00033",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 293888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00034",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 161888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00035",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 172888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0004_50m-second-00036",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 163388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00023",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 137388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00024",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 134888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00025",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 92388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00026",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 121888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00027",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 86388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00029",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 105388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00030",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 103388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00031",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 113388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0005_60m-second-00032",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 128888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0008_50m-second-00000",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 62388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0008_50m-second-00001",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 69888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0008_50m-second-00002",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 67388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0008_50m-second-00003",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 56888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00015",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 75500,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00016",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 77388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00017",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 64388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00018",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 58388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00019",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 63388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00020",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 62888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00021",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 84388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00022",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 65888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00023",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 61888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00024",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 60888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00025",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 87888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0011_30m-second-00026",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 73888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 140500,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1120700,
+    "paid_nanodollars": 164000,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00059",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 93388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00062",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 101388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00063",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 83888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0013_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 81388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00054",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 82388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00055",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 107388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 83888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 137388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00058",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 165388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00063",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 142888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 169388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0014_40m-second-00065",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 85888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00053",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 145888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00054",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 145388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00055",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 171888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 74888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 105388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00059",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 56388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00060",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 69888,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0022_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 121388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0031_20m-second-00047",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 68388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0031_20m-second-00048",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 57388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0031_20m-second-00049",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 67388,
+    "status": "usable"
+  },
+  {
+    "frame": "edge/DJI_0915_0031_20m-second-00050",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 63888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00027",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1148700,
+    "paid_nanodollars": 277500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00028",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1162700,
+    "paid_nanodollars": 396500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00029",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 292000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00030",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1169700,
+    "paid_nanodollars": 368500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00031",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1162700,
+    "paid_nanodollars": 281888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00032",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 265388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00033",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1162700,
+    "paid_nanodollars": 317388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00034",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 271000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00035",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 415388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0004_50m-second-00036",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 244388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00023",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 133500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00024",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 129888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00025",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 155888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00026",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 137888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00027",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 111388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00028",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 109888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00029",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 147888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00030",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 114888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00031",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 102888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00032",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 165388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00033",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 98388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0005_60m-second-00034",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 132388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0008_50m-second-00000",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 70888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0008_50m-second-00001",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 73888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0008_50m-second-00002",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 59388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0008_50m-second-00003",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 86388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00015",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 126000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00016",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 85388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00017",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 92388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00018",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 80388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00019",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 61888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00020",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 49888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00021",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 65888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00022",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 56888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00023",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 60888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00024",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 66388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00025",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 57888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0011_30m-second-00026",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 63888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1141700,
+    "paid_nanodollars": 251500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1148700,
+    "paid_nanodollars": 279000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00058",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1141700,
+    "paid_nanodollars": 300500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00059",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1169700,
+    "paid_nanodollars": 297388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00060",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 419388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00061",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 397388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00062",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 420888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00063",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 342388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 360388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00065",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 373888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00066",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 437888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0013_40m-second-00067",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 364888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00054",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1176700,
+    "paid_nanodollars": 348500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00055",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 373500,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 315888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 318388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00058",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 321388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00059",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 393388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00060",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 334888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00061",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 350388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00062",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 353888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00063",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 407888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 437888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0014_40m-second-00065",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 355388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00053",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1113700,
+    "paid_nanodollars": 116388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00054",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1134700,
+    "paid_nanodollars": 224000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00055",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1148700,
+    "paid_nanodollars": 232888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00056",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1155700,
+    "paid_nanodollars": 285888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00057",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 376000,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00058",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 398388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00059",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 355388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00060",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 388388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00061",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 407888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00062",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1183700,
+    "paid_nanodollars": 386888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00063",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1176700,
+    "paid_nanodollars": 377888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0022_40m-second-00064",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1169700,
+    "paid_nanodollars": 315388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00042",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 72888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00043",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 73888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00044",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 93888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00045",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 70388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00046",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 79388,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00047",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 74888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00048",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 57888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00049",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 73888,
+    "status": "usable"
+  },
+  {
+    "frame": "whole/DJI_0915_0031_20m-second-00050",
+    "arm": "current",
+    "i": -1,
+    "reserved_nanodollars": 1106700,
+    "paid_nanodollars": 111888,
+    "status": "usable"
+  }
+]
