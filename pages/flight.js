@@ -50,7 +50,7 @@ async function openFlight() {
     element("clock").textContent = time(item.second) + " / 2:00";
     element("crop-time").textContent = time(item.second);
     title.textContent = paired ? (next === "fins" ? "Flag 1 of 2 · kept" : "Flag 2 of 2 · dismissed") : reviewing ? "Dismissed flag" : "Possible person " + selected.number;
-    element("verdict").textContent = ((reviewing || next === "ripples") ? "Ember dismissed this as " : "Ember kept this as ") + "“" + item.description + ".”";
+    element("verdict").textContent = ((reviewing || next === "ripples") ? "Ember dismissed this as " : "Ember kept this as ") + "“" + item.description + "”.";
     placeRect(element("region"), item.rect, item);
     Object.assign(element("pin").style, { left: 100*item.pin[0]/item.width+"%", top: 100*item.pin[1]/item.height+"%" });
     element("truth-box").hidden = next !== "label" && !paired;
@@ -69,9 +69,9 @@ async function openFlight() {
       download.href = new URL(selected.packet, base);
       download.download = selected.packet;
       download.textContent = "Download this handoff";
-      actions.append(download);
-      control(tools, "Compare two flags at 0:36", () => show("fins"));
-      control(tools, "Inspect the 0:12 dismissal", () => show("dismissal"));
+      tools.append(download);
+      control(actions, "Compare two flags at 0:36", () => show("fins"));
+      control(actions, "Inspect the 0:12 dismissal", () => show("dismissal"));
       if (focus) element("note-title").focus();
     } else if (paired) {
       placeRect(element("truth-box"), record.pair[0].label, item);

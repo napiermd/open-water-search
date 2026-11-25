@@ -47,3 +47,6 @@ body>footer {padding-block:1rem 2rem;border-top:1px solid var(--rule);font-size:
   #sighting-label {white-space:nowrap}
   .rail {padding:.75rem}
 }
+
+.rail a[download] { display:flex;align-items:center;justify-content:center;min-height:44px;color:#c6faf3;border:1px solid #a5cec5;border-radius:4px;font-weight:650;text-decoration:none }
+.rail a[download]:hover {background:#294b49}
