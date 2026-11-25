@@ -49,3 +49,4 @@ runs/*/inputs/images
 # Local links for the recorded live run: the clip and the detector Python
 /clip.mp4
 /detector-venv
+runs/verify-afo/run/checks.jsonl
