@@ -1,0 +1,249 @@
+{
+ "runs": [
+  {
+   "run": "MOBDrone, first 300 frames",
+   "flags_on_people": 265,
+   "kept": 227,
+   "dismissed": 38,
+   "flags_on_nobody": {
+    "kept": 40,
+    "dismissed": 437
+   },
+   "reasons": {
+    "A person on land": 9,
+    "An animal": 11,
+    "A person, but away from the centre of the crop": 12,
+    "A board, boat or float": 2,
+    "Foam, a splash or a wake": 1,
+    "Empty water": 0,
+    "An unclear object": 3
+   },
+   "kept_shape": {
+    "flags": 227,
+    "median_offset": 0.025,
+    "median_pixels": 80.6,
+    "offset_over_a_quarter": 10,
+    "pushed_in": 24,
+    "several_people_in_crop": 3
+   },
+   "dismissed_shape": {
+    "flags": 38,
+    "median_offset": 0.048,
+    "median_pixels": 74.95,
+    "offset_over_a_quarter": 9,
+    "pushed_in": 10,
+    "several_people_in_crop": 6
+   }
+  },
+  {
+   "run": "MOBDrone, second 300 frames",
+   "flags_on_people": 268,
+   "kept": 228,
+   "dismissed": 40,
+   "flags_on_nobody": {
+    "dismissed": 406,
+    "kept": 20
+   },
+   "reasons": {
+    "A person on land": 6,
+    "An animal": 17,
+    "A person, but away from the centre of the crop": 3,
+    "A board, boat or float": 3,
+    "Foam, a splash or a wake": 7,
+    "Empty water": 0,
+    "An unclear object": 4
+   },
+   "kept_shape": {
+    "flags": 228,
+    "median_offset": 0.029,
+    "median_pixels": 80.95,
+    "offset_over_a_quarter": 9,
+    "pushed_in": 16,
+    "several_people_in_crop": 2
+   },
+   "dismissed_shape": {
+    "flags": 40,
+    "median_offset": 0.051,
+    "median_pixels": 75.8,
+    "offset_over_a_quarter": 7,
+    "pushed_in": 10,
+    "several_people_in_crop": 1
+   }
+  },
+  {
+   "run": "AFO, 300 photos",
+   "flags_on_people": 1101,
+   "kept": 991,
+   "dismissed": 110,
+   "flags_on_nobody": {
+    "dismissed": 768,
+    "kept": 82
+   },
+   "reasons": {
+    "A person on land": 0,
+    "An animal": 8,
+    "A person, but away from the centre of the crop": 59,
+    "A board, boat or float": 18,
+    "Foam, a splash or a wake": 12,
+    "Empty water": 2,
+    "An unclear object": 11
+   },
+   "kept_shape": {
+    "flags": 991,
+    "median_offset": 0.052,
+    "median_pixels": 105.0,
+    "offset_over_a_quarter": 55,
+    "pushed_in": 47,
+    "several_people_in_crop": 279
+   },
+   "dismissed_shape": {
+    "flags": 110,
+    "median_offset": 0.078,
+    "median_pixels": 87.35,
+    "offset_over_a_quarter": 21,
+    "pushed_in": 25,
+    "several_people_in_crop": 62
+   }
+  },
+  {
+   "run": "Live clip, re-run",
+   "flags_on_people": 114,
+   "kept": 101,
+   "dismissed": 13,
+   "flags_on_nobody": {
+    "dismissed": 1
+   },
+   "reasons": {
+    "A person on land": 0,
+    "An animal": 8,
+    "A person, but away from the centre of the crop": 4,
+    "A board, boat or float": 0,
+    "Foam, a splash or a wake": 0,
+    "Empty water": 0,
+    "An unclear object": 1
+   },
+   "kept_shape": {
+    "flags": 101,
+    "median_offset": 0.016,
+    "median_pixels": 78.5,
+    "offset_over_a_quarter": 1,
+    "pushed_in": 5,
+    "several_people_in_crop": 0
+   },
+   "dismissed_shape": {
+    "flags": 13,
+    "median_offset": 0.018,
+    "median_pixels": 79.0,
+    "offset_over_a_quarter": 4,
+    "pushed_in": 4,
+    "several_people_in_crop": 0
+   }
+  },
+  {
+   "run": "Live clip, first take",
+   "flags_on_people": 114,
+   "kept": 105,
+   "dismissed": 9,
+   "flags_on_nobody": {
+    "dismissed": 1
+   },
+   "reasons": {
+    "A person on land": 0,
+    "An animal": 6,
+    "A person, but away from the centre of the crop": 3,
+    "A board, boat or float": 0,
+    "Foam, a splash or a wake": 0,
+    "Empty water": 0,
+    "An unclear object": 0
+   },
+   "kept_shape": {
+    "flags": 105,
+    "median_offset": 0.017,
+    "median_pixels": 78.7,
+    "offset_over_a_quarter": 2,
+    "pushed_in": 6,
+    "several_people_in_crop": 0
+   },
+   "dismissed_shape": {
+    "flags": 9,
+    "median_offset": 0.026,
+    "median_pixels": 77.6,
+    "offset_over_a_quarter": 3,
+    "pushed_in": 3,
+    "several_people_in_crop": 0
+   }
+  }
+ ],
+ "reasons": [
+  {
+   "reason": "A person on land",
+   "flags": 15,
+   "median_offset": 0.058,
+   "median_pixels": 60.0,
+   "offset_over_a_quarter": 2,
+   "pushed_in": 2,
+   "several_people_in_crop": 1,
+   "median_detector_confidence": 0.292
+  },
+  {
+   "reason": "An animal",
+   "flags": 50,
+   "median_offset": 0.031,
+   "median_pixels": 77.9,
+   "offset_over_a_quarter": 3,
+   "pushed_in": 5,
+   "several_people_in_crop": 0,
+   "median_detector_confidence": 0.584
+  },
+  {
+   "reason": "A person, but away from the centre of the crop",
+   "flags": 81,
+   "median_offset": 0.115,
+   "median_pixels": 81.8,
+   "offset_over_a_quarter": 30,
+   "pushed_in": 34,
+   "several_people_in_crop": 56,
+   "median_detector_confidence": 0.517
+  },
+  {
+   "reason": "A board, boat or float",
+   "flags": 23,
+   "median_offset": 0.045,
+   "median_pixels": 81.9,
+   "offset_over_a_quarter": 5,
+   "pushed_in": 6,
+   "several_people_in_crop": 9,
+   "median_detector_confidence": 0.364
+  },
+  {
+   "reason": "Foam, a splash or a wake",
+   "flags": 20,
+   "median_offset": 0.05,
+   "median_pixels": 102.4,
+   "offset_over_a_quarter": 1,
+   "pushed_in": 0,
+   "several_people_in_crop": 0,
+   "median_detector_confidence": 0.321
+  },
+  {
+   "reason": "Empty water",
+   "flags": 2,
+   "median_offset": 0.352,
+   "median_pixels": 30.7,
+   "offset_over_a_quarter": 2,
+   "pushed_in": 2,
+   "several_people_in_crop": 2,
+   "median_detector_confidence": 0.633
+  },
+  {
+   "reason": "An unclear object",
+   "flags": 19,
+   "median_offset": 0.081,
+   "median_pixels": 105.4,
+   "offset_over_a_quarter": 1,
+   "pushed_in": 3,
+   "several_people_in_crop": 1,
+   "median_detector_confidence": 0.531
+  }
+ ]
+}
