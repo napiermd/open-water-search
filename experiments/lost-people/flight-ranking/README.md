@@ -71,3 +71,9 @@ python3 experiments/lost-people/flight-ranking/rank_flights.py
 ~~~
 
 MOBDrone is by Cafarelli et al., 2022, [doi:10.5281/zenodo.5996890](https://doi.org/10.5281/zenodo.5996890), CC BY 4.0. Its frames are not in the repository.
+
+## Which stretches can support a vote?
+
+[Eligible segments](eligible-segments.json) lists the inclusive start and end second of each stretch, its candidate count and the count of candidates with three eligible seconds on both sides. Generate it with `python3 experiments/lost-people/flight-ranking/eligible_segments.py`. The script reads the saved detector outputs and earlier sample frame numbers. It uses the same 60-source-frame exclusion as the ranking and requires consecutive eligible seconds in the same clip.
+
+Of 1,002 shortlisted seconds, 521 qualify in 93 stretches across 13 previously sampled clips. They contain 1,842 detector flags. Only 155 seconds have the full seven-second context. Of those, 104 come from `DJI_0915_0015_50m`. This is a footage inventory. It contains no swimmer labels or Ember results.
