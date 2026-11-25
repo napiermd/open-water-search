@@ -32,7 +32,7 @@ The normal detector-check command replays the saved detector boxes and all 99 Mu
 
 We tested a rule that would restore the original detector pin when Ember dismissed it but described a person away from the crop's center.
 
-- **Two sealed replacement clips.** The gate required at least one correctly restored pin and zero added false pins. The rule never fired. Both versions found 2 of 2 distinct tracks, with 20 correct original pins and 1 false pin in 1 episode. The rule added 0 correct pins and 0 false pins, so the current detector check stays. [Sealed result](experiments/lost-people/sealed-off-center/result.json).
+- **Two sealed replacement clips.** The gate required at least one correctly restored pin and zero added false pins. The rule never fired. Both versions found 2 of 2 distinct tracks, with 20 correct original pins and 1 false pin in 1 episode. The rule added 0 correct pins and 0 false pins, so the current detector check stays. Replaying this test requires coordinator-held local inputs. [Sealed result](experiments/lost-people/sealed-off-center/result.json) · [Replay requirements](experiments/lost-people/sealed-off-center/README.md).
 - **Eight exploratory clips.** The current check found 6 of 7 distinct tracks with 29 false pins in 14 episodes. In a retrospective replay, the rule restored 4 correct pins and added 0 false pins. It reached 7 of 7 with the same false-pin and episode counts. The current check still misses one person in clip 0011 (`DJI_0804_0011_30m_2`), where it dismissed three matching detector pins at seconds 11–13.
 
 ## How it works
@@ -45,7 +45,7 @@ flowchart LR
     ember -->|dismissed| reopen["Dismissed flags<br/>listed for a person to reopen"]
 ~~~
 
-The detector is a free YOLO26m model trained on SeaDronesSee. It runs on this machine and flags every swimmer-shaped spot at 0.05 confidence or more. Ember gets one request per flagged frame, with each flag as a numbered 224-pixel crop. Structured output makes it answer three questions for every crop: is a person in the water at its centre, how sure is it, and what is there. Before each request, the tool counts its input tokens and reserves the worst-case cost, so a run stops before it can cross its spending cap.
+The detector is a free YOLO26m model trained on SeaDronesSee. It runs on this machine and flags every swimmer-shaped spot at 0.05 confidence or more. Ember gets one request per flagged frame, with each flag as a numbered 224-pixel crop. Structured output makes it answer three questions for every crop: is a person in the water at its centre, how sure is it, and what is there. The tool uses input-token counts to reserve estimated costs against a local run budget. Billed retries can affect account usage.
 
 ## Run it
 
@@ -72,12 +72,12 @@ A flight is a video, cut into one frame per second with ffmpeg, or a folder of p
 |---|---|
 | `probe/` | The search command (`open_water_search.py`), Ember's check, the scorer and their offline tests |
 | `detector/` | The trained detector and its runs, under AGPL-3.0 |
-| `runs/` | Every paid run, sealed: its plan, results, redacted Ember calls and cost |
+| `runs/` | Published comparison runs with results and available redacted Ember traces and costs |
 | `pages/` | The website: the result, a search you can take over, and a replay |
 | `docs/` | [Results](docs/results.md) in full, [run and reproduce](docs/reproduce.md), [history](docs/history.md), the [glossary](docs/GLOSSARY.md) and every [decision record](docs/adr) |
 | `experiments/zoom-first/` | The first day's experiment, where Ember searched alone |
 
-**How we decided.** Each paid test had its plan and pass rule committed before its first Ember call, and the ones that failed are published next to the ones that passed. The decision records show every turn, including the reversal that made the detector the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). New Ember spending since November 24 is capped at $6.00 in total, raised from $3.00 on November 24, and every run's cost is in its folder.
+**How we decided.** We committed the comparison plans and pass rules in advance. The public comparison records include passes and failures, and the decision records explain why the detector became the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). The project budget for new Ember spending since November 24 is $6.00, raised from $3.00 on November 24. The sealed replacement inputs remain private.
 
 ## Credits and license
 

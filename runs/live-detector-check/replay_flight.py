@@ -16,6 +16,7 @@ ROOT = RUN.parents[1]
 sys.path.insert(0, str(ROOT / "probe"))
 import flag_check  # noqa: E402
 import open_water_search  # noqa: E402
+from build_pages import live_check  # noqa: E402
 from simulated_ember import refuse_network  # noqa: E402
 
 BOXES_SHA256 = "f3197a081cdc8245efbecb48d6dae48981a25c06b2b87802b4e2996852a74104"
@@ -92,10 +93,14 @@ def verify_outputs(out, saved, crops):
         require((out / path).read_bytes() == jpeg, f"{path} differs from the request crop")
 
     web = json.loads((ROOT / "pages/runs/live-detector-check.json").read_text())
-    lines = Counter(item["text"] for item in record["decision_log"] if item["frame"] is not None)
-    require(lines == Counter(item["line"] for item in web["printed"] if "second" in item), "Web replay verdicts differ")
-    require([person["handoff_message"] for person in record["possible_people"]] ==
-            [person["message"] for person in web["people"]], "Web replay handoffs differ")
+    expected_web = live_check()
+    require(web["timeline"] == expected_web["timeline"], "Web replay timeline differs from sealed coverage")
+    seconds = {frame["frame"]: frame["second"] for frame in coverage}
+    verdicts = Counter((seconds[item["frame"]], item["text"])
+                       for item in record["decision_log"] if item["frame"] is not None)
+    web_verdicts = Counter((item["second"], item["line"]) for item in web["printed"] if "second" in item)
+    require(verdicts == web_verdicts, "Web replay verdicts or source seconds differ")
+    require(web["people"] == expected_web["people"], "Web replay handoffs or metadata differ")
 
 
 def replay(clip, out):

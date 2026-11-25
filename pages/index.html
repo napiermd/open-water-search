@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Open Water Search · A detector flags every second, Muse Ember checks each flag</title>
-  <meta name="description" content="A trained detector flags every second of a drone flight, and Muse Ember checks each flag and says what it is. On two drone datasets the detector never saw, Ember's check found at least as many people with far fewer false alarms.">
+  <meta name="description" content="On 300 MOBDrone frames, the detector with Muse Ember found 210 of 297 labeled person appearances and cut false alarms from 166 to 38 at the same number found.">
   <link rel="stylesheet" href="pages.css">
   <link rel="stylesheet" href="index.css">
   <script type="module" src="index.js"></script>
@@ -18,7 +18,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <h1 id="hero-title">A trained detector flags every second of a drone flight. Muse Ember checks each flag and says what it is.</h1>
-        <p class="lede">On two drone datasets the detector never saw, Ember’s check found at least as many people with far fewer false alarms, for a few cents each. Every flag Ember keeps reaches the crew with its words, and every flag it dismisses stays in the report for a person to reopen.</p>
+        <p class="lede">On 300 MOBDrone frames, the detector alone and the detector with Ember both found 210 of 297 labeled person appearances. Ember’s check cut false alarms from 166 to 38. Kept flags carry Ember’s description into the handoff, and dismissed flags stay in the report for review.</p>
         <div class="actions">
           <a class="primary" href="#live-check-title">Replay the detector check</a>
           <a class="secondary" href="judge.html">Take over a search</a>
@@ -36,11 +36,11 @@
         <h2 class="second">AFO · 300 photos · 2,950 labeled person appearances</h2>
         <div class="result-table" style="--max: 445" role="table" aria-label="People found and false alarms on 300 AFO photos">
           <div class="result-row head" role="row"><span role="columnheader"></span><span role="columnheader">Found</span><span role="columnheader">False alarms</span></div>
-          <div class="result-row" role="row"><span role="rowheader">Detector alone<small>its most sensitive, confidence 0.05</small></span><b role="cell">611</b><span role="cell" class="alarms"><span class="fill" style="--n: 445"></span><b>445</b></span></div>
+          <div class="result-row" role="row"><span role="rowheader">Detector alone<small>post hoc comparator, confidence 0.05</small></span><b role="cell">611</b><span role="cell" class="alarms"><span class="fill" style="--n: 445"></span><b>445</b></span></div>
           <div class="result-row ember" role="row"><span role="rowheader">Detector, then Ember<small>Ember checks every flag</small></span><b role="cell">619</b><span role="cell" class="alarms"><span class="fill" style="--n: 85"></span><b>85</b></span></div>
         </div>
         <code class="command">python probe/open_water_search.py flight.mp4 --mode detector-check --detector-python detector-venv/bin/python --out results</code>
-        <figcaption>Each plan and pass rule was committed before its run, and the runs cost $0.0318 and $0.0706. No detector setting finds 619 on AFO, so its written rule could not be applied, and the AFO comparison was chosen after the result. The same check lost on SeaDronesSee, the footage the detector was trained on.</figcaption>
+        <figcaption>Each plan and pass rule was committed before its run. MOBDrone cost $0.0318 and AFO cost $0.0706. The AFO rule required a detector setting that reached 619. The detector topped out at 611, so we chose that comparator after seeing the result. The same check lost on SeaDronesSee, the footage the detector was trained on.</figcaption>
       </figure>
     </section>
 
@@ -63,8 +63,9 @@
       <h2 id="live-check-title" class="section-title">Replay the two-minute detector check</h2>
       <p>On November 24 the detector ran on every second of a MOBDrone clip. Ember checked each flag, and the command printed its verdicts and the resulting handoffs. <a href="#record-title">Open the eight handoff messages</a>.</p>
       <figure class="flight check-flight">
+        <p class="clock">Offline replay command</p>
         <div class="flight-head">
-          <code>python3 -u probe/open_water_search.py clip.mp4 --mode detector-check --detector-python detector-venv/bin/python --out runs/live-detector-check --budget 0.05</code>
+          <code>python3 runs/live-detector-check/replay_flight.py /path/to/clip.mp4 results/offline-flight</code>
           <button type="button" id="check-replay" class="replay" hidden>Replay</button>
         </div>
         <ol id="check-printed" class="printed" aria-label="What the command printed"></ol>
@@ -76,11 +77,11 @@
           <li><span class="swatch clear"></span>Ember dismissed every flag</li>
           <li><span class="swatch never"></span>The detector flagged nothing</li>
         </ul>
-        <figcaption>The original run took 57 seconds and cost $0.0080 for 99 Ember requests. The offline replay uses the saved boxes and replies for $0 in new charges. On the same 120 seconds, the queue and coverage match byte for byte, with all eight handoffs and 115 crop links verified. <a href="https://github.com/napiermd/open-water-search/blob/5f5c73ead76e655d9bf39c32aa4587a57089b889/runs/live-detector-check/README.md#offline-flight-replay">Reproduce the run and trace a crop</a>.</figcaption>
+        <figcaption>Swimmers can still be present in seconds with no detector flags or only dismissed flags. The offline replay uses the saved boxes and replies at $0 in new charges. It reproduces the queue and coverage byte for byte and verifies all eight handoffs and 115 crop links. The recorded 57 seconds and $0.0080 are from the original run with 99 Ember requests. <a href="https://github.com/napiermd/open-water-search/blob/5f5c73ead76e655d9bf39c32aa4587a57089b889/runs/live-detector-check/README.md#offline-flight-replay">Reproduce the run and trace a crop</a> · <a href="https://github.com/napiermd/open-water-search/blob/5f5c73ead76e655d9bf39c32aa4587a57089b889/runs/live-detector-check-first-take/README.md">Earlier detector-check run</a>.</figcaption>
       </figure>
       <div class="table-wrap">
         <table class="numbers">
-          <thead><tr><th scope="col">Same clip, 116 labeled person appearances</th><th scope="col">Found</th><th scope="col">False alarms</th><th scope="col">Possible people, for 4 labeled</th><th scope="col">Cost</th></tr></thead>
+          <thead><tr><th scope="col">Same clip, 116 labeled person appearances</th><th scope="col">Found</th><th scope="col">False alarms</th><th scope="col">Possible people, for 4 labeled</th><th scope="col">Original cost</th></tr></thead>
           <tbody>
             <tr><th scope="row">Detector alone, as published (0.25)</th><td>114</td><td>1</td><td>not run</td><td>$0</td></tr>
             <tr><th scope="row">Detector, then Ember</th><td>101</td><td>0</td><td>8</td><td>$0.0080</td></tr>
@@ -280,7 +281,7 @@ python probe/open_water_search.py flight.mp4 --mode detector-check --detector-py
       </ul>
     </section>
 
-    <p class="provenance">Built during the Muse Ember Hackathon, starting November 23, 2026. Photos and labels: SeaDronesSee (CC0), by Varga, Kiefer, Messmer and Zell. Unseen footage: MOBDrone (CC BY 4.0), by Cafarelli et al., <a href="https://arxiv.org/abs/2203.07973">arXiv 2203.07973</a>. Every Ember call is in the <a href="https://github.com/napiermd/open-water-search">public repository</a>.</p>
+    <p class="provenance">Built during the Muse Ember Hackathon, starting November 23, 2026. Photos and labels: SeaDronesSee (CC0), by Varga, Kiefer, Messmer and Zell. Unseen footage: MOBDrone (CC BY 4.0), by Cafarelli et al., <a href="https://arxiv.org/abs/2203.07973">arXiv 2203.07973</a>. The <a href="https://github.com/napiermd/open-water-search">public repository</a> includes redacted Ember traces for the published comparisons. The sealed replacement inputs are private.</p>
   </main>
 </body>
 </html>

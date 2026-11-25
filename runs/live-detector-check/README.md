@@ -22,7 +22,7 @@ python3 -u probe/open_water_search.py clip.mp4 --mode detector-check --detector-
 
 **The handoff is cleaner than Ember's own search on the same clip** (`runs/live-clip`: 107 found, 47 marks with no person, 15 possible people of which 7 held no labeled person, $0.0531). `probe/check_merge_rule.py` found that the merge rule never joined two different people here. It split two of the four labeled people, four times in all, three of them after a gap of more than two seconds (`merge-rule-check.json`).
 
-**First take.** The same command, run earlier from the folder holding the clip, is in `runs/live-detector-check-first-take`: 105 found, no false alarms, 6 possible people, $0.0081, 192 s. The detector's flags were the same. Ember's answers differ between runs, and so did Meta's response times.
+**First take.** The [earlier run](../live-detector-check-first-take/README.md) used the same command from the folder holding the clip. It found 105 appearances with no false alarms and returned 6 possible people. It cost $0.0081 and took 192 seconds. The detector's flags were the same. Ember's answers and Meta's response times differed between runs.
 
 `seal.json` holds the SHA-256 of the search record and calls log as written. The published copies have Meta's response and message IDs removed. `scorecard.json` is `probe/score.py record` against the clip's labels. MOBDrone is by Cafarelli et al. (arXiv 2203.07973), CC BY 4.0.
 
@@ -30,7 +30,7 @@ python3 -u probe/open_water_search.py clip.mp4 --mode detector-check --detector-
 
 The [sealed replacement test](../../experiments/lost-people/sealed-off-center/result.json) restored zero pins. Both variants found 2 of 2 people with one false pin in one episode, so the current detector check is the selected policy.
 
-From the repository root, use the original local clip and a new output path. The verified run used Python 3.14.7, Pillow 13.0.0, libjpeg-turbo 3.2.0 and ffmpeg 8.1.1. The exact frame and crop checks can detect differences between encoder versions.
+From the repository root, use the original local clip and a new output path. Byte-for-byte reproduction was verified on macOS with Python 3.14.7, Pillow 13.0.0, libjpeg-turbo 3.2.0, ffmpeg 8.1.1 and LF line endings. Different encoders or Windows CRLF line endings can fail the byte checks. Windows reproduction is unverified.
 
 ```sh
 python runs/live-detector-check/replay_flight.py /path/to/clip.mp4 results/offline-flight
@@ -43,7 +43,7 @@ The replay calls the normal `detector-check` entry point with the sealed boxes a
 |---|---|
 | `queue.json`, `coverage.json`, `detector-boxes.json` | Byte-for-byte match to the [published queue](queue.json), [coverage](coverage.json) and [boxes](detector-boxes.json) |
 | `report.html` | 101 queue entries across 120 seconds. Every one of the 115 flag crops links to its source frame and matches the corresponding request JPEG. |
-| `search-record.json` and terminal output | Eight identical handoffs and all 99 per-frame verdict lines match the [recorded web replay](../../pages/runs/live-detector-check.json). |
+| `search-record.json` and terminal output | The [web replay](../../pages/runs/live-detector-check.json) matches the saved flag statuses across all 120 timeline cells and the text and source second of all 99 verdicts. All eight handoff messages, numbers, first and last seconds, and labeled-person IDs match the saved record and [merge-rule check](merge-rule-check.json). |
 | `probe/score.py record` with the original local labels | Exact match to the [published scorecard](scorecard.json), with 101 of 116 person appearances found and zero false marks |
 
 Follow queue rank 66 to `report.html#second-00022` and `crops/second-00022-flag1.jpg`. The coverage entry records the detector box `[693.35, 335.74, 752.07, 380.42]`. The queue pin is at `(722.7, 358.1)` in source-frame pixels. Possible person 1 was first seen at 0:08 and last seen at 0:22, in the center of `second-00022`. The handoff quotes Ember’s “person floating on water” and reports one kept flag and zero dismissed flags in that frame.

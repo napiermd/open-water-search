@@ -4,7 +4,7 @@ Keep the current check. The frozen rule restored zero pins on the two preassigne
 
 The replay used cached Ember descriptions and the existing flight scorer, with each original detector pin scored at its recorded second. The scorer sets aside labels without a track ID and uses the empty land exclusion list from the reference replay. No model or network calls were made. The public result identifies clips by kind.
 
-From the repository root, provide the local research checkout, sealed artifact directory, and MOBDrone person annotations.
+This repository publishes the replay script and the [aggregate result](result.json). Independent replay requires the coordinator-held local research checkout, sealed artifacts, and exact MOBDrone person annotations. A public checkout alone cannot reproduce the replacement scores. With those inputs available locally, run this from the repository root.
 
 ```sh
 python3 -B experiments/lost-people/sealed-off-center/replay_off_center.py \
