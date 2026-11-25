@@ -28,7 +28,7 @@ function buildTimeline(clip) {
   return cells;
 }
 
-// The live clip's numbers in the page text, counted from the recorded run.
+// The historical replay's duration and coverage, counted from the recorded run.
 function showCounts(clip) {
   const seconds = clip.timeline.length;
   const sections = clip.timeline.flat();
@@ -38,9 +38,6 @@ function showCounts(clip) {
     + " sections got a close look, and " + neverSearched.toLocaleString("en-US") + " were never searched.");
   byId("axis-middle").textContent = clock(seconds / 2);
   for (const node of document.querySelectorAll(".flight-length")) node.textContent = clock(seconds);
-  for (const node of document.querySelectorAll(".people-count")) node.textContent = clip.people.length;
-  byId("labeled-count").textContent = new Set(clip.people.flatMap(person => person.labeled_people)).size;
-  byId("unlabeled-count").textContent = clip.people.filter(person => person.labeled_people.length === 0).length;
 }
 
 // Prints one recorded line and updates the coverage timeline: an overview turns its second's water unsearched,
@@ -124,6 +121,7 @@ async function startCheck() {
   const none = run.timeline.filter(outcome => outcome === "none").length;
   byId("check-timeline").setAttribute("aria-label", "One cell per second of the " + run.timeline.length + "-second flight. Ember kept a flag in "
     + kept + " seconds, dismissed every flag in " + (run.timeline.length - kept - none) + ", and the detector flagged nothing in " + none + ".");
+  showPeople(run);
   const again = byId("check-replay");
   again.hidden = matchMedia("(prefers-reduced-motion: reduce)").matches;
   again.addEventListener("click", () => playCheck(run, cells));
@@ -165,7 +163,6 @@ async function startFlight() {
   const clip = await loadRun("live-clip");
   const cells = buildTimeline(clip);
   showCounts(clip);
-  showPeople(clip);
   const replay = byId("flight-replay");
   replay.hidden = matchMedia("(prefers-reduced-motion: reduce)").matches;
   replay.addEventListener("click", () => playFlight(clip, cells));
@@ -283,6 +280,9 @@ async function startSteps() {
 }
 
 const loadFailed = "The recorded run couldn’t load. Serve this folder over HTTP and reload.";
-startCheck().catch(() => { byId("check-clock").textContent = loadFailed; });
+startCheck().catch(() => {
+  byId("check-clock").textContent = loadFailed;
+  byId("handoff-text").textContent = loadFailed;
+});
 startFlight().catch(() => { byId("flight-clock").textContent = loadFailed; });
 startSteps().catch(() => { byId("steps-note").textContent = loadFailed; });
