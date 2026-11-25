@@ -31,13 +31,13 @@ def main():
     timeline = {r["frame"]: r for r in record["coverage_timeline"]}
     labels = labeled_people(args.labels, list(timeline.values()))
 
-    def evidence(frame, flag):
+    def evidence(frame, flag, *, empty=False):
         width, height = frame["width"], frame["height"]
         box = flag["box"]
         x, y = (box[0]+box[2])/2, (box[1]+box[3])/2
         track = holder(dict(x=x, y=y), labels[frame["frame"]])
-        if not track or track[0] is None:
-            raise ValueError("Selected pin must be traceable to a labeled person")
+        if (empty and track is not None) or (not empty and (not track or track[0] is None)):
+            raise ValueError("Selected pin disagrees with its labeled outcome")
         photo = frame["frame"] + ".webp"
         with Image.open(args.verified / "frames" / (frame["frame"] + ".jpg")) as img:
             img.thumbnail((1280, 1280))
@@ -45,7 +45,7 @@ def main():
         crop = Path(flag["crop"]).name
         shutil.copyfile(args.verified / flag["crop"], out / crop)
         return dict(second=frame["second"], width=width, height=height, photo=photo, crop=crop, pin=[x,y],
-                    rect=crop_square(width,height,box), label=track[1], track=track[0], description=flag["what"])
+                    rect=crop_square(width,height,box), label=track[1] if track else None, track=track[0] if track else None, description=flag["what"])
 
     handoffs = []
     for person in record["possible_people"]:
@@ -64,7 +64,12 @@ def main():
     miss = evidence(frame, flag)
     if miss["track"] != handoffs[0]["track"]:
         raise ValueError("The two pinned images must show the same labeled track")
-    (out / "record.json").write_text(json.dumps(dict(handoffs=handoffs, missed=miss), indent=2)+"\n")
+    frame = timeline["second-00036"]
+    kept, dismissed = frame["flags"]
+    if (kept["status"], dismissed["status"]) != ("kept", "dismissed") or dismissed["detector_confidence"] < 0.30:
+        raise ValueError("Expected a kept swimmer and a dismissed detector alert")
+    pair = [evidence(frame, kept), evidence(frame, dismissed, empty=True)]
+    (out / "record.json").write_text(json.dumps(dict(handoffs=handoffs, missed=miss, pair=pair), indent=2)+"\n")
 
 
 if __name__ == "__main__":

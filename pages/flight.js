@@ -34,25 +34,27 @@ async function openFlight() {
   function show(next, focus = true) {
     state = next;
     const reviewing = next === "dismissal" || next === "label";
-    const item = reviewing ? record.missed : selected;
+    const paired = next === "fins" || next === "ripples";
+    const item = paired ? record.pair[next === "fins" ? 0 : 1] : reviewing ? record.missed : selected;
     const notes = element("notes");
     const actions = element("note-actions");
     const tools = element("tools");
     const title = element("detail-title");
-    select.disabled = reviewing;
-    element("sighting-label").hidden = reviewing;
-    element("earlier").hidden = !reviewing;
+    select.disabled = reviewing || paired;
+    element("sighting-label").hidden = reviewing || paired;
+    element("earlier").hidden = !reviewing && !paired;
+    element("earlier").textContent = paired ? "Two detector flags · 0:36" : "Earlier flag · 0:12";
     element("overview").src = new URL(item.photo, base);
     element("overview").alt = "Full frame at " + time(item.second) + ", with the detector pin and inspected crop outlined";
     element("detail").src = new URL(item.crop, base);
     element("clock").textContent = time(item.second) + " / 2:00";
     element("crop-time").textContent = time(item.second);
-    title.textContent = reviewing ? "Dismissed flag" : "Possible person " + selected.number;
-    element("verdict").textContent = (reviewing ? "Ember dismissed this as " : "Ember kept this as ") + "“" + item.description + ".”";
+    title.textContent = paired ? (next === "fins" ? "Flag 1 of 2 · kept" : "Flag 2 of 2 · dismissed") : reviewing ? "Dismissed flag" : "Possible person " + selected.number;
+    element("verdict").textContent = ((reviewing || next === "ripples") ? "Ember dismissed this as " : "Ember kept this as ") + "“" + item.description + ".”";
     placeRect(element("region"), item.rect, item);
     Object.assign(element("pin").style, { left: 100*item.pin[0]/item.width+"%", top: 100*item.pin[1]/item.height+"%" });
-    element("truth-box").hidden = next !== "label";
-    element("camera-note").textContent = next === "label" ? "Dashed yellow box · labeled swimmer" : "White pin · inspected crop outlined";
+    element("truth-box").hidden = next !== "label" && !paired;
+    element("camera-note").textContent = next === "label" || paired ? "Dashed yellow box · labeled swimmer" : "White pin · inspected crop outlined";
     actions.replaceChildren();
     tools.replaceChildren();
     notes.hidden = next === "sighting" || next === "dismissal";
@@ -68,8 +70,17 @@ async function openFlight() {
       download.download = selected.packet;
       download.textContent = "Download this handoff";
       actions.append(download);
+      control(tools, "Compare two flags at 0:36", () => show("fins"));
       control(tools, "Inspect the 0:12 dismissal", () => show("dismissal"));
       if (focus) element("note-title").focus();
+    } else if (paired) {
+      placeRect(element("truth-box"), record.pair[0].label, item);
+      element("note-title").textContent = "Two flags. One labeled swimmer.";
+      element("note").textContent = "At 0:36 the detector flagged a swimmer on the right and ripples at the left edge. Ember kept the swimmer and removed the empty alert. The dashed yellow box shows the dataset label.";
+      const toggle = next === "fins" ? control(tools, "Inspect flag 2 · ripples", () => show("ripples")) : control(tools, "Inspect flag 1 · swimmer", () => show("fins"));
+      control(actions, "Inspect the 0:12 dismissal", () => show("dismissal"));
+      control(actions, "Return to handoff " + selected.number, () => show("handoff"));
+      if (focus) toggle.focus();
     } else if (next === "dismissal") {
       const button = control(tools, "Reveal the flight label", () => show("label"));
       control(tools, "Back to handoff", () => show("handoff"));

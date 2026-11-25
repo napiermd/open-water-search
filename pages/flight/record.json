@@ -265,5 +265,52 @@
     ],
     "track": 2,
     "description": "duck swimming in water"
-  }
+  },
+  "pair": [
+    {
+      "second": 36,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00036.webp",
+      "crop": "second-00036-flag1.jpg",
+      "pin": [
+        1327.065,
+        258.75
+      ],
+      "rect": [
+        1237,
+        169,
+        1417,
+        348
+      ],
+      "label": [
+        1307.9001600000001,
+        230.769902,
+        1350.80064,
+        295.75953000000004
+      ],
+      "track": 3,
+      "description": "Person diving underwater, fins up"
+    },
+    {
+      "second": 36,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00036.webp",
+      "crop": "second-00036-flag2.jpg",
+      "pin": [
+        12.15,
+        486.235
+      ],
+      "rect": [
+        0,
+        393,
+        186,
+        579
+      ],
+      "label": null,
+      "track": null,
+      "description": "Open water with ripples only"
+    }
+  ]
 }
