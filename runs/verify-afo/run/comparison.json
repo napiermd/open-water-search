@@ -1,0 +1,487 @@
+{
+  "appearances": 2950,
+  "detector_then_ember": {
+    "found": 619,
+    "false_marks": 85,
+    "split": {
+      "background": 75,
+      "duplicate": 10
+    }
+  },
+  "detector_at_matching_confidence": null,
+  "detector_default_0_25": {
+    "confidence": 0.25,
+    "found": 556,
+    "false_marks": 310
+  },
+  "detector_with_about_as_many_false_marks": {
+    "confidence": 0.6,
+    "found": 217,
+    "false_marks": 83
+  },
+  "most_findable_under_five_marks": 874,
+  "curve": [
+    {
+      "confidence": 0.05,
+      "found": 611,
+      "false_marks": 445
+    },
+    {
+      "confidence": 0.06,
+      "found": 609,
+      "false_marks": 437
+    },
+    {
+      "confidence": 0.07,
+      "found": 608,
+      "false_marks": 419
+    },
+    {
+      "confidence": 0.08,
+      "found": 605,
+      "false_marks": 411
+    },
+    {
+      "confidence": 0.09,
+      "found": 603,
+      "false_marks": 407
+    },
+    {
+      "confidence": 0.1,
+      "found": 599,
+      "false_marks": 395
+    },
+    {
+      "confidence": 0.11,
+      "found": 598,
+      "false_marks": 389
+    },
+    {
+      "confidence": 0.12,
+      "found": 595,
+      "false_marks": 381
+    },
+    {
+      "confidence": 0.13,
+      "found": 593,
+      "false_marks": 377
+    },
+    {
+      "confidence": 0.14,
+      "found": 586,
+      "false_marks": 369
+    },
+    {
+      "confidence": 0.15,
+      "found": 583,
+      "false_marks": 367
+    },
+    {
+      "confidence": 0.16,
+      "found": 581,
+      "false_marks": 363
+    },
+    {
+      "confidence": 0.17,
+      "found": 576,
+      "false_marks": 358
+    },
+    {
+      "confidence": 0.18,
+      "found": 575,
+      "false_marks": 352
+    },
+    {
+      "confidence": 0.19,
+      "found": 571,
+      "false_marks": 345
+    },
+    {
+      "confidence": 0.2,
+      "found": 568,
+      "false_marks": 338
+    },
+    {
+      "confidence": 0.21,
+      "found": 566,
+      "false_marks": 330
+    },
+    {
+      "confidence": 0.22,
+      "found": 564,
+      "false_marks": 328
+    },
+    {
+      "confidence": 0.23,
+      "found": 562,
+      "false_marks": 324
+    },
+    {
+      "confidence": 0.24,
+      "found": 560,
+      "false_marks": 314
+    },
+    {
+      "confidence": 0.25,
+      "found": 556,
+      "false_marks": 310
+    },
+    {
+      "confidence": 0.26,
+      "found": 552,
+      "false_marks": 301
+    },
+    {
+      "confidence": 0.27,
+      "found": 551,
+      "false_marks": 292
+    },
+    {
+      "confidence": 0.28,
+      "found": 550,
+      "false_marks": 284
+    },
+    {
+      "confidence": 0.29,
+      "found": 548,
+      "false_marks": 280
+    },
+    {
+      "confidence": 0.3,
+      "found": 544,
+      "false_marks": 278
+    },
+    {
+      "confidence": 0.31,
+      "found": 538,
+      "false_marks": 275
+    },
+    {
+      "confidence": 0.32,
+      "found": 533,
+      "false_marks": 271
+    },
+    {
+      "confidence": 0.33,
+      "found": 530,
+      "false_marks": 268
+    },
+    {
+      "confidence": 0.34,
+      "found": 526,
+      "false_marks": 260
+    },
+    {
+      "confidence": 0.35,
+      "found": 518,
+      "false_marks": 256
+    },
+    {
+      "confidence": 0.36,
+      "found": 513,
+      "false_marks": 253
+    },
+    {
+      "confidence": 0.37,
+      "found": 506,
+      "false_marks": 244
+    },
+    {
+      "confidence": 0.38,
+      "found": 495,
+      "false_marks": 239
+    },
+    {
+      "confidence": 0.39,
+      "found": 494,
+      "false_marks": 231
+    },
+    {
+      "confidence": 0.4,
+      "found": 483,
+      "false_marks": 228
+    },
+    {
+      "confidence": 0.41,
+      "found": 477,
+      "false_marks": 223
+    },
+    {
+      "confidence": 0.42,
+      "found": 467,
+      "false_marks": 216
+    },
+    {
+      "confidence": 0.43,
+      "found": 457,
+      "false_marks": 210
+    },
+    {
+      "confidence": 0.44,
+      "found": 450,
+      "false_marks": 202
+    },
+    {
+      "confidence": 0.45,
+      "found": 437,
+      "false_marks": 194
+    },
+    {
+      "confidence": 0.46,
+      "found": 422,
+      "false_marks": 185
+    },
+    {
+      "confidence": 0.47,
+      "found": 415,
+      "false_marks": 176
+    },
+    {
+      "confidence": 0.48,
+      "found": 404,
+      "false_marks": 169
+    },
+    {
+      "confidence": 0.49,
+      "found": 390,
+      "false_marks": 157
+    },
+    {
+      "confidence": 0.5,
+      "found": 379,
+      "false_marks": 153
+    },
+    {
+      "confidence": 0.51,
+      "found": 359,
+      "false_marks": 141
+    },
+    {
+      "confidence": 0.52,
+      "found": 339,
+      "false_marks": 135
+    },
+    {
+      "confidence": 0.53,
+      "found": 332,
+      "false_marks": 131
+    },
+    {
+      "confidence": 0.54,
+      "found": 320,
+      "false_marks": 124
+    },
+    {
+      "confidence": 0.55,
+      "found": 303,
+      "false_marks": 120
+    },
+    {
+      "confidence": 0.56,
+      "found": 290,
+      "false_marks": 115
+    },
+    {
+      "confidence": 0.57,
+      "found": 271,
+      "false_marks": 105
+    },
+    {
+      "confidence": 0.58,
+      "found": 253,
+      "false_marks": 95
+    },
+    {
+      "confidence": 0.59,
+      "found": 233,
+      "false_marks": 91
+    },
+    {
+      "confidence": 0.6,
+      "found": 217,
+      "false_marks": 83
+    },
+    {
+      "confidence": 0.61,
+      "found": 205,
+      "false_marks": 74
+    },
+    {
+      "confidence": 0.62,
+      "found": 188,
+      "false_marks": 70
+    },
+    {
+      "confidence": 0.63,
+      "found": 169,
+      "false_marks": 61
+    },
+    {
+      "confidence": 0.64,
+      "found": 152,
+      "false_marks": 53
+    },
+    {
+      "confidence": 0.65,
+      "found": 143,
+      "false_marks": 49
+    },
+    {
+      "confidence": 0.66,
+      "found": 135,
+      "false_marks": 41
+    },
+    {
+      "confidence": 0.67,
+      "found": 118,
+      "false_marks": 38
+    },
+    {
+      "confidence": 0.68,
+      "found": 100,
+      "false_marks": 36
+    },
+    {
+      "confidence": 0.69,
+      "found": 95,
+      "false_marks": 30
+    },
+    {
+      "confidence": 0.7,
+      "found": 82,
+      "false_marks": 26
+    },
+    {
+      "confidence": 0.71,
+      "found": 70,
+      "false_marks": 22
+    },
+    {
+      "confidence": 0.72,
+      "found": 60,
+      "false_marks": 19
+    },
+    {
+      "confidence": 0.73,
+      "found": 49,
+      "false_marks": 16
+    },
+    {
+      "confidence": 0.74,
+      "found": 36,
+      "false_marks": 8
+    },
+    {
+      "confidence": 0.75,
+      "found": 30,
+      "false_marks": 6
+    },
+    {
+      "confidence": 0.76,
+      "found": 25,
+      "false_marks": 5
+    },
+    {
+      "confidence": 0.77,
+      "found": 18,
+      "false_marks": 5
+    },
+    {
+      "confidence": 0.78,
+      "found": 10,
+      "false_marks": 3
+    },
+    {
+      "confidence": 0.79,
+      "found": 5,
+      "false_marks": 2
+    },
+    {
+      "confidence": 0.8,
+      "found": 1,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.81,
+      "found": 0,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.82,
+      "found": 0,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.83,
+      "found": 0,
+      "false_marks": 1
+    },
+    {
+      "confidence": 0.84,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.85,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.86,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.87,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.88,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.89,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.9,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.91,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.92,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.93,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.94,
+      "found": 0,
+      "false_marks": 0
+    },
+    {
+      "confidence": 0.95,
+      "found": 0,
+      "false_marks": 0
+    }
+  ],
+  "pass_rule": "Not applicable as written: the rule compares with the detector at the highest confidence that still finds at least as many people, and the detector finds at most 611 at any confidence, fewer than 619.",
+  "detector_most_people_found": {
+    "confidence": 0.05,
+    "found": 611,
+    "false_marks": 445
+  },
+  "after_the_result": "Chosen after the result was seen: against the detector's most sensitive setting (0.05, 611 found, 445 false marks), detector-then-Ember finds 8 more people with 360 fewer false marks, 81% fewer."
+}
