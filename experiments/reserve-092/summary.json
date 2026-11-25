@@ -1,0 +1,402 @@
+{
+  "model": "muse-ember-1.0",
+  "route": "personal Meta Model API",
+  "tile_threshold": 0.92,
+  "complete": true,
+  "accounting": {
+    "expected_jobs": 399,
+    "ledger_stop": null,
+    "paid_nanodollars": 75877440,
+    "unresolved_reserved_nanodollars": 0,
+    "maximum_liability_nanodollars": 75877440,
+    "cap_nanodollars": 150000000,
+    "whole": {
+      "usable": 253,
+      "unusable": 0,
+      "unresolved": 0,
+      "unattempted": 0
+    },
+    "tile": {
+      "usable": 146,
+      "unusable": 0,
+      "unresolved": 0,
+      "unattempted": 0
+    }
+  },
+  "track_audit": {
+    "selected_images": 267,
+    "person_boxes": 224,
+    "missing_track_boxes": 0,
+    "land_boxes": 0,
+    "clip_track_ids": 24,
+    "ids_reused_across_clips": {
+      "0": [
+        "DJI_0915_0015_50m.mp4",
+        "DJI_0915_0017_60m.mp4",
+        "DJI_0915_0019_60m.mp4",
+        "DJI_0915_0023_50m.mp4",
+        "DJI_0915_0027_50m.mp4",
+        "DJI_0915_0028_60m.mp4"
+      ],
+      "3": [
+        "DJI_0915_0015_50m.mp4",
+        "DJI_0915_0017_60m.mp4",
+        "DJI_0915_0028_60m.mp4"
+      ],
+      "4": [
+        "DJI_0915_0015_50m.mp4",
+        "DJI_0915_0023_50m.mp4",
+        "DJI_0915_0027_50m.mp4",
+        "DJI_0915_0028_60m.mp4"
+      ],
+      "1": [
+        "DJI_0915_0019_60m.mp4",
+        "DJI_0915_0023_50m.mp4",
+        "DJI_0915_0027_50m.mp4",
+        "DJI_0915_0028_60m.mp4"
+      ],
+      "2": [
+        "DJI_0915_0023_50m.mp4",
+        "DJI_0915_0027_50m.mp4"
+      ]
+    },
+    "one_second_track_jumps_over_tenth_width": []
+  },
+  "eligible_frames": 267,
+  "paired_frames": 267,
+  "omitted_frames": [],
+  "dominant_flight": "DJI_0915_0015_50m.mp4",
+  "totals": {
+    "all": {
+      "baseline": {
+        "eligible_seconds": 267,
+        "identities": 24,
+        "found": 23,
+        "visible_person_seconds": 224,
+        "person_seconds": 183,
+        "kept_marks": 267,
+        "true_marks": 184,
+        "ignored_marks": 0,
+        "false_marks": 83,
+        "false_mark_seconds": 48,
+        "false_episodes": 52
+      },
+      "combined": {
+        "eligible_seconds": 267,
+        "identities": 24,
+        "found": 23,
+        "visible_person_seconds": 224,
+        "person_seconds": 184,
+        "kept_marks": 292,
+        "true_marks": 209,
+        "ignored_marks": 0,
+        "false_marks": 83,
+        "false_mark_seconds": 48,
+        "false_episodes": 52
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 1,
+        "kept_marks": 25,
+        "true_marks": 25,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "excluding_dominant": {
+      "baseline": {
+        "eligible_seconds": 121,
+        "identities": 16,
+        "found": 16,
+        "visible_person_seconds": 111,
+        "person_seconds": 104,
+        "kept_marks": 123,
+        "true_marks": 105,
+        "ignored_marks": 0,
+        "false_marks": 18,
+        "false_mark_seconds": 12,
+        "false_episodes": 14
+      },
+      "combined": {
+        "eligible_seconds": 121,
+        "identities": 16,
+        "found": 16,
+        "visible_person_seconds": 111,
+        "person_seconds": 105,
+        "kept_marks": 140,
+        "true_marks": 122,
+        "ignored_marks": 0,
+        "false_marks": 18,
+        "false_mark_seconds": 12,
+        "false_episodes": 14
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 1,
+        "kept_marks": 17,
+        "true_marks": 17,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    }
+  },
+  "by_clip": {
+    "DJI_0915_0015_50m.mp4": {
+      "baseline": {
+        "eligible_seconds": 146,
+        "identities": 8,
+        "found": 7,
+        "visible_person_seconds": 113,
+        "person_seconds": 79,
+        "kept_marks": 144,
+        "true_marks": 79,
+        "ignored_marks": 0,
+        "false_marks": 65,
+        "false_mark_seconds": 36,
+        "false_episodes": 38
+      },
+      "combined": {
+        "eligible_seconds": 146,
+        "identities": 8,
+        "found": 7,
+        "visible_person_seconds": 113,
+        "person_seconds": 79,
+        "kept_marks": 152,
+        "true_marks": 87,
+        "ignored_marks": 0,
+        "false_marks": 65,
+        "false_mark_seconds": 36,
+        "false_episodes": 38
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 0,
+        "kept_marks": 8,
+        "true_marks": 8,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "DJI_0915_0017_60m.mp4": {
+      "baseline": {
+        "eligible_seconds": 12,
+        "identities": 2,
+        "found": 2,
+        "visible_person_seconds": 5,
+        "person_seconds": 5,
+        "kept_marks": 6,
+        "true_marks": 5,
+        "ignored_marks": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1
+      },
+      "combined": {
+        "eligible_seconds": 12,
+        "identities": 2,
+        "found": 2,
+        "visible_person_seconds": 5,
+        "person_seconds": 5,
+        "kept_marks": 6,
+        "true_marks": 5,
+        "ignored_marks": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 0,
+        "kept_marks": 0,
+        "true_marks": 0,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "DJI_0915_0019_60m.mp4": {
+      "baseline": {
+        "eligible_seconds": 26,
+        "identities": 2,
+        "found": 2,
+        "visible_person_seconds": 17,
+        "person_seconds": 15,
+        "kept_marks": 22,
+        "true_marks": 15,
+        "ignored_marks": 0,
+        "false_marks": 7,
+        "false_mark_seconds": 5,
+        "false_episodes": 5
+      },
+      "combined": {
+        "eligible_seconds": 26,
+        "identities": 2,
+        "found": 2,
+        "visible_person_seconds": 17,
+        "person_seconds": 15,
+        "kept_marks": 26,
+        "true_marks": 19,
+        "ignored_marks": 0,
+        "false_marks": 7,
+        "false_mark_seconds": 5,
+        "false_episodes": 5
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 0,
+        "kept_marks": 4,
+        "true_marks": 4,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "DJI_0915_0023_50m.mp4": {
+      "baseline": {
+        "eligible_seconds": 35,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 34,
+        "person_seconds": 31,
+        "kept_marks": 36,
+        "true_marks": 32,
+        "ignored_marks": 0,
+        "false_marks": 4,
+        "false_mark_seconds": 2,
+        "false_episodes": 3
+      },
+      "combined": {
+        "eligible_seconds": 35,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 34,
+        "person_seconds": 31,
+        "kept_marks": 42,
+        "true_marks": 38,
+        "ignored_marks": 0,
+        "false_marks": 4,
+        "false_mark_seconds": 2,
+        "false_episodes": 3
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 0,
+        "kept_marks": 6,
+        "true_marks": 6,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "DJI_0915_0027_50m.mp4": {
+      "baseline": {
+        "eligible_seconds": 29,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 29,
+        "person_seconds": 28,
+        "kept_marks": 29,
+        "true_marks": 28,
+        "ignored_marks": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1
+      },
+      "combined": {
+        "eligible_seconds": 29,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 29,
+        "person_seconds": 29,
+        "kept_marks": 32,
+        "true_marks": 31,
+        "ignored_marks": 0,
+        "false_marks": 1,
+        "false_mark_seconds": 1,
+        "false_episodes": 1
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 1,
+        "kept_marks": 3,
+        "true_marks": 3,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    },
+    "DJI_0915_0028_60m.mp4": {
+      "baseline": {
+        "eligible_seconds": 19,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 26,
+        "person_seconds": 25,
+        "kept_marks": 30,
+        "true_marks": 25,
+        "ignored_marks": 0,
+        "false_marks": 5,
+        "false_mark_seconds": 3,
+        "false_episodes": 4
+      },
+      "combined": {
+        "eligible_seconds": 19,
+        "identities": 4,
+        "found": 4,
+        "visible_person_seconds": 26,
+        "person_seconds": 25,
+        "kept_marks": 34,
+        "true_marks": 29,
+        "ignored_marks": 0,
+        "false_marks": 5,
+        "false_mark_seconds": 3,
+        "false_episodes": 4
+      },
+      "delta": {
+        "eligible_seconds": 0,
+        "identities": 0,
+        "found": 0,
+        "visible_person_seconds": 0,
+        "person_seconds": 0,
+        "kept_marks": 4,
+        "true_marks": 4,
+        "ignored_marks": 0,
+        "false_marks": 0,
+        "false_mark_seconds": 0,
+        "false_episodes": 0
+      }
+    }
+  },
+  "added_ids": []
+}
