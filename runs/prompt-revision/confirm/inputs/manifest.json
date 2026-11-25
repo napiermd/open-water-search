@@ -1,0 +1,1721 @@
+{
+  "dataset": "AFO: Aerial dataset of Floating Objects (Gasienica-Jozkowy, Knapik and Cyganek, 2021)",
+  "source": "https://huggingface.co/datasets/jgasienica/afo-dataset",
+  "license": "CC BY-NC-SA 3.0, used non-commercially",
+  "list": "runs/prompt-revision/confirm/frames.json",
+  "list_sha256": "22acf7efced529ce45b4066776487b7d838a3cc7ffb4f51185345704e73cfc01",
+  "frames": [
+    {
+      "frame": "a_302",
+      "image": "images/a_302.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "868cc5383dc48ee5b625e6bf4e168a0553c4f50fb5839ef6fc74c0d0ea40c0b5"
+    },
+    {
+      "frame": "a_303",
+      "image": "images/a_303.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "713b9523803f6d524e29588f9459c4700c92bd005604bade290c6abfab2d8ac3"
+    },
+    {
+      "frame": "a_304",
+      "image": "images/a_304.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "55c332575901736f2f39f9e1e6b959e756f036a28903112c1fd91cf7c9c2cf4c"
+    },
+    {
+      "frame": "a_305",
+      "image": "images/a_305.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4c864ca3d99b1337e7aacc92bd4ea1a0b5aeaf2a25a29b9c6bfd095b969d7558"
+    },
+    {
+      "frame": "a_307",
+      "image": "images/a_307.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "b69994fff0308f26485f7a8a29ab66f60a3a46eb6e199cf2c3fe5f63627aef52"
+    },
+    {
+      "frame": "a_308",
+      "image": "images/a_308.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5f8a06fcd41c45d07dee3798f1f1bd9a7dcaa2a5a139cf92dcefaa82a3480a9d"
+    },
+    {
+      "frame": "a_309",
+      "image": "images/a_309.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "cf49c8f92a6fd0b03954694eb55af626bd42b213cd1f6c8809e1e938df706004"
+    },
+    {
+      "frame": "a_311",
+      "image": "images/a_311.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d490517c64c83f2c61407ada21251eefec2cfa2f866809b780a0d00d93a116b5"
+    },
+    {
+      "frame": "a_313",
+      "image": "images/a_313.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6debf051aa74cac6efb1ee9ce0dba1fb1e1a5071265625ad87112ab8f5745939"
+    },
+    {
+      "frame": "a_314",
+      "image": "images/a_314.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f7b3e37639e03358168b4d2af7c037ae82c854ca69fab203b7c2d6e480a7cd77"
+    },
+    {
+      "frame": "a_315",
+      "image": "images/a_315.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "79dd4d347a84c3457422645ee60f29aeac884e49c188a3a63803b159ac581a04"
+    },
+    {
+      "frame": "a_317",
+      "image": "images/a_317.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "cb20272c7cc69b361b8330282e7fe30afd7880dd96507e19997c11180cd8a6df"
+    },
+    {
+      "frame": "a_318",
+      "image": "images/a_318.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1d5e0f643190c9ebdb7c01e491cd25b502ed5d8825742c55281d4654977511ee"
+    },
+    {
+      "frame": "a_319",
+      "image": "images/a_319.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "14eb439269f7927314c12ab42fb6129da9ebd09f3738e1bde60f9dda3be964c4"
+    },
+    {
+      "frame": "a_320",
+      "image": "images/a_320.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "04564cfa647bf386940b2385196abb36a70ce2bc365ca09504248cd695333b16"
+    },
+    {
+      "frame": "a_322",
+      "image": "images/a_322.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "7fb4fc5174320597134dab924151bbf93bfbebdf9149a34b6af5967249b3c3f9"
+    },
+    {
+      "frame": "a_323",
+      "image": "images/a_323.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "803f76afab047226a0348c8ec1c73e2110ab5b2e30a8aeea3eb83d9dac0dd232"
+    },
+    {
+      "frame": "a_324",
+      "image": "images/a_324.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6e129d6059ccfad0163d58ebc96317bf36604558b7d94e33c6591fefe44c1171"
+    },
+    {
+      "frame": "a_327",
+      "image": "images/a_327.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4916b78eaa13b115495dde26c978a08f0bbd781ad356705f4e91f43c95a6bf0a"
+    },
+    {
+      "frame": "a_328",
+      "image": "images/a_328.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ae38c84fd8bcd641183565e8f9601147936eda89a6b3ed263a19b23ea528b7fd"
+    },
+    {
+      "frame": "a_329",
+      "image": "images/a_329.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "45ebce20c1cecc37e9784513ceaed008510abcfdb7b2b9f833c7eebdba754137"
+    },
+    {
+      "frame": "a_331",
+      "image": "images/a_331.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d11618592be8ed4f4460e372156bea474209521d4cd4462813a1ab947721924e"
+    },
+    {
+      "frame": "a_332",
+      "image": "images/a_332.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "251e092854281d1f3bceb2bafcb46794296ddbd95a6e98798862ddf8912fc740"
+    },
+    {
+      "frame": "a_334",
+      "image": "images/a_334.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c8a2d9e683ad76b857770f03ca68a93ac09a0cf746a5d7184d874b719963a3e2"
+    },
+    {
+      "frame": "a_335",
+      "image": "images/a_335.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "81219f1653e2a2a55f8ab2f979ad89f40274a79e54e294e49c359995315db4d5"
+    },
+    {
+      "frame": "a_336",
+      "image": "images/a_336.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "adc1aeaf816a3c61126dd72df4729a0c52420d5aa743474daa6f638ad30ef41b"
+    },
+    {
+      "frame": "a_337",
+      "image": "images/a_337.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5422144a00d3291cb7389fc86a77dbfba82bca7df70194d8adcbec45aa1b5c6e"
+    },
+    {
+      "frame": "a_338",
+      "image": "images/a_338.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "7d694056c97e12a2d4dbf0ffe8fa0eb980b5721572683b840a2bf58216fb542a"
+    },
+    {
+      "frame": "a_340",
+      "image": "images/a_340.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1a8e40efd476297fea870ed145598dd0c452ab2fb36e79f975f2b871e067b094"
+    },
+    {
+      "frame": "a_341",
+      "image": "images/a_341.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "514ae798f94e6e84f4932c381e69db15a72c59ed174480577af9c0ac92b71889"
+    },
+    {
+      "frame": "a_343",
+      "image": "images/a_343.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5a853597ba465b3335b95b75c628af39411f762d5567fbe4dc002036f00f42e0"
+    },
+    {
+      "frame": "a_344",
+      "image": "images/a_344.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "42b8edfbd311f37545db2bc47a306464a5b6c84f3c40b7036083f77fcafcec5a"
+    },
+    {
+      "frame": "a_345",
+      "image": "images/a_345.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d66e29a414299e07d7ea35b84df72fb536cd781e684164dd61f4490159f9ea3b"
+    },
+    {
+      "frame": "a_347",
+      "image": "images/a_347.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "b30104658673abc01d2c51b6f99d10d7805b92c9f47d30a2bd9d03130928afa1"
+    },
+    {
+      "frame": "a_349",
+      "image": "images/a_349.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f742e8ddb7f6213bb4dc10445403b9756cc729bb2e67b69cc2e148c57e420852"
+    },
+    {
+      "frame": "a_350",
+      "image": "images/a_350.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5f33a7f4cfa8cce6b503783a68b5dab649ba8f82d6adc3ad8610fcf0bc7bd749"
+    },
+    {
+      "frame": "a_352",
+      "image": "images/a_352.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8ecb08696ea638bd7672fcae630523b725ea4421f3edda14f610cd2aa21a791a"
+    },
+    {
+      "frame": "a_353",
+      "image": "images/a_353.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1db3c7195e28a2fc8e20b91ed04fafc0db283115d9970ecf8c1351bdbed2a276"
+    },
+    {
+      "frame": "a_355",
+      "image": "images/a_355.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "347d2a4a9d9dfb295e1882b2e12457fff1156ba7d89b1b5bcea8e99b689027ce"
+    },
+    {
+      "frame": "a_356",
+      "image": "images/a_356.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "52fbe4b18440ca7f219424c9b002c0f6899d81fdabc3bf072dc6c3f5e732a920"
+    },
+    {
+      "frame": "a_357",
+      "image": "images/a_357.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c9c04149fca12da5353ab05acc05ebe50f969d4b7cebd92550fb5ac91044507b"
+    },
+    {
+      "frame": "a_358",
+      "image": "images/a_358.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ff6acecfc41bfb5047fd87f581b520e296d3fe11ec1ef5ae530aa8997f78f578"
+    },
+    {
+      "frame": "a_359",
+      "image": "images/a_359.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "0dcd403cea420c3898192753dba7326de31b39f6dc7198a10554a51405f89ca8"
+    },
+    {
+      "frame": "a_361",
+      "image": "images/a_361.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c98b08daa86e2d6e0a0a6f922bd49678d95804d1c3b9f9403034f69ca5b40c5d"
+    },
+    {
+      "frame": "a_363",
+      "image": "images/a_363.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e3a4b39c79986b99d3902cd48e58dc34adaf92c7fc7bfb497e26f0df72015aed"
+    },
+    {
+      "frame": "a_364",
+      "image": "images/a_364.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "a45f106968c0788c8b503c553a341ad6208d6f0e8d4f11b3c623024128561fbb"
+    },
+    {
+      "frame": "a_365",
+      "image": "images/a_365.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "dcca7568cbf5e8a8de60045a50711db3957f8ce6ca171deee2b330f925e3aaa9"
+    },
+    {
+      "frame": "a_367",
+      "image": "images/a_367.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ffa5bfebeba603ccddddb5d1ac61e4df95f4979425a5d61df04ba3c84a98e242"
+    },
+    {
+      "frame": "a_368",
+      "image": "images/a_368.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5646ca0028e5293b5baef2ce7bae59d51d947ad104f78e3a5a338b88d3e3cd3c"
+    },
+    {
+      "frame": "a_370",
+      "image": "images/a_370.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "3723ba500aab9dea48dc7be5770f05aad66b1df141875c60159a1a98ae1fac58"
+    },
+    {
+      "frame": "a_371",
+      "image": "images/a_371.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1d2a630db16a44e73db92142f94a266f31590e444973a9eed92ee124b0e971a1"
+    },
+    {
+      "frame": "a_373",
+      "image": "images/a_373.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d274cb79603434c1656a916003028be79a5eba1cb777784356b624d32ec0fca4"
+    },
+    {
+      "frame": "a_374",
+      "image": "images/a_374.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "576c5d59ad81a79d4ec946ee12771e7c002b0c4a9a1c5f48f94204831c84d6c9"
+    },
+    {
+      "frame": "a_375",
+      "image": "images/a_375.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "314bb507f5c8c771f285354605836aeef5c0185a41b80b2968db5fd3395fcdf7"
+    },
+    {
+      "frame": "a_377",
+      "image": "images/a_377.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "bb47903786d875cb7de163a2059a8033268487f5d1b7bf228cfd25f33f887ca7"
+    },
+    {
+      "frame": "a_378",
+      "image": "images/a_378.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4bfda75bca14caee85d7412fcf5641115518185a13bf41ac28df16ed78e6881d"
+    },
+    {
+      "frame": "a_379",
+      "image": "images/a_379.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e6bf1bd47a3400cabef53f41073f759e5e03d55b662fe55d377f5260a9017034"
+    },
+    {
+      "frame": "a_380",
+      "image": "images/a_380.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e3a24be423c74bbff4dca765079349fb8f2d2352138b7acb7e3c6d885289475d"
+    },
+    {
+      "frame": "a_382",
+      "image": "images/a_382.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "07f99d4337707178ebffd7ecb64b414497df9cd56325b806814b11805619abeb"
+    },
+    {
+      "frame": "a_383",
+      "image": "images/a_383.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "698b3a9cb4b75607f89517d6f4d91d7e86a129ff718d941bab563952820ad5cb"
+    },
+    {
+      "frame": "a_385",
+      "image": "images/a_385.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "fc64e810c40ec8b42d3a8942a8d89958627e6d75050cb59c3ac11d6c2fe10187"
+    },
+    {
+      "frame": "a_386",
+      "image": "images/a_386.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "06e42a2c67e2a03780bacf6c613cfd5ec6199b65456293ff8587cc4f0dd8e033"
+    },
+    {
+      "frame": "a_387",
+      "image": "images/a_387.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c65b80d270a1c42e7c81319a8343a57f6015d325b44b3f264290d62b2741eda0"
+    },
+    {
+      "frame": "a_388",
+      "image": "images/a_388.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "51c33dd2902d36f15ed8b0ac6a073bba6b00a4821648b0c2dc1f373975ff8941"
+    },
+    {
+      "frame": "a_391",
+      "image": "images/a_391.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5d227382273d424d10c4c8c47707c5951eec10b41d3f3ef468cd8061f56dede0"
+    },
+    {
+      "frame": "a_392",
+      "image": "images/a_392.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5797144e91bbbecb0c4bd9bd88c32d91e77bba0339fe910136b91042f9036589"
+    },
+    {
+      "frame": "a_393",
+      "image": "images/a_393.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ebba544c288cbcb620d335d6ae569b9a35c38b01aa6c0940e402f969224e306c"
+    },
+    {
+      "frame": "a_394",
+      "image": "images/a_394.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "9313fd7f98fd1862b43dde24353c3619d802d2ded1e3354383a771e5a65fe96f"
+    },
+    {
+      "frame": "a_395",
+      "image": "images/a_395.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "140fdd846319d0f81b33b900430cc01d0e8dbb15c0f11c7bf6e5c18791764239"
+    },
+    {
+      "frame": "a_398",
+      "image": "images/a_398.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "cf612ecd0595fee89b8913483454bfd99be12ba98f7742956fc0ba8bc99ccca6"
+    },
+    {
+      "frame": "a_399",
+      "image": "images/a_399.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "18b84b10e2f19b4d015cf6ee8a60db8f7f5e216bb800cd16fea551706a3aaf43"
+    },
+    {
+      "frame": "a_400",
+      "image": "images/a_400.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "2f1970c631e64f7223a6110e43a8cb3cdfe062819af725856fafb9a4a4a8cefe"
+    },
+    {
+      "frame": "a_401",
+      "image": "images/a_401.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "a71f8c7e0558116f577819658ca15ea6971a70f3d4030db37bd19d624085d2d1"
+    },
+    {
+      "frame": "a_402",
+      "image": "images/a_402.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6d74c17bae2736c3fa6ffc06c5e5f66a8816216d16d505db487085922a57d40d"
+    },
+    {
+      "frame": "a_405",
+      "image": "images/a_405.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1d6b61a3ffceb3593dcc7ade5ca8234842739c1b9a26e506cfab7830afe75716"
+    },
+    {
+      "frame": "a_406",
+      "image": "images/a_406.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "7bf18354d3d32177846254dda7893a6d07ed1d78349a3e5408ffa1e7589e3aee"
+    },
+    {
+      "frame": "a_407",
+      "image": "images/a_407.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "31607101596e4aec521d8660fd01649595d93751f97267a3d94499ba2a286adf"
+    },
+    {
+      "frame": "a_408",
+      "image": "images/a_408.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e675cf1c5f3af141f9fcc44e549b69e0a8f5c69cf2177dacba547d12302071d6"
+    },
+    {
+      "frame": "a_410",
+      "image": "images/a_410.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1c739ca3abb6b56a4e9bd0bf0eedc448ff7c6e17276639c1ec6c5b7d88a1d683"
+    },
+    {
+      "frame": "a_411",
+      "image": "images/a_411.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "69ad4306864f6078373ed809c79d853e139057ee320b7dc712fd61ab7641fec3"
+    },
+    {
+      "frame": "a_412",
+      "image": "images/a_412.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "bcc55a9e8e3ee8f115c8a6716d84dc79f9c160dfc0c2f833f66595eb5311e43e"
+    },
+    {
+      "frame": "a_414",
+      "image": "images/a_414.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "39e6793ba6d512aa9d48b39178797f2a3fc284ffcff3624de28d209f9cd8a284"
+    },
+    {
+      "frame": "a_415",
+      "image": "images/a_415.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "35f29a102f58341f0b8f94e8b7cf289295c4d221626fd79ff5fc0866bfa8392e"
+    },
+    {
+      "frame": "a_417",
+      "image": "images/a_417.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f654692874ddce5a9cd9516d673998f0f950af3114b78adca26338cd4f9347b6"
+    },
+    {
+      "frame": "a_418",
+      "image": "images/a_418.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d51bafe1393cc79e9c5128d2f2a24ba9f9923303d1122eea3c2704be474ca66f"
+    },
+    {
+      "frame": "a_420",
+      "image": "images/a_420.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c762a45ccb3c2883ba6a45102b37d05ef5cca52077c771314f53e1e8924707e2"
+    },
+    {
+      "frame": "a_421",
+      "image": "images/a_421.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5265199971ea617818066f8e62b77c0250d8f020d4de8e776297fa5644cf8e2d"
+    },
+    {
+      "frame": "a_422",
+      "image": "images/a_422.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "fb39c925bb84a7d6128636d00e6185e78ea73e4985d5f6dc81c64ce526ff6fa5"
+    },
+    {
+      "frame": "a_424",
+      "image": "images/a_424.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e1fd0410a009f96ec105cf469159282279332beca7539b99851f6df10f02b048"
+    },
+    {
+      "frame": "a_425",
+      "image": "images/a_425.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6db80512359ce36d258f56d39ecf08654cdf67880c89dd279b4480a929748c91"
+    },
+    {
+      "frame": "a_426",
+      "image": "images/a_426.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "0a80d38a777106393f8eb6c18b7bba4a027b270a20246a60cbf6531500c4ede2"
+    },
+    {
+      "frame": "a_428",
+      "image": "images/a_428.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "569f33b056b65abfdab8651e1a5a770305351945c30e379a6d939571fdec4d47"
+    },
+    {
+      "frame": "a_429",
+      "image": "images/a_429.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ee4ba1bc507e8ab5c11adab254e1741d4a961f51b59e3276f8e61f4ad16dc4f0"
+    },
+    {
+      "frame": "a_430",
+      "image": "images/a_430.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4cea2b14002c5568dae4b11c424ec88bee1a2829b144ce340dcd9c57dc59b196"
+    },
+    {
+      "frame": "a_431",
+      "image": "images/a_431.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "90da016d0701ff39178706885a5e32277caaf0e64b90985ec7e64e5b99dc4641"
+    },
+    {
+      "frame": "a_433",
+      "image": "images/a_433.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f90229a7888c674c286cc6eea48b4b8107f53e92d7cce0648b6344e2c6794785"
+    },
+    {
+      "frame": "a_434",
+      "image": "images/a_434.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ab43aa844fd13268d65ba83acf21d9d94f286ae384386949bb622c82700bcac1"
+    },
+    {
+      "frame": "a_436",
+      "image": "images/a_436.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6f8eca41bc9cdb043242bdc9727a843cfb714994196d811291689f08a517851e"
+    },
+    {
+      "frame": "a_438",
+      "image": "images/a_438.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f2753eec85ac16e767e2945c172c0362c78dc1b8fa14b7c9f6ce8df9c1802744"
+    },
+    {
+      "frame": "a_439",
+      "image": "images/a_439.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f707450d5cc6ac554d4b1aa7c74c112de96a6a0baebf02e39b6bd1e446d702f1"
+    },
+    {
+      "frame": "a_440",
+      "image": "images/a_440.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c6832eb2e716f8cb3255fc3bc471bc3d2e443a60f7e5d70c52dbf00c766c94ea"
+    },
+    {
+      "frame": "a_442",
+      "image": "images/a_442.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6dee1433725bb90b79c0fc851dd0fc1348b5d3090e368fbd80d48879281352d9"
+    },
+    {
+      "frame": "a_443",
+      "image": "images/a_443.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "fd1fe9b46c82a63b43ff27311ea883938e7e18829156680a61141cd9515642f8"
+    },
+    {
+      "frame": "a_444",
+      "image": "images/a_444.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ffd50e983d82a90ce97ad8fe07b621665172d534d57cec4fb18e55eea84ff880"
+    },
+    {
+      "frame": "a_445",
+      "image": "images/a_445.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "ce47b75f88094648f8326859f23014bfe1bfd6962aaa060fdc443f9e8aa3e9bc"
+    },
+    {
+      "frame": "a_447",
+      "image": "images/a_447.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "693bb85cd6fe91d81e48513de7cd76f65d7a2d061ab0b8a05f69a99eac401a98"
+    },
+    {
+      "frame": "a_448",
+      "image": "images/a_448.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6b1afa127558cbdd6ab748c862f1127098937ada8408b9774eb0e4eb9f2b254d"
+    },
+    {
+      "frame": "a_450",
+      "image": "images/a_450.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "7f99d6634047a555b5029916815867e55908e252863d2ce266995a8d6e420519"
+    },
+    {
+      "frame": "c_101",
+      "image": "images/c_101.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5f218ea5b8cb40dfc38a01acbb4cabeda61da69edee43581e5c6aa0e0fcc2505"
+    },
+    {
+      "frame": "c_102",
+      "image": "images/c_102.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "301d8f16c036ad04f7228a099288c12085d6305ba17496b53e0b5d608ce75b04"
+    },
+    {
+      "frame": "c_104",
+      "image": "images/c_104.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e7ff3216b1453bd194dd83fee6256dcb40091bbec091f1199f68ac22ff8208a6"
+    },
+    {
+      "frame": "c_106",
+      "image": "images/c_106.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "62b2ad99fddb20040be749789f3b101cfa3cbac0ec9436ca759a00a9295b5f66"
+    },
+    {
+      "frame": "c_108",
+      "image": "images/c_108.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "2c59dd0fa5a8a30cb4be4fc415e4f4ec0d3ae775e8640c147e03fd1b757c96aa"
+    },
+    {
+      "frame": "c_111",
+      "image": "images/c_111.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8efdfc8f9823c49b3074dcd6253c780bd3352734ccda83b61358c5ee2775274a"
+    },
+    {
+      "frame": "c_112",
+      "image": "images/c_112.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6f909b0d02c317f0ce7fc21041936a26cbe8e1b7dbc33758b35ae0c8cafef614"
+    },
+    {
+      "frame": "c_115",
+      "image": "images/c_115.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "14bea6b8d8b619ddc7b779dee06ca1e307a13d3ecae42778fdd09edc33c1397e"
+    },
+    {
+      "frame": "c_117",
+      "image": "images/c_117.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "2e2d08991ce8bea5737e3ae278faeeba2bd560e34b5787385e3b92e549bd1cef"
+    },
+    {
+      "frame": "c_119",
+      "image": "images/c_119.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "a74f5539b552c2904fda3bd613ff51f59088863aa5b7b40d381c457a158644a2"
+    },
+    {
+      "frame": "c_120",
+      "image": "images/c_120.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5d24fc6b17046dfff651078ca1ec8e18f1c7281ae6fa96039f5f1995a7962f8c"
+    },
+    {
+      "frame": "c_122",
+      "image": "images/c_122.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "b9b5deae56e0a39658b38a2acdc3b8767105f34548116e91a27f946644562fe6"
+    },
+    {
+      "frame": "c_124",
+      "image": "images/c_124.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8f7934ab169920220b2e0233748537cc8769eb4e89b4282f898c1d77d3e7bda9"
+    },
+    {
+      "frame": "c_127",
+      "image": "images/c_127.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c81ff7c39162e7728565766cf14af1f2f5bc7123695c8bb8139a29007b9beb6b"
+    },
+    {
+      "frame": "c_128",
+      "image": "images/c_128.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "d19acedaca5910a22d5ee244c8d110a321cf17d73ef742704c31b816d88a5a0c"
+    },
+    {
+      "frame": "c_131",
+      "image": "images/c_131.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "61382044a8a0eab0a02ecacea494b219b6afbc3383251174b8d9ce1a5454d71b"
+    },
+    {
+      "frame": "c_133",
+      "image": "images/c_133.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "5f36b10bd0da65c7dcc897675a3043ab17bb2a87039f7731bc7d282f759439c0"
+    },
+    {
+      "frame": "c_134",
+      "image": "images/c_134.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "55d84366c8514430ce2b744a187ac6879828c434770c9588a96e1a04ca616a55"
+    },
+    {
+      "frame": "c_137",
+      "image": "images/c_137.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "2b7adbd98c7d748ff9364b2f471819b8dc3989ef7b2ad46b1869c3a3368a2604"
+    },
+    {
+      "frame": "c_138",
+      "image": "images/c_138.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4f054d32b71e6d56eae25d7f238e94c3e94c5fae259de5d7dbea7d1021e0d6eb"
+    },
+    {
+      "frame": "c_140",
+      "image": "images/c_140.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8a6e82cd43a040e4a0237634349b4c48371fe62fb9027a6c724bfa1625a59cf2"
+    },
+    {
+      "frame": "c_143",
+      "image": "images/c_143.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4536b72640829bd7bce0f0afe6e77c496dad9e1edc72847b7ff0904233473a8c"
+    },
+    {
+      "frame": "c_145",
+      "image": "images/c_145.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "765ee727d8d114b31908e91ab4791f6c94b15da1180835989134160618570486"
+    },
+    {
+      "frame": "c_146",
+      "image": "images/c_146.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "a6da5035914b7ab689ed8552729993f64efd4b72a3c47f8480b2338562c0b4df"
+    },
+    {
+      "frame": "c_148",
+      "image": "images/c_148.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "0abe021fae0426119ab7ccb34f18a7391e30d9dca3cde5bba79135741db20c10"
+    },
+    {
+      "frame": "c_70",
+      "image": "images/c_70.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "53da7e012d6d2a4e1f5b24b334b22ce0a3571b3dacb99373f4a97e1a26febdb9"
+    },
+    {
+      "frame": "c_72",
+      "image": "images/c_72.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "9f8a71bdbbe12e49438e6b90b83260815b69e8e54f5aa0a5893cf09cca3f3520"
+    },
+    {
+      "frame": "c_74",
+      "image": "images/c_74.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "1fc2bc9e98ee645707f0946758aaa42bb267049fc66d8b471139beebb51a53e0"
+    },
+    {
+      "frame": "c_76",
+      "image": "images/c_76.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "029437df0fdba556e615172bbf6256bc8fc5036409655006258478bd25e02a7a"
+    },
+    {
+      "frame": "c_78",
+      "image": "images/c_78.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "6caff64c936f09b0fc70956f12899307b22e92c5567aae4dda030e87239c43d7"
+    },
+    {
+      "frame": "c_80",
+      "image": "images/c_80.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8690db140b3e417e87eaa455ede87441a45e98f7b27fbf525a4e65af56b1ee36"
+    },
+    {
+      "frame": "c_82",
+      "image": "images/c_82.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "60d012cf8750038e79fca910c51da32ae24404d32ccac2a43f5ea83addd565d8"
+    },
+    {
+      "frame": "c_85",
+      "image": "images/c_85.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "4bcb174dd1d915bca11f84f220975db8f23a5a46ddea261b01f84a566c85f28f"
+    },
+    {
+      "frame": "c_87",
+      "image": "images/c_87.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c4bf7636138ef61a7ffd280f030bda00b212c3a83371f89327f53a9cc16357f6"
+    },
+    {
+      "frame": "c_88",
+      "image": "images/c_88.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "86c6f88545b34629c3749eef5cb7b902fea0e286a9de1e1dafa3b6bc4d87e9a2"
+    },
+    {
+      "frame": "c_90",
+      "image": "images/c_90.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "f2d16ee7fd2671f971d84d309fef2d2bac6496240aee9407bb378b9c676a430c"
+    },
+    {
+      "frame": "c_92",
+      "image": "images/c_92.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "e1dc9ead1c0eefec20e1d7c37fbed34b529369dacc4401b1e3b155e449c713ed"
+    },
+    {
+      "frame": "c_94",
+      "image": "images/c_94.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "0a6db1dc0e0743de727e0e9aace8403e8ad8b16bc6f4cd4fa4d12b13fef34245"
+    },
+    {
+      "frame": "c_96",
+      "image": "images/c_96.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "149adaedf91a269dd1a33b294d65d1d35dff44528761aa7813e2a16d6d80bdb1"
+    },
+    {
+      "frame": "c_98",
+      "image": "images/c_98.jpg",
+      "part": 1,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "c9114320f9e5e369c3e285e3c91f3e749d5f54ebb5eca89ee6ee51d473f66eb3"
+    },
+    {
+      "frame": "k5_13",
+      "image": "images/k5_13.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "15049e08ad8ffbac05ccf7c81a5c1d2ce9d2fcdca98d6900674a52674914f89e"
+    },
+    {
+      "frame": "k5_18",
+      "image": "images/k5_18.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "396d5a678aac68e092fe0dfd0bf0998a6064a47807ce028334d43224b54134e1"
+    },
+    {
+      "frame": "k5_23",
+      "image": "images/k5_23.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "4fad2a38a9d7a45f2600f61e0177b28d7a16fa4b547fa68e0c4221019d091607"
+    },
+    {
+      "frame": "k5_27",
+      "image": "images/k5_27.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "bca58b09d904a89387b8a5aa74fe5fce695d831f9e38bd9dde140566942807b5"
+    },
+    {
+      "frame": "k5_32",
+      "image": "images/k5_32.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "760ef34fab334babdf0f11a846bc037841e5cd5967a39a8de16bcf0c0ccff665"
+    },
+    {
+      "frame": "k5_36",
+      "image": "images/k5_36.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "9d48b23cb5d42739b89f6248bf36b9cca86b0718dc29fe19dfc99cea6bcbcc1c"
+    },
+    {
+      "frame": "k5_4",
+      "image": "images/k5_4.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "4dab4f0c56c8768fa6bda889c9157580fb5ee60454238041d22fadd92b9ba04c"
+    },
+    {
+      "frame": "k5_43",
+      "image": "images/k5_43.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "4febd224204b09cdd92e6838b441605d2326423982605c75449e4f32bc78cca5"
+    },
+    {
+      "frame": "k5_54",
+      "image": "images/k5_54.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "c621a71f08eb4b5b0d0de977146d7f4dcf73ccec0a69ad739f21c481da907ba7"
+    },
+    {
+      "frame": "k5_67",
+      "image": "images/k5_67.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "f7f0c9efb38d3a21eae6e86ba96520fe8f82817213b6eeedc0184ae0c8338fe7"
+    },
+    {
+      "frame": "k5_76",
+      "image": "images/k5_76.jpg",
+      "part": 2,
+      "width": 2560,
+      "height": 1440,
+      "sha256": "3bba940db64d24d412be677a1c89dc130d1eca8f0c152ea52d66e072fab64c78"
+    },
+    {
+      "frame": "r4_100",
+      "image": "images/r4_100.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "2f401ba7574039227653b98b840daf03e35b8a2c621c3c460e399f3349e43c07"
+    },
+    {
+      "frame": "r4_102",
+      "image": "images/r4_102.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "616fd7b02c4cec38cc482a5665dcc672eaa96aab501466878b44e6cdb37adc99"
+    },
+    {
+      "frame": "r4_103",
+      "image": "images/r4_103.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "210ebbf8498e410bc6ea51041ab0e520a0cb013fed4e5c012047458a8835c85e"
+    },
+    {
+      "frame": "r4_106",
+      "image": "images/r4_106.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "4a812c3c30b4927e3743ad30bb2697c4cf5b776bab72be90908acb8d8557db0f"
+    },
+    {
+      "frame": "r4_107",
+      "image": "images/r4_107.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "e2b6b8226ff529abfea56f8fe41ba3e4b32ca8a253a49b36014d41e69e0a8d15"
+    },
+    {
+      "frame": "r4_109",
+      "image": "images/r4_109.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "90fe5bb4a2a2a73a045e397395bb6c8ac1e957f6ecdc28ee23648f22b13c86de"
+    },
+    {
+      "frame": "r4_111",
+      "image": "images/r4_111.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "c0bf4eaec3e41bb4e7e8795e7d95542fce84e0fb2b330ed514672921f7945c28"
+    },
+    {
+      "frame": "r4_113",
+      "image": "images/r4_113.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "989bad6ba0065bf232861f310879bcfa552fddc058721429ae487d510fcf9b60"
+    },
+    {
+      "frame": "r4_117",
+      "image": "images/r4_117.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "6ede241ddcba741e0e40a7c91f67aade36f1a72c53f488e39e22fc34b8e6b0d3"
+    },
+    {
+      "frame": "r4_119",
+      "image": "images/r4_119.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "e5c17abe4a11db4d7105f97d4d774025ccdc5a6f0fb183605147f59f8390496c"
+    },
+    {
+      "frame": "r4_12",
+      "image": "images/r4_12.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "2aa85d1d88c896dba317ca0575a0721d348b62037fddda198daeddc5d79b9c08"
+    },
+    {
+      "frame": "r4_122",
+      "image": "images/r4_122.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "f80bb26f40c38a563409512d912824955e0af1544d5fb3defe75582e0e40bf6b"
+    },
+    {
+      "frame": "r4_14",
+      "image": "images/r4_14.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "7e82f89e96745c140539f84c219a32a5ac86a02a624a849c690df46a2509c7fe"
+    },
+    {
+      "frame": "r4_17",
+      "image": "images/r4_17.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "5472746e18854b8a2e3f2ea10d9bddedf104d104ed0cb36fd52968acb6cefa0d"
+    },
+    {
+      "frame": "r4_18",
+      "image": "images/r4_18.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "44c750f4fcdd421483894b97655c9ec9b5b2248e798fa6d505e8ede3e082cd09"
+    },
+    {
+      "frame": "r4_21",
+      "image": "images/r4_21.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "e5461215fd925043e60e844db7dd540a2556c578bba2978a436c027d22df0915"
+    },
+    {
+      "frame": "r4_23",
+      "image": "images/r4_23.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "14a48b7fdf8f1862742e318bd7bd0f011d1800580fda9894693c1dbc2018a3d3"
+    },
+    {
+      "frame": "r4_24",
+      "image": "images/r4_24.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "21c8b2c07275578f6354149c5271007a272552c2fd6ba07836b9a172458fb479"
+    },
+    {
+      "frame": "r4_25",
+      "image": "images/r4_25.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "e96df80580f5e73d5edcad0580d3b5b278f41ed4de536d8c2d95301be2aee1b3"
+    },
+    {
+      "frame": "r4_28",
+      "image": "images/r4_28.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "15c56850441b6c747358d6d6c86bbbed0b09142af1fd28d7f1d8ad78d49f295e"
+    },
+    {
+      "frame": "r4_29",
+      "image": "images/r4_29.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "b1a91e21044314da5ff372277cef1dceef45637a7af8beceecfa9ea52303d1f7"
+    },
+    {
+      "frame": "r4_3",
+      "image": "images/r4_3.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "09d4b1ca6daae3e125c9d1dc3d1185a204cb332f30c6f9ef64c0122744a8d68b"
+    },
+    {
+      "frame": "r4_31",
+      "image": "images/r4_31.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "62b025d23b51bdeb1bc018e369835cf29ec5d1c644d27361ee318a4bb60fbfcb"
+    },
+    {
+      "frame": "r4_33",
+      "image": "images/r4_33.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "4835e8a21cf1f13ad36cf09a19e47cc3d93d2e9091376b467b5d934436c18bff"
+    },
+    {
+      "frame": "r4_35",
+      "image": "images/r4_35.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "b291c707deee15342841aa2c62ebc392c6285fe426c3aac3390cb53595193e63"
+    },
+    {
+      "frame": "r4_36",
+      "image": "images/r4_36.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "d4fd37cc142bac5d9c142ea80af21e32c7ccfb18d441f5cf1b56be0af17da3ab"
+    },
+    {
+      "frame": "r4_42",
+      "image": "images/r4_42.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "a501743db351ca602e00fde2153833bcec54c45afffac5522a28088aa2daa22e"
+    },
+    {
+      "frame": "r4_45",
+      "image": "images/r4_45.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "277cf20a3737a046663dc21df051e656b70250bc3c7e10001ddacc26da20e305"
+    },
+    {
+      "frame": "r4_48",
+      "image": "images/r4_48.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "3e27b67d50d6b45f7dc8e9052c72a402dbcbc09a15f3ba5ce6be3e65d74cb7d7"
+    },
+    {
+      "frame": "r4_5",
+      "image": "images/r4_5.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "f50e0a8aa03f6b1e22c54922f0ba75272e83fa1c6a63c4868d0f3810fe530c93"
+    },
+    {
+      "frame": "r4_50",
+      "image": "images/r4_50.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "744927a1f3de219527426fac124edd6241a3c9f90bb758d620456d63c0432296"
+    },
+    {
+      "frame": "r4_53",
+      "image": "images/r4_53.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "36469ba74ad014082c6829620e83fdb457da803244c315196132d0896b74df09"
+    },
+    {
+      "frame": "r4_55",
+      "image": "images/r4_55.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "cb1efaf9c72b141e9175a624eaacab55b043c58d0da53fef49411ce724310251"
+    },
+    {
+      "frame": "r4_56",
+      "image": "images/r4_56.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "0e21c534062e40f535fc6bf56ad8ed88bd1764b07e108a02fb27750cd9f199b0"
+    },
+    {
+      "frame": "r4_59",
+      "image": "images/r4_59.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "b5873de8714d819ce34104afeac2cdb7665cfb827665f9e7792783846dc3b9ca"
+    },
+    {
+      "frame": "r4_63",
+      "image": "images/r4_63.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "903e06f38963134b4f49791eba02c92deda83bde0d7ba596a26fce860c5d8e9a"
+    },
+    {
+      "frame": "r4_64",
+      "image": "images/r4_64.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "680b2ee2fc82b328eb8f3d1b6b701174a29340a917c8a9f8d2e2eec5f24ff00b"
+    },
+    {
+      "frame": "r4_68",
+      "image": "images/r4_68.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "d5d01c863cc2ef129703bef85b9685c5902d111491f033c9dab515a76b1cdbf5"
+    },
+    {
+      "frame": "r4_7",
+      "image": "images/r4_7.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "280a91112d152a46536ac37d6e74e05c6f7ccaa2a23178061a52306cf34ae929"
+    },
+    {
+      "frame": "r4_70",
+      "image": "images/r4_70.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "21c97b6c0358ad5c09ea6038ebcd5251fa45f798e7926555fbfb6edad2a1bde4"
+    },
+    {
+      "frame": "r4_71",
+      "image": "images/r4_71.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "8f16a5fcd888883253d4172b2d9dc3a46241ee68fec731daa8287c8a261aa016"
+    },
+    {
+      "frame": "r4_73",
+      "image": "images/r4_73.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "cad32b41655cba714d5ad71ddc292e5225eb32d75ef2509742e697fda2e4afa7"
+    },
+    {
+      "frame": "r4_74",
+      "image": "images/r4_74.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "0bd0f4d7289fc12df8c02920cb8e1fccf1dcfec020acaecc6cd9e9e402631e32"
+    },
+    {
+      "frame": "r4_79",
+      "image": "images/r4_79.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "ca38e45df55a7afbbed0465c140db0d05272f477d0315674c606a34523ce304a"
+    },
+    {
+      "frame": "r4_8",
+      "image": "images/r4_8.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "f6ddfd543e1a42c673996b85b0b43befc6f7dfb9dfdf747928ad940c53d518ae"
+    },
+    {
+      "frame": "r4_83",
+      "image": "images/r4_83.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "fbbff53e49050073f44c9b9d36cca4a4eb359a2dbdf424bc61433595f8a07381"
+    },
+    {
+      "frame": "r4_84",
+      "image": "images/r4_84.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "4a1d893b1a2ddf1f487e2caa8066fead0b160594202965bf578bad02adef18ba"
+    },
+    {
+      "frame": "r4_87",
+      "image": "images/r4_87.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "9b21bc1484f20668e9c7fb6dea7dd7319bbade33dd4b619fc1ce59fe64a4aeb8"
+    },
+    {
+      "frame": "r4_89",
+      "image": "images/r4_89.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "b66e480ec6bbf5084168cacd9848be7eb2afce5187e4df83e04febe64c5b18aa"
+    },
+    {
+      "frame": "r4_9",
+      "image": "images/r4_9.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "0403f886fa59e134596cf35c11c84e8aeb1f49f025a7c30127ab590a05a45f2e"
+    },
+    {
+      "frame": "r4_91",
+      "image": "images/r4_91.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "f3ec03b420bbd509cf7ffe2fac1fd91d2fd2f08c2767c27b35a467c775111c02"
+    },
+    {
+      "frame": "r4_93",
+      "image": "images/r4_93.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "f7ee38debdfc44d744eb7c493d3758e8d3fc5aa5437e63cfa58e13bcf56919d8"
+    },
+    {
+      "frame": "r4_96",
+      "image": "images/r4_96.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "8a9508daa0fa2795579a2a5218fa235b161748d36ada9119577d03e190c8ff2c"
+    },
+    {
+      "frame": "r4_97",
+      "image": "images/r4_97.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "d2a1794300157bf9c22c98e958ecf3b3d015a6562f52bf8ebab07c547b423d88"
+    },
+    {
+      "frame": "r4_98",
+      "image": "images/r4_98.jpg",
+      "part": 2,
+      "width": 2720,
+      "height": 1530,
+      "sha256": "52ded72299d981e2208174dcaf83cbed1e736399ba63ee6a7e08c551f11c36cc"
+    }
+  ]
+}

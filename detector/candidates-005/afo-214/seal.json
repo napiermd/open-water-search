@@ -1,0 +1,25 @@
+{
+  "boxes": "boxes.json",
+  "boxes_sha256": "7f3a00a1f5705de873573fcfc3554c8e7f3fa4b08cadf756ab310b3ee7efbd62",
+  "inputs": "runs/prompt-revision/confirm/inputs/manifest.json",
+  "inputs_sha256": "8eb33637eee69abaec5a2f4791f7646a9259ee6daf263855134a766410e07f55",
+  "photos": 214,
+  "tiles": "whole photo",
+  "model": {
+    "checkpoint": "https://huggingface.co/dronefreak/seadronessee-yolo26m/resolve/288991d42fb719370619b0a30132017a0c8ab5e9/best.pt",
+    "sha256": "97e29aa81bcc605ebdf14b6ea8a2f2f4606df0236f3f1b2ab1cffbd7a8542847",
+    "classes": {
+      "0": "swimmer",
+      "1": "boat",
+      "2": "jetski",
+      "3": "life_saving_appliances",
+      "4": "buoy"
+    },
+    "selected_on": "SeaDronesSee val split (the checkpoint's training run picked best.pt on it)",
+    "image_size": 640,
+    "min_confidence": 0.05,
+    "device": "mps",
+    "ultralytics": "8.4.218",
+    "torch": "2.15.0"
+  }
+}
