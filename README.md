@@ -2,7 +2,14 @@
 
 **A trained detector flags every second of a drone flight. Muse Ember checks each flag, says what it is, and the crew gets a search record built from what Ember kept.**
 
-On 300 MOBDrone frames the detector had never seen, Ember's check kept the same 210 people and cut false alarms from 166 to 38, **77% fewer, for $0.03**. The pass rule was committed before the run.
+On two drone datasets the detector never saw, Ember's check found at least as many people with far fewer false alarms:
+
+| Footage the detector never saw | Detector, then Ember | Detector alone |
+|---|---|---|
+| MOBDrone, 300 frames, 297 people | **210 found, 38 false alarms** | 210 found, 166 false alarms |
+| AFO, 300 photos, 2,950 people | **619 found, 85 false alarms** | at most 611 found at any setting, with 445 false alarms |
+
+Each pass rule was committed before its run, and the two runs cost $0.0318 and $0.0706. AFO's rule compared Ember's check with the detector at the setting that finds as many people, and no setting does, so the rule could not be applied as written. The AFO comparison above was chosen after the result was seen ([`runs/verify-afo`](runs/verify-afo/README.md)).
 
 ~~~
 python probe/open_water_search.py flight.mp4 --mode detector-check --detector-python detector-venv/bin/python --out results --budget 0.10
@@ -26,7 +33,7 @@ flowchart LR
     ember -->|dismiss| reopen["Dismissed flags<br/>kept in the report<br/>for a person to reopen"]
 ~~~
 
-**The test** (`runs/verify-mobdrone`). 300 MOBDrone frames, with 297 labeled people, chosen from video names and frame counts alone. Every frame is at least two seconds from any frame used before. The plan and pass rule were committed (82d5225) before any Ember call. The rule compares Ember's check with the detector alone at the highest confidence that still finds as many people.
+**MOBDrone** (`runs/verify-mobdrone`). 300 MOBDrone frames, with 297 labeled people, chosen from video names and frame counts alone. Every frame is at least two seconds from any frame used before. The plan and pass rule were committed (82d5225) before any Ember call. The rule compares Ember's check with the detector alone at the highest confidence that still finds as many people.
 
 | 297 labeled people in 300 new MOBDrone frames | Found | False alarms |
 |---|---|---|
@@ -36,9 +43,20 @@ flowchart LR
 
 Ember made 207 requests for $0.0318. A false alarm is any mark with no labeled person under it. Of Ember's 38, 20 are on empty water and 18 are second marks on a person already found.
 
-**Where it did not help.** On 1,517 SeaDronesSee validation photos, the footage the detector was trained on, the same check lost. It found 3,904 people with 291 false alarms, while the detector's own threshold found 3,910 with 104 (`runs/verify-confirm`, $0.2690). So the detector does the first pass, and Ember's check earns its keep on water the detector doesn't know. The 300 MOBDrone frames come from the same 61 videos as an earlier 300-frame test, so this shows the result repeating on new moments of that footage. It does not show it holds on other footage.
+**AFO** (`runs/verify-afo`). 300 photos from the test split of AFO, the Aerial dataset of Floating Objects (CC BY-NC-SA 3.0, used non-commercially), chosen from file names alone across all 17 of its source clips. Only its `human` boxes count as people, so a kept mark on a board, kayak, buoy or boat is a false alarm. The plan was committed (1a34171) before any Ember call. AFO frames are crowded: under five marks a photo, at most 874 of the 2,950 person appearances can be found by anyone.
 
-**What Ember gets wrong.** Both versions still miss 87 of the 297. Ember dismissed 40 flags that were real people, calling them a dark shape, a bird or an animal. That is why the report lists every dismissed flag with its crop and Ember's words.
+| 2,950 person appearances in 300 AFO photos | Found | False alarms |
+|---|---|---|
+| **Detector, then Ember** | **619** | **85** |
+| Detector alone at 0.05, its most sensitive | 611 | 445 |
+| Detector alone at 0.25, as published | 556 | 310 |
+| Detector alone at 0.60, set to raise about as few false alarms | 217 | 83 |
+
+Ember made 255 requests for $0.0706. It dismissed 768 of the 850 flags that weren't on a person, mostly seaweed, rocks and people standing on land, and kept 991 of the 1,101 that were. The pass rule could not be applied as written, because no detector setting finds 619. Against the detector's most sensitive setting, Ember's check finds 8 more people with 81% fewer false alarms, a comparison chosen after the result.
+
+**Where it did not help.** On 1,517 SeaDronesSee validation photos, the footage the detector was trained on, the same check lost. It found 3,904 people with 291 false alarms, while the detector's own threshold found 3,910 with 104 (`runs/verify-confirm`, $0.2690). So the detector does the first pass, and Ember's check earns its keep on water the detector doesn't know.
+
+**What Ember gets wrong.** On MOBDrone both versions still miss 87 of the 297, and Ember dismissed 40 flags that were real people, calling them a dark shape, a bird or an animal. On AFO it dismissed 110, often describing the crop's centre as open water between two swimmers. That is why the report lists every dismissed flag with its crop and Ember's words.
 
 **Live on a two-minute clip** (`runs/live-detector-check`, $0.0080). The command ran end to end on the same MOBDrone clip as Ember's own search below, in 57 seconds for two minutes of footage, and `terminal.jsonl` records every line it printed. It found 101 of 116 person appearances with no false alarms, and its sightings merged into 8 possible people for the clip's 4 labeled people, all real. On this clip the detector alone did better, finding 114 with 1 false alarm. Ember's check had almost nothing to remove and dismissed 13 real sightings, eight of them as a duck, a bird, a seal or a dolphin. Ember's own search on the clip left 15 possible people, 7 of them holding no one. A first take of the same command, from another folder, found 105 with 6 possible people (`runs/live-detector-check-first-take`).
 
@@ -204,7 +222,7 @@ From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 
 
 ## What this does not show
 
-- **Detector, then Ember on other footage.** The passing test used new frames from the same MOBDrone videos as an earlier test. On SeaDronesSee, the detector's own footage, Ember's check lost to the detector's threshold.
+- **Detector, then Ember on other footage.** It has been tested on two datasets the detector never saw, MOBDrone and AFO. On SeaDronesSee, the detector's own footage, Ember's check lost to the detector's threshold. Other footage is untested.
 - **Keeping pace with a drone.** The search reached 35.1 photos a minute on the scale run and 46.9 on the live clip, short of one photo a second.
 - **Equal spend with each search's own answers.** In the frozen-prompt runs we planned this head-to-head too, and it does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
 - **Reviewer speed.** There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.
@@ -321,6 +339,7 @@ The November 24 runs, with the cost each run folder's README reports. Every call
 | Detector, then Ember: 300 new MOBDrone frames, passed (`runs/verify-mobdrone`) | $0.0318 |
 | Detector, then Ember: live two-minute clip, one command, first take (`runs/live-detector-check-first-take`) | $0.0081 |
 | Detector, then Ember: live two-minute clip, re-run from the repository folder (`runs/live-detector-check`) | $0.0080 |
+| Detector, then Ember: 300 AFO photos (`runs/verify-afo`) | $0.0706 |
 
 ## Reproduce the numbers
 

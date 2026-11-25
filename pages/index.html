@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Open Water Search · A detector flags every second, Muse Ember checks each flag</title>
-  <meta name="description" content="A trained detector flags every second of a drone flight, and Muse Ember checks each flag and says what it is. On 300 MOBDrone frames the detector had never seen, the same 210 people were found with 77% fewer false alarms.">
+  <meta name="description" content="A trained detector flags every second of a drone flight, and Muse Ember checks each flag and says what it is. On two drone datasets the detector never saw, Ember's check found at least as many people with far fewer false alarms.">
   <link rel="stylesheet" href="pages.css">
   <link rel="stylesheet" href="index.css">
   <script type="module" src="index.js"></script>
@@ -18,7 +18,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <h1 id="hero-title">A trained detector flags every second of a drone flight. Muse Ember checks each flag and says what it is.</h1>
-        <p class="lede">On 300 MOBDrone frames the detector had never seen, Ember’s check kept the same 210 people and cut false alarms from 166 to 38. That is 77% fewer, for three cents. Every flag Ember keeps reaches the crew with its words, and every flag it dismisses stays in the report for a person to reopen.</p>
+        <p class="lede">On two drone datasets the detector never saw, Ember’s check found at least as many people with far fewer false alarms, for a few cents each. Every flag Ember keeps reaches the crew with its words, and every flag it dismisses stays in the report for a person to reopen.</p>
         <div class="actions">
           <a class="primary" href="#check-title">See what Ember said</a>
           <a class="secondary" href="judge.html">Take over a search</a>
@@ -26,15 +26,21 @@
         <p class="muted small">Everything on these pages replays recorded Muse Ember runs, so clicking around costs nothing.</p>
       </div>
       <figure class="result">
-        <h2>300 new MOBDrone frames · 297 labeled people</h2>
-        <div class="result-table" role="table" aria-label="People found and false alarms on 300 new MOBDrone frames">
+        <h2>MOBDrone · 300 frames · 297 labeled people</h2>
+        <div class="result-table" style="--max: 166" role="table" aria-label="People found and false alarms on 300 new MOBDrone frames">
           <div class="result-row head" role="row"><span role="columnheader"></span><span role="columnheader">Found</span><span role="columnheader">False alarms</span></div>
           <div class="result-row" role="row"><span role="rowheader">Detector alone<small>set to find as many, confidence 0.30</small></span><b role="cell">210</b><span role="cell" class="alarms"><span class="fill" style="--n: 166"></span><b>166</b></span></div>
           <div class="result-row ember" role="row"><span role="rowheader">Detector, then Ember<small>Ember checks every flag</small></span><b role="cell">210</b><span role="cell" class="alarms"><span class="fill" style="--n: 38"></span><b>38</b></span></div>
           <div class="result-row" role="row"><span role="rowheader">Detector alone<small>set to about as few alarms, confidence 0.62</small></span><b role="cell">125</b><span role="cell" class="alarms"><span class="fill" style="--n: 36"></span><b>36</b></span></div>
         </div>
+        <h2 class="second">AFO · 300 photos · 2,950 labeled people</h2>
+        <div class="result-table" style="--max: 445" role="table" aria-label="People found and false alarms on 300 AFO photos">
+          <div class="result-row head" role="row"><span role="columnheader"></span><span role="columnheader">Found</span><span role="columnheader">False alarms</span></div>
+          <div class="result-row" role="row"><span role="rowheader">Detector alone<small>its most sensitive, confidence 0.05</small></span><b role="cell">611</b><span role="cell" class="alarms"><span class="fill" style="--n: 445"></span><b>445</b></span></div>
+          <div class="result-row ember" role="row"><span role="rowheader">Detector, then Ember<small>Ember checks every flag</small></span><b role="cell">619</b><span role="cell" class="alarms"><span class="fill" style="--n: 85"></span><b>85</b></span></div>
+        </div>
         <code class="command">python probe/open_water_search.py flight.mp4 --mode detector-check --detector-python detector-venv/bin/python --out results</code>
-        <figcaption>The plan and pass rule were committed before the run (82d5225). Ember made 207 requests for $0.0318. The same check lost on SeaDronesSee, the footage the detector was trained on.</figcaption>
+        <figcaption>Each plan and pass rule was committed before its run, and the runs cost $0.0318 and $0.0706. No detector setting finds 619 on AFO, so its written rule could not be applied, and the AFO comparison was chosen after the result. The same check lost on SeaDronesSee, the footage the detector was trained on.</figcaption>
       </figure>
     </section>
 
@@ -48,7 +54,7 @@
       <ul class="facts-list">
         <li><strong>Where it did not help.</strong> On 1,517 SeaDronesSee validation photos, the detector’s own kind of footage, the check found 3,904 people with 291 false alarms. Raising the detector’s threshold found 3,910 with 104. So the detector does the first pass, and Ember earns its keep on water the detector doesn’t know.</li>
         <li><strong>What it gets wrong.</strong> Both versions still miss 87 of the 297. Ember dismissed 40 flags that were real people, so the report keeps every dismissed flag with its crop and Ember’s words.</li>
-        <li><strong>How far it reaches.</strong> The 300 frames are new moments from the same 61 MOBDrone videos as an earlier test, at least two seconds from any frame used before. Other footage is untested.</li>
+        <li><strong>How far it reaches.</strong> Two datasets the detector never saw: 300 new MOBDrone frames, and 300 AFO photos from 17 source clips, where only people in the water count. Other footage is untested. <a href="https://github.com/napiermd/open-water-search/tree/main/runs/verify-afo">The AFO run</a> keeps 991 of the 1,101 flags on people and dismisses 768 of the 850 that aren’t.</li>
         <li><strong>The one command reproduces it.</strong> Run on the same frames with Ember’s sealed answers replayed, <code>--mode detector-check</code> sent all 207 requests byte for byte as sealed and scored 210 found with 38 false alarms.</li>
       </ul>
     </section>
