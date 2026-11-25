@@ -15,3 +15,17 @@ The paired replacements added 19 false marks and removed two. They added 15 corr
 Personal Meta Muse Ember 1.0 returned all 120 answers across 85 requests. The token charge was $0.009897152 under the $0.05 ceiling. The production search was not changed.
 
 [Locked plan](PLAN.md) · [Paired results and changed marks](summary.json) · [Saved answers](verdicts.jsonl) · [Request charges](charges.json) · [Evidence hashes](seal.json)
+
+## Offline replay of an edge-only cutoff
+
+At **Ember confidence ≥0.65** on padded edge yeses, the reviewer still received the swimmer at seconds **136, 137 and 138**. Across the six clips this gave 24/24 labelled tracks, 189 correct person-seconds and 48 linked false-alarm episodes. The original check had 23/24, 183 and 52. Relative to the original decisions the replay introduced two false marks and suppressed eight, for 77 false marks overall. This is a net change in linked episodes; filtering can split or join an episode.
+
+| Rule | Tracks | Correct person-seconds | False-alarm episodes |
+|---|---:|---:|---:|
+| Original crops | 23/24 | 183 | 52 |
+| Padded, any yes | 24/24 | 197 | 60 |
+| Padded, ≥0.60 | 24/24 | 190 | 51 |
+| Padded, ≥0.65 | 24/24 | 189 | 48 |
+| Padded, ≥0.70 | 24/24 | 183 | 47 |
+
+Moving from 0.65 to 0.70 saved one more episode while losing six correctly marked person-seconds. The proposed 0.65 threshold was selected retrospectively on these same clips. Replay used the saved verdicts and the linked-episode scorer, with zero API calls. [Full sweep](cutoff-sweep.json) · [Replay code](replay_cutoffs.py).

@@ -1,0 +1,320 @@
+{
+  "original": {
+    "eligible_seconds": 267,
+    "identities": 24,
+    "found": 23,
+    "visible_person_seconds": 224,
+    "person_seconds": 183,
+    "kept_marks": 267,
+    "true_marks": 184,
+    "ignored_marks": 0,
+    "false_marks": 83,
+    "false_mark_seconds": 48,
+    "false_episodes": 52
+  },
+  "cutoffs": [
+    {
+      "false_marks_added": 19,
+      "false_marks_removed": 2,
+      "cutoff": 0,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 55,
+      "tracks": 24,
+      "person_seconds": 197,
+      "false_marks": 100,
+      "false_mark_seconds": 60,
+      "episodes": 60,
+      "net_extra_episodes": 8
+    },
+    {
+      "false_marks_added": 19,
+      "false_marks_removed": 2,
+      "cutoff": 0.35,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 55,
+      "tracks": 24,
+      "person_seconds": 197,
+      "false_marks": 100,
+      "false_mark_seconds": 60,
+      "episodes": 60,
+      "net_extra_episodes": 8
+    },
+    {
+      "false_marks_added": 16,
+      "false_marks_removed": 3,
+      "cutoff": 0.4,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 51,
+      "tracks": 24,
+      "person_seconds": 197,
+      "false_marks": 96,
+      "false_mark_seconds": 58,
+      "episodes": 58,
+      "net_extra_episodes": 6
+    },
+    {
+      "false_marks_added": 15,
+      "false_marks_removed": 3,
+      "cutoff": 0.45,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 49,
+      "tracks": 24,
+      "person_seconds": 196,
+      "false_marks": 95,
+      "false_mark_seconds": 58,
+      "episodes": 57,
+      "net_extra_episodes": 5
+    },
+    {
+      "false_marks_added": 13,
+      "false_marks_removed": 4,
+      "cutoff": 0.5,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 45,
+      "tracks": 24,
+      "person_seconds": 195,
+      "false_marks": 92,
+      "false_mark_seconds": 56,
+      "episodes": 55,
+      "net_extra_episodes": 3
+    },
+    {
+      "false_marks_added": 13,
+      "false_marks_removed": 6,
+      "cutoff": 0.52,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 42,
+      "tracks": 24,
+      "person_seconds": 194,
+      "false_marks": 90,
+      "false_mark_seconds": 56,
+      "episodes": 55,
+      "net_extra_episodes": 3
+    },
+    {
+      "false_marks_added": 12,
+      "false_marks_removed": 6,
+      "cutoff": 0.55,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 41,
+      "tracks": 24,
+      "person_seconds": 194,
+      "false_marks": 89,
+      "false_mark_seconds": 55,
+      "episodes": 54,
+      "net_extra_episodes": 2
+    },
+    {
+      "false_marks_added": 7,
+      "false_marks_removed": 7,
+      "cutoff": 0.6,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 31,
+      "tracks": 24,
+      "person_seconds": 190,
+      "false_marks": 83,
+      "false_mark_seconds": 51,
+      "episodes": 51,
+      "net_extra_episodes": -1
+    },
+    {
+      "false_marks_added": 2,
+      "false_marks_removed": 8,
+      "cutoff": 0.65,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 24,
+      "tracks": 24,
+      "person_seconds": 189,
+      "false_marks": 77,
+      "false_mark_seconds": 47,
+      "episodes": 48,
+      "net_extra_episodes": -4
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.7,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 16,
+      "tracks": 24,
+      "person_seconds": 183,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.75,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        137,
+        138
+      ],
+      "edge_marks_kept": 14,
+      "tracks": 24,
+      "person_seconds": 181,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.85,
+      "target_at_136": true,
+      "target_seconds": [
+        136,
+        138
+      ],
+      "edge_marks_kept": 13,
+      "tracks": 24,
+      "person_seconds": 180,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.9,
+      "target_at_136": true,
+      "target_seconds": [
+        136
+      ],
+      "edge_marks_kept": 10,
+      "tracks": 24,
+      "person_seconds": 178,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.95,
+      "target_at_136": true,
+      "target_seconds": [
+        136
+      ],
+      "edge_marks_kept": 9,
+      "tracks": 24,
+      "person_seconds": 177,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.96,
+      "target_at_136": false,
+      "target_seconds": [],
+      "edge_marks_kept": 4,
+      "tracks": 23,
+      "person_seconds": 172,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.97,
+      "target_at_136": false,
+      "target_seconds": [],
+      "edge_marks_kept": 3,
+      "tracks": 23,
+      "person_seconds": 171,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 0.98,
+      "target_at_136": false,
+      "target_seconds": [],
+      "edge_marks_kept": 1,
+      "tracks": 23,
+      "person_seconds": 170,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    },
+    {
+      "false_marks_added": 0,
+      "false_marks_removed": 8,
+      "cutoff": 1,
+      "target_at_136": false,
+      "target_seconds": [],
+      "edge_marks_kept": 0,
+      "tracks": 23,
+      "person_seconds": 169,
+      "false_marks": 75,
+      "false_mark_seconds": 46,
+      "episodes": 47,
+      "net_extra_episodes": -5
+    }
+  ]
+}
