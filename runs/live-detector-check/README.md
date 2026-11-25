@@ -25,3 +25,27 @@ python3 -u probe/open_water_search.py clip.mp4 --mode detector-check --detector-
 **First take.** The same command, run earlier from the folder holding the clip, is in `runs/live-detector-check-first-take`: 105 found, no false alarms, 6 possible people, $0.0081, 192 s. The detector's flags were the same. Ember's answers differ between runs, and so did Meta's response times.
 
 `seal.json` holds the SHA-256 of the search record and calls log as written. The published copies have Meta's response and message IDs removed. `scorecard.json` is `probe/score.py record` against the clip's labels. MOBDrone is by Cafarelli et al. (arXiv 2203.07973), CC BY 4.0.
+
+## Offline flight replay
+
+The [sealed replacement test](../../experiments/lost-people/sealed-off-center/result.json) restored zero pins. Both variants found 2 of 2 people with one false pin in one episode, so the current detector check is the selected policy.
+
+From the repository root, use the original local clip and a new output path. The verified run used Python 3.14.7, Pillow 13.0.0, libjpeg-turbo 3.2.0 and ffmpeg 8.1.1. The exact frame and crop checks can detect differences between encoder versions.
+
+```sh
+python runs/live-detector-check/replay_flight.py /path/to/clip.mp4 results/offline-flight
+open results/offline-flight/report.html
+```
+
+The replay calls the normal `detector-check` entry point with the sealed boxes and redacted Muse Ember 1.0 replies. It extracts the 120 frames from the video, checks their hashes, and matches all 99 requests to the saved replies. Request hashes were reconstructed from the sealed frames and boxes. Python connections are refused during the run. A fresh detector pass is unnecessary. The command preserves the original token usage and displays the historical $0.0080 charge. The replay makes zero external model calls and incurs $0.
+
+| Generated evidence | Verified result |
+|---|---|
+| `queue.json`, `coverage.json`, `detector-boxes.json` | Byte-for-byte match to the [published queue](queue.json), [coverage](coverage.json) and [boxes](detector-boxes.json) |
+| `report.html` | 101 queue entries across 120 seconds. Every one of the 115 flag crops links to its source frame and matches the corresponding request JPEG. |
+| `search-record.json` and terminal output | Eight identical handoffs and all 99 per-frame verdict lines match the [recorded web replay](../../pages/runs/live-detector-check.json). |
+| `probe/score.py record` with the original local labels | Exact match to the [published scorecard](scorecard.json), with 101 of 116 person appearances found and zero false marks |
+
+Follow queue rank 66 to `report.html#second-00022` and `crops/second-00022-flag1.jpg`. The coverage entry records the detector box `[693.35, 335.74, 752.07, 380.42]`. The queue pin is at `(722.7, 358.1)` in source-frame pixels. Possible person 1 was first seen at 0:08 and last seen at 0:22, in the center of `second-00022`. The handoff quotes Ember’s “person floating on water” and reports one kept flag and zero dismissed flags in that frame.
+
+At 0:06, Ember's “person floating right of centre” remains dismissed. Its crop is available in the report and its pin stays out of the reviewer queue.
