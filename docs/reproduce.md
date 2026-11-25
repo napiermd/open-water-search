@@ -43,7 +43,8 @@ With the default grounding format, an overview plus two close looks cost about $
 | Page | What you do there |
 |---|---|
 | [How it works](https://open-water-search.vercel.app) (`pages/index.html`) | Watch the live two-minute run print Ember's decisions and fill in its coverage timeline, read the handoff message for each possible person, then see the scale run, the detector comparison and the steps on one real validation photo |
-| [Take over a search](https://open-water-search.vercel.app/judge) (`pages/judge.html`) | Ember has taken one overview, opened its top tile and flagged a possible swimmer. You mark it, dismiss it or say you can't tell. Then you pick the next tile, see Ember's recorded close look there, and reveal the labels. |
+| [Recorded flight handoff](https://open-water-search.vercel.app/judge) | Open the last reported pin, download its self-contained crew packet and inspect an earlier dismissal of the same swimmer. |
+| [Earlier zoom experiment](https://open-water-search.vercel.app/pages/judge.html?run=validation) (`pages/judge.html`) | Ember has taken one overview, opened its top tile and flagged a possible swimmer. You mark it, dismiss it or say you can't tell. Then you pick the next tile, see Ember's recorded close look there, and reveal the labels. |
 | [Replay](https://open-water-search.vercel.app/replay) (`pages/replay.html`) | Put Ember and the fixed grid side by side on every frame of either run, at 1 to 9 close looks per frame, with spend and totals across all 30 frames |
 
 The take-over page works like this:

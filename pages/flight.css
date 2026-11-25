@@ -1,0 +1,52 @@
+body { color:#162f30; }
+.masthead,main,body>footer { width:min(92%,78rem);margin-inline:auto }
+main {padding-top:clamp(1.25rem,3vw,2.7rem)}
+.opening { max-width:56rem; margin:0 0 1.6rem }
+.opening h1 { font-size:clamp(2.15rem,4.3vw,4.2rem);line-height:1.02 }
+.opening p { max-width:70ch; font-size:clamp(1rem,1.2vw,1.12rem); margin:.8rem 0 0 }
+.flightbar,.scene figcaption,.detail-head { display:flex;align-items:center;justify-content:space-between;gap:.6rem }
+.flightbar { border-block:1px solid var(--rule);padding:.42rem 0;margin-bottom:.8rem;font-size:.92rem }
+.flightbar span {color:var(--muted)}
+.flightbar select { background:transparent;border:0;color:inherit;font-weight:700;max-width:100% }
+.instrument { display:grid;grid-template-columns:minmax(0,2.6fr) minmax(15rem,1fr);background:#122f30;color:#f5f3eb }
+.scene,.detail { margin:0 }
+.scene { align-self:center; min-width:0; padding:.8rem }
+.image-stage {position:relative}
+.image-stage img {display:block;width:100%;height:auto;aspect-ratio:1920/1012;background:#1b3c3c}
+.crosshair,.rect,.truth {position:absolute;pointer-events:none}
+.rect {border:2px solid #93f1eb;box-shadow:0 0 0 1px #173833}
+.crosshair { width:18px;height:18px;border-radius:50%;border:2px solid white;outline:1px solid #173833;transform:translate(-50%,-50%) }
+.truth { border:2px dashed #ffdb74;outline:1px solid #172b28 }
+.scene figcaption {padding-top:.6rem;color:#c7dbd5;font-size:.87rem}
+.scene figcaption strong,.detail-head span {font-variant-numeric:tabular-nums}
+.rail {background:#1b3b3c;padding:clamp(.8rem,1.7vw,1.4rem);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.detail-head {margin-bottom:.6rem}.detail-head h2 {color:inherit;font-size:1.06rem;margin:0}.detail-head span {color:#c7dbd5;font-size:.85rem}
+.detail img { display:block;width:min(100%,224px);height:auto;aspect-ratio:1;margin-inline:auto}
+.detail figcaption { font-size:.94rem;line-height:1.35;margin:.7rem 0;color:#e1eeea }
+#tools { margin-top:.35rem }.rail button,.notes button,.notes a { min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:.96rem;font-weight:650;border-radius:4px;padding:.6rem .9rem;text-decoration:none }
+.rail button { background:#a8eee4;color:#103633;border:0;width:100% }.rail button:hover {background:#d8fff7}
+.notes { display:grid;grid-template-columns:minmax(0,2fr) minmax(13rem,1fr); gap:2rem;padding:1.35rem 0;border-bottom:1px solid var(--rule) }
+h2 {font-family:Georgia,serif;font-weight:400}
+.notes p,.outcome p,.comparison p {max-width:67ch;margin:.5rem 0}
+#note-actions {display:flex;flex-direction:column;gap:.45rem;align-self:center}
+.notes button {background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.notes a {background:var(--accent);color:white}.notes button:hover {background:#e4ebe2}
+.outcome {display:grid;grid-template-columns:2fr 3fr;gap:min(6vw,6rem);margin:clamp(2.5rem,6vw,5rem) 0 2rem}
+.outcome h2,.comparison h2 {font-size:clamp(1.7rem,2.7vw,2.6rem);line-height:1.13;margin:0}
+table {width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums} th,td {padding:.6rem .35rem;border-bottom:1px solid var(--rule);text-align:right}th:first-child{text-align:left}caption{text-align:left;color:var(--muted);padding-bottom:.35rem} thead{font-size:.85rem}
+.results p {font-size:.95rem}.comparison {padding-top:1.5rem;border-top:1px solid var(--rule)}
+body>footer {padding-block:1rem 2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+:focus-visible { outline:3px solid #d56828;outline-offset:3px }
+@media(max-width:730px){.instrument,.notes,.outcome{grid-template-columns:1fr}.scene{padding:.55rem}.outcome,.notes{gap:1rem}.rail{padding:1rem}.rail .detail {display:grid;grid-template-columns:minmax(6rem,44%) 1fr;gap:1rem;align-items:center}.detail img{width:100%}.flightbar{font-size:.84rem}.opening{margin-bottom:1rem}.results th,.results td{padding:.5rem .15rem;font-size:.82rem}.scene figcaption{font-size:.8rem}}
+
+#tools button+button { margin-top:.4rem;background:transparent;border:1px solid #94b2ac;color:white }
+@media(max-width:560px){
+  .masthead {align-items:center;padding-block:.8rem;gap:.5rem}
+  .masthead nav a[aria-current="page"]{display:none}
+  .flightbar {padding:.12rem 0}
+  #sighting-label {white-space:nowrap}
+  .rail {padding:.75rem}
+}
+
+.rail a[download] { display:flex;align-items:center;justify-content:center;min-height:44px;color:#c6faf3;border:1px solid #a5cec5;border-radius:4px;font-weight:650;text-decoration:none }
+.rail a[download]:hover {background:#294b49}
