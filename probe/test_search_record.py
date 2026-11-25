@@ -10,12 +10,12 @@ from tempfile import TemporaryDirectory
 from runner import ROOT
 from simulated_ember import SimulatedEmber, run_command, write_flight
 
-TOOL_TEST = ROOT / "examples" / "tool-test"
+TOOL_TEST = ROOT / "experiments" / "zoom-first" / "tool-test"
 TOOL_TEST_SIZES = [(3840, 2160), (1920, 1080), (3840, 2160), (1920, 1080)]
 
 
 def recorded_replies():
-    """Ember's replies from the paid four-frame tool test in examples/tool-test, keyed by frame and tile."""
+    """Ember's replies from the paid four-frame tool test in experiments/zoom-first/tool-test, keyed by frame and tile."""
     replies = {}
     for line in (TOOL_TEST / "calls.jsonl").read_text().splitlines():
         call = json.loads(line)

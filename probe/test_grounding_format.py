@@ -12,7 +12,7 @@ from tempfile import TemporaryDirectory
 
 from PIL import Image
 
-from runner import LIMIT, NANO, ROOT, price
+from runner import DATASETS, LIMIT, NANO, ROOT, price
 from simulated_ember import INPUT_TOKENS, SimulatedEmber, run_command, write_flight
 
 
@@ -86,7 +86,7 @@ class GroundingFormat(unittest.TestCase):
         self.assertEqual(ember.requests[1]["text"]["format"]["type"], "json_schema")
 
     def test_the_frozen_format_sends_only_the_sealed_frozen_prompts_without_a_schema(self):
-        sealed = json.loads((ROOT / "live" / "settings.json").read_text())
+        sealed = json.loads((DATASETS["probe"][0] / "live" / "settings.json").read_text())
         record, requests = self.search((300, 200), 4, '{"points":[[0.5,0.5,0.9]]}', "--format", "frozen")
         self.assertEqual([prompt_and_image(request)[0] for request in requests],
                          [sealed["overview_prompt_sha256"], sealed["close_look_prompt_sha256"]])
@@ -96,7 +96,7 @@ class GroundingFormat(unittest.TestCase):
         self.assertEqual((sighting["x"], sighting["y"]), (150, 99.5))
 
     def test_the_grounding_format_keeps_the_frozen_overview(self):
-        sealed = json.loads((ROOT / "live" / "settings.json").read_text())
+        sealed = json.loads((DATASETS["probe"][0] / "live" / "settings.json").read_text())
         _, requests = self.search((300, 200), 4, marks(), "--format", "grounding")
         self.assertEqual(prompt_and_image(requests[0])[0], sealed["overview_prompt_sha256"])
         self.assertNotIn("text", requests[0])

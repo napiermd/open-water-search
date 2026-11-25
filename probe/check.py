@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from PIL import Image
-from runner import Ledger,Budget,MODEL,ROOT,execute,load_inputs,parse,price,rectangle
+from runner import DATASETS,Ledger,Budget,MODEL,ROOT,execute,load_inputs,parse,price,rectangle
 from score import contains,matching,prefix,report,score
 
 class Fixture:
@@ -20,7 +20,7 @@ class Fixture:
                 "usage":{"input_tokens":100,"input_tokens_details":{"cached_tokens":10},"output_tokens":20}}
 
 def run():
-    frozen=load_inputs(ROOT/"inputs")
+    frozen=load_inputs(DATASETS["probe"][0]/"inputs")
     assert len(frozen)==30
     assert parse('{"tiles":[2,2,1]}', -1, None) == {"tiles":[2,1]}
     assert parse('[4,0]', -1, None) == {"tiles":[4,0]}

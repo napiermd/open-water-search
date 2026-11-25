@@ -1,7 +1,7 @@
 """Write a public copy of a sealed trace with Meta's response and message IDs removed.
 
     python redact.py live
-    python redact.py validation/live
+    python redact.py experiments/zoom-first/validation-30/live
 
 Everything else, including Ember's raw text answers and token usage, is kept as returned. redaction.json
 records the SHA-256 of the original trace, which matches seal.json, and of the redacted copy.

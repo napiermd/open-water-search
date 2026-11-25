@@ -15,6 +15,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from runner import ROOT
+from score import TRAINING, VALIDATION
 from score import load_sealed
 from simulated_ember import SimulatedEmber, run_command, write_flight
 
@@ -111,16 +112,16 @@ class ScoringRule(unittest.TestCase):
 
 
 class PublishedScorecards(unittest.TestCase):
-    @unittest.skipUnless((ROOT / "scoring-only" / "labels").exists() and (ROOT / "validation" / "scoring-only" / "labels").exists(),
+    @unittest.skipUnless((TRAINING / "scoring-only" / "labels").exists() and (VALIDATION / "scoring-only" / "labels").exists(),
                          "needs the dataset labels; fetch them with probe/fetch_frames.py")
     def test_every_published_scorecard_rebuilds_exactly(self):
         printed = [subprocess.run([sys.executable, str(ROOT / "probe" / "score.py"), *run], capture_output=True,
                                   text=True, check=True).stdout for run in ([], ["validation"])]
         self.assertEqual("".join(printed).splitlines(), [
-            "live/score.json: matches the published scorecard",
-            "live/score-strict.json: matches the published scorecard",
-            "validation/live/score.json: matches the published scorecard",
-            "validation/live/score-strict.json: matches the published scorecard"])
+            "experiments/zoom-first/training-30/live/score.json: matches the published scorecard",
+            "experiments/zoom-first/training-30/live/score-strict.json: matches the published scorecard",
+            "experiments/zoom-first/validation-30/live/score.json: matches the published scorecard",
+            "experiments/zoom-first/validation-30/live/score-strict.json: matches the published scorecard"])
 
     def sealed_copy(self):
         folder = TemporaryDirectory()
@@ -129,8 +130,8 @@ class PublishedScorecards(unittest.TestCase):
         (base / "live").mkdir()
         (base / "inputs").mkdir()
         for name in ("seal.json", "redaction.json", "trace-redacted.json"):
-            shutil.copy(ROOT / "live" / name, base / "live" / name)
-        shutil.copy(ROOT / "inputs" / "manifest.json", base / "inputs" / "manifest.json")
+            shutil.copy(TRAINING / "live" / name, base / "live" / name)
+        shutil.copy(TRAINING / "inputs" / "manifest.json", base / "inputs" / "manifest.json")
         return base
 
     def test_a_trace_that_does_not_match_its_seal_is_refused(self):

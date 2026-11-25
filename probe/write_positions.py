@@ -1,7 +1,7 @@
 """Write a flight's position file for SeaDronesSee frames from the dataset's official annotations.
 
-    python3 probe/write_positions.py instances_val.json validation/inputs/manifest.json validation/inputs/positions.json
-    python3 probe/open_water_search.py validation/inputs/images --out results --positions validation/inputs/positions.json
+    python3 probe/write_positions.py instances_val.json experiments/zoom-first/validation-30/inputs/manifest.json experiments/zoom-first/validation-30/inputs/positions.json
+    python3 probe/open_water_search.py experiments/zoom-first/validation-30/inputs/images --out results --positions experiments/zoom-first/validation-30/inputs/positions.json
 
 instances_val.json is the Object Detection v2 validation annotation file the SeaDronesSee authors publish under
 CC0 1.0. Download it without registration from

@@ -3,7 +3,7 @@
     python fetch_frames.py
 
 Writes inputs/images and scoring-only/labels for the November 23 run, and the same folders under
-validation/. Files already present with the right hash are skipped.
+experiments/zoom-first/validation-30/. Files already present with the right hash are skipped.
 """
 import hashlib
 import json
@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MIRROR = "https://huggingface.co/datasets/dronefreak/SeaDronesSee/resolve/deb1f872ffe7efa4b7ee3a672562d16b6dc0ca5c/data"
-SETS = {ROOT: "train", ROOT / "validation": "val"}
+SETS = {ROOT / "experiments/zoom-first/training-30": "train", ROOT / "experiments/zoom-first/validation-30": "val"}
 
 
 def fetch(url, path, sha256):

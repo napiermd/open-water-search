@@ -22,10 +22,12 @@ NANO = 10**9
 PROBE_CAP = 490_000_000
 ARMS = ("grid", "chosen")
 MANIFEST_SHA = "ed1f42267359251e092516c223d0a2101c2a7fdadb8ed319acf81afd322ef132"
-# Each dataset folder holds inputs/, live/ and scoring-only/. The validation manifest was frozen on November 23.
+# The November 23 zoom-first experiment. Each dataset folder holds inputs/, live/ and scoring-only/. The validation
+# manifest was frozen on November 23. Sealed files there still name the paths they had then (see experiments/README.md).
+EXPERIMENT = ROOT / "experiments" / "zoom-first"
 DATASETS = {
-    "probe": (ROOT, MANIFEST_SHA),
-    "validation": (ROOT / "validation", "65c987f6fe7ee68d1fad51d3e5edcdf730b6b9e823e4e07a2a9c68085e318713"),
+    "probe": (EXPERIMENT / "training-30", MANIFEST_SHA),
+    "validation": (EXPERIMENT / "validation-30", "65c987f6fe7ee68d1fad51d3e5edcdf730b6b9e823e4e07a2a9c68085e318713"),
 }
 
 

@@ -42,7 +42,7 @@ MOBDrone is footage the detector never trained or was selected on. Its label fil
 |---|---|
 | `run_detector.py` | Runs the detector on an inputs manifest and writes `boxes.json` and `seal.json` |
 | `list_split.py` | Lists the full validation split as an inputs manifest and a scoring manifest, without reading any label |
-| `validation-30/` | Runs on the 30 published validation frames (`validation/inputs/manifest.json`) |
+| `validation-30/` | Runs on the 30 published validation frames (`experiments/zoom-first/validation-30/inputs/manifest.json`) |
 | `seadronessee-val/inputs/manifest.json` | Every photo of the split, with size and SHA-256 |
 | `seadronessee-val/scoring-only/manifest.json` | Every label file's SHA-256, in the scorer's layout |
 | `seadronessee-val/` | Runs on the full split |
@@ -59,10 +59,10 @@ detector-venv/bin/pip install ultralytics==8.4.218
 export YOLO_CONFIG_DIR=/tmp/ultralytics-config
 
 # The 30 published validation frames: fetch them with probe/fetch_frames.py.
-detector-venv/bin/python detector/run_detector.py validation/inputs/manifest.json detector/validation-30/whole-photo-640
-detector-venv/bin/python detector/run_detector.py validation/inputs/manifest.json detector/validation-30/tiles-640 --tiles
-python3 probe/score.py detector detector/validation-30/whole-photo-640/boxes.json validation/scoring-only
-python3 probe/score.py detector detector/validation-30/tiles-640/boxes.json validation/scoring-only
+detector-venv/bin/python detector/run_detector.py experiments/zoom-first/validation-30/inputs/manifest.json detector/validation-30/whole-photo-640
+detector-venv/bin/python detector/run_detector.py experiments/zoom-first/validation-30/inputs/manifest.json detector/validation-30/tiles-640 --tiles
+python3 probe/score.py detector detector/validation-30/whole-photo-640/boxes.json experiments/zoom-first/validation-30/scoring-only
+python3 probe/score.py detector detector/validation-30/tiles-640/boxes.json experiments/zoom-first/validation-30/scoring-only
 
 # The full split: download data/images/val/shard_000 and data/labels/val/shard_000 from
 # https://huggingface.co/datasets/dronefreak/SeaDronesSee at revision deb1f872, then link them in.

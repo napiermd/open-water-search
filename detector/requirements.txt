@@ -1,0 +1,2 @@
+# The trained detector (AGPL-3.0). Install it in its own environment and pass its Python as --detector-python.
+ultralytics==8.4.218

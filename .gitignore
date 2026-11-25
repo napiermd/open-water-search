@@ -1,8 +1,6 @@
 # Dataset files: download them with probe/fetch_frames.py
-inputs/images/
-scoring-only/labels/
-validation/inputs/images/
-validation/scoring-only/labels/
+experiments/zoom-first/*/inputs/images/
+experiments/zoom-first/*/scoring-only/labels/
 
 # Detector weights download at run time. The full validation split is linked in from a local download.
 detector/weights/
@@ -17,12 +15,9 @@ mobdrone/clip/scoring-only/labels
 # Run state and secrets
 *.key
 .env
-live/ledger.sqlite
-validation/live/ledger.sqlite
-live/trace.json
-validation/live/trace.json
-live/*-overview.jpg
-validation/live/*-overview.jpg
+experiments/zoom-first/*/live/ledger.sqlite
+experiments/zoom-first/*/live/trace.json
+experiments/zoom-first/*/live/*-overview.jpg
 results/
 __pycache__/
 .DS_Store
