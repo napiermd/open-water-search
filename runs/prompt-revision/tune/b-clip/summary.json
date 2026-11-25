@@ -1,0 +1,16 @@
+{
+  "model": "muse-ember-1.0",
+  "photos": 120,
+  "photos_checked": 99,
+  "photos_not_checked": 0,
+  "candidates": 115,
+  "ending": "finished",
+  "spent_nanodollars": 8694412,
+  "settings": {
+    "max_candidates": 12,
+    "crop_scale": 3,
+    "min_crop": 96,
+    "crop_pixels": 224,
+    "prompt": "Each numbered image is a crop from a drone photo of open water, centred on something a detector flagged. For every crop, say whether a person in the water is at or touching its centre, how confident you are from 0 to 1, and in a few words what is there. Seen from above, a person can be tiny, partly under water, one of a group, or easy to mistake for a bird or a seal: a head, arms, legs or a wetsuit mean a person. Rocks, seaweed, debris, buoys, empty boats or boards, and people standing on land are not people in the water."
+  }
+}

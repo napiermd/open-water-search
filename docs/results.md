@@ -1,5 +1,7 @@
 # Results
 
+**Prompt revision, November 24.** Two revised check prompts were tuned on the first 300 MOBDrone frames and the live clip. Neither found more people than the original prompt without more false alarms (306 and 307 found against 319), so neither was confirmed and the original prompt stays. Details in [runs/prompt-revision](../runs/prompt-revision/README.md).
+
 Every result here comes from a sealed run in [runs/](../runs). Each run's README gives its plan, its numbers and its cost, and its seal holds the SHA-256 of the Ember calls as written. The short version is in the [README](../README.md).
 
 ## The result: Ember checks the detector's flags

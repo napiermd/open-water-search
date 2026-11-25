@@ -42,7 +42,7 @@ A flight is a video, cut into one frame per second with ffmpeg, or a folder of p
 ## What it doesn't show
 
 - **On the detector's own footage it loses.** On 1,517 SeaDronesSee photos, Ember's check made 291 false alarms where raising the detector's threshold made 104 at the same people found ([runs/verify-confirm](runs/verify-confirm/README.md)). The check earns its keep on water the detector doesn't know.
-- **It dismisses real people.** It turned down 40 on MOBDrone and 110 on AFO, calling some a bird or the water between two swimmers. The report keeps every dismissed flag for a person to reopen.
+- **It dismisses real people.** It turned down 40 on MOBDrone and 110 on AFO, calling some a bird or the water between two swimmers. Two revised prompts aimed at this both dismissed more people, not fewer, so the original stays ([runs/prompt-revision](runs/prompt-revision/README.md)). The report keeps every dismissed flag for a person to reopen.
 - **On an easy clip it adds nothing.** On the live clip the detector alone found 114 of 116 with one false alarm, and the check found 101 with none.
 - **Two datasets are not every sea.** Footage beyond MOBDrone and AFO is untested, and there is no claim that a reviewer finds people faster.
 

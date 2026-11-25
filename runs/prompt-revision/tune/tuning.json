@@ -1,0 +1,48 @@
+{
+  "original": {
+    "found": 319,
+    "false_marks": 45,
+    "source": "runs/verify-check/mobdrone-300 and runs/live-detector-check"
+  },
+  "runs": {
+    "a-mobdrone-300": {
+      "found": 209,
+      "false_marks": 81,
+      "appearances": 311,
+      "spent": 0.037188924
+    },
+    "a-clip": {
+      "found": 97,
+      "false_marks": 0,
+      "appearances": 116,
+      "spent": 0.008817212
+    },
+    "b-mobdrone-300": {
+      "found": 206,
+      "false_marks": 26,
+      "appearances": 311,
+      "spent": 0.0358441
+    },
+    "b-clip": {
+      "found": 101,
+      "false_marks": 0,
+      "appearances": 116,
+      "spent": 0.008694412
+    }
+  },
+  "candidates": {
+    "a": {
+      "found": 306,
+      "false_marks": 81
+    },
+    "b": {
+      "found": 307,
+      "false_marks": 26
+    }
+  },
+  "qualifies": {
+    "a": false,
+    "b": false
+  },
+  "spent": 0.0905
+}
