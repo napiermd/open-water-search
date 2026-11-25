@@ -12,12 +12,13 @@ figcaption { margin-top: .5rem; font-size: .88rem; color: var(--muted); max-widt
 /* The headline result: people found and false alarms, with Ember's row highlighted. */
 .result { margin: 0; padding: 1.3rem 1.4rem 1.2rem; border-radius: 6px; background: #172f2e; color: #f5f3eb; }
 .result h2 { margin-bottom: 1rem; font-size: .95rem; color: var(--ember); }
+.result h2.second { margin-top: 1.4rem; }
 .result-row { display: grid; grid-template-columns: minmax(0, 15rem) 4rem minmax(0, 1fr); align-items: center; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid #36574f; }
 .result-row.head { padding-top: 0; font-size: .8rem; color: #8fa7a0; }
 .result-row small { display: block; font-size: .78rem; color: #8fa7a0; }
 .result-row > b { font: 400 1.7rem/1 Georgia, serif; font-variant-numeric: tabular-nums; }
 .alarms { display: flex; align-items: center; gap: .7rem; }
-.alarms .fill { height: 1.1rem; width: calc(var(--n) / 166 * 100%); min-width: 4px; max-width: calc(100% - 4rem); border-radius: 2px; background: #5d8c81; }
+.alarms .fill { height: 1.1rem; width: calc(var(--n) / var(--max, 166) * 100%); min-width: 4px; max-width: calc(100% - 4rem); border-radius: 2px; background: #5d8c81; }
 .alarms b { font: 400 1.7rem/1 Georgia, serif; font-variant-numeric: tabular-nums; }
 .result-row.ember { color: #fff; }
 .result-row.ember .fill { background: var(--ember); }
