@@ -23,7 +23,6 @@ def main():
         raise ValueError('Pilot manifest mismatch')
     frames = json.loads(pilot.read_bytes())
     verdicts = [json.loads(line) for line in (HERE/'verdicts.jsonl').read_text().splitlines()]
-    marks = build(frames, verdicts)
     path = ROOT / '../../data/mobdrone/annotations_person_coco_classes.json'
     truth, audit = load_truth(frames, json.loads(path.read_bytes()), json.loads((HERE/'exclusions.json').read_bytes()))
     db = sqlite3.connect((HERE/'ledger.sqlite').resolve().as_uri()+'?mode=ro', uri=True)
@@ -34,22 +33,42 @@ def main():
         calls = []
         cost = Counter()
         restored_rows = []
+        missing = []
         for arm, frame, index, reserved, paid, rows in db.execute('select * from calls order by arm,frame,i'):
-            if paid is None or not 0 <= paid <= reserved or rows is None:
+            if paid is None or not 0 <= paid <= reserved:
                 raise ValueError('Unsettled charge or incomplete response')
-            restored_rows.extend(json.loads(rows))
-            calls.append(dict(arm=arm, frame=frame, i=index, reserved_nanodollars=reserved, paid_nanodollars=paid))
+            if rows is None:
+                if arm != 'three':
+                    raise ValueError('Unreadable upstream decision')
+                missing.append((frame,index))
+            else:
+                restored_rows.extend(json.loads(rows))
+            calls.append(dict(arm=arm, frame=frame, i=index, reserved_nanodollars=reserved, paid_nanodollars=paid,
+                              status='usable' if rows is not None else 'unusable'))
             cost[arm] += paid
         order = lambda r: (r['arm'],r['frame'],r['i'])
         if sorted(verdicts,key=order) != sorted(restored_rows,key=order) or sum(cost.values()) > 150_000_000:
             raise ValueError('Ledger and exported verdicts disagree, or pilot exceeded ceiling')
     finally:
         db.close()
+    marks = build(frames, verdicts, missing)
     result = score(frames, truth, marks, complete=True)
+    unknown_case = None
+    if missing:
+        # Each unusable follow-up produced no deliverable mark. Measure how many identities
+        # could possibly change if every one of those exact centers had been accepted.
+        extra = [dict(arm='three', frame=f, i=i, yes=True, nearby=False) for f,i in missing]
+        alt = score(frames, truth, build(frames, verdicts+extra), complete=False)
+        arm = result['decision']['arms']['three']
+        arm['gates']['complete'] = arm['passes'] = False
+        result['decision']['numerical_selection'] = 'vote' if result['decision']['arms']['vote']['passes'] else 'current'
+        unknown_case = {k:alt['all']['arms']['three'][k] for k in ('found','mean_coverage','false_marks')}
+        unknown_case['new_beyond_control_union'] = len(alt['all']['comparisons']['three']['single_frame_union']['gained'])
     summary = dict(model='muse-ember-1.0', route='Meta Model API', track_audit=audit,
                    calls_by_arm=dict(Counter(c['arm'] for c in calls)), cost_nanodollars=dict(cost),
                    total_nanodollars=sum(cost.values()), verdicts_by_arm=dict(Counter(v['arm'] for v in verdicts)),
-                   decision=result['decision'])
+                   decision=result['decision'], unusable_three=missing,
+                   hypothetical_if_all_unusable_were_yes=unknown_case)
     for subset in ('all','full_window'):
         row = result[subset]
         summary[subset] = dict(seconds=row['seconds'], arms={})

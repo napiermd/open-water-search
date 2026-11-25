@@ -19,6 +19,13 @@ class Replay(unittest.TestCase):
         with self.assertRaises(ValueError):
             build(self.frames, self.calls[:-1])
 
+    def test_unreadable_followup_delivers_no_mark(self):
+        marks = build(self.frames, self.calls[:-1], [('1', 0)])
+        self.assertFalse(any(m['arm'] == 'three' and m['frame'] == '1' for m in marks))
+        self.assertTrue(any(m['arm'] == 'vote' and m['frame'] == '1' for m in marks))
+        with self.assertRaises(ValueError):
+            build(self.frames, self.calls, [('1', 0)])
+
     def test_nearby_cannot_restore_neighbor(self):
         self.calls[4].update(yes=False, nearby=True)
         self.assertFalse(any(m['arm']=='vote' and m['restored'] for m in build(self.frames, self.calls)))

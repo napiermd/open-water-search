@@ -10,7 +10,9 @@ sys.path.insert(0, str(HERE.parent / 'lost-people/flight-ranking'))
 from rank_flights import link
 
 
-def build(frames, verdicts):
+def build(frames, verdicts, unreadable_three=()):
+    unreadable = set(unreadable_three)
+    visited_unreadable = set()
     calls = {}
     for row in verdicts:
         key = row['arm'], row['frame'], row['i']
@@ -55,6 +57,11 @@ def build(frames, verdicts):
                     for arm in ('padded', 'vote', 'three'):
                         mark(arm, f, second, padded)
                 elif first < second < end:
+                    key = f['frame'], f['i']
+                    if key in unreadable:
+                        visited_unreadable.add(key)
+                        flags.append(f)
+                        continue
                     triple = verdict('three', f)
                     if triple['yes']:
                         mark('three', f, second+1, triple, restored=True)
@@ -70,6 +77,8 @@ def build(frames, verdicts):
                 mark('two_way', f, delivery, f['padded'])
                 if not (f['padded']['yes'] or f['padded']['nearby']):
                     mark('vote', f, delivery, f['padded'], restored=True)
+    if visited_unreadable != unreadable:
+        raise ValueError('Unusable follow-up outside planned scope')
     if set(calls) != expected:
         raise ValueError(f'{len(set(calls) - expected)} out-of-plan verdict(s)')
     return marks
@@ -79,7 +88,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('verdicts', type=Path)
     parser.add_argument('output', type=Path)
+    parser.add_argument('--charges', type=Path, help='Use sealed charge log to identify unusable three-image replies')
     args = parser.parse_args()
+    missing = [(r['frame'], r['i']) for r in json.loads(args.charges.read_text())
+               if r.get('status') == 'unusable' and r['arm'] == 'three'] if args.charges else []
     rows = [json.loads(line) for line in args.verdicts.read_text().splitlines() if line]
-    result = build(json.loads((HERE/'pilot.json').read_text()), rows)
+    result = build(json.loads((HERE/'pilot.json').read_text()), rows, missing)
     args.output.write_text(json.dumps(result, separators=(',', ':')) + '\n')
