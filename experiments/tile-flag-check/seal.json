@@ -1,0 +1,11 @@
+{
+  "PLAN.md": "7b32a028edbd0cd2eb310deed95c9292f9ccb3a6e1f2b52af811a295e4308f71",
+  "inputs.json": "cbab57fd0277f7d2d0fc37fe01b8fc29515e4b63d89e51951b35bdbf88fed71c",
+  "prepare.py": "639622ba1903ae6fa46ca7d97cef7e52a5b520b132ce9598d080f89666d33c46",
+  "run.py": "1a2ee19dcce5b049d2d6e20f1d8d83eb1901a59aa9d8fbf9f64826d496f28e6b",
+  "score_check.py": "2d548207b278769f223a29fa873a7d1a887c3145fa77c8bc015f0d6513b7a747",
+  "seal.py": "a285c03d271407dd0a92f6a0c2d18b423c5ccc202a47006c1f9e64e91b4d3d7a",
+  "charges.json": "03f3c22cd6740f55e5cd216e7db7347cecf09c9a8e32ebca2a5111bf5acaf2b8",
+  "verdicts.jsonl": "37cad620eee4cbcbc4c902d9522b53b4a2c0c71f2ba4362b8bc620a14ba0d7e4",
+  "summary.json": "c45f70e26675b704eccb46a0af08827ea9f56fb18162a363a14194bcf2aff5ff"
+}

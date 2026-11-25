@@ -1,0 +1,102 @@
+{
+  "model": "muse-ember-1.0",
+  "route": "Meta Model API",
+  "generation_requests": 172,
+  "eligible_frames": 172,
+  "eligible_flags": 1048,
+  "decided_flags": 1048,
+  "usable_requests": 172,
+  "nanodollars": 40484640,
+  "target": {
+    "arm": "current",
+    "frame": "DJI_0804_0012_50m_3-second-00037",
+    "i": 2,
+    "yes": true,
+    "nearby": false,
+    "confidence": 0.95,
+    "what": "person on paddleboard"
+  },
+  "new_ids": [
+    [
+      "DJI_0804_0012_50m_3.mp4",
+      8
+    ]
+  ],
+  "baseline": {
+    "identities": 35,
+    "found": 32,
+    "false_marks": 42,
+    "false_mark_seconds": 35,
+    "false_episodes": 26,
+    "mean_coverage": 0.6574867592724736,
+    "kept": 235,
+    "true_marks": 193,
+    "person_seconds": 160
+  },
+  "new_flags_only": {
+    "identities": 35,
+    "found": 22,
+    "false_marks": 113,
+    "false_mark_seconds": 58,
+    "false_episodes": 87,
+    "mean_coverage": 0.21123820623820624,
+    "kept": 170,
+    "true_marks": 57,
+    "person_seconds": 47
+  },
+  "combined": {
+    "identities": 35,
+    "found": 33,
+    "false_marks": 155,
+    "false_mark_seconds": 80,
+    "false_episodes": 106,
+    "mean_coverage": 0.7327797995655139,
+    "kept": 405,
+    "true_marks": 250,
+    "person_seconds": 177
+  },
+  "by_clip": {
+    "DJI_0804_0009_40m.mp4": {
+      "found": 0,
+      "false_marks": 13,
+      "false_mark_seconds": 8,
+      "false_episodes": 12
+    },
+    "DJI_0804_0010_60m.mp4": {
+      "found": 0,
+      "false_marks": 25,
+      "false_mark_seconds": 4,
+      "false_episodes": 19
+    },
+    "DJI_0804_0012_50m_3.mp4": {
+      "found": 1,
+      "false_marks": 25,
+      "false_mark_seconds": 9,
+      "false_episodes": 16
+    },
+    "DJI_0804_0017_40m.mp4": {
+      "found": 0,
+      "false_marks": 7,
+      "false_mark_seconds": 4,
+      "false_episodes": 5
+    },
+    "DJI_0804_0018_40m.mp4": {
+      "found": 0,
+      "false_marks": 7,
+      "false_mark_seconds": 5,
+      "false_episodes": 6
+    },
+    "DJI_0915_0003_50m.mp4": {
+      "found": 0,
+      "false_marks": 21,
+      "false_mark_seconds": 7,
+      "false_episodes": 14
+    },
+    "DJI_0915_0018_60m.mp4": {
+      "found": 0,
+      "false_marks": 15,
+      "false_mark_seconds": 8,
+      "false_episodes": 8
+    }
+  }
+}
