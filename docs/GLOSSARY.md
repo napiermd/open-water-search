@@ -52,7 +52,7 @@ _Avoid_: native coordinates, Meta coordinates
 
 **Ember's check** — Ember's answer about one flag, seen in a small crop around it: whether a person in the water is at its centre, how sure it is, and in a few words what is there. A flag Ember accepts is *kept*. One it turns down is *dismissed* and stays visible for a person to reopen.
 
-**False alarm** — A kept mark with no labeled person under it. A second mark on a person already found also counts, and any stated number of false alarms gives that split.
+**False alarm** — A kept mark with no labeled person under it. A second mark on a person already found also counts, and any stated number of false alarms gives that split. In a flight score, marks on nobody that follow one thing across seconds are one false alarm.
 
 **Unseen footage** — Drone frames from a source the trained detector never trained on, used to test whether either approach carries over to new cameras and water.
 _Avoid_: out-of-distribution data, new data
@@ -74,3 +74,24 @@ _Avoid_: heat map, search log
 
 **Handoff message** — A short fixed-format message about one possible person that a dispatcher can read to a rescue crew.
 _Avoid_: alert, summary, notification
+
+**Track** — Flags in nearby seconds that are linked as the same thing in the water, whether Ember kept or dismissed them. A possible person is the kept part of a track.
+_Avoid_: trajectory, tracklet
+
+**Vote across seconds** — A count of Ember's verdicts on one track within three seconds either side of a dismissed flag. When most are yes the flag is restored. It never removes a flag Ember kept.
+_Avoid_: time vote, smoothing, consensus
+
+**Three-second look** — A follow-up in which Ember sees one dismissed flag's spot at the second before, the second itself and the second after, and gives one verdict.
+_Avoid_: second look, re-check
+
+**Restored flag** — A flag Ember dismissed that the vote across seconds or a three-second look brought back. The record marks it and keeps Ember's original words.
+
+**Person nearby** — Ember's answer that a person is in the water elsewhere in a crop, away from its centre. The flag is kept and marked so.
+
+**Flight score** — How a test scores one flight: people found, seconds to first mark, the share of each person's seconds marked, and false alarms per flight minute.
+_Avoid_: recall, precision, accuracy
+
+**Person found** — A labeled person with at least one mark on them in any second of a flight. A person is one track identity in one flight.
+
+**Set aside** — A labeled person left out of the flight score: someone on land, or a box with no track identity. A mark on them is neither a find nor a false alarm.
+_Avoid_: ignored, excluded
