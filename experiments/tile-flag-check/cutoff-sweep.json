@@ -1,0 +1,242 @@
+[
+  {
+    "cutoff": 0,
+    "paddler": true,
+    "tile_marks": 170,
+    "tracks": 33,
+    "false_episodes": 106,
+    "extra_episodes": 80,
+    "extra_false_marks": 113,
+    "added_person_seconds": 17
+  },
+  {
+    "cutoff": 0.3,
+    "paddler": true,
+    "tile_marks": 170,
+    "tracks": 33,
+    "false_episodes": 106,
+    "extra_episodes": 80,
+    "extra_false_marks": 113,
+    "added_person_seconds": 17
+  },
+  {
+    "cutoff": 0.35,
+    "paddler": true,
+    "tile_marks": 168,
+    "tracks": 33,
+    "false_episodes": 104,
+    "extra_episodes": 78,
+    "extra_false_marks": 111,
+    "added_person_seconds": 17
+  },
+  {
+    "cutoff": 0.38,
+    "paddler": true,
+    "tile_marks": 157,
+    "tracks": 33,
+    "false_episodes": 100,
+    "extra_episodes": 74,
+    "extra_false_marks": 102,
+    "added_person_seconds": 16
+  },
+  {
+    "cutoff": 0.4,
+    "paddler": true,
+    "tile_marks": 156,
+    "tracks": 33,
+    "false_episodes": 99,
+    "extra_episodes": 73,
+    "extra_false_marks": 101,
+    "added_person_seconds": 16
+  },
+  {
+    "cutoff": 0.42,
+    "paddler": true,
+    "tile_marks": 141,
+    "tracks": 33,
+    "false_episodes": 91,
+    "extra_episodes": 65,
+    "extra_false_marks": 89,
+    "added_person_seconds": 15
+  },
+  {
+    "cutoff": 0.45,
+    "paddler": true,
+    "tile_marks": 140,
+    "tracks": 33,
+    "false_episodes": 90,
+    "extra_episodes": 64,
+    "extra_false_marks": 88,
+    "added_person_seconds": 15
+  },
+  {
+    "cutoff": 0.5,
+    "paddler": true,
+    "tile_marks": 125,
+    "tracks": 33,
+    "false_episodes": 82,
+    "extra_episodes": 56,
+    "extra_false_marks": 76,
+    "added_person_seconds": 13
+  },
+  {
+    "cutoff": 0.55,
+    "paddler": true,
+    "tile_marks": 107,
+    "tracks": 33,
+    "false_episodes": 68,
+    "extra_episodes": 42,
+    "extra_false_marks": 59,
+    "added_person_seconds": 13
+  },
+  {
+    "cutoff": 0.6,
+    "paddler": true,
+    "tile_marks": 76,
+    "tracks": 33,
+    "false_episodes": 53,
+    "extra_episodes": 27,
+    "extra_false_marks": 34,
+    "added_person_seconds": 12
+  },
+  {
+    "cutoff": 0.62,
+    "paddler": true,
+    "tile_marks": 60,
+    "tracks": 33,
+    "false_episodes": 43,
+    "extra_episodes": 17,
+    "extra_false_marks": 23,
+    "added_person_seconds": 10
+  },
+  {
+    "cutoff": 0.65,
+    "paddler": true,
+    "tile_marks": 59,
+    "tracks": 33,
+    "false_episodes": 42,
+    "extra_episodes": 16,
+    "extra_false_marks": 22,
+    "added_person_seconds": 10
+  },
+  {
+    "cutoff": 0.7,
+    "paddler": true,
+    "tile_marks": 51,
+    "tracks": 33,
+    "false_episodes": 37,
+    "extra_episodes": 11,
+    "extra_false_marks": 16,
+    "added_person_seconds": 10
+  },
+  {
+    "cutoff": 0.72,
+    "paddler": true,
+    "tile_marks": 45,
+    "tracks": 33,
+    "false_episodes": 34,
+    "extra_episodes": 8,
+    "extra_false_marks": 11,
+    "added_person_seconds": 9
+  },
+  {
+    "cutoff": 0.75,
+    "paddler": true,
+    "tile_marks": 44,
+    "tracks": 33,
+    "false_episodes": 34,
+    "extra_episodes": 8,
+    "extra_false_marks": 11,
+    "added_person_seconds": 8
+  },
+  {
+    "cutoff": 0.8,
+    "paddler": true,
+    "tile_marks": 42,
+    "tracks": 33,
+    "false_episodes": 34,
+    "extra_episodes": 8,
+    "extra_false_marks": 11,
+    "added_person_seconds": 7
+  },
+  {
+    "cutoff": 0.85,
+    "paddler": true,
+    "tile_marks": 40,
+    "tracks": 33,
+    "false_episodes": 33,
+    "extra_episodes": 7,
+    "extra_false_marks": 10,
+    "added_person_seconds": 7
+  },
+  {
+    "cutoff": 0.88,
+    "paddler": true,
+    "tile_marks": 33,
+    "tracks": 33,
+    "false_episodes": 31,
+    "extra_episodes": 5,
+    "extra_false_marks": 8,
+    "added_person_seconds": 6
+  },
+  {
+    "cutoff": 0.9,
+    "paddler": true,
+    "tile_marks": 30,
+    "tracks": 33,
+    "false_episodes": 31,
+    "extra_episodes": 5,
+    "extra_false_marks": 8,
+    "added_person_seconds": 6
+  },
+  {
+    "cutoff": 0.92,
+    "paddler": true,
+    "tile_marks": 21,
+    "tracks": 33,
+    "false_episodes": 28,
+    "extra_episodes": 2,
+    "extra_false_marks": 3,
+    "added_person_seconds": 4
+  },
+  {
+    "cutoff": 0.95,
+    "paddler": true,
+    "tile_marks": 19,
+    "tracks": 33,
+    "false_episodes": 28,
+    "extra_episodes": 2,
+    "extra_false_marks": 3,
+    "added_person_seconds": 3
+  },
+  {
+    "cutoff": 0.98,
+    "paddler": false,
+    "tile_marks": 4,
+    "tracks": 32,
+    "false_episodes": 26,
+    "extra_episodes": 0,
+    "extra_false_marks": 0,
+    "added_person_seconds": 0
+  },
+  {
+    "cutoff": 0.99,
+    "paddler": false,
+    "tile_marks": 1,
+    "tracks": 32,
+    "false_episodes": 26,
+    "extra_episodes": 0,
+    "extra_false_marks": 0,
+    "added_person_seconds": 0
+  },
+  {
+    "cutoff": 1,
+    "paddler": false,
+    "tile_marks": 0,
+    "tracks": 32,
+    "false_episodes": 26,
+    "extra_episodes": 0,
+    "extra_false_marks": 0,
+    "added_person_seconds": 0
+  }
+]
