@@ -67,6 +67,22 @@ class VerifyCandidates(unittest.TestCase):
         self.assertEqual(len(ember.requests), 2)
         self.assertEqual(ember.requests[0]["text"]["format"]["type"], "json_schema")
 
+    def test_a_prompt_file_replaces_the_check_prompt_and_is_recorded(self):
+        (self.root / "prompt.txt").write_text("Check each crop for a person in the water.\n")
+        ember = FakeEmber({2: 0.9})
+        out = self.root / "out"
+        verify_candidates.main([str(self.root / "candidates.json"), str(self.root / "inputs/manifest.json"),
+                                str(self.root / "scoring"), "--out", str(out), "--budget", "0.05",
+                                "--prompt-file", str(self.root / "prompt.txt")], ember)
+        self.assertEqual(ember.requests[0]["input"][0]["content"][0]["text"], "Check each crop for a person in the water.")
+        self.assertEqual(json.loads((out / "summary.json").read_text())["settings"]["prompt"],
+                         "Check each crop for a person in the water.")
+
+    def test_without_a_prompt_file_every_request_uses_the_sealed_prompt(self):
+        ember = FakeEmber({2: 0.9})
+        self.run_check(ember)
+        self.assertTrue(all(body["input"][0]["content"][0]["text"] == verify_candidates.PROMPT for body in ember.requests))
+
     def test_the_run_stops_before_a_request_could_cross_the_budget(self):
         worst = price(300 + len(json.dumps({"format": verify_candidates.CHECKS})), 0, LIMIT)
         budget = f"{(worst + 1) / NANO:.9f}"

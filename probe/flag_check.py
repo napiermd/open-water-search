@@ -60,8 +60,9 @@ def crop(image, box):
     return "data:image/jpeg;base64," + base64.b64encode(crop_jpeg(image, box)).decode()
 
 
-def request_body(image, boxes):
-    content = [{"type": "input_text", "text": PROMPT}]
+def request_body(image, boxes, prompt=PROMPT):
+    """The check request for one frame's flags. Every sealed run used PROMPT; a revised prompt is passed in."""
+    content = [{"type": "input_text", "text": prompt}]
     for number, box in enumerate(boxes, 1):
         content += [{"type": "input_text", "text": f"Crop {number}:"}, {"type": "input_image", "image_url": crop(image, box)}]
     return {"model": MODEL, "reasoning": {"effort": "minimal"}, "max_output_tokens": LIMIT,

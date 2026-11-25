@@ -45,3 +45,7 @@ runs/*/inputs/images
 /clip.mp4
 /detector-venv
 runs/verify-afo/run/checks.jsonl
+runs/prompt-revision/**/checks.jsonl
+runs/prompt-revision/tune/clip/inputs/images
+runs/prompt-revision/confirm/inputs/images
+runs/prompt-revision/confirm/scoring-only/labels

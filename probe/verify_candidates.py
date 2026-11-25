@@ -35,8 +35,8 @@ class OutOfBudget(Exception):
 
 
 class Checker:
-    def __init__(self, api, budget, log):
-        self.api, self.budget, self.log = api, budget, log
+    def __init__(self, api, budget, log, prompt=PROMPT):
+        self.api, self.budget, self.log, self.prompt = api, budget, log, prompt
         self.spent = self.reserved = 0
         self.lock = threading.Lock()
 
@@ -57,7 +57,7 @@ class Checker:
     def check(self, photo, image_path):
         boxes = candidates(photo)
         with Image.open(image_path) as opened:
-            body = request_body(opened.convert("RGB"), boxes)
+            body = request_body(opened.convert("RGB"), boxes, self.prompt)
         # Meta's token count leaves out the schema, so count each of its characters as a token.
         worst = price(self.api.count(body) + len(json.dumps(body["text"])), 0, LIMIT)
         with self.lock:
@@ -98,6 +98,7 @@ def main(arguments=None, api=None):
     parser.add_argument("--budget", type=float, required=True, help="most to spend on Ember, in dollars")
     parser.add_argument("--parallel", type=int, default=8)
     parser.add_argument("--key-file", type=Path)
+    parser.add_argument("--prompt-file", type=Path, help="a revised check prompt, instead of the one every sealed run used")
     args = parser.parse_args(arguments)
     if api is None:
         if args.key_file:
@@ -108,7 +109,8 @@ def main(arguments=None, api=None):
     args.out.mkdir(parents=True, exist_ok=False)
     to_check = [photo for photo in photos if candidates(photo)]
     with (args.out / "checks.jsonl").open("w") as log:
-        checker = Checker(api, round(args.budget * NANO), log)
+        prompt = args.prompt_file.read_text().strip() if args.prompt_file else PROMPT
+        checker = Checker(api, round(args.budget * NANO), log, prompt)
         with ThreadPoolExecutor(args.parallel) as pool:
             futures = {photo["frame"]: pool.submit(checker.check, photo, paths[photo["frame"]]) for photo in to_check}
         results, ending = {}, "finished"
@@ -127,7 +129,7 @@ def main(arguments=None, api=None):
                    candidates=sum(len(candidates(photo)) for photo in to_check), ending=ending,
                    spent_nanodollars=checker.spent,
                    settings=dict(max_candidates=MAX_CANDIDATES, crop_scale=CROP_SCALE, min_crop=MIN_CROP,
-                                 crop_pixels=CROP_PIXELS, prompt=PROMPT))
+                                 crop_pixels=CROP_PIXELS, prompt=prompt))
     (args.out / "sightings.json").write_text(json.dumps(sightings, indent=1))
     (args.out / "scorecard.json").write_text(json.dumps(card, indent=2, sort_keys=True))
     (args.out / "summary.json").write_text(json.dumps(summary, indent=2))

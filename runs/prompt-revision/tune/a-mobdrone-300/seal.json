@@ -1,0 +1,7 @@
+{
+  "checks_sha256": "59935e8337a0f1188756350ddc77686e7fb41be608661e9b19bb579b69954be9",
+  "checks_redacted_sha256": "047228d0aeb70afefb92a71722349e35d79e725acbae594b28c9ee3d710a3fa0",
+  "removed": "response.id and output[].id",
+  "spent_nanodollars": 37188924,
+  "ending": "finished"
+}

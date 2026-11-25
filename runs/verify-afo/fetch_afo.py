@@ -1,6 +1,6 @@
 """Download the 300 AFO photos in runs/verify-afo/frames.json and their labels, and list them in the repo's layouts.
 
-    python runs/verify-afo/fetch_afo.py SAMPLE_DIR
+    python runs/verify-afo/fetch_afo.py SAMPLE_DIR [RUN_DIR]
 
 Each photo is fetched from whichever of the release's three parts holds it, and its six-class label file from PART_1.
 SAMPLE_DIR/images gets the photos and SAMPLE_DIR/labels one YOLO file per photo holding only its `human` boxes (class
@@ -52,8 +52,8 @@ def link(path, target):
     path.symlink_to(target.resolve(), target_is_directory=True)
 
 
-def main(sample):
-    listing = json.loads((RUN / "frames.json").read_text())
+def main(sample, run=RUN):
+    listing = json.loads((run / "frames.json").read_text())
     names = [frame["image"] for frame in listing["frames"]]
     (sample / "images").mkdir(parents=True, exist_ok=True)
     (sample / "labels").mkdir(parents=True, exist_ok=True)
@@ -68,18 +68,19 @@ def main(sample):
                            sha256=hashlib.sha256((sample / "images" / name).read_bytes()).hexdigest()))
         scoring.append(dict(frame=stem, label=f"labels/{stem}.txt",
                             sha256=hashlib.sha256((sample / "labels" / f"{stem}.txt").read_bytes()).hexdigest()))
-    (RUN / "inputs").mkdir(exist_ok=True)
-    (RUN / "scoring-only").mkdir(exist_ok=True)
-    (RUN / "inputs" / "manifest.json").write_text(json.dumps(dict(
-        dataset=listing["dataset"], source=listing["source"], license=listing["license"], list="runs/verify-afo/frames.json",
-        list_sha256=hashlib.sha256((RUN / "frames.json").read_bytes()).hexdigest(), frames=inputs), indent=2) + "\n")
-    (RUN / "scoring-only" / "manifest.json").write_text(json.dumps(dict(
+    (run / "inputs").mkdir(exist_ok=True)
+    (run / "scoring-only").mkdir(exist_ok=True)
+    (run / "inputs" / "manifest.json").write_text(json.dumps(dict(
+        dataset=listing["dataset"], source=listing["source"], license=listing["license"], list=str((run / "frames.json").relative_to(RUN.parents[1])),
+        list_sha256=hashlib.sha256((run / "frames.json").read_bytes()).hexdigest(), frames=inputs), indent=2) + "\n")
+    (run / "scoring-only" / "manifest.json").write_text(json.dumps(dict(
         format="YOLO normalized xywh, class 0 = person (AFO's human class only; other classes left out)",
         labels="PART_1/PART_1/6categories", frames=scoring), indent=2) + "\n")
-    link(RUN / "inputs" / "images", sample / "images")
-    link(RUN / "scoring-only" / "labels", sample / "labels")
+    link(run / "inputs" / "images", sample / "images")
+    link(run / "scoring-only" / "labels", sample / "labels")
     print(f"fetched {len(inputs)} photos and their labels into {sample}")
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]))
+    # An optional second argument is another run folder with its own frames.json, such as the prompt revision's.
+    main(Path(sys.argv[1]), Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else RUN)
