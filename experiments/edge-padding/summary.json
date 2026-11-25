@@ -1,0 +1,458 @@
+{
+  "model": "muse-ember-1.0",
+  "route": "personal Meta Model API",
+  "paid_nanodollars": 9897152,
+  "selected": 120,
+  "answered": 120,
+  "frames_requested": 85,
+  "unusable_frames": [],
+  "current": {
+    "eligible_seconds": 267,
+    "identities": 24,
+    "found": 23,
+    "visible_person_seconds": 224,
+    "person_seconds": 183,
+    "kept_marks": 267,
+    "true_marks": 184,
+    "ignored_marks": 0,
+    "false_marks": 83,
+    "false_mark_seconds": 48,
+    "false_episodes": 52
+  },
+  "padded_edge_replacements": {
+    "eligible_seconds": 267,
+    "identities": 24,
+    "found": 24,
+    "visible_person_seconds": 224,
+    "person_seconds": 197,
+    "kept_marks": 299,
+    "true_marks": 199,
+    "ignored_marks": 0,
+    "false_marks": 100,
+    "false_mark_seconds": 60,
+    "false_episodes": 60
+  },
+  "gained_ids": [
+    [
+      "DJI_0915_0015_50m.mp4",
+      7
+    ]
+  ],
+  "lost_ids": [],
+  "target": {
+    "frame": "DJI_0915_0015_50m-second-00136",
+    "original_i": 1,
+    "track_id": 7,
+    "before": {
+      "arm": "current",
+      "frame": "whole/DJI_0915_0015_50m-second-00136",
+      "i": 1,
+      "yes": false,
+      "nearby": false,
+      "confidence": 0.9,
+      "what": "partial swimmer at top edge, centre empty water"
+    },
+    "after": {
+      "arm": "current",
+      "frame": "DJI_0915_0015_50m-second-00136",
+      "i": 0,
+      "yes": true,
+      "nearby": false,
+      "confidence": 0.95,
+      "what": "person in white in water"
+    }
+  },
+  "recovered_track_marks": [
+    {
+      "frame": "DJI_0915_0015_50m-second-00136",
+      "second": 136,
+      "i": 1,
+      "delivery_second": 136,
+      "point": [
+        1539.8200000000002,
+        8.66
+      ]
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00137",
+      "second": 137,
+      "i": 1,
+      "delivery_second": 137,
+      "point": [
+        1433.205,
+        8.455
+      ]
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00138",
+      "second": 138,
+      "i": 1,
+      "delivery_second": 138,
+      "point": [
+        1340.815,
+        10.68
+      ]
+    }
+  ],
+  "transitions": {
+    "true_added": 15,
+    "false_added": 19,
+    "false_removed": 2
+  },
+  "changes": [
+    {
+      "frame": "DJI_0915_0015_50m-second-00003",
+      "original_i": 4,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        0
+      ],
+      "old_words": "person with float below centre",
+      "new_words": "person floating in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00012",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark blob at right edge, centre empty",
+      "new_words": "small dark silhouette in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00031",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        3
+      ],
+      "old_words": "small white curved floating object",
+      "new_words": "person in white in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00032",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        3
+      ],
+      "old_words": "white seabird floating on water",
+      "new_words": "swimmer with white wake in open water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00033",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        3
+      ],
+      "old_words": "white bird / wake with dark centre, not a person",
+      "new_words": "person floating in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00036",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        3
+      ],
+      "old_words": "partial object at top edge, centre empty",
+      "new_words": "white curved shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00037",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        3
+      ],
+      "old_words": "partial person at top edge",
+      "new_words": "small swimmer with white wake at top centre"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00062",
+      "original_i": 2,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small dark rock or debris",
+      "new_words": "dark person floating in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00070",
+      "original_i": 2,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        4
+      ],
+      "old_words": "person at bottom edge not centre",
+      "new_words": "dark elongated swimmer-like shape"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00073",
+      "original_i": 6,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "tiny dark speck debris",
+      "new_words": "small dark dot in water centre"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00075",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark shape left of centre, green spot right",
+      "new_words": "dark elongated swimmer shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00075",
+      "original_i": 3,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small dark shape below centre",
+      "new_words": "small dark swimmer shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00076",
+      "original_i": 1,
+      "yes": false,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark elongated shape centre-left",
+      "new_words": "dark water blobs, no clear person"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00083",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark elongated submerged patch, another dark spot right",
+      "new_words": "dark human-shaped blob in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00083",
+      "original_i": 3,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "irregular dark submerged vegetation or rock",
+      "new_words": "dark elongated shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00083",
+      "original_i": 4,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "irregular dark submerged vegetation or rock",
+      "new_words": "dark elongated shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00084",
+      "original_i": 3,
+      "yes": false,
+      "on_label": false,
+      "labels": [],
+      "old_words": "two dark shapes, one near centre",
+      "new_words": "two dark spots in water, no person"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00085",
+      "original_i": 5,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small dark patch in water",
+      "new_words": "dark shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00085",
+      "original_i": 7,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "faint blurry dark smudge in water",
+      "new_words": "blurry dark shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00103",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small dark rock or debris",
+      "new_words": "dark blob in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00105",
+      "original_i": 6,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small object at top edge",
+      "new_words": "small dark swimmer in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00125",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        6
+      ],
+      "old_words": "white floating object or buoy",
+      "new_words": "person in light clothing in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00136",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        7
+      ],
+      "old_words": "partial swimmer at top edge, centre empty water",
+      "new_words": "person in white in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00137",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        7
+      ],
+      "old_words": "person at top edge, centre empty water",
+      "new_words": "person in white in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00138",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        7
+      ],
+      "old_words": "figure at top edge, empty water centre",
+      "new_words": "person in white clothing"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00154",
+      "original_i": 0,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "pale curved dolphin-like animal",
+      "new_words": "elongated pale curved shape in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00164",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small dark rock or debris",
+      "new_words": "dark human-shaped blob in water"
+    },
+    {
+      "frame": "DJI_0915_0015_50m-second-00174",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        11
+      ],
+      "old_words": "bird in water",
+      "new_words": "dark swimmer with white head"
+    },
+    {
+      "frame": "DJI_0915_0023_50m-second-00007",
+      "original_i": 0,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        0
+      ],
+      "old_words": "person floating above centre",
+      "new_words": "person floating on back in water"
+    },
+    {
+      "frame": "DJI_0915_0023_50m-second-00020",
+      "original_i": 1,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        1
+      ],
+      "old_words": "Person at top edge, not centre",
+      "new_words": "person floating horizontally in wetsuit"
+    },
+    {
+      "frame": "DJI_0915_0023_50m-second-00020",
+      "original_i": 2,
+      "yes": true,
+      "on_label": true,
+      "labels": [
+        1
+      ],
+      "old_words": "Person at top edge, not centre",
+      "new_words": "person floating horizontally in wetsuit"
+    },
+    {
+      "frame": "DJI_0915_0023_50m-second-00033",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark boat-like floating object",
+      "new_words": "dark person floating in water"
+    },
+    {
+      "frame": "DJI_0915_0023_50m-second-00036",
+      "original_i": 3,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "small grey submerged blob",
+      "new_words": "dark human-shaped silhouette in water"
+    },
+    {
+      "frame": "DJI_0915_0027_50m-second-00034",
+      "original_i": 1,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark rock or debris",
+      "new_words": "dark shape floating in water"
+    },
+    {
+      "frame": "DJI_0915_0028_60m-second-00046",
+      "original_i": 5,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "two faint dark marks in water",
+      "new_words": "blurry dark shapes in green water"
+    },
+    {
+      "frame": "DJI_0915_0028_60m-second-00050",
+      "original_i": 2,
+      "yes": true,
+      "on_label": false,
+      "labels": [],
+      "old_words": "dark rock or debris",
+      "new_words": "grey floating blob in open water"
+    }
+  ]
+}
