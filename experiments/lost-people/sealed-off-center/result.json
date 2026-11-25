@@ -1,0 +1,95 @@
+{
+  "reference_sha256": "690277a6b0271c2c1b0ff7019d82e7d5dc8fd9dc687989d4b88d17188e7880c4",
+  "cached_model": "muse-ember-1.0",
+  "cached_route": "personal Meta Model API",
+  "model_calls": 0,
+  "network_calls": 0,
+  "spend_usd": 0,
+  "clips": {
+    "empty": {
+      "seconds": 24,
+      "restored_pins": [],
+      "new_tracks": [],
+      "current": {
+        "pins": 0,
+        "correct_pins": 0,
+        "false_pins": 0,
+        "set_aside_pins": 0,
+        "false_pin_seconds": 0,
+        "false_episodes": 0,
+        "tracks": 0,
+        "found": 0,
+        "missed": 0
+      },
+      "restore_off_center": {
+        "pins": 0,
+        "correct_pins": 0,
+        "false_pins": 0,
+        "set_aside_pins": 0,
+        "false_pin_seconds": 0,
+        "false_episodes": 0,
+        "tracks": 0,
+        "found": 0,
+        "missed": 0
+      }
+    },
+    "positive": {
+      "seconds": 24,
+      "restored_pins": [],
+      "new_tracks": [],
+      "current": {
+        "pins": 21,
+        "correct_pins": 20,
+        "false_pins": 1,
+        "set_aside_pins": 0,
+        "false_pin_seconds": 1,
+        "false_episodes": 1,
+        "tracks": 2,
+        "found": 2,
+        "missed": 0
+      },
+      "restore_off_center": {
+        "pins": 21,
+        "correct_pins": 20,
+        "false_pins": 1,
+        "set_aside_pins": 0,
+        "false_pin_seconds": 1,
+        "false_episodes": 1,
+        "tracks": 2,
+        "found": 2,
+        "missed": 0
+      }
+    }
+  },
+  "combined": {
+    "seconds": 48,
+    "current": {
+      "pins": 21,
+      "correct_pins": 20,
+      "false_pins": 1,
+      "set_aside_pins": 0,
+      "false_pin_seconds": 1,
+      "false_episodes": 1,
+      "tracks": 2,
+      "found": 2,
+      "missed": 0
+    },
+    "restore_off_center": {
+      "pins": 21,
+      "correct_pins": 20,
+      "false_pins": 1,
+      "set_aside_pins": 0,
+      "false_pin_seconds": 1,
+      "false_episodes": 1,
+      "tracks": 2,
+      "found": 2,
+      "missed": 0
+    }
+  },
+  "gate": {
+    "correctly_restored_pins": 0,
+    "added_false_pins": 0,
+    "passes": false
+  },
+  "selection": "current"
+}

@@ -8,12 +8,32 @@ On two drone datasets the detector never saw, Ember's check found at least as ma
 
 | Footage the detector never saw | Detector, then Ember | Detector alone |
 |---|---|---|
-| [MOBDrone](runs/verify-mobdrone/README.md), 300 frames, 297 people | **210 found, 38 false alarms** | 210 found, 166 false alarms |
-| [AFO](runs/verify-afo/README.md), 300 photos, 2,950 people | **619 found, 85 false alarms** | at most 611 found at any setting, with 445 false alarms |
+| [MOBDrone](runs/verify-mobdrone/README.md), 300 frames, 297 labeled person appearances | **210 found, 38 false alarms** | 210 found, 166 false alarms |
+| [AFO](runs/verify-afo/README.md), 300 photos, 2,950 labeled person appearances | **619 found, 85 false alarms** | at most 611 found at any setting, with 445 false alarms |
 
 Each pass rule was committed before its run, and the runs cost $0.0318 and $0.0706. AFO's rule compared Ember's check with the detector at the setting that finds as many people, and no setting does, so the rule could not be applied as written. The AFO comparison above was chosen after the result was seen.
 
 ![Five detector flags. Ember dismissed a rock, driftwood and a life ring, kept a person floating on their back, and wrongly called a swimmer a seagull](docs/ember-check-examples.png)
+
+## Replay the detector check
+
+The original 120-second MOBDrone run took 57 seconds and cost $0.0080. It returned 101 sightings and eight possible people for four labeled people. Select any of the eight to read the recorded handoff on the site. [Watch the replay and open the handoffs](https://open-water-search.vercel.app/#live-check-title).
+
+To reproduce that run from the repository root, use the exact clip from `DJI_0915_0007_40.mp4`, starting at source frame 1682. The repository includes the [clip cutter](probe/cut_mobdrone_clip.py) and the [manifest with the clip hash and frame list](mobdrone/clip/scoring-only/manifest.json). The [replay instructions](runs/live-detector-check/README.md#offline-flight-replay) list the verified tool versions.
+
+~~~sh
+python runs/live-detector-check/replay_flight.py /path/to/clip.mp4 results/offline-flight
+open results/offline-flight/report.html
+~~~
+
+The normal detector-check command replays the saved detector boxes and all 99 Muse Ember replies for $0 in new charges. The reviewer queue and coverage match the original byte for byte. The replay verifies all eight handoffs and 115 crop links. For possible person 1, follow queue rank 66 to `report.html#second-00022` and `crops/second-00022-flag1.jpg`. The handoff ends at 0:22 and quotes Ember's “person floating on water.” The [run record](runs/live-detector-check/README.md#offline-flight-replay) gives the exact pin and crop provenance.
+
+## Why the current check stays
+
+We tested a rule that would restore the original detector pin when Ember dismissed it but described a person away from the crop's center.
+
+- **Two sealed replacement clips.** The gate required at least one correctly restored pin and zero added false pins. The rule never fired. Both versions found 2 of 2 distinct tracks, with 20 correct original pins and 1 false pin in 1 episode. The rule added 0 correct pins and 0 false pins, so the current detector check stays. Replaying this test requires coordinator-held local inputs. [Sealed result](experiments/lost-people/sealed-off-center/result.json) · [Replay requirements](experiments/lost-people/sealed-off-center/README.md).
+- **Eight exploratory clips.** The current check found 6 of 7 distinct tracks with 29 false pins in 14 episodes. In a retrospective replay, the rule restored 4 correct pins and added 0 false pins. It reached 7 of 7 with the same false-pin and episode counts. The current check still misses one person in clip 0011 (`DJI_0804_0011_30m_2`), where it dismissed three matching detector pins at seconds 11–13.
 
 ## How it works
 
@@ -25,7 +45,7 @@ flowchart LR
     ember -->|dismissed| reopen["Dismissed flags<br/>listed for a person to reopen"]
 ~~~
 
-The detector is a free YOLO26m model trained on SeaDronesSee. It runs on this machine and flags every swimmer-shaped spot at 0.05 confidence or more. Ember gets one request per flagged frame, with each flag as a numbered 224-pixel crop. Structured output makes it answer three questions for every crop: is a person in the water at its centre, how sure is it, and what is there. Before each request, the tool counts its input tokens and reserves the worst-case cost, so a run stops before it can cross its spending cap.
+The detector is a free YOLO26m model trained on SeaDronesSee. It runs on this machine and flags every swimmer-shaped spot at 0.05 confidence or more. Ember gets one request per flagged frame, with each flag as a numbered 224-pixel crop. Structured output makes it answer three questions for every crop: is a person in the water at its centre, how sure is it, and what is there. The tool uses input-token counts to reserve estimated costs against a local run budget. Billed retries can affect account usage.
 
 ## Run it
 
@@ -37,7 +57,7 @@ python probe/open_water_search.py flight.mp4 --mode detector-check --detector-py
 open results/report.html
 ~~~
 
-A flight is a video, cut into one frame per second with ffmpeg, or a folder of photos one second apart. You get a search record of possible people with a handoff message for each, a report page that lists every kept flag and every dismissed one, and every Ember call with its cost. On a live two-minute clip the command ran in 57 seconds for $0.0080 ([runs/live-detector-check](runs/live-detector-check/README.md)). Without `--mode detector-check`, Ember searches each frame alone and needs no detector. Every option is in [docs/reproduce.md](docs/reproduce.md).
+A flight is a video, cut into one frame per second with ffmpeg, or a folder of photos one second apart. You get a search record of possible people with a handoff message for each, a report page that lists every kept flag and every dismissed one, and every Ember call with its cost. Without `--mode detector-check`, Ember searches each frame alone and needs no detector. Every option is in [docs/reproduce.md](docs/reproduce.md).
 
 ## What it doesn't show
 
@@ -52,12 +72,12 @@ A flight is a video, cut into one frame per second with ffmpeg, or a folder of p
 |---|---|
 | `probe/` | The search command (`open_water_search.py`), Ember's check, the scorer and their offline tests |
 | `detector/` | The trained detector and its runs, under AGPL-3.0 |
-| `runs/` | Every paid run, sealed: its plan, results, redacted Ember calls and cost |
+| `runs/` | Published comparison runs with results and available redacted Ember traces and costs |
 | `pages/` | The website: the result, a search you can take over, and a replay |
 | `docs/` | [Results](docs/results.md) in full, [run and reproduce](docs/reproduce.md), [history](docs/history.md), the [glossary](docs/GLOSSARY.md) and every [decision record](docs/adr) |
 | `experiments/zoom-first/` | The first day's experiment, where Ember searched alone |
 
-**How we decided.** Each paid test had its plan and pass rule committed before its first Ember call, and the ones that failed are published next to the ones that passed. The decision records show every turn, including the reversal that made the detector the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). New Ember spending since November 24 is capped at $6.00 in total, raised from $3.00 on November 24, and every run's cost is in its folder.
+**How we decided.** We committed the comparison plans and pass rules in advance. The public comparison records include passes and failures, and the decision records explain why the detector became the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). The project budget for new Ember spending since November 24 is $6.00, raised from $3.00 on November 24. The sealed replacement inputs remain private.
 
 ## Credits and license
 
