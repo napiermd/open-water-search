@@ -1,0 +1,269 @@
+{
+  "handoffs": [
+    {
+      "second": 22,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00022.webp",
+      "crop": "second-00022-flag1.jpg",
+      "pin": [
+        722.71,
+        358.08000000000004
+      ],
+      "rect": [
+        635,
+        270,
+        811,
+        446
+      ],
+      "label": [
+        696.1401599999999,
+        333.750516,
+        753.79008,
+        383.490316
+      ],
+      "track": 2,
+      "description": "person floating on water",
+      "number": 1,
+      "first": 8,
+      "section": "center",
+      "handoff": "Possible person 1. First seen 0:08, last seen 0:22 into the flight, in the center section of second-00022. Confidence 0.95. Ember described it as \"person floating on water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0.",
+      "packet": "handoff-1.html"
+    },
+    {
+      "second": 26,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00026.webp",
+      "crop": "second-00026-flag2.jpg",
+      "pin": [
+        546.55,
+        372.57
+      ],
+      "rect": [
+        466,
+        292,
+        627,
+        453
+      ],
+      "label": [
+        524.49984,
+        346.88020400000005,
+        575.7792,
+        403.349804
+      ],
+      "track": 2,
+      "description": "person floating in water",
+      "number": 2,
+      "first": 25,
+      "section": "middle left",
+      "handoff": "Possible person 2. First seen 0:25, last seen 0:26 into the flight, in the middle left section of second-00026. Confidence 0.90. Ember described it as \"person floating in water\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0.",
+      "packet": "handoff-2.html"
+    },
+    {
+      "second": 60,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00060.webp",
+      "crop": "second-00060-flag1.jpg",
+      "pin": [
+        43.115,
+        474.33500000000004
+      ],
+      "rect": [
+        0,
+        389,
+        170,
+        559
+      ],
+      "label": [
+        26.989440000000002,
+        444.330238,
+        69.88992,
+        509.30974599999996
+      ],
+      "track": 3,
+      "description": "Person floating in water",
+      "number": 3,
+      "first": 26,
+      "section": "middle left",
+      "handoff": "Possible person 3. First seen 0:26, last seen 1:00 into the flight, in the middle left section of second-00060. Confidence 0.98. Ember described it as \"Person floating in water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0.",
+      "packet": "handoff-3.html"
+    },
+    {
+      "second": 35,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00035.webp",
+      "crop": "second-00035-flag1.jpg",
+      "pin": [
+        51.230000000000004,
+        463.685
+      ],
+      "rect": [
+        0,
+        375,
+        176,
+        552
+      ],
+      "label": [
+        26.871360000000003,
+        432.37953000000005,
+        72.30048000000001,
+        493.709766
+      ],
+      "track": 2,
+      "description": "person floating on back in water",
+      "number": 4,
+      "first": 29,
+      "section": "middle left",
+      "handoff": "Possible person 4. First seen 0:29, last seen 0:35 into the flight, in the middle left section of second-00035. Confidence 0.90. Ember described it as \"person floating on back in water\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0.",
+      "packet": "handoff-4.html"
+    },
+    {
+      "second": 98,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00098.webp",
+      "crop": "second-00098-flag1.jpg",
+      "pin": [
+        1831.875,
+        444.905
+      ],
+      "rect": [
+        1753,
+        366,
+        1911,
+        524
+      ],
+      "label": [
+        1804.7097600000002,
+        420.23047,
+        1861.5302399999998,
+        468.010026
+      ],
+      "track": 4,
+      "description": "person floating on back in water",
+      "number": 5,
+      "first": 76,
+      "section": "middle right",
+      "handoff": "Possible person 5. First seen 1:16, last seen 1:38 into the flight, in the middle right section of second-00098. Confidence 0.98. Ember described it as \"person floating on back in water\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0.",
+      "packet": "handoff-5.html"
+    },
+    {
+      "second": 94,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00094.webp",
+      "crop": "second-00094-flag2.jpg",
+      "pin": [
+        72.51,
+        760.515
+      ],
+      "rect": [
+        0,
+        678,
+        164,
+        843
+      ],
+      "label": [
+        46.96992,
+        733.9201099999999,
+        97.27968000000001,
+        786.6402499999999
+      ],
+      "track": 5,
+      "description": "person swimming elongated",
+      "number": 6,
+      "first": 94,
+      "section": "bottom left",
+      "handoff": "Possible person 6. First seen 1:34, last seen 1:34 into the flight, in the bottom left section of second-00094. Confidence 0.88. Ember described it as \"person swimming elongated\". The detector flagged 2 spots in that frame, and Ember kept 2 and dismissed 0.",
+      "packet": "handoff-6.html"
+    },
+    {
+      "second": 101,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00101.webp",
+      "crop": "second-00101-flag1.jpg",
+      "pin": [
+        646.0999999999999,
+        621.06
+      ],
+      "rect": [
+        556,
+        531,
+        736,
+        711
+      ],
+      "label": [
+        618.1103999999999,
+        597.539954,
+        679.44096,
+        645.39035
+      ],
+      "track": 5,
+      "description": "person floating in water",
+      "number": 7,
+      "first": 98,
+      "section": "center",
+      "handoff": "Possible person 7. First seen 1:38, last seen 1:41 into the flight, in the center section of second-00101. Confidence 0.95. Ember described it as \"person floating in water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0.",
+      "packet": "handoff-7.html"
+    },
+    {
+      "second": 118,
+      "width": 1920,
+      "height": 1012,
+      "photo": "second-00118.webp",
+      "crop": "second-00118-flag1.jpg",
+      "pin": [
+        1829.2849999999999,
+        365.48
+      ],
+      "rect": [
+        1742,
+        278,
+        1917,
+        453
+      ],
+      "label": [
+        1798.87872,
+        344.68062199999997,
+        1860.19968,
+        380.32022600000005
+      ],
+      "track": 5,
+      "description": "swimmer floating prone in water",
+      "number": 8,
+      "first": 103,
+      "section": "middle right",
+      "handoff": "Possible person 8. First seen 1:43, last seen 1:58 into the flight, in the middle right section of second-00118. Confidence 0.98. Ember described it as \"swimmer floating prone in water\". The detector flagged 1 spot in that frame, and Ember kept 1 and dismissed 0.",
+      "packet": "handoff-8.html"
+    }
+  ],
+  "missed": {
+    "second": 12,
+    "width": 1920,
+    "height": 1012,
+    "photo": "second-00012.webp",
+    "crop": "second-00012-flag1.jpg",
+    "pin": [
+      1334.8600000000001,
+      379.125
+    ],
+    "rect": [
+      1245,
+      289,
+      1425,
+      469
+    ],
+    "label": [
+      1306.54944,
+      359.049504,
+      1369.1088,
+      396.16966400000007
+    ],
+    "track": 2,
+    "description": "duck swimming in water"
+  }
+}

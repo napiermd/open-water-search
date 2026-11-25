@@ -12,7 +12,7 @@
 <body>
   <header class="masthead">
     <span>Open Water Search</span>
-    <nav aria-label="Pages"><a href="index.html" aria-current="page">How it works</a><a href="judge.html">Take over a search</a><a href="replay.html">Replay</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav>
+    <nav aria-label="Pages"><a href="index.html" aria-current="page">Evidence</a><a href="flight.html">Flight handoff</a><a href="replay.html">Replay</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav>
   </header>
   <main>
     <section class="hero" aria-labelledby="hero-title">
@@ -20,8 +20,8 @@
         <h1 id="hero-title">A trained detector flags every second of a drone flight. Muse Ember checks each flag and says what it is.</h1>
         <p class="lede">On 300 MOBDrone frames, the detector alone and the detector with Ember both found 210 of 297 labeled person appearances. Ember’s check cut false alarms from 166 to 38. Kept flags carry Ember’s description into the handoff, and dismissed flags stay in the report for review.</p>
         <div class="actions">
-          <a class="primary" href="#live-check-title">Replay the detector check</a>
-          <a class="secondary" href="judge.html">Take over a search</a>
+          <a class="primary" href="flight.html">Open the recorded flight</a>
+          <a class="secondary" href="#live-check-title">Replay the command</a>
         </div>
         <p class="muted small">Everything on these pages replays recorded Muse Ember runs, so clicking around costs nothing.</p>
       </div>
@@ -181,7 +181,7 @@
       <p class="muted small">The detector ran two ways, on the whole photo and on the same 3 × 3 tiles Ember uses, and the better run is shown: the whole photo, on both sets. Its tiled run found 4,213 with 408 false marks on SeaDronesSee and 217 with 400 on MOBDrone. A mark counts when it lands inside a labeled box, each box once, at most five per photo. Ember’s false-mark bars use the same scale on both sets.</p>
       <h3 class="offers-title">What Ember’s own search still offers</h3>
       <ul class="offers">
-        <li><strong>No training data.</strong> Ember was never trained on drone photos, and it found 205 of 311 people on footage new to it. Nothing has to be labeled or trained before a new camera or stretch of water can be searched.</li>
+        <li><strong>No training data.</strong> Without task-specific fine-tuning, Ember found 205 of 311 people on footage new to it. Nothing has to be labeled or trained before a new camera or stretch of water can be searched.</li>
         <li><strong>A search record and handoff a crew can act on.</strong> A flight comes back as possible people with times, a coverage timeline that shows the water nobody searched, and a handoff message for each possible person.</li>
         <li><strong>A measured, capped cost.</strong> About $0.00062 per photo, about $2.23 per hour of footage at one photo a second. The detector runs free on a local GPU. The tool stops before any request could cross its spending cap.</li>
       </ul>

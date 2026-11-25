@@ -19,8 +19,8 @@ SITE = ROOT / "site"
 LONG_EDGE = 2400
 VERCEL = {
     "redirects": [
-        {"source": "/", "destination": "/pages/index.html", "permanent": False},
-        {"source": "/judge", "destination": "/pages/judge.html", "permanent": False},
+        {"source": "/", "destination": "/pages/flight.html", "permanent": False},
+        {"source": "/judge", "destination": "/pages/flight.html", "permanent": False},
         {"source": "/replay", "destination": "/pages/replay.html", "permanent": False},
     ],
     "headers": [

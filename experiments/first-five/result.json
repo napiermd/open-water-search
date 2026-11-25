@@ -1,0 +1,263 @@
+{
+  "primary": [
+    {
+      "labeled": 0,
+      "detector": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      },
+      "ember": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      }
+    },
+    {
+      "labeled": 1,
+      "detector": {
+        "new": 1,
+        "repeat": 2,
+        "empty": 2,
+        "unidentified": 0,
+        "available": 5,
+        "opened": 5,
+        "outcomes": [
+          "empty",
+          "new",
+          "repeat",
+          "empty",
+          "repeat"
+        ]
+      },
+      "ember": {
+        "new": 1,
+        "repeat": 0,
+        "empty": 4,
+        "unidentified": 0,
+        "available": 6,
+        "opened": 5,
+        "outcomes": [
+          "empty",
+          "empty",
+          "new",
+          "empty",
+          "empty"
+        ]
+      }
+    },
+    {
+      "labeled": 0,
+      "detector": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 1,
+        "unidentified": 0,
+        "available": 1,
+        "opened": 1,
+        "outcomes": [
+          "empty"
+        ]
+      },
+      "ember": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      }
+    },
+    {
+      "labeled": 0,
+      "detector": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      },
+      "ember": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 2,
+        "unidentified": 0,
+        "available": 2,
+        "opened": 2,
+        "outcomes": [
+          "empty",
+          "empty"
+        ]
+      }
+    },
+    {
+      "labeled": 0,
+      "detector": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      },
+      "ember": {
+        "new": 0,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 0,
+        "opened": 0,
+        "outcomes": []
+      }
+    },
+    {
+      "labeled": 2,
+      "detector": {
+        "new": 2,
+        "repeat": 0,
+        "empty": 1,
+        "unidentified": 0,
+        "available": 3,
+        "opened": 3,
+        "outcomes": [
+          "new",
+          "new",
+          "empty"
+        ]
+      },
+      "ember": {
+        "new": 1,
+        "repeat": 0,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 1,
+        "opened": 1,
+        "outcomes": [
+          "new"
+        ]
+      }
+    },
+    {
+      "labeled": 3,
+      "detector": {
+        "new": 1,
+        "repeat": 0,
+        "empty": 4,
+        "unidentified": 0,
+        "available": 30,
+        "opened": 5,
+        "outcomes": [
+          "new",
+          "empty",
+          "empty",
+          "empty",
+          "empty"
+        ]
+      },
+      "ember": {
+        "new": 1,
+        "repeat": 0,
+        "empty": 4,
+        "unidentified": 0,
+        "available": 11,
+        "opened": 5,
+        "outcomes": [
+          "new",
+          "empty",
+          "empty",
+          "empty",
+          "empty"
+        ]
+      }
+    },
+    {
+      "labeled": 1,
+      "detector": {
+        "new": 1,
+        "repeat": 1,
+        "empty": 1,
+        "unidentified": 0,
+        "available": 3,
+        "opened": 3,
+        "outcomes": [
+          "new",
+          "repeat",
+          "empty"
+        ]
+      },
+      "ember": {
+        "new": 1,
+        "repeat": 1,
+        "empty": 0,
+        "unidentified": 0,
+        "available": 2,
+        "opened": 2,
+        "outcomes": [
+          "new",
+          "repeat"
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "detector": {
+      "opened": 17,
+      "new": 5,
+      "repeat": 3,
+      "empty": 9,
+      "unidentified": 0
+    },
+    "ember": {
+      "opened": 15,
+      "new": 4,
+      "repeat": 1,
+      "empty": 10,
+      "unidentified": 0
+    }
+  },
+  "flight": {
+    "labeled": 4,
+    "detector": {
+      "new": 4,
+      "repeat": 0,
+      "empty": 1,
+      "unidentified": 0,
+      "available": 5,
+      "opened": 5,
+      "outcomes": [
+        "new",
+        "new",
+        "empty",
+        "new",
+        "new"
+      ]
+    },
+    "ember": {
+      "new": 3,
+      "repeat": 2,
+      "empty": 0,
+      "unidentified": 0,
+      "available": 8,
+      "opened": 5,
+      "outcomes": [
+        "new",
+        "repeat",
+        "new",
+        "repeat",
+        "new"
+      ]
+    }
+  }
+}

@@ -2,7 +2,9 @@
 
 **A trained detector flags every second of a drone flight. Muse Ember checks each flag, says what it is, and the crew gets a search record built from what Ember kept.**
 
-[![Tests](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml/badge.svg)](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml) · [Website](https://open-water-search.vercel.app) · Built during the Muse Ember Hackathon, starting November 23, 2026.
+[![Tests](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml/badge.svg)](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml) · [Open the recorded flight](https://open-water-search.vercel.app) · Built during the Muse Ember Hackathon, starting November 23, 2026.
+
+Open the first crew handoff to see the full-frame pin and exact crop, download the packet for offline use, and reopen an earlier dismissal of that same swimmer. On eight previously scored clips, up to five handoffs per clip reached 5 of 7 people with the detector and 4 with Ember. [First-five scoring and counts](experiments/first-five/README.md).
 
 On two drone datasets the detector never saw, Ember's check found at least as many people with far fewer false alarms:
 
@@ -17,13 +19,14 @@ Each pass rule was committed before its run, and the runs cost $0.0318 and $0.07
 
 ## Replay the detector check
 
-The original 120-second MOBDrone run took 57 seconds and cost $0.0080. It returned 101 sightings and eight possible people for four labeled people. Select any of the eight to read the recorded handoff on the site. [Watch the replay and open the handoffs](https://open-water-search.vercel.app/#live-check-title).
+The original 120-second MOBDrone run took 57 seconds and cost $0.0080. It returned 101 sightings and eight possible people for four labeled people. Select any of the eight to read the recorded handoff on the site. [Watch the replay and open the handoffs](https://open-water-search.vercel.app/pages/index.html#live-check-title).
 
 To reproduce that run from the repository root, use the exact clip from `DJI_0915_0007_40.mp4`, starting at source frame 1682. The repository includes the [clip cutter](probe/cut_mobdrone_clip.py) and the [manifest with the clip hash and frame list](mobdrone/clip/scoring-only/manifest.json). The [replay instructions](runs/live-detector-check/README.md#offline-flight-replay) list the verified tool versions.
 
 ~~~sh
 python runs/live-detector-check/replay_flight.py /path/to/clip.mp4 results/offline-flight
 open results/offline-flight/report.html
+python probe/export_handoff.py results/offline-flight 1 --out handoff-1.html
 ~~~
 
 The normal detector-check command replays the saved detector boxes and all 99 Muse Ember replies for $0 in new charges. The reviewer queue and coverage match the original byte for byte. The replay verifies all eight handoffs and 115 crop links. For possible person 1, follow queue rank 66 to `report.html#second-00022` and `crops/second-00022-flag1.jpg`. The handoff ends at 0:22 and quotes Ember's “person floating on water.” The [run record](runs/live-detector-check/README.md#offline-flight-replay) gives the exact pin and crop provenance.
