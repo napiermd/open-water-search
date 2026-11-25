@@ -57,7 +57,7 @@ A flight is a video, cut into one frame per second with ffmpeg, or a folder of p
 | `docs/` | [Results](docs/results.md) in full, [run and reproduce](docs/reproduce.md), [history](docs/history.md), the [glossary](docs/GLOSSARY.md) and every [decision record](docs/adr) |
 | `experiments/zoom-first/` | The first day's experiment, where Ember searched alone |
 
-**How we decided.** Each paid test had its plan and pass rule committed before its first Ember call, and the ones that failed are published next to the ones that passed. The decision records show every turn, including the reversal that made the detector the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). New Ember spending since November 24 is capped at $3.00 in total, and every run's cost is in its folder.
+**How we decided.** Each paid test had its plan and pass rule committed before its first Ember call, and the ones that failed are published next to the ones that passed. The decision records show every turn, including the reversal that made the detector the first pass ([ADR 0016](docs/adr/0016-the-detector-makes-the-first-pass.md)). New Ember spending since November 24 is capped at $6.00 in total, raised from $3.00 on November 24, and every run's cost is in its folder.
 
 ## Credits and license
 
