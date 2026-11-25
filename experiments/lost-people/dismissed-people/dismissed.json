@@ -1,0 +1,3992 @@
+[
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "051-DJI_0804_0009_40m-000303",
+  "box": [
+   599.32,
+   491.69,
+   624.92,
+   519.84
+  ],
+  "detector_confidence": 0.2187,
+  "ember_confidence": 0.35,
+  "what": "dark shape in foam wake",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.037,
+  "pixels": 98.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/051-DJI_0804_0009_40m-000303.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "066-DJI_0804_0011_30m_2-000123",
+  "box": [
+   1424.86,
+   102.9,
+   1491.25,
+   154.99
+  ],
+  "detector_confidence": 0.7863,
+  "ember_confidence": 0.65,
+  "what": "dark blob in water, likely animal or debris",
+  "reason": "An animal",
+  "offset": 0.031,
+  "pixels": 74.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/066-DJI_0804_0011_30m_2-000123.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "067-DJI_0804_0011_30m_2-000385",
+  "box": [
+   1868.68,
+   833.03,
+   1919.94,
+   906.5
+  ],
+  "detector_confidence": 0.6744,
+  "ember_confidence": 0.75,
+  "what": "bird at right edge, centre empty water",
+  "reason": "An animal",
+  "offset": 0.353,
+  "pixels": 77.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/067-DJI_0804_0011_30m_2-000385.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "079-DJI_0804_0012_50m_2-000045",
+  "box": [
+   324.42,
+   193.81,
+   345.08,
+   223.42
+  ],
+  "detector_confidence": 0.52,
+  "ember_confidence": 0.45,
+  "what": "red float above, swimmer splash below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.044,
+  "pixels": 64.4,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/079-DJI_0804_0012_50m_2-000045.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "079-DJI_0804_0012_50m_2-000045",
+  "box": [
+   331.04,
+   178.88,
+   350.41,
+   193.75
+  ],
+  "detector_confidence": 0.5024,
+  "ember_confidence": 0.45,
+  "what": "red float above, swimmer splash below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.056,
+  "pixels": 58.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/079-DJI_0804_0012_50m_2-000045.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "077-DJI_0804_0012_50m_2-000020",
+  "box": [
+   325.87,
+   49.73,
+   353.53,
+   68.96
+  ],
+  "detector_confidence": 0.5811,
+  "ember_confidence": 0.8,
+  "what": "boat centre, swimmer bottom left",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.089,
+  "pixels": 48.9,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/077-DJI_0804_0012_50m_2-000020.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "078-DJI_0804_0012_50m_2-000037",
+  "box": [
+   322.84,
+   158.49,
+   345.71,
+   187.76
+  ],
+  "detector_confidence": 0.5679,
+  "ember_confidence": 0.65,
+  "what": "boat above, swimmer below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.064,
+  "pixels": 84.1,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/078-DJI_0804_0012_50m_2-000037.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "078-DJI_0804_0012_50m_2-000037",
+  "box": [
+   325.52,
+   135.5,
+   350.15,
+   154.6
+  ],
+  "detector_confidence": 0.535,
+  "ember_confidence": 0.65,
+  "what": "boat above, swimmer below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.047,
+  "pixels": 58.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/078-DJI_0804_0012_50m_2-000037.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "086-DJI_0804_0013_40m-000349",
+  "box": [
+   565.6,
+   82.18,
+   582.54,
+   114.29
+  ],
+  "detector_confidence": 0.3342,
+  "ember_confidence": 0.9,
+  "what": "person on paddleboard",
+  "reason": "A board, boat or float",
+  "offset": 0.046,
+  "pixels": 54.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/086-DJI_0804_0013_40m-000349.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "091-DJI_0804_0014_50m_1-000704",
+  "box": [
+   1171.14,
+   866.75,
+   1189.98,
+   886.21
+  ],
+  "detector_confidence": 0.5946,
+  "ember_confidence": 0.9,
+  "what": "Bird floating on open water",
+  "reason": "An animal",
+  "offset": 0.022,
+  "pixels": 71.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/091-DJI_0804_0014_50m_1-000704.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "089-DJI_0804_0013_40m-000879",
+  "box": [
+   881.17,
+   779.9,
+   902.79,
+   793.44
+  ],
+  "detector_confidence": 0.4107,
+  "ember_confidence": 0.7,
+  "what": "dark marine animal",
+  "reason": "An animal",
+  "offset": 0.095,
+  "pixels": 97.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/089-DJI_0804_0013_40m-000879.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "094-DJI_0804_0014_50m_2-000000",
+  "box": [
+   658.59,
+   387.43,
+   671.04,
+   404.24
+  ],
+  "detector_confidence": 0.391,
+  "ember_confidence": 0.9,
+  "what": "person standing on beach shoreline",
+  "reason": "A person on land",
+  "offset": 0.04,
+  "pixels": 51.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/094-DJI_0804_0014_50m_2-000000.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "094-DJI_0804_0014_50m_2-000000",
+  "box": [
+   661.36,
+   291.61,
+   679.13,
+   308.72
+  ],
+  "detector_confidence": 0.328,
+  "ember_confidence": 0.8,
+  "what": "person with board on sand",
+  "reason": "A person on land",
+  "offset": 0.072,
+  "pixels": 37.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/094-DJI_0804_0014_50m_2-000000.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "103-DJI_0804_0015_30m-001342",
+  "box": [
+   823.79,
+   980.5,
+   845.75,
+   1006.09
+  ],
+  "detector_confidence": 0.4442,
+  "ember_confidence": 0.85,
+  "what": "person near bottom, not centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.333,
+  "pixels": 85.6,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/103-DJI_0804_0015_30m-001342.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "098-DJI_0804_0014_50m_3-000016",
+  "box": [
+   516.8,
+   316.47,
+   533.11,
+   331.25
+  ],
+  "detector_confidence": 0.2916,
+  "ember_confidence": 0.85,
+  "what": "people and driftwood on sand",
+  "reason": "A person on land",
+  "offset": 0.062,
+  "pixels": 70.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/098-DJI_0804_0014_50m_3-000016.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "098-DJI_0804_0014_50m_3-000016",
+  "box": [
+   522.15,
+   314.04,
+   534.87,
+   329.21
+  ],
+  "detector_confidence": 0.259,
+  "ember_confidence": 0.85,
+  "what": "people and driftwood on sand",
+  "reason": "A person on land",
+  "offset": 0.017,
+  "pixels": 70.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/098-DJI_0804_0014_50m_3-000016.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "098-DJI_0804_0014_50m_3-000016",
+  "box": [
+   1013.09,
+   383.64,
+   1024.69,
+   398.11
+  ],
+  "detector_confidence": 0.2492,
+  "ember_confidence": 0.8,
+  "what": "person on beach at shoreline",
+  "reason": "A person on land",
+  "offset": 0.064,
+  "pixels": 57.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/098-DJI_0804_0014_50m_3-000016.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "106-DJI_0804_0016_20m-000306",
+  "box": [
+   1009.83,
+   149.84,
+   1022.46,
+   164.24
+  ],
+  "detector_confidence": 0.4728,
+  "ember_confidence": 0.55,
+  "what": "small dark bird-like head in water",
+  "reason": "An animal",
+  "offset": 0.035,
+  "pixels": 40.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/106-DJI_0804_0016_20m-000306.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "099-DJI_0804_0014_50m_3-000238",
+  "box": [
+   1247.04,
+   612.73,
+   1265.16,
+   631.34
+  ],
+  "detector_confidence": 0.5633,
+  "ember_confidence": 0.7,
+  "what": "Person walking on wet sand, off-centre, not in water",
+  "reason": "A person on land",
+  "offset": 0.01,
+  "pixels": 74.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/099-DJI_0804_0014_50m_3-000238.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "099-DJI_0804_0014_50m_3-000238",
+  "box": [
+   962.38,
+   462.72,
+   976.79,
+   478.96
+  ],
+  "detector_confidence": 0.1378,
+  "ember_confidence": 0.9,
+  "what": "People and towel on beach, none central in water",
+  "reason": "A person on land",
+  "offset": 0.047,
+  "pixels": 60.0,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/099-DJI_0804_0014_50m_3-000238.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "110-DJI_0804_0017_40m-000035",
+  "box": [
+   621.93,
+   119.52,
+   641.55,
+   134.62
+  ],
+  "detector_confidence": 0.5142,
+  "ember_confidence": 0.3,
+  "what": "dark blob in water",
+  "reason": "An unclear object",
+  "offset": 0.035,
+  "pixels": 71.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/110-DJI_0804_0017_40m-000035.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "122-DJI_0915_0001_40m-002583",
+  "box": [
+   1185.55,
+   673.26,
+   1214.46,
+   697.27
+  ],
+  "detector_confidence": 0.6884,
+  "ember_confidence": 0.85,
+  "what": "small black and white bird or marine animal",
+  "reason": "An animal",
+  "offset": 0.02,
+  "pixels": 93.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/122-DJI_0915_0001_40m-002583.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "122-DJI_0915_0001_40m-002583",
+  "box": [
+   912.37,
+   804.54,
+   932.69,
+   826.9
+  ],
+  "detector_confidence": 0.6756,
+  "ember_confidence": 0.6,
+  "what": "dark boat or buoy in water",
+  "reason": "A board, boat or float",
+  "offset": 0.017,
+  "pixels": 91.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/122-DJI_0915_0001_40m-002583.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "118-DJI_0804_0018_40m-002358",
+  "box": [
+   1240.8,
+   896.4,
+   1265.58,
+   916.17
+  ],
+  "detector_confidence": 0.3624,
+  "ember_confidence": 0.55,
+  "what": "dark round seal buoy in water",
+  "reason": "An animal",
+  "offset": 0.031,
+  "pixels": 77.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/118-DJI_0804_0018_40m-002358.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "118-DJI_0804_0018_40m-002358",
+  "box": [
+   1072.6,
+   914.96,
+   1093.36,
+   934.44
+  ],
+  "detector_confidence": 0.2973,
+  "ember_confidence": 0.7,
+  "what": "pale marine animal seal dolphin",
+  "reason": "An animal",
+  "offset": 0.022,
+  "pixels": 77.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/118-DJI_0804_0018_40m-002358.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "141-DJI_0915_0004_50m-003156",
+  "box": [
+   1389.95,
+   193.05,
+   1423.62,
+   219.7
+  ],
+  "detector_confidence": 0.7928,
+  "ember_confidence": 0.55,
+  "what": "small marine animal in water",
+  "reason": "An animal",
+  "offset": 0.057,
+  "pixels": 100.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/141-DJI_0915_0004_50m-003156.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "150-DJI_0915_0006_60m_1-000554",
+  "box": [
+   788.89,
+   996.99,
+   833.93,
+   1012.0
+  ],
+  "detector_confidence": 0.2682,
+  "ember_confidence": 0.85,
+  "what": "swimmer at bottom edge not center",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.441,
+  "pixels": 119.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/150-DJI_0915_0006_60m_1-000554.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "154-DJI_0915_0006_60m_3-000453",
+  "box": [
+   1838.27,
+   735.19,
+   1870.26,
+   751.09
+  ],
+  "detector_confidence": 0.4452,
+  "ember_confidence": 0.9,
+  "what": "person lying on sand, not water",
+  "reason": "A person on land",
+  "offset": 0.011,
+  "pixels": 91.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/154-DJI_0915_0006_60m_3-000453.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "154-DJI_0915_0006_60m_3-000453",
+  "box": [
+   1876.55,
+   656.49,
+   1915.7,
+   676.91
+  ],
+  "detector_confidence": 0.4387,
+  "ember_confidence": 0.4,
+  "what": "small white object on pale sand",
+  "reason": "A person on land",
+  "offset": 0.278,
+  "pixels": 80.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/154-DJI_0915_0006_60m_3-000453.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "196-DJI_0915_0013_40m-001149",
+  "box": [
+   498.42,
+   0.0,
+   528.47,
+   19.6
+  ],
+  "detector_confidence": 0.3278,
+  "ember_confidence": 0.95,
+  "what": "swimmer person at top edge, not centre, green water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.344,
+  "pixels": 105.8,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/196-DJI_0915_0013_40m-001149.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "196-DJI_0915_0013_40m-001149",
+  "box": [
+   501.02,
+   8.11,
+   528.67,
+   25.08
+  ],
+  "detector_confidence": 0.0509,
+  "ember_confidence": 0.95,
+  "what": "swimmer person at top edge, not centre, green water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.343,
+  "pixels": 105.8,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/196-DJI_0915_0013_40m-001149.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "215-DJI_0915_0016_50m_2-000078",
+  "box": [
+   1799.82,
+   696.92,
+   1831.7,
+   721.65
+  ],
+  "detector_confidence": 0.6702,
+  "ember_confidence": 0.85,
+  "what": "small green turtle-like animal in water",
+  "reason": "An animal",
+  "offset": 0.041,
+  "pixels": 68.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/215-DJI_0915_0016_50m_2-000078.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "216-DJI_0915_0016_50m_2-000187",
+  "box": [
+   1821.05,
+   893.17,
+   1852.21,
+   916.4
+  ],
+  "detector_confidence": 0.6373,
+  "ember_confidence": 0.75,
+  "what": "small greenish object on light surface",
+  "reason": "An unclear object",
+  "offset": 0.049,
+  "pixels": 68.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/216-DJI_0915_0016_50m_2-000187.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "217-DJI_0915_0016_50m_2-000251",
+  "box": [
+   1859.41,
+   960.08,
+   1887.29,
+   983.26
+  ],
+  "detector_confidence": 0.6418,
+  "ember_confidence": 0.7,
+  "what": "Small light-coloured object with shadow",
+  "reason": "An unclear object",
+  "offset": 0.088,
+  "pixels": 75.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/217-DJI_0915_0016_50m_2-000251.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "231-DJI_0915_0018_60m-002308",
+  "box": [
+   852.79,
+   898.67,
+   868.64,
+   915.61
+  ],
+  "detector_confidence": 0.4806,
+  "ember_confidence": 0.6,
+  "what": "Turtle or marine animal in water",
+  "reason": "An animal",
+  "offset": 0.036,
+  "pixels": 68.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/231-DJI_0915_0018_60m-002308.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "266-DJI_0915_0025_30m-000978",
+  "box": [
+   1278.77,
+   8.81,
+   1338.58,
+   51.61
+  ],
+  "detector_confidence": 0.4353,
+  "ember_confidence": 0.9,
+  "what": "person floating above centre, empty water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.308,
+  "pixels": 120.6,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/266-DJI_0915_0025_30m-000978.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "266-DJI_0915_0025_30m-000978",
+  "box": [
+   1262.63,
+   3.44,
+   1292.97,
+   62.19
+  ],
+  "detector_confidence": 0.2852,
+  "ember_confidence": 0.9,
+  "what": "person floating above centre, empty water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.34,
+  "pixels": 122.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/266-DJI_0915_0025_30m-000978.jpg"
+ },
+ {
+  "run": "MOBDrone, first 300 frames",
+  "frame": "266-DJI_0915_0025_30m-000978",
+  "box": [
+   1270.96,
+   17.0,
+   1329.65,
+   68.51
+  ],
+  "detector_confidence": 0.0921,
+  "ember_confidence": 0.9,
+  "what": "person floating above centre, empty water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.305,
+  "pixels": 122.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/266-DJI_0915_0025_30m-000978.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "006-DJI_0804_0001_30m_2-000180",
+  "box": [
+   796.42,
+   498.91,
+   812.73,
+   514.78
+  ],
+  "detector_confidence": 0.5108,
+  "ember_confidence": 0.85,
+  "what": "dark round object centre, person at left edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.021,
+  "pixels": 65.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/006-DJI_0804_0001_30m_2-000180.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "032-DJI_0804_0005_30m-000265",
+  "box": [
+   371.57,
+   943.16,
+   412.01,
+   969.98
+  ],
+  "detector_confidence": 0.2495,
+  "ember_confidence": 0.4,
+  "what": "dark elongated shape in water",
+  "reason": "An unclear object",
+  "offset": 0.079,
+  "pixels": 105.4,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/032-DJI_0804_0005_30m-000265.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "038-DJI_0804_0006_40m-000537",
+  "box": [
+   848.48,
+   742.95,
+   885.01,
+   757.28
+  ],
+  "detector_confidence": 0.4265,
+  "ember_confidence": 0.85,
+  "what": "dark bird or marine animal",
+  "reason": "An animal",
+  "offset": 0.046,
+  "pixels": 90.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/038-DJI_0804_0006_40m-000537.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "038-DJI_0804_0006_40m-000537",
+  "box": [
+   415.87,
+   766.62,
+   431.78,
+   782.58
+  ],
+  "detector_confidence": 0.3832,
+  "ember_confidence": 0.9,
+  "what": "dark turtle or animal",
+  "reason": "An animal",
+  "offset": 0.031,
+  "pixels": 54.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/038-DJI_0804_0006_40m-000537.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "042-DJI_0804_0007_50m-000219",
+  "box": [
+   624.24,
+   65.37,
+   641.64,
+   83.11
+  ],
+  "detector_confidence": 0.4878,
+  "ember_confidence": 0.58,
+  "what": "tiny dark speck among foam",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.03,
+  "pixels": 60.8,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/042-DJI_0804_0007_50m-000219.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "040-DJI_0804_0006_40m-001040",
+  "box": [
+   913.2,
+   902.66,
+   941.8,
+   920.17
+  ],
+  "detector_confidence": 0.4106,
+  "ember_confidence": 0.4,
+  "what": "elongated dark object in waves",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.032,
+  "pixels": 100.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/040-DJI_0804_0006_40m-001040.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "052-DJI_0804_0009_40m-000238",
+  "box": [
+   578.37,
+   373.58,
+   598.6,
+   393.7
+  ],
+  "detector_confidence": 0.4036,
+  "ember_confidence": 0.6,
+  "what": "Dark submerged patch in water",
+  "reason": "An unclear object",
+  "offset": 0.064,
+  "pixels": 98.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/052-DJI_0804_0009_40m-000238.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "056-DJI_0804_0009_40m-001690",
+  "box": [
+   983.43,
+   461.97,
+   1008.95,
+   489.94
+  ],
+  "detector_confidence": 0.5344,
+  "ember_confidence": 0.8,
+  "what": "dark water disturbance, no person",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.013,
+  "pixels": 90.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/056-DJI_0804_0009_40m-001690.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "056-DJI_0804_0009_40m-001690",
+  "box": [
+   991.78,
+   468.04,
+   1008.27,
+   489.47
+  ],
+  "detector_confidence": 0.1205,
+  "ember_confidence": 0.8,
+  "what": "dark water disturbance, no person",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.065,
+  "pixels": 90.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/056-DJI_0804_0009_40m-001690.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "049-DJI_0804_0008_20m-000702",
+  "box": [
+   817.25,
+   715.99,
+   889.98,
+   756.05
+  ],
+  "detector_confidence": 0.6466,
+  "ember_confidence": 0.8,
+  "what": "dark bird-like shape in water",
+  "reason": "An animal",
+  "offset": 0.011,
+  "pixels": 85.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/049-DJI_0804_0008_20m-000702.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "057-DJI_0804_0010_60m-000205",
+  "box": [
+   682.79,
+   163.32,
+   698.18,
+   180.58
+  ],
+  "detector_confidence": 0.2996,
+  "ember_confidence": 0.35,
+  "what": "dark water disturbance",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.073,
+  "pixels": 102.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/057-DJI_0804_0010_60m-000205.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "061-DJI_0804_0010_60m-001633",
+  "box": [
+   1317.23,
+   52.82,
+   1342.5,
+   74.06
+  ],
+  "detector_confidence": 0.089,
+  "ember_confidence": 0.9,
+  "what": "Dolphin/animal swimming centre",
+  "reason": "An animal",
+  "offset": 0.055,
+  "pixels": 97.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/061-DJI_0804_0010_60m-001633.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "066-DJI_0804_0011_30m_1-001469",
+  "box": [
+   1188.57,
+   918.49,
+   1247.34,
+   957.05
+  ],
+  "detector_confidence": 0.7544,
+  "ember_confidence": 0.75,
+  "what": "dark animal, likely turtle",
+  "reason": "An animal",
+  "offset": 0.067,
+  "pixels": 90.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/066-DJI_0804_0011_30m_1-001469.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "069-DJI_0804_0011_30m_2-000310",
+  "box": [
+   1904.08,
+   629.6,
+   1920.0,
+   710.58
+  ],
+  "detector_confidence": 0.068,
+  "ember_confidence": 0.98,
+  "what": "Bird at right edge",
+  "reason": "An animal",
+  "offset": 0.429,
+  "pixels": 63.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/069-DJI_0804_0011_30m_2-000310.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "080-DJI_0804_0012_50m_3-001189",
+  "box": [
+   1189.21,
+   5.03,
+   1205.2,
+   27.24
+  ],
+  "detector_confidence": 0.1306,
+  "ember_confidence": 0.85,
+  "what": "white loop buoy or rope",
+  "reason": "A board, boat or float",
+  "offset": 0.332,
+  "pixels": 71.5,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/080-DJI_0804_0012_50m_3-001189.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "081-DJI_0804_0012_50m_3-001639",
+  "box": [
+   974.62,
+   545.04,
+   986.9,
+   555.98
+  ],
+  "detector_confidence": 0.2834,
+  "ember_confidence": 0.75,
+  "what": "small ring splash",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.113,
+  "pixels": 65.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/081-DJI_0804_0012_50m_3-001639.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "090-DJI_0804_0014_50m_1-000624",
+  "box": [
+   1158.87,
+   840.95,
+   1174.4,
+   856.38
+  ],
+  "detector_confidence": 0.5628,
+  "ember_confidence": 0.5,
+  "what": "small floating white object",
+  "reason": "An unclear object",
+  "offset": 0.026,
+  "pixels": 71.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/090-DJI_0804_0014_50m_1-000624.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "093-DJI_0804_0014_50m_2-000063",
+  "box": [
+   688.6,
+   244.45,
+   705.78,
+   261.97
+  ],
+  "detector_confidence": 0.3316,
+  "ember_confidence": 0.9,
+  "what": "person sitting on beach sand",
+  "reason": "A person on land",
+  "offset": 0.058,
+  "pixels": 51.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/093-DJI_0804_0014_50m_2-000063.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "097-DJI_0804_0014_50m_2-001222",
+  "box": [
+   533.07,
+   292.46,
+   545.23,
+   306.09
+  ],
+  "detector_confidence": 0.2892,
+  "ember_confidence": 0.65,
+  "what": "two people on sand off-centre",
+  "reason": "A person on land",
+  "offset": 0.016,
+  "pixels": 51.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/097-DJI_0804_0014_50m_2-001222.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "097-DJI_0804_0014_50m_2-001222",
+  "box": [
+   528.63,
+   298.85,
+   544.08,
+   311.26
+  ],
+  "detector_confidence": 0.1709,
+  "ember_confidence": 0.65,
+  "what": "two people on sand off-centre",
+  "reason": "A person on land",
+  "offset": 0.083,
+  "pixels": 51.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/097-DJI_0804_0014_50m_2-001222.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "094-DJI_0804_0014_50m_2-000295",
+  "box": [
+   956.71,
+   440.07,
+   970.47,
+   453.48
+  ],
+  "detector_confidence": 0.3462,
+  "ember_confidence": 0.85,
+  "what": "small dark bird on water",
+  "reason": "An animal",
+  "offset": 0.024,
+  "pixels": 45.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/094-DJI_0804_0014_50m_2-000295.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "094-DJI_0804_0014_50m_2-000295",
+  "box": [
+   842.34,
+   161.94,
+   855.84,
+   174.64
+  ],
+  "detector_confidence": 0.1209,
+  "ember_confidence": 0.7,
+  "what": "person standing on beach edge",
+  "reason": "A person on land",
+  "offset": 0.115,
+  "pixels": 51.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/094-DJI_0804_0014_50m_2-000295.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "101-DJI_0804_0015_30m-000491",
+  "box": [
+   634.78,
+   195.98,
+   657.89,
+   211.46
+  ],
+  "detector_confidence": 0.5088,
+  "ember_confidence": 0.65,
+  "what": "seal marine animal surface",
+  "reason": "An animal",
+  "offset": 0.046,
+  "pixels": 77.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/101-DJI_0804_0015_30m-000491.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "095-DJI_0804_0014_50m_2-000559",
+  "box": [
+   1881.94,
+   345.82,
+   1894.58,
+   356.4
+  ],
+  "detector_confidence": 0.0837,
+  "ember_confidence": 0.7,
+  "what": "animal fin in water",
+  "reason": "An animal",
+  "offset": 0.218,
+  "pixels": 44.4,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/095-DJI_0804_0014_50m_2-000559.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "095-DJI_0804_0014_50m_2-000559",
+  "box": [
+   911.57,
+   273.4,
+   923.82,
+   284.8
+  ],
+  "detector_confidence": 0.0792,
+  "ember_confidence": 0.6,
+  "what": "small dark buoy",
+  "reason": "A board, boat or float",
+  "offset": 0.074,
+  "pixels": 40.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/095-DJI_0804_0014_50m_2-000559.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "115-DJI_0804_0017_40m-001320",
+  "box": [
+   973.44,
+   982.28,
+   998.95,
+   1000.95
+  ],
+  "detector_confidence": 0.1844,
+  "ember_confidence": 0.85,
+  "what": "white and black bird floating",
+  "reason": "An animal",
+  "offset": 0.309,
+  "pixels": 87.4,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/115-DJI_0804_0017_40m-001320.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "117-DJI_0804_0018_40m-000574",
+  "box": [
+   885.11,
+   0.77,
+   900.24,
+   23.16
+  ],
+  "detector_confidence": 0.2905,
+  "ember_confidence": 0.85,
+  "what": "boat stern and wake",
+  "reason": "A board, boat or float",
+  "offset": 0.258,
+  "pixels": 109.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/117-DJI_0804_0018_40m-000574.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "121-DJI_0804_0018_40m-002261",
+  "box": [
+   1246.72,
+   796.66,
+   1270.05,
+   813.38
+  ],
+  "detector_confidence": 0.5072,
+  "ember_confidence": 0.7,
+  "what": "dark round object in water",
+  "reason": "An unclear object",
+  "offset": 0.007,
+  "pixels": 77.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/121-DJI_0804_0018_40m-002261.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "121-DJI_0804_0018_40m-002261",
+  "box": [
+   1067.77,
+   803.21,
+   1089.02,
+   820.13
+  ],
+  "detector_confidence": 0.3847,
+  "ember_confidence": 0.65,
+  "what": "grey marine animal surfacing",
+  "reason": "An animal",
+  "offset": 0.025,
+  "pixels": 77.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/121-DJI_0804_0018_40m-002261.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "124-DJI_0915_0001_40m-001769",
+  "box": [
+   716.36,
+   0.0,
+   752.52,
+   24.95
+  ],
+  "detector_confidence": 0.6836,
+  "ember_confidence": 0.95,
+  "what": "person at top edge, empty water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.383,
+  "pixels": 82.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/124-DJI_0915_0001_40m-001769.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "102-DJI_0804_0015_30m-001653",
+  "box": [
+   879.65,
+   683.66,
+   897.29,
+   704.26
+  ],
+  "detector_confidence": 0.5356,
+  "ember_confidence": 0.65,
+  "what": "white bird on water",
+  "reason": "An animal",
+  "offset": 0.045,
+  "pixels": 76.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/102-DJI_0804_0015_30m-001653.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "133-DJI_0915_0002_40m_2-000659",
+  "box": [
+   943.87,
+   709.61,
+   1015.38,
+   743.97
+  ],
+  "detector_confidence": 0.7948,
+  "ember_confidence": 0.7,
+  "what": "dolphin swimming",
+  "reason": "An animal",
+  "offset": 0.028,
+  "pixels": 71.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/133-DJI_0915_0002_40m_2-000659.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "138-DJI_0915_0003_50m-000973",
+  "box": [
+   1196.46,
+   543.0,
+   1218.25,
+   563.13
+  ],
+  "detector_confidence": 0.4891,
+  "ember_confidence": 0.65,
+  "what": "dark animal or buoy in water",
+  "reason": "An animal",
+  "offset": 0.04,
+  "pixels": 71.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/138-DJI_0915_0003_50m-000973.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "140-DJI_0915_0003_50m-001964",
+  "box": [
+   977.71,
+   662.76,
+   997.93,
+   680.58
+  ],
+  "detector_confidence": 0.4364,
+  "ember_confidence": 0.45,
+  "what": "small dark object with white splash",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.024,
+  "pixels": 69.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/140-DJI_0915_0003_50m-001964.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "147-DJI_0915_0004_50m-003414",
+  "box": [
+   1388.76,
+   931.43,
+   1426.8,
+   958.33
+  ],
+  "detector_confidence": 0.6414,
+  "ember_confidence": 0.65,
+  "what": "dark marine animal in water",
+  "reason": "An animal",
+  "offset": 0.035,
+  "pixels": 79.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/147-DJI_0915_0004_50m-003414.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "151-DJI_0915_0005_60m-002901",
+  "box": [
+   681.18,
+   986.08,
+   696.39,
+   1010.56
+  ],
+  "detector_confidence": 0.4411,
+  "ember_confidence": 0.6,
+  "what": "swimmer at bottom edge, not centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.37,
+  "pixels": 58.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/151-DJI_0915_0005_60m-002901.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "154-DJI_0915_0006_60m_3-000380",
+  "box": [
+   1848.31,
+   557.76,
+   1878.05,
+   575.61
+  ],
+  "detector_confidence": 0.5146,
+  "ember_confidence": 0.85,
+  "what": "person in yellow on pale sand, not water",
+  "reason": "A person on land",
+  "offset": 0.035,
+  "pixels": 91.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/154-DJI_0915_0006_60m_3-000380.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "154-DJI_0915_0006_60m_3-000380",
+  "box": [
+   1886.06,
+   492.24,
+   1919.92,
+   513.27
+  ],
+  "detector_confidence": 0.2271,
+  "ember_confidence": 0.9,
+  "what": "partial person at right edge on sand",
+  "reason": "A person on land",
+  "offset": 0.332,
+  "pixels": 75.3,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/154-DJI_0915_0006_60m_3-000380.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "172-DJI_0915_0009_60m_3-000867",
+  "box": [
+   1817.35,
+   443.23,
+   1855.6,
+   479.37
+  ],
+  "detector_confidence": 0.714,
+  "ember_confidence": 0.92,
+  "what": "seagull bird on water",
+  "reason": "An animal",
+  "offset": 0.032,
+  "pixels": 71.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/172-DJI_0915_0009_60m_3-000867.jpg"
+ },
+ {
+  "run": "MOBDrone, second 300 frames",
+  "frame": "205-DJI_0915_0015_50m-003326",
+  "box": [
+   1642.57,
+   846.78,
+   1662.68,
+   870.8
+  ],
+  "detector_confidence": 0.1077,
+  "ember_confidence": 0.88,
+  "what": "dolphin or seal surfacing",
+  "reason": "An animal",
+  "offset": 0.066,
+  "pixels": 91.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/205-DJI_0915_0015_50m-003326.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_316",
+  "box": [
+   2017.77,
+   106.69,
+   2052.5,
+   141.19
+  ],
+  "detector_confidence": 0.5506,
+  "ember_confidence": 0.6,
+  "what": "blue object in water",
+  "reason": "An unclear object",
+  "offset": 0.108,
+  "pixels": 152.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_316.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_301",
+  "box": [
+   136.38,
+   84.68,
+   393.22,
+   209.87
+  ],
+  "detector_confidence": 0.7342,
+  "ember_confidence": 0.85,
+  "what": "open water with seabed patches",
+  "reason": "Empty water",
+  "offset": 0.341,
+  "pixels": 25.9,
+  "pushed_in": true,
+  "people_in_crop": 10,
+  "image": "images/a_301.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_301",
+  "box": [
+   10.32,
+   303.92,
+   212.33,
+   505.31
+  ],
+  "detector_confidence": 0.5315,
+  "ember_confidence": 0.85,
+  "what": "open water with seabed patches",
+  "reason": "Empty water",
+  "offset": 0.363,
+  "pixels": 35.5,
+  "pushed_in": true,
+  "people_in_crop": 10,
+  "image": "images/a_301.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_301",
+  "box": [
+   1705.67,
+   667.4,
+   1738.49,
+   699.57
+  ],
+  "detector_confidence": 0.2348,
+  "ember_confidence": 0.7,
+  "what": "brown round rock or turtle",
+  "reason": "An animal",
+  "offset": 0.056,
+  "pixels": 162.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_301.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_312",
+  "box": [
+   2013.38,
+   106.92,
+   2048.78,
+   143.11
+  ],
+  "detector_confidence": 0.5475,
+  "ember_confidence": 0.45,
+  "what": "Dark and light submerged object",
+  "reason": "An unclear object",
+  "offset": 0.115,
+  "pixels": 147.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_312.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_342",
+  "box": [
+   1709.19,
+   424.74,
+   1752.19,
+   466.38
+  ],
+  "detector_confidence": 0.5308,
+  "ember_confidence": 0.4,
+  "what": "White and black floating object",
+  "reason": "An unclear object",
+  "offset": 0.054,
+  "pixels": 130.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_342.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_348",
+  "box": [
+   883.77,
+   340.68,
+   1146.29,
+   478.61
+  ],
+  "detector_confidence": 0.6071,
+  "ember_confidence": 0.8,
+  "what": "blue inflatable raft in centre",
+  "reason": "A board, boat or float",
+  "offset": 0.019,
+  "pixels": 19.3,
+  "pushed_in": false,
+  "people_in_crop": 8,
+  "image": "images/a_348.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_348",
+  "box": [
+   2638.19,
+   605.73,
+   2755.01,
+   672.27
+  ],
+  "detector_confidence": 0.5385,
+  "ember_confidence": 0.6,
+  "what": "empty water between people",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.108,
+  "pixels": 49.8,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/a_348.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_362",
+  "box": [
+   1151.17,
+   1176.03,
+   1404.63,
+   1307.2
+  ],
+  "detector_confidence": 0.5397,
+  "ember_confidence": 0.85,
+  "what": "open water boats at edges no centre person",
+  "reason": "A board, boat or float",
+  "offset": 0.028,
+  "pixels": 30.1,
+  "pushed_in": false,
+  "people_in_crop": 6,
+  "image": "images/a_362.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_360",
+  "box": [
+   2050.51,
+   1176.11,
+   2094.77,
+   1216.36
+  ],
+  "detector_confidence": 0.587,
+  "ember_confidence": 0.65,
+  "what": "Dark round turtle-like object",
+  "reason": "An animal",
+  "offset": 0.196,
+  "pixels": 165.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_360.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_372",
+  "box": [
+   2426.22,
+   1484.46,
+   2456.33,
+   1520.39
+  ],
+  "detector_confidence": 0.4011,
+  "ember_confidence": 0.55,
+  "what": "brown rock or debris",
+  "reason": "An unclear object",
+  "offset": 0.101,
+  "pixels": 172.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/a_372.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_381",
+  "box": [
+   1261.68,
+   1691.28,
+   1541.45,
+   1858.79
+  ],
+  "detector_confidence": 0.5886,
+  "ember_confidence": 0.6,
+  "what": "empty water, boats off-centre",
+  "reason": "A board, boat or float",
+  "offset": 0.045,
+  "pixels": 23.2,
+  "pushed_in": true,
+  "people_in_crop": 10,
+  "image": "images/a_381.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_381",
+  "box": [
+   1707.44,
+   1427.05,
+   1765.06,
+   1468.49
+  ],
+  "detector_confidence": 0.513,
+  "ember_confidence": 0.65,
+  "what": "empty water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.039,
+  "pixels": 159.3,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/a_381.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_381",
+  "box": [
+   1200.81,
+   1335.49,
+   1471.3,
+   1485.99
+  ],
+  "detector_confidence": 0.3643,
+  "ember_confidence": 0.6,
+  "what": "empty water between two boats",
+  "reason": "A board, boat or float",
+  "offset": 0.019,
+  "pixels": 27.9,
+  "pushed_in": false,
+  "people_in_crop": 8,
+  "image": "images/a_381.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_403",
+  "box": [
+   1408.3,
+   1891.29,
+   1659.39,
+   2066.12
+  ],
+  "detector_confidence": 0.7815,
+  "ember_confidence": 0.9,
+  "what": "inflatable raft with people off-centre, centre empty water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.292,
+  "pixels": 22.9,
+  "pushed_in": true,
+  "people_in_crop": 7,
+  "image": "images/a_403.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_403",
+  "box": [
+   1880.88,
+   1851.86,
+   2005.07,
+   1979.65
+  ],
+  "detector_confidence": 0.626,
+  "ember_confidence": 0.6,
+  "what": "several swimmers around empty water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.104,
+  "pixels": 40.8,
+  "pushed_in": false,
+  "people_in_crop": 6,
+  "image": "images/a_403.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_403",
+  "box": [
+   2742.33,
+   1846.38,
+   2979.76,
+   2003.16
+  ],
+  "detector_confidence": 0.6035,
+  "ember_confidence": 0.85,
+  "what": "water ripples, swimmers at bottom edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.218,
+  "pixels": 41.5,
+  "pushed_in": true,
+  "people_in_crop": 2,
+  "image": "images/a_403.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_404",
+  "box": [
+   1403.6,
+   1900.82,
+   1659.02,
+   2083.69
+  ],
+  "detector_confidence": 0.7563,
+  "ember_confidence": 0.9,
+  "what": "Inflatable boat left, swimmer right",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.311,
+  "pixels": 29.2,
+  "pushed_in": true,
+  "people_in_crop": 7,
+  "image": "images/a_404.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_404",
+  "box": [
+   1886.54,
+   1871.79,
+   2003.27,
+   1995.53
+  ],
+  "detector_confidence": 0.663,
+  "ember_confidence": 0.7,
+  "what": "Waders around centre, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.1,
+  "pixels": 42.2,
+  "pushed_in": false,
+  "people_in_crop": 6,
+  "image": "images/a_404.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_404",
+  "box": [
+   2842.53,
+   1942.9,
+   2986.32,
+   2027.02
+  ],
+  "detector_confidence": 0.52,
+  "ember_confidence": 0.75,
+  "what": "Two swimmers near centre, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.172,
+  "pixels": 56.6,
+  "pushed_in": true,
+  "people_in_crop": 2,
+  "image": "images/a_404.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_416",
+  "box": [
+   1875.61,
+   1912.1,
+   2122.5,
+   2076.99
+  ],
+  "detector_confidence": 0.5169,
+  "ember_confidence": 0.7,
+  "what": "three swimmers below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.293,
+  "pixels": 36.3,
+  "pushed_in": true,
+  "people_in_crop": 3,
+  "image": "images/a_416.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_413",
+  "box": [
+   1890.64,
+   1840.94,
+   2123.29,
+   2042.06
+  ],
+  "detector_confidence": 0.698,
+  "ember_confidence": 0.75,
+  "what": "several swimmers around centre, clear water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.201,
+  "pixels": 40.4,
+  "pushed_in": true,
+  "people_in_crop": 6,
+  "image": "images/a_413.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "av_1381",
+  "box": [
+   2643.56,
+   1354.11,
+   2888.15,
+   1512.0
+  ],
+  "detector_confidence": 0.662,
+  "ember_confidence": 0.85,
+  "what": "blue paddleboard with people on it",
+  "reason": "A board, boat or float",
+  "offset": 0.016,
+  "pixels": 24.1,
+  "pushed_in": false,
+  "people_in_crop": 5,
+  "image": "images/av_1381.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "a_446",
+  "box": [
+   1912.06,
+   2030.01,
+   2129.04,
+   2152.21
+  ],
+  "detector_confidence": 0.5196,
+  "ember_confidence": 0.85,
+  "what": "people at bottom edge, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.423,
+  "pixels": 31.3,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/a_446.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "av_249",
+  "box": [
+   576.74,
+   1240.03,
+   761.37,
+   1675.81
+  ],
+  "detector_confidence": 0.5039,
+  "ember_confidence": 0.8,
+  "what": "open water centre, group on floats around",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.015,
+  "pixels": 13.5,
+  "pushed_in": false,
+  "people_in_crop": 15,
+  "image": "images/av_249.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_105",
+  "box": [
+   2503.44,
+   323.24,
+   2584.28,
+   388.46
+  ],
+  "detector_confidence": 0.323,
+  "ember_confidence": 0.9,
+  "what": "paddleboard centred, swimmer beside it",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.054,
+  "pixels": 80.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_105.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_110",
+  "box": [
+   1815.76,
+   971.65,
+   1864.9,
+   1015.5
+  ],
+  "detector_confidence": 0.5918,
+  "ember_confidence": 0.4,
+  "what": "dark floating object",
+  "reason": "An unclear object",
+  "offset": 0.127,
+  "pixels": 185.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_110.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_107",
+  "box": [
+   2498.85,
+   317.2,
+   2578.36,
+   381.8
+  ],
+  "detector_confidence": 0.5428,
+  "ember_confidence": 0.65,
+  "what": "paddleboard centre, person beside it",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.036,
+  "pixels": 77.8,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_107.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_107",
+  "box": [
+   1828.45,
+   837.4,
+   1904.03,
+   965.63
+  ],
+  "detector_confidence": 0.1067,
+  "ember_confidence": 0.55,
+  "what": "empty water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.024,
+  "pixels": 86.7,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_107.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_113",
+  "box": [
+   2275.27,
+   3.57,
+   2374.91,
+   72.42
+  ],
+  "detector_confidence": 0.0695,
+  "ember_confidence": 0.6,
+  "what": "Water splash in centre, swimmer at top edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.34,
+  "pixels": 73.4,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/c_113.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_114",
+  "box": [
+   2473.42,
+   316.95,
+   2560.61,
+   367.73
+  ],
+  "detector_confidence": 0.5026,
+  "ember_confidence": 0.6,
+  "what": "empty water between paddler and board",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.029,
+  "pixels": 67.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_114.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_121",
+  "box": [
+   1820.05,
+   944.46,
+   1867.11,
+   984.07
+  ],
+  "detector_confidence": 0.4043,
+  "ember_confidence": 0.4,
+  "what": "small light object, unclear",
+  "reason": "An unclear object",
+  "offset": 0.155,
+  "pixels": 184.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_121.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_118",
+  "box": [
+   1822.59,
+   953.95,
+   1872.47,
+   993.38
+  ],
+  "detector_confidence": 0.5544,
+  "ember_confidence": 0.6,
+  "what": "pale rock or buoy",
+  "reason": "A board, boat or float",
+  "offset": 0.144,
+  "pixels": 174.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_118.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_129",
+  "box": [
+   1102.86,
+   1833.79,
+   1157.1,
+   1883.39
+  ],
+  "detector_confidence": 0.6292,
+  "ember_confidence": 0.7,
+  "what": "Two swimmers off centre, water in middle",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.134,
+  "pixels": 178.4,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_129.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_129",
+  "box": [
+   1124.62,
+   1775.76,
+   1173.69,
+   1821.49
+  ],
+  "detector_confidence": 0.4448,
+  "ember_confidence": 0.7,
+  "what": "Two swimmers off centre, water in middle",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.371,
+  "pixels": 196.6,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_129.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_125",
+  "box": [
+   1811.48,
+   960.16,
+   1858.4,
+   1003.58
+  ],
+  "detector_confidence": 0.5524,
+  "ember_confidence": 0.5,
+  "what": "Pale unclear object in water",
+  "reason": "An unclear object",
+  "offset": 0.176,
+  "pixels": 185.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_125.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_125",
+  "box": [
+   1116.72,
+   1750.28,
+   1170.1,
+   1815.64
+  ],
+  "detector_confidence": 0.4847,
+  "ember_confidence": 0.6,
+  "what": "Two swimmers above and below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.056,
+  "pixels": 147.4,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_125.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_132",
+  "box": [
+   2045.42,
+   3.5,
+   2154.22,
+   70.31
+  ],
+  "detector_confidence": 0.0646,
+  "ember_confidence": 0.75,
+  "what": "Swimmer at top edge, splash at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.343,
+  "pixels": 90.0,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/c_132.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_130",
+  "box": [
+   1103.39,
+   1851.9,
+   1157.16,
+   1905.81
+  ],
+  "detector_confidence": 0.6635,
+  "ember_confidence": 0.6,
+  "what": "two swimmers either side of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.103,
+  "pixels": 178.4,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_130.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_130",
+  "box": [
+   1117.16,
+   1792.78,
+   1171.32,
+   1847.23
+  ],
+  "detector_confidence": 0.5641,
+  "ember_confidence": 0.6,
+  "what": "two swimmers either side of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.331,
+  "pixels": 177.3,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_130.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_139",
+  "box": [
+   1148.78,
+   2034.71,
+   1272.48,
+   2097.8
+  ],
+  "detector_confidence": 0.5104,
+  "ember_confidence": 0.45,
+  "what": "several swimmers around centre, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.242,
+  "pixels": 72.5,
+  "pushed_in": true,
+  "people_in_crop": 3,
+  "image": "images/c_139.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_139",
+  "box": [
+   882.75,
+   2013.03,
+   979.31,
+   2089.88
+  ],
+  "detector_confidence": 0.362,
+  "ember_confidence": 0.35,
+  "what": "green round object, possibly float/buoy",
+  "reason": "A board, boat or float",
+  "offset": 0.074,
+  "pixels": 81.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/c_139.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_136",
+  "box": [
+   1172.78,
+   1995.16,
+   1295.39,
+   2062.17
+  ],
+  "detector_confidence": 0.6218,
+  "ember_confidence": 0.7,
+  "what": "three swimmers, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.135,
+  "pixels": 73.0,
+  "pushed_in": true,
+  "people_in_crop": 3,
+  "image": "images/c_136.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_136",
+  "box": [
+   1110.68,
+   1882.09,
+   1171.4,
+   1931.67
+  ],
+  "detector_confidence": 0.5062,
+  "ember_confidence": 0.75,
+  "what": "two swimmers, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.017,
+  "pixels": 153.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_136.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_142",
+  "box": [
+   1068.93,
+   2036.62,
+   1129.99,
+   2086.39
+  ],
+  "detector_confidence": 0.4059,
+  "ember_confidence": 0.7,
+  "what": "open water between swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.115,
+  "pixels": 165.2,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/c_142.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_142",
+  "box": [
+   1125.99,
+   2069.23,
+   1247.96,
+   2143.01
+  ],
+  "detector_confidence": 0.3408,
+  "ember_confidence": 0.7,
+  "what": "open water between swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.336,
+  "pixels": 73.4,
+  "pushed_in": true,
+  "people_in_crop": 4,
+  "image": "images/c_142.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_142",
+  "box": [
+   1331.03,
+   1737.76,
+   1464.67,
+   1810.85
+  ],
+  "detector_confidence": 0.0885,
+  "ember_confidence": 0.6,
+  "what": "water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.154,
+  "pixels": 74.3,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_142.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_144",
+  "box": [
+   1117.33,
+   2089.13,
+   1237.53,
+   2146.99
+  ],
+  "detector_confidence": 0.1372,
+  "ember_confidence": 0.7,
+  "what": "empty water centre, swimmers around",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.344,
+  "pixels": 74.5,
+  "pushed_in": true,
+  "people_in_crop": 4,
+  "image": "images/c_144.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_144",
+  "box": [
+   1056.8,
+   2056.71,
+   1110.89,
+   2107.16
+  ],
+  "detector_confidence": 0.0787,
+  "ember_confidence": 0.6,
+  "what": "water centre, two swimmers off-centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.13,
+  "pixels": 178.4,
+  "pushed_in": true,
+  "people_in_crop": 3,
+  "image": "images/c_144.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_69",
+  "box": [
+   953.64,
+   1459.15,
+   1033.19,
+   1515.72
+  ],
+  "detector_confidence": 0.6207,
+  "ember_confidence": 0.8,
+  "what": "Water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.012,
+  "pixels": 96.5,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_69.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_69",
+  "box": [
+   1129.82,
+   735.88,
+   1172.23,
+   765.92
+  ],
+  "detector_confidence": 0.2864,
+  "ember_confidence": 0.55,
+  "what": "Purple object in foam",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.225,
+  "pixels": 208.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_69.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_73",
+  "box": [
+   639.87,
+   1156.52,
+   747.18,
+   1230.7
+  ],
+  "detector_confidence": 0.7319,
+  "ember_confidence": 0.65,
+  "what": "two swimmers offset from centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.065,
+  "pixels": 92.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_73.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_77",
+  "box": [
+   672.25,
+   1179.38,
+   774.3,
+   1241.77
+  ],
+  "detector_confidence": 0.5365,
+  "ember_confidence": 0.7,
+  "what": "Two swimmers, neither centred",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.04,
+  "pixels": 97.4,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_77.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_77",
+  "box": [
+   950.25,
+   1465.49,
+   1057.97,
+   1522.09
+  ],
+  "detector_confidence": 0.4379,
+  "ember_confidence": 0.8,
+  "what": "Two swimmers top and bottom, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.054,
+  "pixels": 83.2,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_77.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_77",
+  "box": [
+   1990.97,
+   6.24,
+   2097.23,
+   117.84
+  ],
+  "detector_confidence": 0.1368,
+  "ember_confidence": 0.75,
+  "what": "Swimmer top, paddleboard bottom, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.313,
+  "pixels": 85.6,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/c_77.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_75",
+  "box": [
+   916.11,
+   1457.51,
+   1008.02,
+   1510.61
+  ],
+  "detector_confidence": 0.1638,
+  "ember_confidence": 0.85,
+  "what": "water at centre, two swimmers offset",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.013,
+  "pixels": 102.3,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_75.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_79",
+  "box": [
+   2096.61,
+   4.8,
+   2196.02,
+   105.44
+  ],
+  "detector_confidence": 0.1829,
+  "ember_confidence": 0.7,
+  "what": "kayaker top, paddleboard bottom, centre water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.294,
+  "pixels": 94.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/c_79.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_83",
+  "box": [
+   2382.3,
+   7.39,
+   2468.7,
+   100.92
+  ],
+  "detector_confidence": 0.4417,
+  "ember_confidence": 0.7,
+  "what": "open water, swimmers at edges",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.277,
+  "pixels": 102.0,
+  "pushed_in": true,
+  "people_in_crop": 2,
+  "image": "images/c_83.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_83",
+  "box": [
+   1308.99,
+   1254.78,
+   1352.59,
+   1288.11
+  ],
+  "detector_confidence": 0.0539,
+  "ember_confidence": 0.3,
+  "what": "white wash and splash, no clear person",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.122,
+  "pixels": 191.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_83.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_84",
+  "box": [
+   1323.6,
+   1505.37,
+   1415.53,
+   1561.38
+  ],
+  "detector_confidence": 0.6964,
+  "ember_confidence": 0.6,
+  "what": "Two swimmers above and below centre, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.043,
+  "pixels": 92.9,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_84.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_81",
+  "box": [
+   880.89,
+   1194.17,
+   982.36,
+   1253.44
+  ],
+  "detector_confidence": 0.587,
+  "ember_confidence": 0.6,
+  "what": "two swimmers offset either side of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.036,
+  "pixels": 102.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_81.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_81",
+  "box": [
+   1601.55,
+   855.43,
+   1676.43,
+   939.73
+  ],
+  "detector_confidence": 0.4076,
+  "ember_confidence": 0.6,
+  "what": "two swimmers above and below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.115,
+  "pixels": 83.6,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_81.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_81",
+  "box": [
+   1157.51,
+   1480.77,
+   1256.47,
+   1548.34
+  ],
+  "detector_confidence": 0.3515,
+  "ember_confidence": 0.55,
+  "what": "swimmer lower left and swimmer upper right",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.03,
+  "pixels": 82.5,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_81.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_91",
+  "box": [
+   1883.09,
+   844.19,
+   1921.13,
+   890.77
+  ],
+  "detector_confidence": 0.1222,
+  "ember_confidence": 0.6,
+  "what": "brown rock-like object in water",
+  "reason": "An unclear object",
+  "offset": 0.062,
+  "pixels": 195.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_91.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_99",
+  "box": [
+   1382.12,
+   1735.24,
+   1495.14,
+   1803.31
+  ],
+  "detector_confidence": 0.6271,
+  "ember_confidence": 0.9,
+  "what": "Water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.015,
+  "pixels": 83.3,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/c_99.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "cv_1250",
+  "box": [
+   1947.59,
+   794.93,
+   1985.2,
+   836.89
+  ],
+  "detector_confidence": 0.3028,
+  "ember_confidence": 0.6,
+  "what": "open water between swimmers, none centred",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.06,
+  "pixels": 81.8,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/cv_1250.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "c_97",
+  "box": [
+   2553.19,
+   307.3,
+   2628.56,
+   386.13
+  ],
+  "detector_confidence": 0.1779,
+  "ember_confidence": 0.7,
+  "what": "paddleboard centre, paddler beside it",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.131,
+  "pixels": 86.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/c_97.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1199",
+  "box": [
+   3157.55,
+   1311.75,
+   3208.94,
+   1361.32
+  ],
+  "detector_confidence": 0.5641,
+  "ember_confidence": 0.85,
+  "what": "open water between two swimmers",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.105,
+  "pixels": 74.2,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1199.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1199",
+  "box": [
+   2412.53,
+   2068.37,
+   2511.2,
+   2151.1
+  ],
+  "detector_confidence": 0.5086,
+  "ember_confidence": 0.9,
+  "what": "paddleboard at bottom edge",
+  "reason": "A board, boat or float",
+  "offset": 0.365,
+  "pixels": 47.7,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/dv_1199.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1199",
+  "box": [
+   3073.16,
+   1528.77,
+   3108.84,
+   1560.41
+  ],
+  "detector_confidence": 0.4872,
+  "ember_confidence": 0.85,
+  "what": "water between swimmer and dark object",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.034,
+  "pixels": 107.9,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1199.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1199",
+  "box": [
+   3274.05,
+   1316.29,
+   3324.32,
+   1358.85
+  ],
+  "detector_confidence": 0.4144,
+  "ember_confidence": 0.75,
+  "what": "water above swimmer below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.112,
+  "pixels": 77.1,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1199.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1199",
+  "box": [
+   2523.6,
+   1370.58,
+   2598.16,
+   1435.71
+  ],
+  "detector_confidence": 0.2298,
+  "ember_confidence": 0.8,
+  "what": "white object in water centre",
+  "reason": "An unclear object",
+  "offset": 0.129,
+  "pixels": 47.0,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1199.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1409",
+  "box": [
+   1504.72,
+   243.18,
+   1570.64,
+   282.55
+  ],
+  "detector_confidence": 0.4549,
+  "ember_confidence": 0.8,
+  "what": "two swimmers off-centre, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.116,
+  "pixels": 50.9,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1409.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1409",
+  "box": [
+   878.61,
+   863.5,
+   955.85,
+   968.36
+  ],
+  "detector_confidence": 0.4409,
+  "ember_confidence": 0.9,
+  "what": "two paddleboards, water centre",
+  "reason": "A board, boat or float",
+  "offset": 0.025,
+  "pixels": 30.6,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/dv_1409.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1409",
+  "box": [
+   1480.06,
+   295.51,
+   1536.31,
+   337.02
+  ],
+  "detector_confidence": 0.4324,
+  "ember_confidence": 0.85,
+  "what": "swimmers off-centre, water centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.105,
+  "pixels": 57.0,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/dv_1409.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "dv_1409",
+  "box": [
+   887.56,
+   770.17,
+   1060.56,
+   857.99
+  ],
+  "detector_confidence": 0.2153,
+  "ember_confidence": 0.9,
+  "what": "three paddleboards, water centre",
+  "reason": "A board, boat or float",
+  "offset": 0.015,
+  "pixels": 21.1,
+  "pushed_in": false,
+  "people_in_crop": 4,
+  "image": "images/dv_1409.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_1030",
+  "box": [
+   3777.34,
+   1767.78,
+   3838.64,
+   1819.61
+  ],
+  "detector_confidence": 0.7002,
+  "ember_confidence": 0.85,
+  "what": "empty water, person at right edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.403,
+  "pixels": 69.4,
+  "pushed_in": true,
+  "people_in_crop": 2,
+  "image": "images/ev_1030.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_1226",
+  "box": [
+   3263.63,
+   882.6,
+   3304.0,
+   948.99
+  ],
+  "detector_confidence": 0.6756,
+  "ember_confidence": 0.6,
+  "what": "two swimmers either side of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.011,
+  "pixels": 76.5,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/ev_1226.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_1226",
+  "box": [
+   1722.66,
+   69.25,
+   1770.21,
+   106.72
+  ],
+  "detector_confidence": 0.6425,
+  "ember_confidence": 0.55,
+  "what": "two heads above centre in water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.063,
+  "pixels": 68.9,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/ev_1226.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_1226",
+  "box": [
+   3312.93,
+   876.96,
+   3343.42,
+   922.85
+  ],
+  "detector_confidence": 0.5524,
+  "ember_confidence": 0.6,
+  "what": "two swimmers either side of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.022,
+  "pixels": 100.6,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/ev_1226.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_644",
+  "box": [
+   1283.46,
+   733.16,
+   1350.9,
+   801.98
+  ],
+  "detector_confidence": 0.7313,
+  "ember_confidence": 0.75,
+  "what": "two swimmers above and below centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.064,
+  "pixels": 62.0,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/ev_644.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_644",
+  "box": [
+   2722.42,
+   1100.21,
+   2792.47,
+   1147.63
+  ],
+  "detector_confidence": 0.6606,
+  "ember_confidence": 0.8,
+  "what": "three swimmers around, water in centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.057,
+  "pixels": 49.9,
+  "pushed_in": false,
+  "people_in_crop": 3,
+  "image": "images/ev_644.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_644",
+  "box": [
+   2782.14,
+   1885.53,
+   2881.57,
+   2021.36
+  ],
+  "detector_confidence": 0.6125,
+  "ember_confidence": 0.85,
+  "what": "two swimmers, water between them in centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.05,
+  "pixels": 36.8,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/ev_644.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_914",
+  "box": [
+   0.0,
+   1191.22,
+   49.77,
+   1245.11
+  ],
+  "detector_confidence": 0.6858,
+  "ember_confidence": 0.7,
+  "what": "partial dark object at left edge",
+  "reason": "An unclear object",
+  "offset": 0.395,
+  "pixels": 91.3,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "images/ev_914.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "ev_914",
+  "box": [
+   2803.52,
+   1569.16,
+   2842.32,
+   1607.27
+  ],
+  "detector_confidence": 0.6482,
+  "ember_confidence": 0.4,
+  "what": "small red blurry object",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.088,
+  "pixels": 86.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/ev_914.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k2_61",
+  "box": [
+   492.84,
+   1401.57,
+   549.76,
+   1434.18
+  ],
+  "detector_confidence": 0.139,
+  "ember_confidence": 0.9,
+  "what": "two paddleboards off-centre, water centre",
+  "reason": "A board, boat or float",
+  "offset": 0.386,
+  "pixels": 87.8,
+  "pushed_in": true,
+  "people_in_crop": 3,
+  "image": "images/k2_61.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_17",
+  "box": [
+   1270.95,
+   328.78,
+   1285.35,
+   343.97
+  ],
+  "detector_confidence": 0.1461,
+  "ember_confidence": 0.35,
+  "what": "surfboard in white water",
+  "reason": "A board, boat or float",
+  "offset": 0.177,
+  "pixels": 91.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_17.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_21",
+  "box": [
+   1295.55,
+   333.75,
+   1334.64,
+   353.4
+  ],
+  "detector_confidence": 0.4135,
+  "ember_confidence": 0.7,
+  "what": "empty red paddleboard in surf",
+  "reason": "A board, boat or float",
+  "offset": 0.009,
+  "pixels": 93.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_21.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_21",
+  "box": [
+   1250.38,
+   1130.39,
+   1277.83,
+   1172.12
+  ],
+  "detector_confidence": 0.1756,
+  "ember_confidence": 0.6,
+  "what": "empty white paddleboard floating",
+  "reason": "A board, boat or float",
+  "offset": 0.013,
+  "pixels": 93.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_21.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_28",
+  "box": [
+   999.47,
+   294.68,
+   1022.28,
+   314.64
+  ],
+  "detector_confidence": 0.4225,
+  "ember_confidence": 0.25,
+  "what": "pink blob in foam",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.01,
+  "pixels": 109.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_28.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_28",
+  "box": [
+   1448.88,
+   770.39,
+   1497.47,
+   800.35
+  ],
+  "detector_confidence": 0.1816,
+  "ember_confidence": 0.65,
+  "what": "marine animal splashing",
+  "reason": "An animal",
+  "offset": 0.015,
+  "pixels": 105.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_28.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_29",
+  "box": [
+   907.02,
+   369.36,
+   921.69,
+   386.2
+  ],
+  "detector_confidence": 0.3416,
+  "ember_confidence": 0.3,
+  "what": "red object in white foam",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.052,
+  "pixels": 109.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_29.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_29",
+  "box": [
+   2091.57,
+   228.02,
+   2113.85,
+   257.64
+  ],
+  "detector_confidence": 0.1056,
+  "ember_confidence": 0.4,
+  "what": "white board with splash wake",
+  "reason": "A board, boat or float",
+  "offset": 0.255,
+  "pixels": 128.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_29.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_30",
+  "box": [
+   801.71,
+   364.12,
+   816.22,
+   377.54
+  ],
+  "detector_confidence": 0.1435,
+  "ember_confidence": 0.35,
+  "what": "small red object in white clouds, no clear person",
+  "reason": "An unclear object",
+  "offset": 0.081,
+  "pixels": 114.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_30.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_33",
+  "box": [
+   2128.01,
+   252.17,
+   2148.52,
+   280.55
+  ],
+  "detector_confidence": 0.1654,
+  "ember_confidence": 0.3,
+  "what": "White splash/foam blob, no clear person",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.015,
+  "pixels": 135.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_33.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_35",
+  "box": [
+   725.43,
+   389.68,
+   740.92,
+   404.99
+  ],
+  "detector_confidence": 0.3774,
+  "ember_confidence": 0.25,
+  "what": "blurry foam wave",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.099,
+  "pixels": 105.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_35.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_45",
+  "box": [
+   870.87,
+   770.0,
+   886.85,
+   799.98
+  ],
+  "detector_confidence": 0.2598,
+  "ember_confidence": 0.35,
+  "what": "splashing water, orange object",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.047,
+  "pixels": 123.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_45.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_34",
+  "box": [
+   720.43,
+   371.02,
+   733.93,
+   385.35
+  ],
+  "detector_confidence": 0.2338,
+  "ember_confidence": 0.85,
+  "what": "white foam blur, no person",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.28,
+  "pixels": 137.7,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_34.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_34",
+  "box": [
+   1658.69,
+   817.4,
+   1715.86,
+   854.39
+  ],
+  "detector_confidence": 0.0591,
+  "ember_confidence": 0.75,
+  "what": "animal splashing at surface",
+  "reason": "An animal",
+  "offset": 0.068,
+  "pixels": 82.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_34.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_39",
+  "box": [
+   1510.81,
+   1133.61,
+   1542.56,
+   1179.57
+  ],
+  "detector_confidence": 0.6794,
+  "ember_confidence": 0.75,
+  "what": "jet ski / small boat with rider",
+  "reason": "A board, boat or float",
+  "offset": 0.044,
+  "pixels": 107.1,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/k5_39.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_39",
+  "box": [
+   1794.81,
+   859.19,
+   1832.81,
+   891.42
+  ],
+  "detector_confidence": 0.2587,
+  "ember_confidence": 0.7,
+  "what": "small boat / watercraft from above",
+  "reason": "A board, boat or float",
+  "offset": 0.018,
+  "pixels": 139.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_39.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_37",
+  "box": [
+   745.63,
+   434.72,
+   765.57,
+   456.5
+  ],
+  "detector_confidence": 0.3785,
+  "ember_confidence": 0.6,
+  "what": "pink object in foam",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.038,
+  "pixels": 100.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_37.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_37",
+  "box": [
+   1738.59,
+   853.42,
+   1787.61,
+   876.08
+  ],
+  "detector_confidence": 0.0568,
+  "ember_confidence": 0.55,
+  "what": "floating object with wake",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.005,
+  "pixels": 102.1,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_37.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_49",
+  "box": [
+   1955.84,
+   888.85,
+   2006.13,
+   920.28
+  ],
+  "detector_confidence": 0.4659,
+  "ember_confidence": 0.65,
+  "what": "marine animal, possibly fish or dolphin",
+  "reason": "An animal",
+  "offset": 0.018,
+  "pixels": 80.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_49.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_59",
+  "box": [
+   1654.04,
+   1221.95,
+   1681.65,
+   1271.99
+  ],
+  "detector_confidence": 0.4924,
+  "ember_confidence": 0.85,
+  "what": "Two paddleboards with people, water at centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.047,
+  "pixels": 97.1,
+  "pushed_in": false,
+  "people_in_crop": 2,
+  "image": "images/k5_59.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_64",
+  "box": [
+   2184.31,
+   539.79,
+   2220.21,
+   565.86
+  ],
+  "detector_confidence": 0.4697,
+  "ember_confidence": 0.65,
+  "what": "white marine animal swimming, wake trailing",
+  "reason": "An animal",
+  "offset": 0.075,
+  "pixels": 107.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_64.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_69",
+  "box": [
+   2194.06,
+   522.79,
+   2220.34,
+   540.27
+  ],
+  "detector_confidence": 0.4226,
+  "ember_confidence": 0.85,
+  "what": "white buoy or bird",
+  "reason": "An animal",
+  "offset": 0.031,
+  "pixels": 107.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_69.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_73",
+  "box": [
+   2199.2,
+   512.18,
+   2230.63,
+   541.98
+  ],
+  "detector_confidence": 0.4099,
+  "ember_confidence": 0.4,
+  "what": "blurry white floating object",
+  "reason": "Foam, a splash or a wake",
+  "offset": 0.052,
+  "pixels": 105.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_73.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_73",
+  "box": [
+   1945.93,
+   727.38,
+   1997.66,
+   747.47
+  ],
+  "detector_confidence": 0.2817,
+  "ember_confidence": 0.4,
+  "what": "silvery dead fish or bird",
+  "reason": "An animal",
+  "offset": 0.019,
+  "pixels": 85.3,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_73.jpg"
+ },
+ {
+  "run": "AFO, 300 photos",
+  "frame": "k5_9",
+  "box": [
+   1639.98,
+   351.84,
+   1658.86,
+   369.39
+  ],
+  "detector_confidence": 0.3946,
+  "ember_confidence": 0.25,
+  "what": "red board in white surf foam",
+  "reason": "A board, boat or float",
+  "offset": 0.059,
+  "pixels": 84.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "images/k5_9.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00006",
+  "box": [
+   1838.0,
+   411.06,
+   1903.29,
+   432.86
+  ],
+  "detector_confidence": 0.5452,
+  "ember_confidence": 0.9,
+  "what": "person floating right of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.28,
+  "pixels": 85.5,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00006.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00007",
+  "box": [
+   1751.22,
+   402.44,
+   1816.02,
+   424.75
+  ],
+  "detector_confidence": 0.5802,
+  "ember_confidence": 0.75,
+  "what": "duck swimming",
+  "reason": "An animal",
+  "offset": 0.016,
+  "pixels": 85.5,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00007.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00012",
+  "box": [
+   1304.8,
+   360.58,
+   1364.92,
+   397.67
+  ],
+  "detector_confidence": 0.8121,
+  "ember_confidence": 0.97,
+  "what": "duck swimming in water",
+  "reason": "An animal",
+  "offset": 0.018,
+  "pixels": 77.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00012.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00023",
+  "box": [
+   657.85,
+   335.28,
+   710.7,
+   378.97
+  ],
+  "detector_confidence": 0.8236,
+  "ember_confidence": 0.92,
+  "what": "bird floating on water",
+  "reason": "An animal",
+  "offset": 0.019,
+  "pixels": 81.2,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00023.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00024",
+  "box": [
+   612.66,
+   335.0,
+   664.84,
+   384.68
+  ],
+  "detector_confidence": 0.8248,
+  "ember_confidence": 0.85,
+  "what": "Bird with wings spread over water",
+  "reason": "An animal",
+  "offset": 0.013,
+  "pixels": 80.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00024.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00025",
+  "box": [
+   1883.4,
+   131.69,
+   1911.99,
+   187.94
+  ],
+  "detector_confidence": 0.7076,
+  "ember_confidence": 0.9,
+  "what": "empty water centre, person at right edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.382,
+  "pixels": 86.1,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00025.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00034",
+  "box": [
+   80.01,
+   409.52,
+   125.35,
+   468.38
+  ],
+  "detector_confidence": 0.7849,
+  "ember_confidence": 0.9,
+  "what": "seabird in flight over water",
+  "reason": "An animal",
+  "offset": 0.003,
+  "pixels": 77.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00034.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00095",
+  "box": [
+   124.77,
+   727.55,
+   183.58,
+   770.76
+  ],
+  "detector_confidence": 0.7815,
+  "ember_confidence": 0.85,
+  "what": "waterbird swimming in open water",
+  "reason": "An animal",
+  "offset": 0.012,
+  "pixels": 73.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00095.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00096",
+  "box": [
+   203.7,
+   717.71,
+   259.65,
+   754.64
+  ],
+  "detector_confidence": 0.7704,
+  "ember_confidence": 0.65,
+  "what": "seal swimming creating wake",
+  "reason": "An animal",
+  "offset": 0.032,
+  "pixels": 69.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00096.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00097",
+  "box": [
+   279.72,
+   698.24,
+   337.47,
+   738.18
+  ],
+  "detector_confidence": 0.7514,
+  "ember_confidence": 0.55,
+  "what": "dark elongated floating shape",
+  "reason": "An unclear object",
+  "offset": 0.018,
+  "pixels": 79.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00097.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00099",
+  "box": [
+   1891.67,
+   395.32,
+   1920.0,
+   446.42
+  ],
+  "detector_confidence": 0.7001,
+  "ember_confidence": 0.9,
+  "what": "legs with white fins at right edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.394,
+  "pixels": 70.0,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00099.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00102",
+  "box": [
+   710.05,
+   572.37,
+   768.08,
+   613.91
+  ],
+  "detector_confidence": 0.831,
+  "ember_confidence": 0.85,
+  "what": "Dolphin swimming, not a person",
+  "reason": "An animal",
+  "offset": 0.017,
+  "pixels": 79.0,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00102.jpg"
+ },
+ {
+  "run": "Live clip, re-run",
+  "frame": "second-00119",
+  "box": [
+   1867.4,
+   337.86,
+   1919.7,
+   373.48
+  ],
+  "detector_confidence": 0.6817,
+  "ember_confidence": 0.75,
+  "what": "small swimmer off-centre to the right, open water",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.329,
+  "pixels": 76.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00119.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00006",
+  "box": [
+   1838.0,
+   411.06,
+   1903.29,
+   432.86
+  ],
+  "detector_confidence": 0.5452,
+  "ember_confidence": 0.9,
+  "what": "open water, person right of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.28,
+  "pixels": 85.5,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00006.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00012",
+  "box": [
+   1304.8,
+   360.58,
+   1364.92,
+   397.67
+  ],
+  "detector_confidence": 0.8121,
+  "ember_confidence": 0.95,
+  "what": "duck swimming",
+  "reason": "An animal",
+  "offset": 0.018,
+  "pixels": 77.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00012.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00024",
+  "box": [
+   612.66,
+   335.0,
+   664.84,
+   384.68
+  ],
+  "detector_confidence": 0.8248,
+  "ember_confidence": 0.92,
+  "what": "large bird in flight over water",
+  "reason": "An animal",
+  "offset": 0.013,
+  "pixels": 80.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00024.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00034",
+  "box": [
+   80.01,
+   409.52,
+   125.35,
+   468.38
+  ],
+  "detector_confidence": 0.7849,
+  "ember_confidence": 0.9,
+  "what": "Seabird on water surface",
+  "reason": "An animal",
+  "offset": 0.003,
+  "pixels": 77.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00034.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00095",
+  "box": [
+   124.77,
+   727.55,
+   183.58,
+   770.76
+  ],
+  "detector_confidence": 0.7815,
+  "ember_confidence": 0.75,
+  "what": "seal or animal swimming",
+  "reason": "An animal",
+  "offset": 0.012,
+  "pixels": 73.6,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00095.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00096",
+  "box": [
+   203.7,
+   717.71,
+   259.65,
+   754.64
+  ],
+  "detector_confidence": 0.7704,
+  "ember_confidence": 0.75,
+  "what": "bird or marine animal at surface",
+  "reason": "An animal",
+  "offset": 0.032,
+  "pixels": 69.4,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00096.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00098",
+  "box": [
+   357.65,
+   670.87,
+   414.85,
+   716.39
+  ],
+  "detector_confidence": 0.8184,
+  "ember_confidence": 0.85,
+  "what": "water bird swimming",
+  "reason": "An animal",
+  "offset": 0.026,
+  "pixels": 79.9,
+  "pushed_in": false,
+  "people_in_crop": 1,
+  "image": "frames/second-00098.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00099",
+  "box": [
+   1891.67,
+   395.32,
+   1920.0,
+   446.42
+  ],
+  "detector_confidence": 0.7001,
+  "ember_confidence": 0.9,
+  "what": "partial legs at right edge",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.394,
+  "pixels": 70.0,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00099.jpg"
+ },
+ {
+  "run": "Live clip, first take",
+  "frame": "second-00119",
+  "box": [
+   1867.4,
+   337.86,
+   1919.7,
+   373.48
+  ],
+  "detector_confidence": 0.6817,
+  "ember_confidence": 0.9,
+  "what": "swimmer right of centre",
+  "reason": "A person, but away from the centre of the crop",
+  "offset": 0.329,
+  "pixels": 76.9,
+  "pushed_in": true,
+  "people_in_crop": 1,
+  "image": "frames/second-00119.jpg"
+ }
+]

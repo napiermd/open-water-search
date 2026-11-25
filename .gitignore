@@ -49,3 +49,6 @@ runs/prompt-revision/**/checks.jsonl
 runs/prompt-revision/tune/clip/inputs/images
 runs/prompt-revision/confirm/inputs/images
 runs/prompt-revision/confirm/scoring-only/labels
+
+# The one-frame-per-second cut of every MOBDrone video is linked in from a local extraction
+experiments/lost-people/flight-ranking/inputs/images
