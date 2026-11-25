@@ -2,8 +2,9 @@
 
     python select_validation.py PATH_TO_MIRROR/data
 
-The published validation/ folder came from this script. Rerunning it needs the mirror and an empty validation/ folder.
-Near-duplicates are checked against the 400 training images listed in inputs/training-pool.txt, the local
+The published experiments/zoom-first/validation-30/ folder came from this script. Rerunning it needs the mirror and an empty
+folder there.
+Near-duplicates are checked against the 400 training images listed in experiments/zoom-first/training-30/inputs/training-pool.txt, the local
 training pool from which the November 23 run's frames were drawn.
 Choose 30 validation frames without reading any label, and stage them for a sealed Ember run.
 
@@ -19,8 +20,8 @@ from pathlib import Path
 
 from PIL import Image
 
-OUT = Path(__file__).resolve().parents[1] / "validation"
-POOL = Path(__file__).resolve().parents[1] / "inputs/training-pool.txt"
+OUT = Path(__file__).resolve().parents[1] / "experiments/zoom-first/validation-30"
+POOL = Path(__file__).resolve().parents[1] / "experiments/zoom-first/training-30/inputs/training-pool.txt"
 SEED = "open-water-search-validation-2026-11-23"
 NEAR = 8  # Hamming distance on a 64-bit difference hash; at or below this counts as a near-duplicate
 

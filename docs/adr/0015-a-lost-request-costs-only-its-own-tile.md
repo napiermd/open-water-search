@@ -1,0 +1,3 @@
+# A lost request costs only its own overview or tile
+
+The first scale-run attempt ended after 57 of about 4,600 calls because one request timed out, and the tool treated any network error as fatal. Over thousands of calls an occasional timeout is close to certain. A timeout, dropped connection or 5xx reply now gets one retry with back-off, following the one-retry rule for our own runs. If the retry fails too, only that overview or tile is recorded as unreadable, its worst-case cost counts as spent because Meta may still bill it, and the search continues. Ten unreadable answers in a row, a repeated 429, or any other error still end the run with status 1 after the search record is written.

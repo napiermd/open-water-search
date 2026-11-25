@@ -1,0 +1,5 @@
+# The detector makes the first pass, and Ember checks its flags
+
+November 24, 2026. A free detector trained on SeaDronesSee found more people with fewer false alarms than Ember searching alone, on both SeaDronesSee and MOBDrone. Asking Ember to check each of the detector's flags lost to the detector's own threshold on SeaDronesSee, and passed on 300 new MOBDrone frames: the same 210 people with 38 false alarms against 166. So the tool's headline mode runs the detector first and has Ember check its flags, and the project makes one claim: on drone footage the detector wasn't trained on, Ember's check cuts false alarms without losing people. Ember searching alone stays in the tool as the default that needs no detector.
+
+Every further test of that claim is pre-registered on footage neither step was tuned on, with the sealed check settings, and the plan says before the run what the result will mean if it passes and if it fails. A prompt change is tested only after that, tuned on frames already used and confirmed on frames the earlier test did not touch.

@@ -1,0 +1,3 @@
+# Adopt Meta's grounding format only if it holds up on the same 30 photos
+
+Meta documents a native way for Muse models to locate objects: points on a 0–1,000 grid, with structured output forcing the answer to match a JSON schema. Our frozen prompts ask for fractions instead, and some answers came back on the 0–1,000 grid anyway. We will move to the documented format with structured output, but only after rerunning it on the same 30 validation photos and finding it no worse than the frozen prompts. The published one-zoom results stay tied to the frozen prompts. Any new number is reported as a new run, never merged into the old tables.

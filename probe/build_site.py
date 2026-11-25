@@ -13,7 +13,7 @@ import shutil
 
 from PIL import Image
 
-from score import ROOT
+from score import ROOT, TRAINING, VALIDATION
 
 SITE = ROOT / "site"
 LONG_EDGE = 2400
@@ -36,7 +36,8 @@ def main():
             shutil.rmtree(entry) if entry.is_dir() else entry.unlink()
     shutil.copytree(ROOT / "pages", SITE / "pages")
     frames = 0
-    for base, prefix in ((ROOT, ""), (ROOT / "validation", "validation/")):
+    # The site keeps the layout the pages were built for: the training frames at its root, validation under validation/.
+    for base, prefix in ((TRAINING, ""), (VALIDATION, "validation/")):
         labels = {row["frame"]: row["label"] for row in json.loads((base / "scoring-only/manifest.json").read_text())["frames"]}
         for frame in json.loads((base / "inputs/manifest.json").read_text())["frames"]:
             source = base / "inputs" / frame["image"]

@@ -16,11 +16,11 @@ import json
 import re
 
 from open_water_search import TILE_NAMES
-from score import ROOT, load_sealed, with_grid_rule
+from score import ROOT, TRAINING, VALIDATION, load_sealed, with_grid_rule
 
 RUNS = {
-    "validation": (ROOT / "validation", "Validation run · 30 untouched SeaDronesSee validation frames", "../validation/"),
-    "probe": (ROOT, "First run · 30 SeaDronesSee training frames", "../"),
+    "validation": (VALIDATION, "Validation run · 30 untouched SeaDronesSee validation frames", "../validation/"),
+    "probe": (TRAINING, "First run · 30 SeaDronesSee training frames", "../"),
 }
 LIVE_CLIP = ROOT / "runs/live-clip"
 LIVE_CHECK = ROOT / "runs/live-detector-check"

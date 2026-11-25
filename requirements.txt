@@ -1,0 +1,2 @@
+# The search tool, the scorer and Ember's check. Everything else they use is in the Python standard library.
+pillow>=10

@@ -6,6 +6,9 @@ import math
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+# The November 23 zoom-first experiment's two sealed runs: python score.py, or python score.py validation.
+TRAINING=ROOT/'experiments'/'zoom-first'/'training-30'
+VALIDATION=ROOT/'experiments'/'zoom-first'/'validation-30'
 CHECKPOINTS=[10_000_000,25_000_000,50_000_000,100_000_000,250_000_000]
 SIGHTINGS_PER_PHOTO=5
 DETECTOR_MIN_CONFIDENCE=0.25
@@ -252,7 +255,7 @@ def order_table(trace,frames,labels,looks=(1,2,3,9)):
                 ember_beats_center_at_one_look=beats('center'),ember_beats_grid_at_one_look=beats('grid'))
 
 def load_sealed(base):
-    """Return the verified trace and frames of the sealed run under base (ROOT or ROOT/'validation').
+    """Return the verified trace and frames of the sealed run under base (TRAINING or VALIDATION).
 
     Raises ValueError for a trace or manifest that does not match its seal."""
     live=base/'live'
@@ -281,7 +284,7 @@ if __name__=='__main__':
         frames,sightings=readers[sys.argv[1]](json.loads(source.read_text()))
         print(json.dumps(score_sightings(sightings,frames,groundtruth(scoring,frames)),indent=2,sort_keys=True))
         sys.exit()
-    base=ROOT/'validation' if sys.argv[1:]==['validation'] else ROOT
+    base=VALIDATION if sys.argv[1:]==['validation'] else TRAINING
     live=base/'live'
     trace,frames=load_sealed(base)
     labels=groundtruth(base/'scoring-only',frames)
