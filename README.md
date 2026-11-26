@@ -4,7 +4,21 @@
 
 [![Tests](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml/badge.svg)](https://github.com/napiermd/open-water-search/actions/workflows/tests.yml) · [Open the recorded flight](https://open-water-search.vercel.app) · Built during the Muse Ember Hackathon, starting November 23, 2026.
 
-Open the first crew handoff to see the full-frame pin and exact crop, download the packet for offline use, and reopen an earlier dismissal of that same swimmer. On eight previously scored clips, up to five handoffs per clip reached 5 of 7 people with the detector and 4 with Ember. [First-five scoring and counts](experiments/first-five/README.md).
+## What reaches the crew in the first five handoffs?
+
+On all 129 eligible 24-second MOBDrone windows, checking swimmer flags with Muse Ember reduced empty handoffs from **176 to 113**, or **35.8% fewer** (95% interval **26.7% to 46.4%**). The reviewer opens up to five cards per window. Both queues use the same ranking.
+
+| Queue | Swimmer tracks reached / 258 | Repeat pins | Empty handoffs | Change in reach, percentage points (95% interval) | Fewer empty handoffs (95% interval) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Ranked detector | 201 | 53 | 176 | Reference | Reference |
+| Detector + Ember checking swimmer flags | 212 | 86 | 113 | +4.3 (−0.4 to +8.7) | 35.8% (26.7% to 46.4%) |
+| Detector + Ember checking swimmer and boat flags | 215 | 86 | 116 | +5.4 (+0.5 to +10.0) | 34.1% (24.5% to 44.7%) |
+
+A track counts once per window. A person can appear in several windows. The swimmer-only check brought 19 tracks into the first five and displaced 8 the detector reached. Its interval for reach includes zero. The intervals come from 20,000 paired draws of the 42 recording families. Some footage also informed development. Crew response time remains unmeasured. [Per-window scores](experiments/first-five/archive-129/windows.csv) · [Interval estimates](experiments/first-five/archive-129/intervals.json).
+
+**See where the ranking matters.** In a separate Cyprus Civil Defence exercise, the swimmer ranked eighth in the detector queue and first after Ember checked the crops. Open the two matching pins and any of the seven detector cards ahead of the swimmer. [Replay Cyprus](https://open-water-search.vercel.app/pages/cyprus.html) · [Open the recorded crew handoff](https://open-water-search.vercel.app/judge).
+
+## Separate still-photo benchmarks
 
 On two drone datasets the detector never saw, Ember's check found at least as many people with far fewer false alarms:
 
