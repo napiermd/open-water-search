@@ -1,0 +1,144 @@
+{
+  "scored_after_first_99": {
+    "windows": 30,
+    "tracks": 58,
+    "totals": {
+      "detector_support": {
+        "new": 51,
+        "repeat": 21,
+        "empty": 41,
+        "opened": 113
+      },
+      "ember_support": {
+        "new": 54,
+        "repeat": 30,
+        "empty": 24,
+        "opened": 108
+      },
+      "ember_with_boats": {
+        "new": 56,
+        "repeat": 30,
+        "empty": 24,
+        "opened": 110
+      }
+    }
+  },
+  "draws": 20000,
+  "seed": 20261126,
+  "archive_sha256": "331a067900988f5653efb673afac8867372fc6e7a6a3686d82d95f67ca8a97ba",
+  "incomplete_windows": 0,
+  "archive": {
+    "ember_support": {
+      "families": 42,
+      "collections": {
+        "0804": {
+          "windows": 33,
+          "tracks": 101,
+          "detector_reached": 63,
+          "ember_reached": 64,
+          "detector_empty": 32,
+          "ember_empty": 21
+        },
+        "0915": {
+          "windows": 96,
+          "tracks": 157,
+          "detector_reached": 138,
+          "ember_reached": 148,
+          "detector_empty": 144,
+          "ember_empty": 92
+        }
+      },
+      "metrics": {
+        "reach_gain_percentage_points": {
+          "estimate": 4.263565891472868,
+          "interval95": [
+            -0.39215686274509803,
+            8.745247148288973
+          ],
+          "leave_one_family_out_range": [
+            3.252032520325203,
+            5.2
+          ]
+        },
+        "empty_alert_reduction_percent": {
+          "estimate": 35.79545454545455,
+          "interval95": [
+            26.701507141767905,
+            46.36376333164042
+          ],
+          "leave_one_family_out_range": [
+            33.92857142857143,
+            38.56209150326797
+          ]
+        },
+        "fewer_empty_per_100_windows": {
+          "estimate": 48.83720930232558,
+          "interval95": [
+            31.49569845435987,
+            67.2
+          ],
+          "leave_one_family_out_range": [
+            44.881889763779526,
+            52.5
+          ]
+        }
+      }
+    },
+    "ember_with_boats": {
+      "families": 42,
+      "collections": {
+        "0804": {
+          "windows": 33,
+          "tracks": 101,
+          "detector_reached": 63,
+          "ember_reached": 65,
+          "detector_empty": 32,
+          "ember_empty": 24
+        },
+        "0915": {
+          "windows": 96,
+          "tracks": 157,
+          "detector_reached": 138,
+          "ember_reached": 150,
+          "detector_empty": 144,
+          "ember_empty": 92
+        }
+      },
+      "metrics": {
+        "reach_gain_percentage_points": {
+          "estimate": 5.426356589147287,
+          "interval95": [
+            0.47393364928909953,
+            10.0372106041251
+          ],
+          "leave_one_family_out_range": [
+            4.471544715447155,
+            6.4
+          ]
+        },
+        "empty_alert_reduction_percent": {
+          "estimate": 34.09090909090909,
+          "interval95": [
+            24.463442121839012,
+            44.73684210526316
+          ],
+          "leave_one_family_out_range": [
+            32.142857142857146,
+            36.60130718954248
+          ]
+        },
+        "fewer_empty_per_100_windows": {
+          "estimate": 46.51162790697674,
+          "interval95": [
+            28.571428571428573,
+            65.27777777777777
+          ],
+          "leave_one_family_out_range": [
+            42.51968503937008,
+            50.0
+          ]
+        }
+      }
+    }
+  }
+}

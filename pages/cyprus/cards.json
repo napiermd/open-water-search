@@ -1,0 +1,254 @@
+[
+  {
+    "method": "detector",
+    "rank": 1,
+    "second": 191,
+    "frame": "frame-191.jpg",
+    "crop": "crop-191-0.jpg",
+    "sourceSeconds": 191.191,
+    "pin": [
+      3013.05,
+      518.545
+    ],
+    "region": [
+      2839,
+      345,
+      3187,
+      692
+    ],
+    "target": [
+      1667,
+      1267,
+      1707,
+      1308
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "bush in shallow water near bank",
+    "confidence": 0.95
+  },
+  {
+    "method": "detector",
+    "rank": 2,
+    "second": 189,
+    "frame": "frame-189.jpg",
+    "crop": "crop-189-1.jpg",
+    "sourceSeconds": 189.189,
+    "pin": [
+      1155.2,
+      1957.035
+    ],
+    "region": [
+      1000,
+      1802,
+      1310,
+      2112
+    ],
+    "target": [
+      1667,
+      1259,
+      1707,
+      1300
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "Bush on sandy shore",
+    "confidence": 0.9
+  },
+  {
+    "method": "detector",
+    "rank": 3,
+    "second": 171,
+    "frame": "frame-171.jpg",
+    "crop": "crop-171-1.jpg",
+    "sourceSeconds": 171.171,
+    "pin": [
+      3321.445,
+      547.46
+    ],
+    "region": [
+      2525,
+      0,
+      3840,
+      1315
+    ],
+    "target": [
+      1668,
+      1234,
+      1708,
+      1275
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "Shoreline, path and trees",
+    "confidence": 0.95
+  },
+  {
+    "method": "detector",
+    "rank": 4,
+    "second": 169,
+    "frame": "frame-169.jpg",
+    "crop": "crop-169-1.jpg",
+    "sourceSeconds": 169.169,
+    "pin": [
+      3801.325,
+      637.345
+    ],
+    "region": [
+      3484,
+      459,
+      3840,
+      815
+    ],
+    "target": [
+      1673,
+      1234,
+      1713,
+      1275
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "open water and reeds",
+    "confidence": 0.95
+  },
+  {
+    "method": "detector",
+    "rank": 5,
+    "second": 183,
+    "frame": "frame-183.jpg",
+    "crop": "crop-183-2.jpg",
+    "sourceSeconds": 183.183,
+    "pin": [
+      3317.3,
+      531.86
+    ],
+    "region": [
+      2517,
+      0,
+      3840,
+      1323
+    ],
+    "target": [
+      1668,
+      1261,
+      1708,
+      1302
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "shoreline path and vegetation",
+    "confidence": 0.95
+  },
+  {
+    "method": "detector",
+    "rank": 6,
+    "second": 188,
+    "frame": "frame-188.jpg",
+    "crop": "crop-188-5.jpg",
+    "sourceSeconds": 188.188,
+    "pin": [
+      778.07,
+      1823.145
+    ],
+    "region": [
+      603,
+      1648,
+      953,
+      1998
+    ],
+    "target": [
+      1666,
+      1260,
+      1706,
+      1301
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "people and vehicle on dry land",
+    "confidence": 0.96
+  },
+  {
+    "method": "detector",
+    "rank": 7,
+    "second": 190,
+    "frame": "frame-190.jpg",
+    "crop": "crop-190-1.jpg",
+    "sourceSeconds": 190.19,
+    "pin": [
+      3304.47,
+      518.59
+    ],
+    "region": [
+      2490,
+      0,
+      3840,
+      1350
+    ],
+    "target": [
+      1668,
+      1260,
+      1708,
+      1301
+    ],
+    "hit": false,
+    "kept": false,
+    "words": "shoreline, trees and vehicle",
+    "confidence": 0.9
+  },
+  {
+    "method": "detector",
+    "rank": 8,
+    "second": 173,
+    "frame": "frame-173.jpg",
+    "crop": "crop-173-1.jpg",
+    "sourceSeconds": 173.173,
+    "pin": [
+      1678.765,
+      1247.555
+    ],
+    "region": [
+      1631,
+      1200,
+      1727,
+      1296
+    ],
+    "target": [
+      1665,
+      1236,
+      1705,
+      1277
+    ],
+    "hit": true,
+    "kept": true,
+    "words": "person in orange life vest floating in water",
+    "confidence": 0.97
+  },
+  {
+    "method": "ember",
+    "rank": 1,
+    "second": 191,
+    "frame": "frame-191.jpg",
+    "crop": "crop-191-3.jpg",
+    "sourceSeconds": 191.191,
+    "pin": [
+      1685.57,
+      1279.29
+    ],
+    "region": [
+      1638,
+      1231,
+      1734,
+      1327
+    ],
+    "target": [
+      1667,
+      1267,
+      1707,
+      1308
+    ],
+    "hit": true,
+    "kept": true,
+    "words": "person in orange life vest floating",
+    "confidence": 0.98
+  }
+]
