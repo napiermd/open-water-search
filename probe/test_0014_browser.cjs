@@ -113,6 +113,8 @@ async function saveDownload(page, control, directory) {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(new URL("/pages/flight.html", origin).href);
+      const shortcut = page.getByRole("link", { name: /simulated 0:36 crew reply on a separate MOBDrone flight \(DJI_0915_0007_40\)/i });
+      assert.equal(await shortcut.getAttribute("href"), "flight/crew-reply.html");
       await page.getByRole("link", { name: "Take over a recorded search" }).click();
       assert.equal(page.url(), caseUrl);
       await inspectCases(page);
