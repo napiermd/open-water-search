@@ -123,6 +123,7 @@ async function openCrew(page) {
 async function inspectOpeningAndPin(page, touch) {
   const landing = page.url();
   const record = await (await page.request.get(new URL("flight/record.json", landing).href)).json();
+  assert.ok(await page.getByText("Kept for handoff", { exact: true }).isVisible());
   const crops = page.locator(".paired-crops img");
   assert.equal(await crops.count(), 2);
   for (const [index, flag] of record.pair.entries()) {
