@@ -68,6 +68,23 @@ async function placeCrewPin(page, matches) {
   return receipt;
 }
 
+async function inspectUnavailableOpening(page) {
+  const auditUrl = new URL(auditWindow, caseUrl);
+  for (const query of ["arm=ember&slot=6", "arm=unknown&slot=4", "arm=ember", "slot=4"]) {
+    await page.goto(`${auditUrl}&${query}`);
+    const status = page.getByRole("status").filter({ hasText: "That opening is unavailable" });
+    await status.waitFor({ timeout: 3000 });
+    assert.match(await page.getByLabel("Recording and window").locator("option:checked").innerText(), /DJI_0804_0014_50m_2/);
+    assert.equal(await page.locator("#queues button[aria-expanded=true]").count(), 0);
+    const opening = page.getByRole("region", { name: "Detector + Ember", exact: true })
+      .getByRole("button", { name: /^Slot 4/ });
+    await opening.click();
+    assert.equal(await opening.getAttribute("aria-expanded"), "true");
+    assert.equal(await status.isVisible(), false);
+    assert.equal(new URL(page.url()).searchParams.get("slot"), "4");
+  }
+}
+
 async function openCrew(page) {
   assert.match(await page.getByRole("main").innerText(), /Simulated crew exchange · Separate recorded flight.*DJI_0915_0007_40/s);
   await page.getByRole("link", { name: "Open the 0:36 crew handoff" }).click();
@@ -98,6 +115,8 @@ async function saveDownload(page, control, directory) {
       assert.equal(page.url(), caseUrl);
       await inspectCases(page);
       assert.equal(await page.getByRole("link", { name: "Open the 129-window audit" }).getAttribute("href"), "first-five.html");
+      await inspectUnavailableOpening(page);
+      await page.goto(caseUrl);
 
       const zip = await saveDownload(page, page.getByRole("link", { name: "Download offline handoff ZIP" }), directory);
       const extracted = join(directory, String(width));

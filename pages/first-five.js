@@ -88,6 +88,7 @@ function renderQueue(window, arm, requestedArm, requestedSlot) {
     button.addEventListener("click", () => {
       const alreadyOpen = selected?.details === details;
       selectOpening(alreadyOpen ? null : { button, details, arm, slot });
+      loadStatus.hidden = true;
       writeAddress();
     });
     item.append(button, details);
@@ -168,12 +169,20 @@ function readAddress() {
   const video = params.get("video") ?? caseVideo;
   const start = Number(params.get("start") ?? 0);
   const index = windows.findIndex(window => window.video === video && window.start === start);
-  loadStatus.hidden = index >= 0;
-  loadStatus.textContent = index < 0
-    ? "That window is outside the archive. Showing the first recorded window."
-    : "";
-  if (index < 0) renderWindow(0);
-  else renderWindow(index, params.get("arm"), Number(params.get("slot")));
+  const arm = params.get("arm");
+  const slot = params.get("slot");
+  let message = "";
+  if (index < 0) {
+    renderWindow(0);
+    message = "That window is outside the archive. Showing the first recorded window.";
+  } else {
+    renderWindow(index, arm, Number(slot));
+    if ((arm !== null || slot !== null) && !selected) {
+      message = "That opening is unavailable. Choose another slot or window.";
+    }
+  }
+  loadStatus.textContent = message;
+  loadStatus.hidden = !message;
 }
 
 function moveTo(index) {

@@ -10,7 +10,8 @@ import unittest
 from zipfile import ZipFile
 
 
-PUBLIC = Path(__file__).resolve().parents[2] / "pages" / "first-five"
+SOURCE = Path(__file__).resolve().parent
+PUBLIC = SOURCE.parents[1] / "pages" / "first-five"
 
 
 class DownloadedAudit(unittest.TestCase):
@@ -29,6 +30,7 @@ class DownloadedAudit(unittest.TestCase):
         )
 
     def test_download_verifies_public_replay_and_reproduces_sealed_result(self):
+        self.assertEqual((self.directory / "verify.py").read_bytes(), (SOURCE / "verify.py").read_bytes())
         self.assertEqual(self.replay.read_bytes(), (PUBLIC / "replay.json").read_bytes())
         completed = self.verify()
         self.assertEqual(completed.returncode, 0, completed.stderr)
@@ -59,6 +61,16 @@ class DownloadedAudit(unittest.TestCase):
         self.assertEqual(case["settings"]["17"], "On shore")
         self.assertEqual([card["track"] for card in case["arms"]["ember"]], [None, 17, 6, 0, None])
         self.assertEqual([card["track"] for card in case["arms"]["detector"]], [None, None, 6, 17, 1])
+
+    def test_empty_object_fails_even_when_the_sealed_queue_is_empty(self):
+        data = json.loads(self.replay.read_bytes())
+        window = next(window for window in data["windows"] if window["arms"]["ember"] == [])
+        window["arms"]["ember"] = {}
+        self.replay.write_text(json.dumps(data), encoding="utf-8")
+        completed = self.verify()
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn(f"Opening queue must be an array: {window['video']} @ {window['start']}s / ember",
+                      completed.stderr)
 
     def test_wrong_pin_source_frame_clock_or_order_fails_with_same_totals(self):
         original = self.replay.read_bytes()

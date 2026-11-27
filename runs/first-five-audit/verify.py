@@ -42,6 +42,7 @@ def check_replay(replay, reference):
         require(set(window["arms"]) == set(ARMS), f"Sealed arms mismatch: {where}")
         for arm in ARMS:
             actual, expected = window["arms"][arm], sealed["arms"][arm]
+            require(isinstance(actual, list), f"Opening queue must be an array: {where} / {arm}")
             require(len(actual) == len(expected), f"Sealed opening count mismatch: {where} / {arm}")
             for rank, (opening, signature) in enumerate(zip(actual, expected), 1):
                 require(set(opening) == set(OPENING_FIELDS),
