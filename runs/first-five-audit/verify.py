@@ -41,7 +41,7 @@ def check_replay(replay, reference, frames):
     for window, sealed in zip(windows, reference["windows"]):
         video, start, family = (window[key] for key in ("video", "start", "family"))
         where = f"{video} @ {start}s"
-        require((video, start, family) == (sealed["video"], sealed["start"], sealed["family"]),
+        require(type(start) is int and (video, start, family) == (sealed["video"], sealed["start"], sealed["family"]),
                 f"Sealed window order or identity mismatch: {where}")
         require(digest(window["settings"]) == sealed["settings_sha256"],
                 f"Sealed setting grades mismatch: {where}")
