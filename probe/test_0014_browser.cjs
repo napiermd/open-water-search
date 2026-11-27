@@ -3,7 +3,7 @@
 const { createHash } = require("node:crypto");
 const assert = require("node:assert/strict");
 const { execFileSync } = require("node:child_process");
-const { mkdtemp, readFile, rm } = require("node:fs/promises");
+const { mkdir, mkdtemp, readFile, rm } = require("node:fs/promises");
 const { tmpdir } = require("node:os");
 const { join } = require("node:path");
 const { pathToFileURL } = require("node:url");
@@ -142,6 +142,13 @@ async function saveDownload(page, control, directory) {
       assert.equal(page.url(), caseUrl);
       await inspectCases(page);
       assert.equal(await page.getByRole("link", { name: "Open the 129-window audit" }).getAttribute("href"), "first-five.html");
+      await page.getByRole("link", { name: "Open the 129-window audit" }).click();
+      const kit = await saveDownload(page, page.getByRole("link", { name: "Download offline audit" }), directory);
+      const auditDir = join(directory, "audit-" + width);
+      await mkdir(auditDir);
+      execFileSync("unzip", ["-q", kit, "-d", auditDir]);
+      const result = JSON.parse(execFileSync("python3", ["-I", "verify.py"], { cwd: auditDir, encoding: "utf8" }));
+      assert.equal(result.openings, 838);
       await inspectUnavailableOpening(page);
       await page.goto(caseUrl);
 
