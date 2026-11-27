@@ -10,6 +10,8 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 import numpy as np
 
+from verify import scored_frames
+
 
 HERE = Path(__file__).resolve().parent
 PUBLIC = HERE.parents[1] / "pages" / "first-five"
@@ -34,27 +36,32 @@ def grades_by_window(data):
     return windows
 
 
-def export_replay(audit, grades):
+def export_replay(audit, grades, frames):
     """Publish the original opening fields, preserving arm order and numeric values."""
     windows = []
     for window in audit:
         settings = grades.get((window["video"], window["start"]), {})
         if len(settings) != window["total"]:
             raise ValueError(f"Incomplete setting grades for {window['video']} @ {window['start']}")
+        arms = {}
+        for arm in ARMS:
+            openings = []
+            for card in window[arm]["cards"]:
+                opening = card["opening"]
+                source = frames[window["video"], opening["second"]]
+                openings.append({
+                    **opening, "identity_switches": card["switches_before"],
+                    "native_frame": source["video_frame"], "jpeg_sha256": source["sha256"],
+                })
+            arms[arm] = openings
         windows.append({
             "video": window["video"],
             "start": window["start"],
             "family": window["family"],
             "settings": settings,
-            "arms": {
-                arm: [
-                    {**card["opening"], "identity_switches": card["switches_before"]}
-                    for card in window[arm]["cards"]
-                ]
-                for arm in ARMS
-            },
+            "arms": arms,
         })
-    return {"schema": 1, "windows": windows}
+    return {"schema": 2, "windows": windows}
 
 
 def commitment(value):
@@ -103,9 +110,12 @@ def main():
     root = parser.parse_args().source_root
     audit = root / "paced-flight/sighting-updates/archive/detector-control/primary-audit.json"
     grades = root / "queue-audit-129/hit-setting/paired-grades.csv"
+    manifest = HERE.parents[1] / "experiments/lost-people/flight-ranking/inputs/manifest.json"
+    manifest_bytes = manifest.read_bytes()
     replay = json_bytes(export_replay(
         json.loads(require_seal(audit.read_bytes(), AUDIT_SHA, audit.name)),
         grades_by_window(require_seal(grades.read_bytes(), GRADES_SHA, grades.name)),
+        scored_frames(manifest_bytes),
     ))
     # These are the paired-evidence notebook's exact draws in lexicographic family order.
     weights = np.random.default_rng(20261126).multinomial(42, np.full(42, 1 / 42), size=20000)
@@ -123,6 +133,7 @@ def main():
             "verify.py": verifier,
             "replay.json": replay,
             "sealed-reference.json": reference,
+            "detector-inputs.json": manifest_bytes,
             "bootstrap-weights.bin": draws,
         }.items():
             kit.writestr(ZipInfo(name), data, compress_type=ZIP_DEFLATED)
