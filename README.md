@@ -6,17 +6,18 @@
 
 ## What reaches the crew in the first five handoffs?
 
-On all 129 eligible 24-second MOBDrone windows, checking swimmer flags with Muse Ember reduced empty handoffs from **176 to 113**, or **35.8% fewer** (95% interval **26.7% to 46.4%**). The reviewer opens up to five cards per window. Both queues use the same ranking.
+Across 129 recorded MOBDrone windows, each queue could send up to five handoffs on the same simulated dispatch clock.
 
-| Queue | Swimmer tracks reached / 258 | Repeat pins | Empty handoffs | Change in reach, percentage points (95% interval) | Fewer empty handoffs (95% interval) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Ranked detector | 201 | 53 | 176 | Reference | Reference |
-| Detector + Ember checking swimmer flags | 212 | 86 | 113 | +4.3 (−0.4 to +8.7) | 35.8% (26.7% to 46.4%) |
-| Detector + Ember checking swimmer and boat flags | 215 | 86 | 116 | +5.4 (+0.5 to +10.0) | 34.1% (24.5% to 44.7%) |
+| Queue | Graded in-water appearances reached | Empty handoffs |
+| --- | ---: | ---: |
+| Detector | 180/229 | 185 |
+| Detector + Ember | **199/229** | **121** |
 
-A track counts once per window. A person can appear in several windows. The swimmer-only check brought 19 tracks into the first five and displaced 8 the detector reached. Its interval for reach includes zero. The intervals come from 20,000 paired draws of the 42 recording families. Some footage also informed development. Crew response time remains unmeasured. [Per-window scores](experiments/first-five/archive-129/windows.csv) · [Interval estimates](experiments/first-five/archive-129/intervals.json).
+Ember reached **23** appearances the detector queue missed and lost **four** the detector reached. The net gain was **8.3 percentage points** (paired 95% interval 3.7 to 13.3). Empty handoffs fell by **34.6%** (paired 95% interval 25.9% to 44.1%). The intervals resample the same 42 recording families for both policies. The setting audit graded where people appeared after the original runs. A person can appear in multiple windows, and some source recordings informed development. The clock and the crew exchange are simulated.
 
-**See where the ranking matters.** In a separate Cyprus Civil Defence exercise, the swimmer ranked eighth in the detector queue and first after Ember checked the crops. Open the two matching pins and any of the seven detector cards ahead of the swimmer. [Replay Cyprus](https://open-water-search.vercel.app/pages/cyprus.html) · [Open the recorded crew handoff](https://open-water-search.vercel.app/judge).
+In flight 0014, each queue reached two in-water swimmers in its first five. They shared one swimmer and one person ashore. Each reached a different second swimmer. Open both sightings, then try the crew reply on separate recorded footage. [Explore flight 0014 and the handoff](https://open-water-search.vercel.app/pages/0014.html) · [Reproduce the full archive audit](https://open-water-search.vercel.app/pages/first-five.html)
+
+The earlier archive comparison reported 176 versus 113 empty handoffs using another queue policy and counting all labeled tracks. In a separately selected Cyprus Civil Defence exercise, a swimmer moved from eighth to first. [Earlier archive results](experiments/first-five/archive-129/windows.csv) · [Cyprus replay](https://open-water-search.vercel.app/pages/cyprus.html)
 
 ## Separate still-photo benchmarks
 
