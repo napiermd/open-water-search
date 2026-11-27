@@ -71,7 +71,7 @@
     <footer class="provenance">
       <h2>How the audit works</h2>
       <p>Reach counts each distinct in-water track once per window. A person can appear in multiple windows. Empty openings hit no labeled track. Repeats hit a track already reached in that window. Identity switches are counted across each card’s opening and follow-up pins.</p>
-      <p>This archive shows opening records across all 129 windows. The flight 0014 case shows two openings with frame images. Use the source recording filename shown in each opening to find the original video in the <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone dataset (Cafarelli et al., 2022)</a>.</p>
+      <p>This archive shows opening records across all 129 windows. The flight 0014 case shows two openings with frame images. Each opening identifies the source recording, zero-based native frame number, and SHA-256 of the scored JPEG. Find the original video in the <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone dataset (Cafarelli et al., 2022)</a>.</p>
       <p>The archive overlaps development, the setting grades were assigned retrospectively, and dispatch was simulated. The intervals resample recording families with both queues kept together.</p>
       <p>The offline verifier checks every opening against independent sealed evidence and recomputes the counts and intervals from the same records this page uses. Extract the download and run <code>python3 -I verify.py</code>. <a href="first-five/replay.json">Open the replay records</a>.</p>
     </footer>
