@@ -25,6 +25,7 @@ async function displayedImageDigest(page, image) {
   const url = await image.evaluate(node => node.currentSrc);
   const session = await page.context().newCDPSession(page);
   try {
+    await session.send("Page.enable");
     const { frameTree } = await session.send("Page.getResourceTree");
     const resource = await session.send("Page.getResourceContent", { frameId: frameTree.frame.id, url });
     assert.ok(resource.base64Encoded, url);
