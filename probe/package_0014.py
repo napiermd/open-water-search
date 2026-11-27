@@ -10,7 +10,7 @@ PUBLIC_SITE = "https://open-water-search.vercel.app"
 def build_packet():
     online = (PAGES / "0014.html").read_text(encoding="utf-8")
     offline = online.replace('href="index.html"', f'href="{PUBLIC_SITE}/"')
-    offline = offline.replace('href="first-five.html"', f'href="{PUBLIC_SITE}/pages/first-five.html"')
+    offline = offline.replace('href="first-five.html', f'href="{PUBLIC_SITE}/pages/first-five.html')
     offline = offline.replace(
         '<a class="secondary case-action" href="0014.zip" download>Download offline handoff ZIP</a>',
         "",

@@ -10,22 +10,28 @@ const { chromium } = require("playwright");
 
 const origin = process.argv[2] ?? "http://127.0.0.1:8757";
 const caseUrl = new URL("/pages/0014.html", origin).href;
+const auditWindow = "first-five.html?video=DJI_0804_0014_50m_2.mp4&start=0";
 
 async function inspectCases(page) {
   assert.match(await page.locator("blockquote").innerText(), /Honestly, we didn’t know if the boats knew/);
   assert.match(await page.getByRole("main").innerText(), /2 in-water tracks.*3 labeled tracks.*2 empty openings/s);
-  assert.match(await page.getByRole("main").innerText(), /Track 17 was graded on shore/i);
+  assert.match(await page.getByRole("main").innerText(), /track 6 in water.*Track 17 was graded on shore/is);
 
   const cases = [
-    ["Who did Ember bring forward?", /Track 0.*Detector \+ Ember/s, /Card 4.*0:02.*3\.097 s/s, /Source frame 74.*775\.37, 902\.865/s],
-    ["Who did it leave out?", /Track 1.*Detector alone/s, /Card 5.*0:16.*17\.097 s/s, /Source frame 494.*1850\.5, 345\.4/s],
+    ["Who did Ember bring forward?", /Track 0.*Detector \+ Ember/s, /Card 4.*0:02.*3\.097 s/s, /Source frame 74.*775\.37, 902\.865/s, "ember", 4, 0],
+    ["Who did it leave out?", /Track 1.*Detector alone/s, /Card 5.*0:16.*17\.097 s/s, /Source frame 494.*1850\.5, 345\.4/s, "detector", 5, 1],
   ];
-  for (const [question, identity, opening, geometry] of cases) {
+  for (const [question, identity, opening, geometry, arm, slot, track] of cases) {
     const toggle = page.getByText(question, { exact: true });
     await toggle.click();
     const evidence = toggle.locator("xpath=ancestor::details").getByRole("group", { name: "Recorded opening" });
     assert.ok(await evidence.isVisible());
     for (const expected of [identity, opening, geometry]) assert.match(await evidence.innerText(), expected);
+    const slotLink = evidence.getByRole("link", { name: new RegExp(`slot ${slot} in the audit`, "i") });
+    assert.equal(await slotLink.count(), 1, `Slot ${slot} audit link`);
+    const offline = page.url().startsWith("file:");
+    const auditBase = offline ? "https://open-water-search.vercel.app/pages/" : "";
+    assert.equal(await slotLink.getAttribute("href"), `${auditBase}${auditWindow}&arm=${arm}&slot=${slot}`);
     const images = await evidence.getByRole("img").all();
     assert.equal(images.length, 2);
     for (const image of images) {
@@ -33,7 +39,15 @@ async function inspectCases(page) {
       await image.evaluate(node => node.decode());
     }
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    await toggle.click();
+    if (!offline) {
+      await slotLink.click();
+      const selection = page.locator("#opening-" + arm + "-" + slot);
+      await selection.waitFor();
+      assert.match(await selection.innerText(), new RegExp(`Reference match.*Track ${track} · In water`, "s"));
+      await page.goBack();
+      assert.equal(page.url(), caseUrl);
+    }
+    if (await evidence.isVisible()) await toggle.click();
   }
 }
 
