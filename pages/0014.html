@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flight 0014 · Open Water Search</title>
+  <meta name="description" content="Inspect the swimmer each first-five queue reached on flight 0014, then try a simulated crew reply.">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="0014.css">
+</head>
+<body>
+<header class="masthead">
+  <a href="index.html">Open Water Search</a>
+  <nav aria-label="Pages"><a href="first-five.html">Open the 129-window audit</a></nav>
+</header>
+<main>
+  <header class="case-header">
+    <p class="context">Recorded MOBDrone benchmark · 0:00–0:24</p>
+    <h1>Two queues, two different swimmers</h1>
+    <p>In the first 24 seconds of flight 0014, each queue reached one swimmer the other missed.</p>
+  </header>
+
+  <aside class="officer" aria-labelledby="officer-account">
+    <h2 id="officer-account">A real rescue, in the officer’s words</h2>
+    <blockquote>“Honestly, we didn’t know if the boats knew.”</blockquote>
+    <p>A drone operator held a light on two paddleboarders on Lake Michigan. The drone crew could reach the boats only through dispatch, so they had no direct way to know whether the boats saw the people in the water.</p>
+  </aside>
+
+  <section class="case-section" aria-labelledby="recorded-window">
+    <h2 id="recorded-window">The first five openings on flight 0014</h2>
+    <p>Each queue reached <strong>2 in-water tracks</strong> and <strong>3 labeled tracks</strong> in total, with <strong>2 empty openings</strong> across five cards. Both reached track 6. Track 17 was graded on shore and both queues reached it.</p>
+    <details class="case" id="gain">
+      <summary><span>Who did Ember bring forward?</span><small>Track 0 · Ember only</small></summary>
+      <div class="case-content" role="group" aria-label="Recorded opening">
+        <h3>Track 0 · Detector + Ember</h3>
+        <p>Card 4 used the 0:02 frame and opened at 3.097 s on the simulated clock.</p>
+        <div class="evidence-images">
+          <figure>
+            <img src="0014-gain-frame.webp" width="960" height="506" loading="lazy" alt="Recorded overhead view at 0:02 with a white ring around the opening pin near the bottom of the frame.">
+            <figcaption>Source frame 74 · Opening pin (775.37, 902.865)</figcaption>
+          </figure>
+          <figure>
+            <img src="0014-gain-crop.webp" width="224" height="224" loading="lazy" alt="Close-up from the flag that reached track 0, showing a swimmer in open water.">
+            <figcaption>Flagged crop · Track 0 in water</figcaption>
+          </figure>
+        </div>
+      </div>
+    </details>
+    <details class="case" id="loss">
+      <summary><span>Who did it leave out?</span><small>Track 1 · Detector only</small></summary>
+      <div class="case-content" role="group" aria-label="Recorded opening">
+        <h3>Track 1 · Detector alone</h3>
+        <p>Card 5 used the 0:16 frame and opened at 17.097 s on the simulated clock.</p>
+        <div class="evidence-images">
+          <figure>
+            <img src="0014-loss-frame.webp" width="960" height="506" loading="lazy" alt="Recorded overhead view at 0:16 with a white ring around the opening pin near the right edge.">
+            <figcaption>Source frame 494 · Opening pin (1850.5, 345.4)</figcaption>
+          </figure>
+          <figure>
+            <img src="0014-loss-crop.webp" width="224" height="224" loading="lazy" alt="Close-up from the flag that reached track 1, showing a swimmer near the right edge of the flight frame.">
+            <figcaption>Flagged crop · Track 1 in water</figcaption>
+          </figure>
+        </div>
+      </div>
+    </details>
+    <p class="credit">Recorded window DJI_0804_0014_50m_2. The full frames are resized and marked. The crops are enlarged. <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone, Cafarelli et al.</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  </section>
+
+  <section class="case-section" aria-labelledby="crew-exchange">
+    <p class="context">Simulated crew exchange · Separate recorded flight</p>
+    <h2 id="crew-exchange">Send a reply back to the operator</h2>
+    <p>Open the flagged crop at 0:36 on MOBDrone flight DJI_0915_0007_40. Ask for another cue, then place your pin on the full frame. You can leave the sighting unresolved after a correction. The operator view shows what the crew sent.</p>
+    <div class="handoff-actions">
+      <a class="primary case-action" href="flight/crew-reply.html">Open the 0:36 crew handoff</a>
+      <a class="secondary case-action" href="0014.zip" download>Download offline handoff ZIP</a>
+    </div>
+    <p class="credit">Extract the ZIP and open 0014.html to review both cases and try the crew exchange offline.</p>
+  </section>
+</main>
+</body>
+</html>
