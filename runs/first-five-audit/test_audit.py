@@ -84,6 +84,15 @@ class DownloadedAudit(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Detector input manifest checksum mismatch", result.stderr)
 
+    def test_empty_window_rejects_boolean_start(self):
+        data = json.loads(self.replay.read_bytes())
+        window = next(w for w in data["windows"] if w["start"] == 0 and not any(w["arms"].values()))
+        window["start"] = False
+        self.replay.write_text(json.dumps(data))
+        result = self.verify()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Sealed window order or identity mismatch", result.stderr)
+
     def test_empty_object_fails_even_when_the_sealed_queue_is_empty(self):
         data = json.loads(self.replay.read_bytes())
         window = next(window for window in data["windows"] if window["arms"]["ember"] == [])
