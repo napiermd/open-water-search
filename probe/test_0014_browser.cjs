@@ -1,5 +1,6 @@
 // Run against a local site with Playwright installed:
 // node probe/test_0014_browser.cjs http://127.0.0.1:8757
+const { createHash } = require("node:crypto");
 const assert = require("node:assert/strict");
 const { execFileSync } = require("node:child_process");
 const { mkdtemp, readFile, rm } = require("node:fs/promises");
@@ -11,6 +12,27 @@ const { chromium } = require("playwright");
 const origin = process.argv[2] ?? "http://127.0.0.1:8757";
 const caseUrl = new URL("/pages/0014.html", origin).href;
 const auditWindow = "first-five.html?video=DJI_0804_0014_50m_2.mp4&start=0";
+
+// Digests of the approved annotated overview and enlarged crop, in display order.
+const caseImageDigests = {
+  74: ["9ebafd21cf3f4942ccee009685161a22930069b7da5179ca78a631d94671dde0",
+       "315ebec6d3b1c437c4ccc0e03c1a5d211065b13091b7efc6310690c6f23ff687"],
+  494: ["049061afeadcebe484ebd7758ac6dd985fb299e6e4c33cce486e43363135f6d1",
+        "2b66e157f5fe5d2dfb6c4d08ce676adabf1483b29706d77395ab812d2807fbea"],
+};
+
+async function displayedImageDigest(page, image) {
+  const url = await image.evaluate(node => node.currentSrc);
+  const session = await page.context().newCDPSession(page);
+  try {
+    const { frameTree } = await session.send("Page.getResourceTree");
+    const resource = await session.send("Page.getResourceContent", { frameId: frameTree.frame.id, url });
+    assert.ok(resource.base64Encoded, url);
+    return createHash("sha256").update(Buffer.from(resource.content, "base64")).digest("hex");
+  } finally {
+    await session.detach();
+  }
+}
 
 async function inspectCases(page) {
   assert.match(await page.locator("blockquote").innerText(), /Honestly, we didn’t know if the boats knew/);
@@ -34,9 +56,10 @@ async function inspectCases(page) {
     assert.equal(await slotLink.getAttribute("href"), `${auditBase}${auditWindow}&arm=${arm}&slot=${slot}`);
     const images = await evidence.getByRole("img").all();
     assert.equal(images.length, 2);
-    for (const image of images) {
+    for (const [index, image] of images.entries()) {
       await image.scrollIntoViewIfNeeded();
       await image.evaluate(node => node.decode());
+      assert.equal(await displayedImageDigest(page, image), caseImageDigests[nativeFrame][index]);
     }
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     if (!offline) {
