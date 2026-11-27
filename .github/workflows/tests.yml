@@ -20,3 +20,5 @@ jobs:
         run: python -m unittest discover -s probe
       - name: Detector runner and scoring, with a stand-in for the detector library
         run: python -m unittest discover -s detector
+      - name: Offline first-five replay audit
+        run: python -m unittest discover -s runs/first-five-audit
