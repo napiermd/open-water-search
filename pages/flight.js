@@ -99,7 +99,9 @@ async function openFlight() {
   });
   element("load").hidden = true;
   element("desk").hidden = false;
-  show(state, false);
+  const showMiss = params.get("view") === "miss";
+  show(showMiss ? "label" : state, false);
+  if (showMiss || params.has("sighting")) element("desk").scrollIntoView();
 }
 
 const oldSections = new Set(["hero-title","live-check-title","record-title","gate-title","scale-title","story-title","checks-title","own-title","flight-title","compare-title","check-title","limits-title","run-title","how-title","detector-title"]);

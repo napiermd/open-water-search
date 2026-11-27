@@ -63,6 +63,7 @@ html[data-comparison] #save-comparison,html[data-comparison] #again{display:none
 <p>Your choice opens the operator’s view on this device.</p></div>
 <div class="actions" id="operator" hidden><button type="button" id="transfer" hidden>Hand off to next crew</button><button type="button" id="save">Download operator copy</button><button type="button" id="finish" hidden>Finish and reveal the pins</button><button type="button" id="again">Try the other reply</button></div>
 <div class="actions" id="next-tools" hidden><button type="button" id="next-mark">Place our pin</button><button type="button" id="next-pass">I still don’t see anyone</button><button type="button" id="save-next">Download next-crew handoff</button><button type="button" id="return-operator">Return to operator</button></div>
+<nav id="judge-links" aria-label="Check the evidence" hidden><p><a href="../flight.html?view=miss#desk">Where did Ember get it wrong? · 0:12</a></p><p><a href="../first-five.html">How often did it help? · 129-window audit</a></p></nav>
 </main><footer><span>Recorded MOBDrone imagery · Cafarelli et al. · CC BY 4.0 · Frame resized and marked.</span><span>Simulated crew exchange</span></footer>
 <script>
 const byId = id => document.getElementById(id);
@@ -70,7 +71,8 @@ const historyList = byId('history');
 const packetHistory = document.documentElement.dataset.handoff;
 const turns = packetHistory ? JSON.parse(packetHistory).map(turn => ({...turn, at: new Date(turn.at)})) : [];
 const geometry = {"width": 1920, "height": 1012, "pin": [1327.065, 258.75], "label": [1307.9001600000001, 230.769902, 1350.80064, 295.75953000000004]};
-let phase = packetHistory ? 'next-crew' : 'crew';
+const pinEntry = location.protocol !== 'file:' && new URLSearchParams(location.search).get('start') === 'pin';
+let phase = packetHistory ? 'next-crew' : pinEntry ? 'pick' : 'crew';
 let draftPin = null;
 function plotPin(id, pin) {
   const marker = byId(id);
@@ -112,7 +114,8 @@ function render() {
   const attempts = turns.filter(turn => turn.pin);
   const last = turns.at(-1);
   const nextResult = last?.kind === 'next-pin' || last?.kind === 'next-pass';
-  byId('import-reply').hidden = Boolean(packetHistory) || (phase !== 'done' && (phase !== 'crew' || turns.length > 0));
+  byId('judge-links').hidden = phase !== 'done' || location.protocol === 'file:';
+  byId('import-reply').hidden = pinEntry || Boolean(packetHistory) || (phase !== 'done' && (phase !== 'crew' || turns.length > 0));
   const heading = byId('heading');
   heading.textContent = nextResult ? 'Both crews’ replies' : nextPick ? 'Pin the swimmer your crew sees' : incoming ? 'You’re the next boat crew' : picking ? (retry ? 'Can you see the swimmer now?' : 'Pin the swimmer you see')
     : correcting ? 'Send the boat crew a correction'
@@ -219,7 +222,7 @@ function addTurn(next, kind, words, pin = null) {
 function respond(event) {
   if (phase !== 'crew') return;
   const kind = event.currentTarget.id;
-  if (turns.length && kind === 'seen') {
+  if ((turns.length || pinEntry) && kind === 'seen') {
     phase = 'pick';
     render();
   } else {
@@ -260,7 +263,7 @@ byId('lock').addEventListener('click', () => {
   } else if (phase === 'pick') {
     const missed = !measure(draftPin).inside;
     if (missed) byId('cue-text').value = correction(draftPin);
-    addTurn(missed ? 'correction' : 'done', 'seen', byId('seen').textContent, draftPin);
+    addTurn(missed && turns.length ? 'correction' : 'done', 'seen', byId('seen').textContent, draftPin);
   }
 });
 byId('next-mark').addEventListener('click', () => {
@@ -317,7 +320,7 @@ function downloadCopy() {
       copy.querySelector('#retry-pin').hidden = !turns.at(-1).pin;
       copy.querySelector('#legend').textContent = '0:36 · White ring: original sighting · Amber diamond: first crew' + (turns.at(-1).pin ? ' · Blue square: next crew' : '');
     }
-    copy.querySelectorAll('script,#import-reply,#comparison,#comparison-marks,#operator,#compose,#crew,#intro,#mark-actions,#next-tools').forEach(node => node.remove());
+    copy.querySelectorAll('script,#judge-links,#import-reply,#comparison,#comparison-marks,#operator,#compose,#crew,#intro,#mark-actions,#next-tools').forEach(node => node.remove());
   }
   copy.querySelector('title').textContent = incoming ? 'Unresolved handoff · MOBDrone 0:36 · Flag 1' : 'Boat crew reply · MOBDrone 0:36 · Flag 1';
   saveHtml(copy, incoming ? 'unresolved-next-crew-0036.html' : 'boat-crew-reply-0036.html');
@@ -560,5 +563,5 @@ if (document.documentElement.hasAttribute('data-comparison')) {
   const snapshot = readComparison(document.documentElement.dataset.comparison);
   for (const reply of snapshot.replies) replies.set(replyKey(reply), reply);
   showReply(replies.get(snapshot.selected));
-} else if (packetHistory) render();
+} else if (packetHistory || pinEntry) render();
 </script></body></html>

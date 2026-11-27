@@ -120,6 +120,45 @@ async function openCrew(page) {
   assert.match(await page.locator("footer").innerText(), /Simulated crew exchange/);
 }
 
+async function inspectOpeningAndPin(page, touch) {
+  const landing = page.url();
+  const record = await (await page.request.get(new URL("flight/record.json", landing).href)).json();
+  const crops = page.locator(".paired-crops img");
+  assert.equal(await crops.count(), 2);
+  for (const [index, flag] of record.pair.entries()) {
+    assert.equal(flag.second, 36);
+    const image = crops.nth(index);
+    await image.evaluate(node => node.decode());
+    assert.equal(await image.getAttribute("src"), "flight/" + flag.crop);
+  }
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.getByRole("link", { name: "Pin the swimmer as the boat crew" }).click();
+  const frame = page.getByRole("group", { name: "Place your pin on the full frame" });
+  assert.ok(await page.locator("#original-pin").isHidden());
+  assert.ok(await page.getByRole("button", { name: "Send reply and pin" }).isDisabled());
+  const box = await frame.boundingBox();
+  const [x, y] = record.pair[0].pin;
+  const position = { x: box.width * x / record.pair[0].width, y: box.height * y / record.pair[0].height };
+  if (touch) await frame.tap({ position });
+  else await frame.click({ position });
+  await page.getByRole("button", { name: "Send reply and pin" }).click();
+  await page.getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
+  const messages = page.getByRole("list", { name: "Messages in order" });
+  assert.match(await messages.innerText(), /Boat crew → drone operator.*I see them.*Inside the labeled swimmer’s box/s);
+  assert.equal(await messages.getByRole("listitem").count(), 1);
+  for (const id of ["#crew-pin", "#original-pin"]) assert.ok(await page.locator(id).isVisible());
+  const audit = page.getByRole("link", { name: /How often did it help/ });
+  assert.equal(await audit.getAttribute("href"), "../first-five.html");
+  await page.getByRole("link", { name: /Where did Ember get it wrong/ }).click();
+  await page.getByRole("heading", { name: "The “duck” was a swimmer." }).waitFor();
+  assert.match(await page.locator("#clock").innerText(), /0:12/);
+  assert.ok(await page.locator("#truth-box").isVisible());
+  await page.goto(landing);
+  await page.getByRole("link", { name: /How often did it help/ }).click();
+  await page.getByRole("heading", { name: "Replay the first five" }).waitFor();
+  await page.goto(landing);
+}
+
 async function saveDownload(page, control, directory) {
   const [download] = await Promise.all([page.waitForEvent("download"), control.click()]);
   const filename = join(directory, download.suggestedFilename());
@@ -137,9 +176,8 @@ async function saveDownload(page, control, directory) {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(new URL("/pages/flight.html", origin).href);
-      const shortcut = page.getByRole("link", { name: /simulated 0:36 crew reply on a separate MOBDrone flight \(DJI_0915_0007_40\)/i });
-      assert.equal(await shortcut.getAttribute("href"), "flight/crew-reply.html");
-      await page.getByRole("link", { name: "Take over a recorded search" }).click();
+      await inspectOpeningAndPin(page, hasTouch);
+      await page.getByRole("link", { name: "Explore both sightings on flight 0014" }).click();
       assert.equal(page.url(), caseUrl);
       await inspectCases(page);
       assert.equal(await page.getByRole("link", { name: "Open the 129-window audit" }).getAttribute("href"), "first-five.html");
