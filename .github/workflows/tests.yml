@@ -22,3 +22,16 @@ jobs:
         run: python -m unittest discover -s detector
       - name: Offline first-five replay audit
         run: python -m unittest discover -s runs/first-five-audit
+  judge-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser test driver
+        run: npm install --prefix "$RUNNER_TEMP/judge-browser" --ignore-scripts playwright@1.54.2
+      - name: Check the desktop, phone and offline crew handoff
+        run: |
+          python3 -m http.server 8757 --bind 127.0.0.1 > "$RUNNER_TEMP/judge-http.log" 2>&1 &
+          server=$!
+          trap 'kill "$server"' EXIT
+          curl --retry 5 --retry-connrefused --fail --silent --output /dev/null http://127.0.0.1:8757/pages/0014.html
+          NODE_PATH="$RUNNER_TEMP/judge-browser/node_modules" CHROME_BIN="$(command -v google-chrome)" node probe/test_0014_browser.cjs http://127.0.0.1:8757

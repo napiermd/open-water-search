@@ -18,10 +18,10 @@ async function inspectCases(page) {
   assert.match(await page.getByRole("main").innerText(), /track 6 in water.*Track 17 was graded on shore/is);
 
   const cases = [
-    ["Who did Ember bring forward?", /Track 0.*Detector \+ Ember/s, /Card 4.*0:02.*3\.097 s/s, /Source frame 74.*775\.37, 902\.865/s, "ember", 4, 0],
-    ["Who did it leave out?", /Track 1.*Detector alone/s, /Card 5.*0:16.*17\.097 s/s, /Source frame 494.*1850\.5, 345\.4/s, "detector", 5, 1],
+    ["Who did Ember bring forward?", /Track 0.*Detector \+ Ember/s, /Card 4.*0:02.*3\.097 s/s, /Source frame 74.*775\.37, 902\.865/s, "ember", 4, 0, 74],
+    ["Who did it leave out?", /Track 1.*Detector alone/s, /Card 5.*0:16.*17\.097 s/s, /Source frame 494.*1850\.5, 345\.4/s, "detector", 5, 1, 494],
   ];
-  for (const [question, identity, opening, geometry, arm, slot, track] of cases) {
+  for (const [question, identity, opening, geometry, arm, slot, track, nativeFrame] of cases) {
     const toggle = page.getByText(question, { exact: true });
     await toggle.click();
     const evidence = toggle.locator("xpath=ancestor::details").getByRole("group", { name: "Recorded opening" });
@@ -43,6 +43,8 @@ async function inspectCases(page) {
       await slotLink.click();
       const selection = page.locator("#opening-" + arm + "-" + slot);
       await selection.waitFor();
+      const native = selection.getByText("Native frame (zero-based)", { exact: true }).locator("+ dd");
+      assert.equal(await native.textContent(), String(nativeFrame));
       assert.match(await selection.innerText(), new RegExp(`Reference match.*Track ${track} · In water`, "s"));
       await page.goBack();
       assert.equal(page.url(), caseUrl);
