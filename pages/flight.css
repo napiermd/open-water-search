@@ -50,3 +50,7 @@ body>footer {padding-block:1rem 2rem;border-top:1px solid var(--rule);font-size:
 
 .rail a[download] { display:flex;align-items:center;justify-content:center;min-height:44px;color:#c6faf3;border:1px solid #a5cec5;border-radius:4px;font-weight:650;text-decoration:none }
 .rail a[download]:hover {background:#294b49}
+
+.release-links {display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center}
+.release-start {display:inline-flex;align-items:center;min-height:44px;padding:.55rem .85rem;border-radius:4px;background:#19574c;color:white;font-weight:650;text-decoration:none}
+.release-start:hover {background:#113f37;color:white}

@@ -7,7 +7,12 @@
 <script type="module" src="flight.js"></script></head><body>
 <header class="masthead"><strong>Open Water Search</strong><nav aria-label="Pages"><a aria-current="page" href="flight.html">Flight handoff</a><a href="index.html">Evidence</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
 <main>
-<header class="opening"><h1>Where was the swimmer last seen?</h1><p>Could the boat crew see the two paddleboarders under his drone? “Honestly, we didn’t know if the boats knew,” the officer told us. Try the handoff on a separate, recorded flight.</p><p><a href="cyprus.html">See how the Cyprus swimmer moved from eighth to first</a> · <a href="#archive">129-window results</a></p><p><a href="flight/crew-reply.html">Take the 0:36 sighting as the boat crew</a></p></header>
+<header class="opening">
+<h1>Did the boat crew see the same swimmer?</h1>
+<p>A police drone held a light on two paddleboarders while boats approached. The pilot could see both, but could only reach the crews through dispatch. “Honestly, we didn’t know if the boats knew,” the officer told us.</p>
+<p class="release-links"><a class="release-start" href="0014.html">Take over a recorded search</a><a href="#archive">See the first-five results</a></p>
+<p><a href="flight/crew-reply.html">Try the simulated 0:36 crew reply</a></p>
+</header>
 <p id="load" role="status">Loading the two-minute MOBDrone flight…</p><noscript>Enable JavaScript to explore the flight, or <a href="flight/handoff-1.html">open the first recorded handoff</a>.</noscript>
 <section id="desk" hidden aria-label="Recorded flight evidence">
 <div class="flightbar"><div><strong>MOBDrone</strong> <span> / 2 min</span></div><span id="earlier" hidden>Earlier flag · 0:12</span><label id="sighting-label" for="choice">Sighting <select id="choice"></select></label></div>
@@ -19,18 +24,18 @@
 <section class="notes" id="notes" hidden aria-labelledby="note-title"><div><h2 id="note-title" tabindex="-1"></h2><p id="note"></p></div><div id="note-actions"></div></section>
 </section>
 <section class="outcome" id="archive" aria-labelledby="outcome-title"><div>
-<h2 id="outcome-title">63 fewer empty handoffs in the first five</h2>
-<p>We gave both searches the same 129 MOBDrone windows and the same ranking. A reviewer could open up to five cards in each 24-second window.</p>
-<a href="cyprus.html">Open the Cyprus ranking replay</a></div>
-<div class="results"><table><caption>129 windows · 258 labeled swimmer tracks</caption>
-<thead><tr><th scope="col">Queue</th><th scope="col">Tracks reached</th><th scope="col">Repeats</th><th scope="col">Empty</th></tr></thead><tbody>
-<tr><th scope="row">Ranked detector</th><td>201</td><td>53</td><td>176</td></tr>
-<tr><th scope="row">Ember checks swimmer flags</th><td>212</td><td>86</td><td>113</td></tr>
-<tr><th scope="row">Ember checks swimmer and boat flags</th><td>215</td><td>86</td><td>116</td></tr></tbody></table>
-<p><strong>35.8% fewer empty handoffs</strong> with the swimmer-only check (95% interval 26.7% to 46.4%). Reach rose 4.3 percentage points (−0.4 to +8.7). Ember brought 19 tracks into the first five and displaced 8.</p>
-<p>Including boat flags reduced empty alerts by 34.1% (95% interval 24.5% to 44.7%). Reach rose 5.4 percentage points (+0.5 to +10.0).</p>
-<details><summary>How we counted</summary><p>One track counts once in each window where it appears. An empty pin misses every labeled swimmer. A repeat lands on a swimmer already reached. The 95% intervals use 20,000 paired resamples of 42 recording families. The archive includes previously studied footage. These scores measure queue order. Crew response time was unmeasured.</p>
-<a href="https://github.com/napiermd/open-water-search/tree/main/experiments/first-five/archive-129">Inspect the per-window scores and intervals</a></details></div></section>
+<h2 id="outcome-title">Nineteen more in-water appearances reached in the first five</h2>
+<p>Across 129 recorded MOBDrone windows, the two queues had the same simulated dispatch clock and up to five handoffs per window.</p>
+<a href="first-five.html">Inspect both queues and download the audit</a></div>
+<div class="results"><table><caption>129 windows · 229 graded in-water appearances</caption>
+<thead><tr><th scope="col">Queue</th><th scope="col">Reached</th><th scope="col">Empty handoffs</th></tr></thead><tbody>
+<tr><th scope="row">Detector</th><td>180/229</td><td>185</td></tr>
+<tr><th scope="row">Detector + Ember</th><td>199/229</td><td>121</td></tr>
+</tbody></table>
+<p>Ember brought forward <strong>23</strong> appearances missed by the detector queue. The detector reached <strong>four</strong> Ember missed. The net gain was <strong>8.3 percentage points</strong> (paired 95% interval 3.7 to 13.3).</p>
+<p>Empty handoffs fell by <strong>34.6%</strong> (paired 95% interval 25.9% to 44.1%).</p>
+<details><summary>How we counted</summary><p>Each in-water track counts once per window at opening. A person can appear in more than one window. Empty openings miss every labeled person. The intervals resample the same 42 recording families for both policies. Some footage informed development. Each policy switched people twice during the update audit.</p>
+<a href="first-five.html">Inspect the matched-clock archive</a></details></div></section>
 <section class="comparison"><h2>Where Ember helped</h2><p>On a separate set of 300 MOBDrone frames, adding Ember cut false marks from <strong>166 to 38</strong>. Both methods found 210 of 297 labeled appearances. They shared 186 matches, with 24 unique to each method. One person can appear in many frames.</p><a href="index.html">See all comparisons, including where Ember lost</a> · <a href="judge.html?run=validation">Try the earlier zoom experiment</a></section>
 </main><footer>Research footage from <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone, Cafarelli et al.</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Overview resized and marked. The rescue account and this flight are separate events.</footer>
 </body></html>
