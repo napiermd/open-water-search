@@ -17,7 +17,7 @@ The workspace inventory at `work/motion-validation/source-inventory.csv` has 27 
 
 **Go only if all of the following are in hand by noon Pacific:**
 
-1. A fixed eligible roster supports 80% power for a true five-percentage-point reach gain. The planning estimate is 391 evaluable independent positive flights at 11.8% discordance. Verify unused capture provenance, takeoff IDs, actor reuse, and site clustering. Resolve material changes to discordance or independence with a prespecified sample size and analysis before viewing outcomes.
+1. A fixed eligible roster supports 80% power for a true five-percentage-point reach gain. The planning estimate is 391 evaluable independent positive flights at 11.8% discordance. The scorer also requires at least 59 independently verified empty flights in its known-empty cohort. Verify unused capture provenance, takeoff IDs, actor reuse, and site clustering. Resolve material changes to discordance or independence with a prespecified sample size and analysis before viewing outcomes.
 2. Independent, exhaustive references establish stable identities, physical settings, and full-frame boxes at each source second. For each eligible positive flight, select one in-water swimmer by the protocol's fixed draw in one prespecified, unedited 24-second window at 1 Hz.
 3. An executable plan can deliver both arms, score them, and verify the results before Monday's freeze. It identifies the frozen detector checkpoint and threshold, Ember model and crop checks, ranking and updates, matched simulated clock, five opening slots, scoring, and terminal failure handling. Any paid execution has separate explicit authorization for the exact roster, request count, and hard cost cap.
 
