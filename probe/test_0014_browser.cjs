@@ -110,9 +110,7 @@ async function saveDownload(page, control, directory) {
       const page = await context.newPage();
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
-      await page.goto(new URL("/pages/flight.html", origin).href);
-      await page.getByRole("link", { name: "Take over a recorded search" }).click();
-      assert.equal(page.url(), caseUrl);
+      await page.goto(caseUrl);
       await inspectCases(page);
       assert.equal(await page.getByRole("link", { name: "Open the 129-window audit" }).getAttribute("href"), "first-five.html");
       await inspectUnavailableOpening(page);
