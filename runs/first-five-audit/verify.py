@@ -8,6 +8,7 @@ import sys
 
 
 SEALED_REFERENCE_SHA256 = "87ce2b16fdac86262f83ec06b6a7af3eaa5455bcebd74c848cd0cf08e825e8be"
+FRAME_MANIFEST_SHA256 = "6f05cafab8f6a4d9204d3a1df76e0438abd7480a65923cf0ac73a052531fae22"
 ARMS = ("ember", "detector")
 OPENING_FIELDS = ("second", "x", "y", "time", "identity", "checked", "track", "identity_switches")
 METRICS = ("reach_gain_pp", "empty_reduction_pct", "ember_reach_pct", "detector_reach_pct")
@@ -28,8 +29,13 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def check_replay(replay, reference):
-    require(replay["schema"] == 1, "Unsupported replay schema")
+def scored_frames(manifest_bytes):
+    require(sha(manifest_bytes) == FRAME_MANIFEST_SHA256, "Detector input manifest checksum mismatch")
+    return {(row["video"], row["second"]): row for row in json.loads(manifest_bytes)["frames"]}
+
+
+def check_replay(replay, reference, frames):
+    require(type(replay["schema"]) is int and replay["schema"] == 2, "Unsupported replay schema")
     windows = replay["windows"]
     require(len(windows) == len(reference["windows"]), "Sealed window count mismatch")
     for window, sealed in zip(windows, reference["windows"]):
@@ -45,11 +51,16 @@ def check_replay(replay, reference):
             require(isinstance(actual, list), f"Opening queue must be an array: {where} / {arm}")
             require(len(actual) == len(expected), f"Sealed opening count mismatch: {where} / {arm}")
             for rank, (opening, signature) in enumerate(zip(actual, expected), 1):
-                require(set(opening) == set(OPENING_FIELDS),
+                require(set(opening) == set(OPENING_FIELDS) | {"native_frame", "jpeg_sha256"},
                         f"Sealed opening fields mismatch: {where} / {arm} / slot {rank}")
                 values = [opening[key] for key in OPENING_FIELDS]
                 require(digest([video, start, arm, rank, *values]) == signature,
                         f"Sealed opening mismatch: {where} / {arm} / slot {rank}")
+                source = frames[video, opening["second"]]
+                require(type(opening["native_frame"]) is int
+                        and opening["native_frame"] == source["video_frame"]
+                        and opening["jpeg_sha256"] == source["sha256"],
+                        f"Detector input frame mismatch: {where} / {arm} / slot {rank}")
 
 
 def score(windows):
@@ -132,11 +143,11 @@ def verify(directory):
     weights = (directory / "bootstrap-weights.bin").read_bytes()
     require(sha(weights) == reference["bootstrap_sha256"], "Sealed bootstrap checksum mismatch")
     replay = json.loads((directory / "replay.json").read_bytes())
-    check_replay(replay, reference)
+    check_replay(replay, reference, scored_frames((directory / "detector-inputs.json").read_bytes()))
     windows = replay["windows"]
     openings, arms, paired, families = score(windows)
     return {
-        "integrity": "All openings and setting grades match the independently sealed reference.",
+        "integrity": "All openings and setting grades match the sealed audit. Every native frame and JPEG digest matches the sealed detector inputs.",
         "windows": len(windows),
         "families": len(families),
         "openings": openings,

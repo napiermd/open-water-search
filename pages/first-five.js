@@ -31,7 +31,9 @@ function openingDetails(window, opening) {
   const list = node("dl", undefined, "opening-details");
   const fields = {
     "Source recording": window.video,
-    "Source frame": `${opening.second} s from recording start`,
+    "Native frame (zero-based)": opening.native_frame,
+    "Sampled second": opening.second,
+    "Scored JPEG SHA-256": opening.jpeg_sha256,
     "Pin (x, y in px)": `${opening.x}, ${opening.y}`,
     "Simulated opening": `${opening.time} s from window start`,
     "Queue identity": opening.identity,
@@ -80,7 +82,7 @@ function renderQueue(window, arm, requestedArm, requestedSlot) {
     button.append(
       node("span", `Slot ${slot}`, "slot"),
       node("span", match, "match"),
-      node("span", `Frame ${clock(opening.second)} · Opened +${opening.time.toFixed(3)} s`, "time"),
+      node("span", `Frame ${opening.native_frame} · Sample ${clock(opening.second)} · Opened +${opening.time.toFixed(3)} s`, "time"),
     );
     const details = openingDetails(window, opening);
     details.id = id;
@@ -197,7 +199,7 @@ async function load() {
   const response = await fetch(new URL("./first-five/replay.json", import.meta.url));
   if (!response.ok) throw new Error(`Replay request failed (${response.status})`);
   const data = await response.json();
-  if (data.schema !== 1 || !data.windows.length) throw new Error("Invalid opening records");
+  if (data.schema !== 2 || !data.windows.length) throw new Error("Invalid opening records");
   windows = data.windows;
   windowPicker.replaceChildren(...windows.map((window, index) =>
     new Option(`${window.video.replace(/\.mp4$/, "")} · ${windowRange(window)}`, index)));

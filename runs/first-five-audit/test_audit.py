@@ -62,6 +62,28 @@ class DownloadedAudit(unittest.TestCase):
         self.assertEqual([card["track"] for card in case["arms"]["ember"]], [None, 17, 6, 0, None])
         self.assertEqual([card["track"] for card in case["arms"]["detector"]], [None, None, 6, 17, 1])
 
+    def test_same_second_frame_substitution_or_wrong_image_digest_fails(self):
+        original = self.replay.read_bytes()
+        for field, value in (("native_frame", 75), ("jpeg_sha256", "0" * 64)):
+            with self.subTest(field=field):
+                data = json.loads(original)
+                window = next(w for w in data["windows"]
+                              if w["video"] == "DJI_0804_0014_50m_2.mp4" and w["start"] == 0)
+                opening = window["arms"]["ember"][3]
+                self.assertEqual((opening["second"], opening["native_frame"]), (2, 74))
+                opening[field] = value
+                self.replay.write_text(json.dumps(data))
+                result = self.verify()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("Detector input frame mismatch", result.stderr)
+
+    def test_modified_detector_input_manifest_fails(self):
+        manifest = self.directory / "detector-inputs.json"
+        manifest.write_bytes(manifest.read_bytes() + b" ")
+        result = self.verify()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Detector input manifest checksum mismatch", result.stderr)
+
     def test_empty_object_fails_even_when_the_sealed_queue_is_empty(self):
         data = json.loads(self.replay.read_bytes())
         window = next(window for window in data["windows"] if window["arms"]["ember"] == [])

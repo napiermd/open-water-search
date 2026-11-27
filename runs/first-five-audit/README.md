@@ -6,7 +6,7 @@ The verifier checks the ordered 129-window roster and every scored opening in bo
 
 ## How to read the comparison
 
-Both arms use the same matched simulated dispatch clock and at most five openings per 24-second window. The source frame is identified by video filename and whole second from the start of its recording, sampled at one frame per second. The simulated dispatch clock is elapsed time from the start of that window. Windows can have fewer than five openings.
+Both arms use the same matched simulated dispatch clock and at most five openings per 24-second window. Each opening identifies the source recording, zero-based native frame number, sampled second, and SHA-256 of the JPEG the detector scored. The verifier looks up each opening in the original detector input manifest bundled as `detector-inputs.json` and checks its pinned checksum. To reproduce the JPEGs, run the extraction in `experiments/lost-people/flight-ranking/cut_flights.py` on the MOBDrone originals. For flight 0014, sample 2 is native frame 74 and sample 16 is native frame 494. The simulated dispatch clock is elapsed time from the start of that window. Windows can have fewer than five openings.
 
 The replay reaches a labeled track when an opening pin lands on it. A later opening on that same track in the window is a repeat. An opening without any matching labeled track is empty. A match outside the water still occupies a slot. Reach and its paired breakdown count distinct tracks graded in water, once per window. The setting grades were assigned retrospectively. The same person can appear in multiple windows. Identity switches are the original tracking audit's per-card counts across opening and follow-up pins, reported separately from opening outcomes.
 
