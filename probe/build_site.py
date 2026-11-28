@@ -17,17 +17,11 @@ from score import ROOT, TRAINING, VALIDATION
 
 SITE = ROOT / "site"
 LONG_EDGE = 2400
-VERCEL = {
-    "redirects": [
-        {"source": "/", "destination": "/pages/flight.html", "permanent": False},
-        {"source": "/judge", "destination": "/pages/flight.html", "permanent": False},
-        {"source": "/replay", "destination": "/pages/replay.html", "permanent": False},
-    ],
-    "headers": [
-        {"source": "/(.*)\\.jpg", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
-    ],
-}
 
+
+def vercel_routes():
+    config = json.loads((ROOT / "vercel.json").read_text())
+    return {key: config[key] for key in ("redirects", "headers")}
 
 def main():
     SITE.mkdir(exist_ok=True)
@@ -53,7 +47,7 @@ def main():
             label.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(base / "scoring-only" / labels[frame["frame"]], label)
             frames += 1
-    (SITE / "vercel.json").write_text(json.dumps(VERCEL, indent=2))
+    (SITE / "vercel.json").write_text(json.dumps(vercel_routes(), indent=2))
     (SITE / ".vercelignore").write_text(".env*\n")  # vercel link writes a token to .env.local; never upload it
     print(f"site/ ready: {frames} frames, the pages and the run data")
 
