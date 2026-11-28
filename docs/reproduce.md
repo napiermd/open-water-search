@@ -5,13 +5,13 @@ How to run the tool on your own flight, serve the pages, and rebuild every publi
 ## Run it on your own flight
 
 ~~~
-pip install pillow
+pip install -r requirements.txt
 export MODEL_API_KEY=your-meta-model-api-key
 python probe/open_water_search.py flight.mp4 --out results --budget 0.10
 open results/report.html
 ~~~
 
-Point it at a flight: a video file, which the tool cuts into one frame per second with ffmpeg, or a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per frame, `--parallel` to change how many requests run at once (default 8), `--format frozen` for the original prompts, and `--key-file` instead of the environment variable if you prefer. The tool spaces requests out when Meta's rate-limit headers run low, and after a 429 it waits at least the Retry-After time, then backs off with jitter. If the spending cap is reached, the tool stops and says so in the search record and the report. A request that times out, drops its connection or gets a 5xx reply is retried once. If it fails again, only its own overview or tile is lost, and the run continues. Ten unreadable answers in a row, or any other failure, end the run: the tool writes the search record and the report for everything finished so far, then exits with status 1.
+Point it at a flight: a video file, which the tool cuts into one frame per second with ffmpeg, or a folder of .jpg, .jpeg or .png photos whose file names put them in time order, one photo per second. Sightings at most two seconds apart and within 10% of the frame width of each other become one possible person, and the tool prints a handoff message for each. Use `--looks` to change the close looks per frame, `--parallel` to change how many requests run at once (default 8), `--format frozen` for the original prompts, and `--key-file` instead of the environment variable if you prefer. The tool spaces requests out when Meta's rate-limit headers run low, and after a 429 it waits at least the Retry-After time, then backs off with jitter. If the spending cap is reached, the tool stops and says so in the search record and the report. A generation that times out, drops its connection or gets a 5xx reply may have been billed. The ledger keeps that amount reserved and dispatches a retry only if a separate worst-case reservation fits. Lost attempts count toward the run estimate at their reserved amount. Ten unreadable answers in a row, or any other failure, end the run: the tool writes the search record and the report for everything finished so far, then exits with status 1.
 
 If the flight has the drone's GPS position for its photos, pass it with `--positions positions.json`: a JSON file whose `frames` object maps each photo's name (without extension, or `second-00000`, `second-00001` and so on for a video) to `{"latitude": ..., "longitude": ...}` in decimal degrees, or to `null` when that photo has none. Each handoff message then gives the drone position at sighting, and the report maps where the drone was. The tool doesn't compute the person's own coordinates, because the flight data has no camera field of view and measures altitude from the takeoff point. Photos without position data get no coordinates. Without the file, the search record says position data was unavailable and the report shows no map. `probe/write_positions.py` writes this file for SeaDronesSee frames from the dataset's CC0 `instances_val.json`, and `experiments/zoom-first/validation-30/inputs/positions.json` is its output for the 30 validation photos, 22 of which have a position.
 
@@ -38,12 +38,13 @@ Add `--mode agent` to let Ember run the search through tool calls. Each frame ge
 
 With the default grounding format, an overview plus two close looks cost about $0.00062 per photo on the scale run, or about $2.23 per hour of footage at one photo a second. The search record also records photos per minute.
 
-## The three web pages
+## Web pages
 
 | Page | What you do there |
 |---|---|
-| [How it works](https://open-water-search.vercel.app) (`pages/index.html`) | Watch the live two-minute run print Ember's decisions and fill in its coverage timeline, read the handoff message for each possible person, then see the scale run, the detector comparison and the steps on one real validation photo |
-| [Recorded flight handoff](https://open-water-search.vercel.app/judge) | Open the last reported pin, download its self-contained crew packet and inspect an earlier dismissal of the same swimmer. |
+| [Evidence and earlier runs](https://open-water-search.vercel.app/pages/index.html) | Watch the live two-minute run print Ember's decisions and fill in its coverage timeline, read the handoff message for each possible person, then see the scale run, the detector comparison and the steps on one real validation photo |
+| [Recorded flight handoff](https://open-water-search.vercel.app/) (`pages/flight.html`) | Compare the 0:36 crops, place a crew pin, download a handoff, or inspect the miss at 0:12. |
+| [First-five archive](https://open-water-search.vercel.app/pages/first-five.html) | Inspect both queues and download the offline audit for all 129 windows. |
 | [Earlier zoom experiment](https://open-water-search.vercel.app/pages/judge.html?run=validation) (`pages/judge.html`) | Ember has taken one overview, opened its top tile and flagged a possible swimmer. You mark it, dismiss it or say you can't tell. Then you pick the next tile, see Ember's recorded close look there, and reveal the labels. |
 | [Replay](https://open-water-search.vercel.app/replay) (`pages/replay.html`) | Put Ember and the fixed grid side by side on every frame of either run, at 1 to 9 close looks per frame, with spend and totals across all 30 frames |
 
@@ -70,10 +71,10 @@ stateDiagram-v2
 
 The reveal shows whether the flag was real, where your pin landed, what your pick held, what Ember would have opened next, and how many swimmers remain in water nobody has checked. Cases follow manifest order and include every validation frame whose first close look flagged something and which has a swimmer outside that tile. The replay page's totals at nine looks match `score.json`, and at one to three looks they match the order table.
 
-To run the pages locally:
+To run the recorded handoff and first-five archive locally, run `python3 -m http.server 8000` from the repository root, then open `http://localhost:8000/pages/flight.html`. The earlier photo replays also need the pinned images and labels:
 
 ~~~
-pip install pillow
+pip install -r requirements.txt
 python probe/fetch_frames.py
 python -m http.server 8000
 ~~~
@@ -85,7 +86,7 @@ Vercel builds from `vercel.json` on GitHub. It runs the pinned downloader, then 
 ## Reproduce the numbers
 
 ~~~
-pip install pillow
+pip install -r requirements.txt
 python probe/fetch_frames.py      # downloads the 60 frames and labels from the pinned mirror and checks every hash
 python probe/check.py             # offline checks with simulated answers, no API calls
 python -m unittest discover -s probe  # the command end to end against a simulated Ember, no API calls

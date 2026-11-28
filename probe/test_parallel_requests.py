@@ -115,6 +115,15 @@ class ParallelFlight(unittest.TestCase):
         self.assertEqual(record["ending"], {"outcome": "finished", "reason": None})
         self.assertEqual(len(ember.times_sent(("frame-01", -1))), 2)
         self.assertEqual(record["coverage_timeline"][0]["overview"], "done")
+        self.assertEqual(record["calls"][0]["paid_nanodollars"], 1_070_000 + 120_000)
+
+    def test_a_timeout_is_not_retried_without_a_second_reservation(self):
+        ember = SimulatedEmber({("frame-01", -1): TimeoutError("response timed out")})
+        status, _, record, _ = self.search(1, ember, "--looks", "0", "--budget", "0.0015")
+        self.assertEqual(status, 0)
+        self.assertEqual(len(ember.times_sent(("frame-01", -1))), 1)
+        self.assertEqual(record["spent_nanodollars"], 1_070_000)
+        self.assertEqual(record["coverage_timeline"][0]["overview"], "unreadable")
 
     def test_a_request_lost_on_every_try_leaves_only_its_overview_unreadable(self):
         replies = quiet_flight(3)
@@ -129,7 +138,7 @@ class ParallelFlight(unittest.TestCase):
         self.assertIn("request lost after 2 tries: TimeoutError", lost[0]["answer"]["failure"])
         self.assertIs(lost[0]["answer"]["lost"], True)
         # A lost request may still be billed, so its worst case counts toward what was spent.
-        self.assertGreater(lost[0]["paid_nanodollars"], 0)
+        self.assertEqual(lost[0]["paid_nanodollars"], 2 * 1_070_000)
         self.assertEqual(record["spent_nanodollars"], sum(call["paid_nanodollars"] for call in record["calls"]))
 
     def test_ten_lost_requests_in_a_row_end_the_run(self):

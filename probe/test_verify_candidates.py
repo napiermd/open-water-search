@@ -26,7 +26,7 @@ class FakeEmber:
         crops = sum(1 for part in body["input"][0]["content"] if part["type"] == "input_image")
         verdicts = [dict(crop=n, person=n in self.accept, confidence=self.accept.get(n, 0.1), what="x")
                     for n in range(1, crops + 1)]
-        return {"output": [{"content": [{"type": "output_text", "text": json.dumps({"crops": verdicts})}]}],
+        return {"status": "completed", "output": [{"content": [{"type": "output_text", "text": json.dumps({"crops": verdicts})}]}],
                 "usage": {"input_tokens": 300, "input_tokens_details": {"cached_tokens": 0}, "output_tokens": 50}}
 
 

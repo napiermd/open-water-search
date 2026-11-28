@@ -71,11 +71,22 @@ def request_body(image, boxes, prompt=PROMPT):
 
 def read_checks(reply, count):
     """Ember's verdict for each crop as (person, confidence, what), or None when the answer is not schema-shaped."""
-    raw = "".join(part["text"] for item in reply["output"] for part in item.get("content", [])
-                  if part["type"] == "output_text")
     try:
+        if reply.get("status") != "completed":
+            return None
+        raw = "".join(part["text"] for item in reply["output"] for part in item.get("content", [])
+                      if part["type"] == "output_text")
         crops = json.loads(raw)["crops"]
-        verdicts = {int(c["crop"]): (bool(c["person"]), float(c["confidence"]), str(c["what"])) for c in crops}
-    except (ValueError, KeyError, TypeError):
+        if not isinstance(crops, list) or len(crops) != count:
+            return None
+        verdicts = {}
+        for crop in crops:
+            number, person, confidence, what = (crop[key] for key in ("crop", "person", "confidence", "what"))
+            if (type(number) is not int or not 1 <= number <= count or number in verdicts
+                    or type(person) is not bool or type(confidence) not in (int, float)
+                    or not 0 <= confidence <= 1 or not isinstance(what, str)):
+                return None
+            verdicts[number] = (person, confidence, what)
+        return [verdicts[number] for number in range(1, count + 1)]
+    except (ValueError, KeyError, TypeError, AttributeError):
         return None
-    return [verdicts.get(number) for number in range(1, count + 1)]
