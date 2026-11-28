@@ -151,6 +151,7 @@ async function inspectOpeningAndPin(page, touch) {
   assert.match(await crew.locator("#pin-note").innerText(), /Pin placed/);
   await crew.getByRole("button", { name: "Send reply and pin" }).click();
   await crew.getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
+  assert.equal(await crew.locator("html").getAttribute("data-phase"), "done");
   await page.waitForFunction(() => {
     const panel = document.querySelector("#crew-frame");
     const top = panel.getBoundingClientRect().top + panel.contentDocument.getElementById("heading").getBoundingClientRect().top;
@@ -172,6 +173,13 @@ async function inspectOpeningAndPin(page, touch) {
   await page.goto(landing);
   await page.locator("#crew-frame").scrollIntoViewIfNeeded();
   await page.frameLocator("#crew-frame").getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
+  // A saved visit that its own messages could not have reached starts over on the pin screen.
+  await page.frameLocator("#crew-frame").locator("html").evaluate(() =>
+    sessionStorage.setItem("ows-crew-0036:pin", JSON.stringify({ turns: [], phase: "done", draftPin: null })));
+  await page.reload();
+  await page.locator("#crew-frame").scrollIntoViewIfNeeded();
+  await page.frameLocator("#crew-frame").getByRole("heading", { name: "Pin the swimmer you see" }).waitFor();
+  assert.equal(await page.frameLocator("#crew-frame").locator("html").getAttribute("data-phase"), "pick");
   await page.goto(landing);
   await page.getByRole("link", { name: "Inspect all 129 windows" }).click();
   await page.getByRole("heading", { name: "Replay the first five" }).waitFor();

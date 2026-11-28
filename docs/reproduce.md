@@ -71,6 +71,37 @@ stateDiagram-v2
 
 The reveal shows whether the flag was real, where your pin landed, what your pick held, what Ember would have opened next, and how many swimmers remain in water nobody has checked. Cases follow manifest order and include every validation frame whose first close look flagged something and which has a swimmer outside that tile. The replay page's totals at nine looks match `score.json`, and at one to three looks they match the order table.
 
+The 0:36 crew exchange (`pages/flight/crew-reply.html`) moves through these phases. The table `PHASES` in that file is the only place they are defined, and the page mirrors the current one as `data-phase` on its root element. A visit saved in the browser reopens only in a phase its own messages could have reached.
+
+~~~mermaid
+stateDiagram-v2
+    state "Crew chooses a reply" as crew
+    state "Crew pins the swimmer" as pick
+    state "Operator writes a cue" as cue
+    state "Operator corrects a miss" as correction
+    state "Crew pins again" as retry
+    state "Operator reads the reply" as done
+    state "Next crew opens the handoff" as next_crew
+    state "Next crew pins" as next_pick
+    [*] --> crew
+    [*] --> pick: Opened from the landing page
+    crew --> pick: I see them
+    crew --> cue: I need another cue
+    crew --> done: I see them without a pin, or a second cue request
+    cue --> crew: Send cue
+    pick --> crew: Back
+    pick --> done: Pin on the swimmer
+    pick --> correction: Pin missed, after a cue
+    correction --> retry: Send correction
+    correction --> done: Finish and reveal
+    retry --> done: Second pin, or I still don't see them
+    done --> next_crew: Hand off to next crew
+    next_crew --> next_pick: Place our pin
+    next_crew --> done: I still don't see anyone, or return to operator
+    next_pick --> done: Pin, or I still don't see anyone
+    next_pick --> next_crew: Back
+~~~
+
 To run the recorded handoff and first-five archive locally, run `python3 -m http.server 8000` from the repository root, then open `http://localhost:8000/pages/flight.html`. The earlier photo replays also need the pinned images and labels:
 
 ~~~
