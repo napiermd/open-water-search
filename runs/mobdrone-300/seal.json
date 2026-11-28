@@ -1,9 +1,9 @@
 {
   "search_record_sha256": "e12c879f192681d001b9beb6223276b1719a292ca698a1187352accab8494816",
   "calls_sha256": "7c7800793eb3dce4560cbbc7e25b7f3432b43ccb67022126a94c9e03fd4cbe53",
-  "search_record_redacted_sha256": "f66b9ae89e56a69364de838284379420e3d473301eea76996c2b940c4f7a1650",
+  "search_record_redacted_sha256": "cef6a66e4913b3138ed3fd7885c03cd0e5a03f4e814a42bc3961522495dd814c",
   "calls_redacted_sha256": "6f0ffda8aac53a7c075a0dfc30d368dd3ecb863de9c5feb165c19024bcde86e8",
-  "removed": "response.id and output[].id from every call",
+  "removed": "response.id and output[].id from every call, parent directories from flight.source",
   "settings": {
     "model": "muse-ember-1.0",
     "mode": "fixed",
@@ -18,5 +18,6 @@
     "outcome": "finished",
     "reason": null
   },
-  "calls": 900
+  "calls": 900,
+  "previous_search_record_redacted_sha256": "f66b9ae89e56a69364de838284379420e3d473301eea76996c2b940c4f7a1650"
 }

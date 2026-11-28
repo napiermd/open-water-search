@@ -1,10 +1,11 @@
-"""Seal the search record of a paid run, and write public copies without Meta's response and message IDs.
+"""Seal the search record of a paid run, and write public copies with response IDs and local paths redacted.
 
     python3 probe/seal_record.py RESULTS_DIR
 
 seal.json records the SHA-256 of search-record.json and calls.jsonl exactly as the command wrote them, with the
-model, settings, spend and ending. The redacted copies keep everything else, including Ember's raw answers and
-token usage. Run this once, right after the run, then publish RESULTS_DIR without the two original files.
+model, settings, spend and ending. The public copies preserve Ember's raw answers and token usage. The flight source
+in the public record is reduced to its file or folder name. Run this once after the run, then publish
+RESULTS_DIR without the two original files.
 """
 import hashlib
 import json
@@ -28,11 +29,18 @@ def strip_ids(value):
     return value
 
 
+def public_record(record):
+    """Make a public record from a freshly decoded search record."""
+    strip_ids(record)
+    record["flight"]["source"] = Path(record["flight"]["source"]).name
+    return record
+
+
 def main(results):
     record_bytes = (results / "search-record.json").read_bytes()
     calls_bytes = (results / "calls.jsonl").read_bytes()
     record = json.loads(record_bytes)
-    redacted_record = json.dumps(strip_ids(record), indent=2).encode()
+    redacted_record = json.dumps(public_record(record), indent=2).encode()
     redacted_calls = b"".join(json.dumps(strip_ids(json.loads(line))).encode() + b"\n" for line in calls_bytes.splitlines() if line.strip())
     (results / "search-record-redacted.json").write_bytes(redacted_record)
     (results / "calls-redacted.jsonl").write_bytes(redacted_calls)
@@ -41,7 +49,7 @@ def main(results):
         calls_sha256=hashlib.sha256(calls_bytes).hexdigest(),
         search_record_redacted_sha256=hashlib.sha256(redacted_record).hexdigest(),
         calls_redacted_sha256=hashlib.sha256(redacted_calls).hexdigest(),
-        removed="response.id and output[].id from every call",
+        removed="response.id and output[].id from every call, parent directories from flight.source",
         settings=record["settings"],
         spent_nanodollars=record["spent_nanodollars"],
         ending=record["ending"],

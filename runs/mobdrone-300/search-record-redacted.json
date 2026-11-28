@@ -1,6 +1,6 @@
 {
   "flight": {
-    "source": "/Users/andrewn/Documents/Codex/2026-11-21/use-x20/data/mobdrone-sample/images",
+    "source": "images",
     "position_data": "unavailable"
   },
   "settings": {

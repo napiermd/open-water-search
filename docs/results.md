@@ -1,8 +1,16 @@
 # Results
 
-**Prompt revision, November 24.** Two revised check prompts were tuned on the first 300 MOBDrone frames and the live clip. Neither found more people than the original prompt without more false alarms (306 and 307 found against 319), so neither was confirmed and the original prompt stays. Details in [runs/prompt-revision](../runs/prompt-revision/README.md).
+## First-five handoff audit
 
-Every result here comes from a sealed run in [runs/](../runs). Each run's README gives its plan, its numbers and its cost, and its seal holds the SHA-256 of the Ember calls as written. The short version is in the [README](../README.md).
+The final comparison used 129 MOBDrone windows, 42 recording families, and 229 in-water appearances. On a matched simulated dispatch clock, the detector reached 180 appearances in its first five handoffs per window. Detector + Ember reached 199. Empty handoffs fell from 185 to 121. [Inspect the replay and download the audit](https://open-water-search.vercel.app/pages/first-five.html).
+
+An earlier archive replay used a different queue policy and counted all labeled tracks. Its totals were 176 and 113 empty handoffs. The [Cyprus exercise](https://open-water-search.vercel.app/pages/cyprus.html) was scored separately. One staged swimmer moved from eighth to first in the featured view. [Earlier archive data](../experiments/first-five/archive-129/windows.csv) · [Off-center restoration experiment](../experiments/lost-people/sealed-off-center/README.md)
+
+## Earlier benchmarks
+
+The [published runs](../runs) include their plans, results, costs, and seals. The [front page](../README.md) summarizes the final comparison.
+
+**Prompt revision, November 24.** Two revised check prompts were tuned on the first 300 MOBDrone frames and the live clip. Neither found more people than the original prompt without more false alarms (306 and 307 found against 319), so neither was confirmed and the original prompt stays. Details in [runs/prompt-revision](../runs/prompt-revision/README.md).
 
 ## The result: Ember checks the detector's flags
 
