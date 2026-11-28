@@ -207,7 +207,7 @@ From one overview, Ember's first-ranked tile held a labeled swimmer in 26 of 30 
 
 ## What this does not show
 
-- **Detector, then Ember on other footage.** It has been tested on two datasets the detector never saw, MOBDrone and AFO. On SeaDronesSee, the detector's own footage, Ember's check lost to the detector's threshold. Other footage is untested.
+- **Detector, then Ember on other footage.** It has been tested on two datasets the detector never saw, MOBDrone and AFO. On SeaDronesSee, the detector's own footage, Ember's check lost to the detector's threshold. The Cyprus exercise is a separate staged case and is outside those still-photo comparisons.
 - **Keeping pace with a drone.** The search reached 35.1 photos a minute on the scale run and 46.9 on the live clip, short of one photo a second.
 - **Equal spend with each search's own answers.** In the frozen-prompt runs we planned this head-to-head too, and it does not support a claim either way. In the first run, both searches eventually sent identical crops, and Ember returned a different number of marks on 12 of those 270 crops between passes. That variation is as large as the gap between the searches. In validation, the totals were 78 against 77 with our reader and 75 against 65 with a stricter one. Both scorecards are published.
 - **Reviewer speed.** There is no claim that a reviewer finds people faster. That needs a timed test on fresh footage.

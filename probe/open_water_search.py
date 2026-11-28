@@ -242,6 +242,8 @@ class Search:
                 self.check_flags(frame, turn)
             else:
                 self.send_and_read(frame, tile, turn)
+        except Stopped:
+            raise
         except Exception:
             with self.lock:
                 self.stopped = True
@@ -271,15 +273,11 @@ class Search:
             input_tokens += len(json.dumps(body["text"]))
         worst = price(input_tokens, 0, LIMIT)
         self.reserve(turn, worst)
-        started = time.time()
         try:
-            reply = self.within_rate_limits(self.api.generate, body)
-        except Lost as lost:
-            self.record_lost(frame, tile, worst, lost)
+            reply, started, finished, paid, worst = self.generate(frame, tile, body, worst)
+        except Lost:
             return
-        finished = time.time()
         usage = reply["usage"]
-        paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
         answered = dict(rect=rect, response=reply, started=started, finished=finished)
         if grounding:
             event = grounding_format.read_marks(answered)
@@ -315,19 +313,17 @@ class Search:
         # Meta's input-token count leaves out the schema, so count each of its characters as a token.
         worst = price(input_tokens + len(json.dumps(body["text"])), 0, LIMIT)
         self.reserve(turn, worst)
-        started = time.time()
         try:
-            reply = self.within_rate_limits(self.api.generate, body)
-        except Lost as lost:
-            self.record_lost(frame, FLAGS, worst, lost)
+            reply, started, finished, paid, worst = self.generate(frame, FLAGS, body, worst)
+        except Lost:
             return
-        finished = time.time()
         usage = reply["usage"]
-        paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
         verdicts = flag_check.read_checks(reply, len(boxes))
-        for number, (flag, verdict) in enumerate(zip(frame["flags"], verdicts or [None] * len(boxes)), 1):
+        crop_images = (part["image_url"] for part in body["input"][0]["content"] if part["type"] == "input_image")
+        for number, (flag, verdict, image_url) in enumerate(
+                zip(frame["flags"], verdicts or [None] * len(boxes), crop_images, strict=True), 1):
             flag["crop"] = f"crops/{frame['name']}-flag{number}.jpg"
-            (self.out / flag["crop"]).write_bytes(flag_check.crop_jpeg(image, flag["box"]))
+            (self.out / flag["crop"]).write_bytes(base64.b64decode(image_url.split(",", 1)[1]))
             if verdict is None:
                 flag["status"] = "unreadable"
             else:
@@ -340,7 +336,50 @@ class Search:
         self.decide(frame["name"], None, flag_line(frame["name"], frame["flags"]))
         self.finish(call, worst, failed=verdicts is None)
 
-    def record_lost(self, frame, tile, worst, lost):
+    def generate(self, frame, tile, body, worst, ceiling=None):
+        """Keep an independent reservation for each generation that may have been billed."""
+        reserved = worst
+        ceiling = self.budget if ceiling is None else min(ceiling, self.budget)
+
+        def reserve_retry():
+            nonlocal reserved
+            with self.lock:
+                # Other workers can be waiting for this reservation to settle, so never wait here.
+                if self.stopped or self.spent + self.reserved + worst > ceiling:
+                    return False
+                self.reserved += worst
+                reserved += worst
+                return True
+
+        started = time.time()
+        try:
+            reply = self.within_rate_limits(self.api.generate, body, reserve_retry)
+        except Lost as lost:
+            self.record_lost(frame, tile, reserved, lost)
+            raise
+        except json.JSONDecodeError as error:
+            lost = Lost("generation returned an unreadable response body")
+            self.record_lost(frame, tile, reserved, lost)
+            raise lost from error
+        except Exception as error:
+            # A rejected retry still leaves any earlier uncertain attempts chargeable.
+            if reserved > worst:
+                self.record_lost(frame, tile, reserved - worst, error, reservation=reserved)
+            else:
+                with self.lock:
+                    self.reserved -= reserved
+            raise
+        finished = time.time()
+        try:
+            usage = reply["usage"]
+            paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
+        except (KeyError, TypeError, ValueError) as error:
+            lost = Lost("generation returned no usable billing information")
+            self.record_lost(frame, tile, reserved, lost)
+            raise lost from error
+        return reply, started, finished, paid + reserved - worst, reserved
+
+    def record_lost(self, frame, tile, worst, lost, reservation=None):
         """Store a lost request as an unreadable overview or tile and carry on. Meta may still bill a request whose
         reply never arrived, so its worst-case cost counts as spent: the spending cap stays a guarantee."""
         call = dict(frame=frame["name"], tile=tile, paid_nanodollars=worst, usage=None, seconds=None,
@@ -349,14 +388,14 @@ class Search:
             for flag in frame["flags"]:
                 flag["status"] = "unreadable"
             self.decide(frame["name"], None, f"{frame['name']}: check of {len(frame['flags'])} detector flags: {lost}")
-        else:
+        elif tile is not None:
             if tile >= 0:
                 frame["tiles"][tile] = None
             else:
                 frame["ranking"] = []
                 frame["overview"] = "unreadable"
             self.decide(frame["name"], None if tile < 0 else tile, decision_line(frame["name"], tile, call["answer"]))
-        self.finish(call, worst, failed=True)
+        self.finish(call, worst if reservation is None else reservation, failed=True)
 
     def decide(self, frame_name, tile, text):
         """Print one decision line as it happens and add it to the decision log, with the tile it concerns, or None
@@ -376,8 +415,12 @@ class Search:
             self.calls.append(call)
             self.log.write(json.dumps(call) + "\n")
             self.log.flush()
+            if call["paid_nanodollars"] > worst:
+                self.stopped = True
+                raise RuntimeError("reported usage exceeded the generation reservation")
             self.failures_in_a_row = self.failures_in_a_row + 1 if failed else 0
             if self.failures_in_a_row >= FAILURE_LIMIT:
+                self.stopped = True
                 raise RuntimeError(f"{FAILURE_LIMIT} unreadable answers in a row")
 
     def reserve(self, turn, worst):
@@ -397,17 +440,22 @@ class Search:
             self.next_turn += 1
             self.lock.notify_all()
 
-    def within_rate_limits(self, method, body):
+    def within_rate_limits(self, method, body, reserve_retry=None):
         """Call Ember, spacing requests out when the rate-limit headers run low. After a 429, every request
         waits at least Retry-After, then a back-off that doubles with each 429 this request meets. A timeout, dropped
         connection or 5xx gets the same back-off; if every try meets one, the request is Lost."""
         transient = None
         for attempt in range(self.tries):
             with self.lock:
-                now = time.monotonic()
-                send_at = max(now, self.next_send)
-                self.next_send = send_at + spacing(self.api.limits)
-            time.sleep(send_at - now)
+                while not self.stopped and self.next_send > (now := time.monotonic()):
+                    self.lock.wait(self.next_send - now)
+                if self.stopped:
+                    if transient is not None and reserve_retry is not None:
+                        raise Lost("generation interrupted after an uncertain attempt") from transient
+                    raise Stopped()
+                if transient is not None and reserve_retry is not None and not reserve_retry():
+                    raise Lost("generation retry skipped because another reservation could not be made") from transient
+                self.next_send = now + spacing(self.api.limits)
             try:
                 return method(body)
             except RateLimited as limited:
@@ -450,7 +498,11 @@ def cut_into_seconds(video):
 def load_frames(folder):
     """The flight's frames in time order. A flight holds one frame per second, so each frame's place is its second."""
     frames = []
-    for path in sorted(p for p in folder.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")):
+    names = set()
+    for path in sorted(p for p in folder.iterdir() if p.is_file() and p.suffix.lower() in (".jpg", ".jpeg", ".png")):
+        if path.stem.casefold() in names:
+            raise SystemExit(f"Duplicate frame name {path.stem} in {folder}. Give each frame a unique filename stem.")
+        names.add(path.stem.casefold())
         with Image.open(path) as image:
             width, height = image.size
         frames.append(dict(path=path, name=path.stem, second=len(frames), width=width, height=height,
@@ -466,13 +518,20 @@ def read_positions(path, frames):
     The file maps frame names to the drone's latitude and longitude in decimal degrees, and may keep the source
     metadata alongside them. A frame that is missing from the file or null in it has no position data.
     """
-    given = json.loads(path.read_text())["frames"]
+    try:
+        given = json.loads(path.read_text())["frames"]
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        raise SystemExit(f"{path}: expected a JSON object with a frames map.") from error
+    if not isinstance(given, dict):
+        raise SystemExit(f"{path}: expected a JSON object with a frames map.")
     for frame in frames:
         position = given.get(frame["name"])
         if position is None:
             continue
+        if not isinstance(position, dict):
+            raise SystemExit(f"{path}: {frame['name']} needs a latitude and longitude object or null.")
         latitude, longitude = position.get("latitude"), position.get("longitude")
-        if not (isinstance(latitude, (int, float)) and isinstance(longitude, (int, float))
+        if not (type(latitude) in (int, float) and type(longitude) in (int, float)
                 and -90 <= latitude <= 90 and -180 <= longitude <= 180):
             raise SystemExit(f"{path}: {frame['name']} needs a latitude from -90 to 90 and a longitude from -180 to 180.")
         frame["drone_position"] = position
@@ -831,30 +890,19 @@ def agent_request(search, frame, body, earned):
     mode sends one request at a time, so each request takes the next turn. A request lost on every try is recorded
     as the fixed method records one, then raises Lost.
     """
-    worst = 0
     try:
-        # Meta's input-token count leaves out the tool definitions, so count each of their characters as a token.
-        # That can only overestimate, which keeps the spending cap a guarantee.
+        # The token counter does not include tool definitions.
         input_tokens = search.within_rate_limits(search.api.count, body) + len(json.dumps(body["tools"]))
-        worst = price(input_tokens, 0, LIMIT)
-        # Once the spending cap itself has no room, reserve() stops the run. Short of that, a frame whose next
-        # request could take it past what it has earned moves on.
-        committed = search.spent + worst
-        fits_the_cap = committed <= search.budget
-        fits_the_share = committed <= earned
-        if fits_the_cap and not fits_the_share:
-            return None
-        search.reserve(search.next_turn, worst)
-        started = time.time()
-        reply = search.within_rate_limits(search.api.generate, body)
     except Lost as lost:
-        # Meta may still bill a request whose reply never arrived, so its worst-case cost counts as spent.
-        search.finish(dict(frame=frame["name"], paid_nanodollars=worst, usage=None, seconds=None,
-                           answer=dict(failure=str(lost), lost=True)), worst, failed=True)
+        search.record_lost(frame, None, 0, lost)
         raise
-    finished = time.time()
+    worst = price(input_tokens, 0, LIMIT)
+    committed = search.spent + worst
+    if committed <= search.budget and committed > earned:
+        return None
+    search.reserve(search.next_turn, worst)
+    reply, started, finished, paid, worst = search.generate(frame, None, body, worst, ceiling=earned)
     usage = reply["usage"]
-    paid = price(usage["input_tokens"], usage["input_tokens_details"]["cached_tokens"], usage["output_tokens"])
     call = dict(frame=frame["name"], paid_nanodollars=paid, usage=usage, seconds=round(finished - started, 3),
                 response=reply)
     search.finish(call, worst, failed=not tool_calls_in(reply))
@@ -1134,11 +1182,13 @@ def main(arguments=None, api=None, detect=None):
         api = Ember()
     if not 0 < args.budget <= 9:
         raise SystemExit("--budget must be more than $0 and at most $9.")
+    if not args.frames.exists():
+        raise SystemExit(f"Flight input does not exist: {args.frames}")
+    if args.out.exists():
+        raise SystemExit(f"{args.out} already exists. Give --out a new folder.")
     frames = load_frames(cut_into_seconds(args.frames) if args.frames.is_file() else args.frames)
     if args.positions:
         read_positions(args.positions, frames)
-    if args.out.exists():
-        raise SystemExit(f"{args.out} already exists. Give --out a new folder.")
     detector_seconds = 0
     if args.mode == "detector-check":
         # The detector runs before any Ember call, so a missing ultralytics stops the run before it spends anything.

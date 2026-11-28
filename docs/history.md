@@ -6,12 +6,12 @@ Open Water Search started on November 23, 2026, the day Andrew was accepted into
 
 On July 4, 2021, a Glendale, Wisconsin police drone found two paddleboarders on Lake Michigan and held a light on them while boats came in. The crew could reach the boats only through dispatch. Later, the officer told us: "Honestly, we didn't know if the boats knew." Finding someone is half the job. The other half is making sure the next person knows exactly where to look, and which water nobody has checked.
 
-## How each second is searched
+## How the original zoom experiment searched each second
 
 ![The steps on one real validation photo: Ember ranks the nine sections, takes close looks at the top two, and leaves pins with the other seven sections shaded](how-it-works.jpg)
 
 1. **Overview.** Each frame gets one Ember call that ranks the nine sections of a 3 × 3 grid by how likely each is to hold a person in the water.
-2. **Close looks.** Each frame then gets a close look at its top-ranked section, then its second, one round at a time, until the per-frame count (`--looks`, default 2) or the spending cap runs out. Before every request, the tool reserves the request's worst-case cost within `--budget`, so requests running at once can never cross it together.
+2. **Close looks.** Each frame then gets a close look at its top-ranked section, then its second, one round at a time, until the per-frame count (`--looks`, default 2) or the spending cap runs out. Before every request, the tool reserves the request's worst-case cost within `--budget`, including requests running concurrently. The current command also reserves for retries whose first attempt may have been billed.
 3. **Search record.** Sightings in back-to-back seconds within 10% of the frame width merge into one possible person, and a gap of more than 2 seconds starts a new one. Code writes a handoff message for each possible person from the search record, and the coverage timeline keeps every section that never got a close look.
 
 ## Run record

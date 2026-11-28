@@ -173,8 +173,8 @@ class AgentMode(unittest.TestCase):
         lost = record["calls"][1]
         self.assertEqual((lost["frame"], lost["answer"]["lost"]), ("frame-01", True))
         # A lost request may still be billed, so its worst case moves from reserved to spent.
-        self.assertEqual(lost["paid_nanodollars"], WORST)
-        self.assertEqual(record["spent_nanodollars"], 3 * PAID + WORST)
+        self.assertEqual(lost["paid_nanodollars"], 2 * WORST)
+        self.assertEqual(record["spent_nanodollars"], 3 * PAID + 2 * WORST)
 
     def test_a_lost_first_request_leaves_the_frames_overview_unreadable(self):
         timeout = TimeoutError("The read operation timed out")

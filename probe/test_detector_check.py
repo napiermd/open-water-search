@@ -9,6 +9,7 @@ from tempfile import TemporaryDirectory
 from PIL import Image
 
 import open_water_search
+from flag_check import read_checks
 from simulated_ember import refuse_network
 
 # Frame 0: a flag on a person and a flag on a rock. Frame 1: nothing flagged. Frame 2: one flag Ember cannot read.
@@ -49,6 +50,25 @@ def write_frames(folder):
     for second in range(3):
         Image.new("RGB", (600, 300), (30, 60, 70)).save(folder / f"second-{second:05}.jpg")
     return folder
+
+
+class DetectorVerdictTest(unittest.TestCase):
+    def test_only_completed_responses_with_one_valid_verdict_per_crop_are_accepted(self):
+        rock = dict(crop=1, person=False, confidence=0.8, what="rock")
+        swimmer = dict(crop=2, person=True, confidence=0.9, what="swimmer")
+
+        def reply(crops, status="completed"):
+            return {"status": status, "output": [{"content": [
+                {"type": "output_text", "text": json.dumps({"crops": crops})}]}]}
+
+        self.assertEqual(read_checks(reply([swimmer, rock]), 2),
+                         [(False, 0.8, "rock"), (True, 0.9, "swimmer")])
+        invalid = [[rock, rock], [rock], [rock, dict(swimmer, person="false")],
+                   [rock, dict(swimmer, confidence=float("nan"))], [rock, dict(swimmer, crop=3)]]
+        for crops in invalid:
+            with self.subTest(crops=crops):
+                self.assertIsNone(read_checks(reply(crops), 2))
+        self.assertIsNone(read_checks(reply([rock, swimmer], status="incomplete"), 2))
 
 
 class DetectorCheck(unittest.TestCase):
