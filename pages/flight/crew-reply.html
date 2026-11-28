@@ -113,7 +113,29 @@ const packetHistory = document.documentElement.dataset.handoff;
 const turns = packetHistory ? JSON.parse(packetHistory).map(turn => ({...turn, at: new Date(turn.at)})) : [];
 const geometry = {"width": 1920, "height": 1012, "pin": [1327.065, 258.75], "label": [1307.9001600000001, 230.769902, 1350.80064, 295.75953000000004]};
 const pinEntry = location.protocol !== 'file:' && new URLSearchParams(location.search).get('start') === 'pin';
-let phase = packetHistory ? 'next-crew' : pinEntry ? 'pick' : 'crew';
+// Every phase of the crew exchange and the phases it can move to. All changes of phase go through go() or enter().
+const PHASES = {
+  crew: ['pick', 'cue', 'done'],         // The boat crew chooses its reply.
+  pick: ['done', 'correction', 'crew'],  // The crew places its pin on the wide frame.
+  cue: ['crew'],                         // The operator writes another cue.
+  correction: ['retry', 'done'],         // The operator corrects a pin that missed.
+  retry: ['done'],                       // The crew pins again after the correction.
+  done: ['next-crew'],                   // The operator reads the reply.
+  'next-crew': ['next-pick', 'done'],    // A second crew opens an unresolved handoff.
+  'next-pick': ['done', 'next-crew'],    // The second crew places its pin.
+};
+let phase;
+// Start in a phase, for a fresh page, a restored visit, a received handoff or an imported reply.
+function enter(next) {
+  if (!(next in PHASES)) throw Error('Unknown crew exchange phase: ' + next);
+  phase = next;
+  document.documentElement.dataset.phase = next;
+}
+function go(next) {
+  if (!PHASES[phase].includes(next)) throw Error('The crew exchange cannot move from ' + phase + ' to ' + next);
+  enter(next);
+}
+enter(packetHistory ? 'next-crew' : pinEntry ? 'pick' : 'crew');
 let draftPin = null;
 function plotPin(id, pin) {
   const marker = byId(id);
@@ -282,15 +304,28 @@ function restoreProgress() {
   if (!keepsProgress) return false;
   let saved = null;
   try { saved = JSON.parse(sessionStorage.getItem(progressKey)); } catch {}
-  if (!saved || !Array.isArray(saved.turns) || (!saved.turns.length && !saved.draftPin)) return false;
+  if (!restorable(saved)) { forgetProgress(); return false; }
   turns.push(...saved.turns.map(turn => ({...turn, at: new Date(turn.at)})));
-  phase = saved.phase;
+  enter(saved.phase);
   draftPin = saved.draftPin;
   return true;
 }
+// A saved visit reopens only in a phase its own messages could have reached. Anything else starts over.
+function restorable(saved) {
+  if (!saved || !Array.isArray(saved.turns) || !(saved.phase in PHASES)) return false;
+  if (saved.phase === 'next-crew' || saved.phase === 'next-pick') return false;
+  const kinds = ['seen', 'cue', 'unseen', 'operator', 'next-pin', 'next-pass'];
+  const validPin = pin => pin === null || (pin && [pin.x, pin.y].every(n => Number.isFinite(n) && n >= 0 && n <= 1));
+  if (!saved.turns.every(turn => kinds.includes(turn?.kind) && typeof turn.words === 'string'
+    && !Number.isNaN(new Date(turn.at).getTime()) && validPin(turn.pin ?? null))) return false;
+  const pin = saved.draftPin ?? null;
+  if (!validPin(pin)) return false;
+  const needsReply = ['done', 'cue', 'correction', 'retry'].includes(saved.phase);
+  return needsReply ? saved.turns.length > 0 : saved.turns.length > 0 || pin !== null;
+}
 function addTurn(next, kind, words, pin = null) {
   turns.push({kind, words, pin, at: new Date()});
-  phase = next;
+  go(next);
   draftPin = null;
   render();
 }
@@ -298,7 +333,7 @@ function respond(event) {
   if (phase !== 'crew') return;
   const kind = event.currentTarget.id;
   if ((turns.length || pinEntry) && kind === 'seen') {
-    phase = 'pick';
+    go('pick');
     render();
   } else {
     addTurn(!turns.length && kind === 'cue' ? 'cue' : 'done', kind, event.currentTarget.textContent);
@@ -328,7 +363,7 @@ byId('frame').addEventListener('keydown', event => {
 });
 byId('back').addEventListener('click', () => {
   draftPin = null;
-  phase = phase === 'next-pick' ? 'next-crew' : 'crew';
+  go(phase === 'next-pick' ? 'next-crew' : 'crew');
   render();
 });
 byId('lock').addEventListener('click', () => {
@@ -345,7 +380,7 @@ byId('lock').addEventListener('click', () => {
 });
 byId('next-mark').addEventListener('click', () => {
   if (phase !== 'next-crew') return;
-  phase = 'next-pick';
+  go('next-pick');
   render();
 });
 function nextCrewPass() {
@@ -357,7 +392,7 @@ byId('unseen').addEventListener('click', event => {
   else nextCrewPass();
 });
 byId('finish').addEventListener('click', () => {
-  if (phase === 'correction') { phase = 'done'; render(); }
+  if (phase === 'correction') { go('done'); render(); }
 });
 byId('seen').addEventListener('click', respond);
 byId('cue').addEventListener('click', respond);
@@ -382,17 +417,18 @@ byId('judge-links').addEventListener('click', event => {
 });
 byId('transfer').addEventListener('click', () => {
   if (phase !== 'done' || turns.at(-1)?.kind !== 'unseen') return;
-  phase = 'next-crew';
+  go('next-crew');
   render();
 });
 byId('return-operator').addEventListener('click', () => {
-  phase = 'done';
+  go('done');
   render();
 });
 function downloadCopy() {
   const incoming = phase === 'next-crew';
   const copy = document.documentElement.cloneNode(true);
   delete copy.dataset.embed;
+  delete copy.dataset.phase;
   if (incoming) {
     copy.dataset.handoff = JSON.stringify(turns);
   } else {
@@ -519,7 +555,7 @@ function replyKey(reply) {
 }
 function showReply(selected) {
   turns.splice(0, turns.length, ...selected.messages);
-  phase = 'done';
+  enter('done');
   draftPin = null;
   render();
   const comparing = replies.size > 1;
@@ -608,7 +644,7 @@ byId('clear-replies').addEventListener('click', () => {
   replies.clear();
   handoffKey = null;
   turns.length = 0;
-  phase = 'crew';
+  enter('crew');
   byId('comparison').hidden = true;
   byId('comparison-marks').replaceChildren();
   byId('reply-list').replaceChildren();
@@ -638,6 +674,7 @@ byId('save-comparison').addEventListener('click', async () => {
   const copy = document.documentElement.cloneNode(true);
   const selected = messageKey(turns.slice(-1));
   delete copy.dataset.embed;
+  delete copy.dataset.phase;
   copy.dataset.comparison = JSON.stringify({replies:Array.from(replies.values()), selected});
   copy.querySelector('#import-note').textContent = '';
   copy.querySelector('title').textContent = '0:36 crew comparison · Open Water Search';

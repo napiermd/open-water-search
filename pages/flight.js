@@ -32,8 +32,12 @@ async function openFlight() {
   let state = params.has("sighting") ? "handoff" : "sighting";
   select.value = selected.number;
 
+  // The explorer's views. The current one is mirrored on the desk as data-view.
+  const views = ["sighting", "handoff", "fins", "ripples", "dismissal", "label"];
   function show(next, focus = true) {
+    if (!views.includes(next)) throw Error("Unknown flight explorer view: " + next);
     state = next;
+    element("desk").dataset.view = next;
     const reviewing = next === "dismissal" || next === "label";
     const paired = next === "fins" || next === "ripples";
     const item = paired ? record.pair[next === "fins" ? 0 : 1] : reviewing ? record.missed : selected;
