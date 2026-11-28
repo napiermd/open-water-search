@@ -28,6 +28,35 @@ button:disabled{opacity:.5;cursor:default}
 html[data-comparison] #import-reply,html[data-comparison] #clear-replies,
 html[data-comparison] #save-comparison,html[data-comparison] #again{display:none}
 #import-reply.dragging{background:#e1efe7}#import-note:empty{display:none}
+</style>
+<style>
+@font-face{font-family:"Anton";src:url("../fonts/anton.woff") format("woff");font-display:swap}
+@font-face{font-family:"Libre Caslon Text";font-style:italic;src:url("../fonts/libre-caslon-text-italic.woff") format("woff");font-display:swap}
+body{background:#eaddbe;color:#153642;font:400 1rem/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}
+header,footer{border-color:#68948e;font:400 .8rem/1.4 Menlo,Consolas,monospace;text-transform:uppercase;color:#153642}
+header{border-bottom-width:2px}footer{color:#3d5a5f}
+h1,h2{font-family:Anton,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:0;color:#153642}
+h1{font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.04}h2{font-size:1.5rem}
+.images{background:#f5e9cd;color:#153642;padding:9px;gap:9px;box-shadow:0 2px 0 #b29c7e,8px 10px 14px #52696566}
+figcaption{font:400 .8rem/1.4 Menlo,Consolas,monospace;text-transform:uppercase;color:#153642}
+button{font:400 1.05rem/1 Anton,"Arial Narrow",sans-serif;letter-spacing:.01em;border:2px solid #153642;color:#153642;background:#f5e9cd;border-radius:0;min-height:48px}
+button:first-child{background:#ff9962;border-color:#ff9962;color:#153642}
+button:enabled:hover{filter:brightness(1.06)}
+button:focus-visible,.frame:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #ff9962;outline-offset:3px}
+blockquote{font-family:"Libre Caslon Text",Georgia,serif;font-style:italic}
+#history li{border-color:#68948e}#history time{color:#3d5a5f}
+textarea{background:#f5e9cd;border:2px solid #153642;border-radius:0}
+.pin{border-color:#fff;box-shadow:0 0 0 2px #153642}
+.crew-pin{background:#ff9962;border-color:#153642}
+#import-reply{border:2px dashed #68948e;background:#f5e9cd}
+#import-reply.dragging{background:#fff6e2}
+#reply-list button{background:#f5e9cd;color:#153642}
+#reply-list button[aria-pressed="true"]{background:#153642;color:#f5e9cd}
+.comparison-mark{background:#153642}
+html[data-embed] body{padding:1rem 1.25rem 1.5rem;max-width:none;background:#f5e9cd}
+html[data-embed] header,html[data-embed] footer,html[data-embed] #judge-links{display:none!important}
+html[data-embed] h1{margin-top:.25rem}
+html[data-embed] .images{box-shadow:none;background:#eaddbe}
 </style></head><body>
 <header><strong>Open Water Search</strong><span>Recorded flight · Judge demo</span></header>
 <main><h1 id="heading" tabindex="-1">You’re on the boat crew</h1>
@@ -67,6 +96,10 @@ html[data-comparison] #save-comparison,html[data-comparison] #again{display:none
 </main><footer><span>Recorded MOBDrone imagery · Cafarelli et al. · CC BY 4.0 · Frame resized and marked.</span><span>Simulated crew exchange</span></footer>
 <script>
 const byId = id => document.getElementById(id);
+// Embedded on the landing page: hide this page's own header and footer and keep the landing page in place.
+const embedded = new URLSearchParams(location.search).has('embed') && location.protocol !== 'file:';
+if (embedded) document.documentElement.dataset.embed = '';
+let rendered = false;
 const historyList = byId('history');
 const packetHistory = document.documentElement.dataset.handoff;
 const turns = packetHistory ? JSON.parse(packetHistory).map(turn => ({...turn, at: new Date(turn.at)})) : [];
@@ -211,7 +244,8 @@ function render() {
   byId('legend').textContent = reveal ? '0:36 · White ring: original sighting' +
     (attempts.length ? (nextResult ? ' · Amber diamond: first crew' : ' · Amber diamond: attempt 1') : '') + (attempts.length > 1 ? (nextResult ? ' · Blue square: next crew' : ' · Blue square: attempt 2') : '')
     : correcting ? '0:36 · Amber diamond: crew’s first mark' : '0:36 · Full frame';
-  heading.focus();
+  if (!embedded || rendered) heading.focus({preventScroll: embedded});
+  rendered = true;
 }
 function addTurn(next, kind, words, pin = null) {
   turns.push({kind, words, pin, at: new Date()});
@@ -310,6 +344,7 @@ byId('return-operator').addEventListener('click', () => {
 function downloadCopy() {
   const incoming = phase === 'next-crew';
   const copy = document.documentElement.cloneNode(true);
+  delete copy.dataset.embed;
   if (incoming) {
     copy.dataset.handoff = JSON.stringify(turns);
   } else {
@@ -554,6 +589,7 @@ byId('save-comparison').addEventListener('click', async () => {
   if (!replies.size) return;
   const copy = document.documentElement.cloneNode(true);
   const selected = messageKey(turns.slice(-1));
+  delete copy.dataset.embed;
   copy.dataset.comparison = JSON.stringify({replies:Array.from(replies.values()), selected});
   copy.querySelector('#import-note').textContent = '';
   copy.querySelector('title').textContent = '0:36 crew comparison · Open Water Search';

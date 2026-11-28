@@ -37,7 +37,7 @@ async function displayedImageDigest(page, image) {
 
 async function inspectCases(page) {
   assert.match(await page.locator("blockquote").innerText(), /Honestly, we didn’t know if the boats knew/);
-  assert.match(await page.getByRole("main").innerText(), /2 in-water tracks.*3 labeled tracks.*2 empty openings/s);
+  assert.match(await page.getByRole("main").innerText(), /2 in-water tracks.*3 labeled tracks.*2 empty handoffs/s);
   assert.match(await page.getByRole("main").innerText(), /track 6 in water.*Track 17 was graded on shore/is);
 
   const cases = [
@@ -47,7 +47,7 @@ async function inspectCases(page) {
   for (const [question, identity, opening, geometry, arm, slot, track, nativeFrame] of cases) {
     const toggle = page.getByText(question, { exact: true });
     await toggle.click();
-    const evidence = toggle.locator("xpath=ancestor::details").getByRole("group", { name: "Recorded opening" });
+    const evidence = toggle.locator("xpath=ancestor::details").getByRole("group", { name: "Recorded handoff" });
     assert.ok(await evidence.isVisible());
     for (const expected of [identity, opening, geometry]) assert.match(await evidence.innerText(), expected);
     const slotLink = evidence.getByRole("link", { name: new RegExp(`slot ${slot} in the audit`, "i") });
@@ -98,7 +98,7 @@ async function inspectUnavailableOpening(page) {
   const auditUrl = new URL(auditWindow, caseUrl);
   for (const query of ["arm=ember&slot=6", "arm=unknown&slot=4", "arm=ember", "slot=4"]) {
     await page.goto(`${auditUrl}&${query}`);
-    const status = page.getByRole("status").filter({ hasText: "That opening is unavailable" });
+    const status = page.getByRole("status").filter({ hasText: "That handoff is unavailable" });
     await status.waitFor({ timeout: 3000 });
     assert.match(await page.getByLabel("Recording and window").locator("option:checked").innerText(), /DJI_0804_0014_50m_2/);
     assert.equal(await page.locator("#queues button[aria-expanded=true]").count(), 0);
@@ -117,14 +117,14 @@ async function openCrew(page) {
   await page.getByRole("heading", { name: "You’re on the boat crew" }).waitFor();
   const crop = page.getByRole("img").nth(1);
   await crop.evaluate(node => node.decode());
-  assert.match(await page.locator("footer").innerText(), /Simulated crew exchange/);
+  assert.match(await page.locator("footer").innerText(), /Simulated crew exchange/i);
 }
 
 async function inspectOpeningAndPin(page, touch) {
   const landing = page.url();
   const record = await (await page.request.get(new URL("flight/record.json", landing).href)).json();
   assert.ok(await page.getByText("Kept for handoff", { exact: true }).isVisible());
-  const crops = page.locator(".paired-crops img");
+  const crops = page.locator(".flag-cards img");
   assert.equal(await crops.count(), 2);
   for (const [index, flag] of record.pair.entries()) {
     assert.equal(flag.second, 36);
@@ -133,29 +133,36 @@ async function inspectOpeningAndPin(page, touch) {
     assert.equal(await image.getAttribute("src"), "flight/" + flag.crop);
   }
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  // The crew reply runs inside the landing page without moving the visitor.
+  assert.equal(await page.evaluate(() => scrollY), 0);
   await page.getByRole("link", { name: "Pin the swimmer as the boat crew" }).click();
-  const frame = page.getByRole("group", { name: "Place your pin on the full frame" });
-  assert.ok(await page.locator("#original-pin").isHidden());
-  assert.ok(await page.getByRole("button", { name: "Send reply and pin" }).isDisabled());
+  const crew = page.frameLocator("#crew-frame");
+  const frame = crew.getByRole("group", { name: "Place your pin on the full frame" });
+  await frame.waitFor();
+  assert.ok(await crew.locator("#original-pin").isHidden());
+  assert.ok(await crew.getByRole("button", { name: "Send reply and pin" }).isDisabled());
+  assert.ok(await crew.locator("header").isHidden());
   const box = await frame.boundingBox();
   const [x, y] = record.pair[0].pin;
   const position = { x: box.width * x / record.pair[0].width, y: box.height * y / record.pair[0].height };
   if (touch) await frame.tap({ position });
   else await frame.click({ position });
-  await page.getByRole("button", { name: "Send reply and pin" }).click();
-  await page.getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
-  const messages = page.getByRole("list", { name: "Messages in order" });
+  await crew.getByRole("button", { name: "Send reply and pin" }).click();
+  await crew.getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
+  const messages = crew.getByRole("list", { name: "Messages in order" });
   assert.match(await messages.innerText(), /Boat crew → drone operator.*I see them.*Inside the labeled swimmer’s box/s);
   assert.equal(await messages.getByRole("listitem").count(), 1);
-  for (const id of ["#crew-pin", "#original-pin"]) assert.ok(await page.locator(id).isVisible());
-  const audit = page.getByRole("link", { name: /How often did it help/ });
-  assert.equal(await audit.getAttribute("href"), "../first-five.html");
-  await page.getByRole("link", { name: /Where did Ember get it wrong/ }).click();
+  for (const id of ["#crew-pin", "#original-pin"]) assert.ok(await crew.locator(id).isVisible());
+  await page.waitForFunction(() => {
+    const node = document.querySelector("#crew-frame");
+    return node.offsetHeight >= node.contentDocument.documentElement.scrollHeight - 2;
+  }, null, { timeout: 3000 });
+  await page.getByRole("link", { name: "Open the miss in the flight explorer" }).click();
   await page.getByRole("heading", { name: "The “duck” was a swimmer." }).waitFor();
   assert.match(await page.locator("#clock").innerText(), /0:12/);
   assert.ok(await page.locator("#truth-box").isVisible());
   await page.goto(landing);
-  await page.getByRole("link", { name: /How often did it help/ }).click();
+  await page.getByRole("link", { name: "Inspect all 129 windows" }).click();
   await page.getByRole("heading", { name: "Replay the first five" }).waitFor();
   await page.goto(landing);
 }
@@ -178,11 +185,12 @@ async function saveDownload(page, control, directory) {
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(new URL("/pages/flight.html", origin).href);
       await inspectOpeningAndPin(page, hasTouch);
-      await page.getByRole("link", { name: "Explore both sightings on flight 0014" }).click();
+      await page.getByRole("link", { name: "History", exact: true }).first().click();
+      await page.getByRole("link", { name: /Flight 0014: one gain, one loss/ }).click();
       assert.equal(page.url(), caseUrl);
       await inspectCases(page);
-      assert.equal(await page.getByRole("link", { name: "Open the 129-window audit" }).getAttribute("href"), "first-five.html");
-      await page.getByRole("link", { name: "Open the 129-window audit" }).click();
+      assert.equal(await page.getByRole("link", { name: "Audit", exact: true }).getAttribute("href"), "first-five.html");
+      await page.getByRole("link", { name: "Audit", exact: true }).click();
       const kit = await saveDownload(page, page.getByRole("link", { name: "Download offline audit" }), directory);
       const auditDir = join(directory, "audit-" + width);
       await mkdir(auditDir);
@@ -204,7 +212,7 @@ async function saveDownload(page, control, directory) {
       const confirmed = await placeCrewPin(page, true);
       assert.ok(await page.getByRole("heading", { name: "What the drone operator gets back" }).isVisible());
       assert.match(await confirmed.innerText(), /I see them.*Inside the labeled swimmer’s box/s);
-      assert.match(await page.getByText("White ring: original sighting", { exact: false }).innerText(), /Amber diamond: attempt 1/);
+      assert.match(await page.getByText("White ring: original sighting", { exact: false }).innerText(), /Amber diamond: attempt 1/i);
 
       const offline = await browser.newContext({ offline: true, viewport: { width, height }, hasTouch });
       const packet = await offline.newPage();
