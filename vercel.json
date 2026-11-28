@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "python3 -m venv .vercel-python && .vercel-python/bin/python -m pip install -r requirements.txt",
+  "buildCommand": ".vercel-python/bin/python probe/fetch_frames.py && .vercel-python/bin/python probe/build_site.py",
+  "outputDirectory": "site",
+  "redirects": [
+    { "source": "/", "destination": "/pages/flight.html", "permanent": false },
+    { "source": "/judge", "destination": "/pages/flight.html", "permanent": false },
+    { "source": "/replay", "destination": "/pages/replay.html", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.jpg",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    }
+  ]
+}
