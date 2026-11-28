@@ -1,6 +1,6 @@
 {
   "flight": {
-    "source": "/Users/andrewn/Documents/Codex/2026-11-21/use-x20/data/scale-flight",
+    "source": "scale-flight",
     "position_data": "unavailable"
   },
   "settings": {
