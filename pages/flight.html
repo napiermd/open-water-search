@@ -1,26 +1,101 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Take over the flight · Open Water Search</title>
-<meta name="description" content="Open a real drone sighting, see the last reported position, and inspect a swimmer Muse Ember dismissed on the same flight.">
-<link rel="stylesheet" href="pages.css"><link rel="stylesheet" href="flight.css">
+<title>Open Water Search · Which sightings should the crew check first?</title>
+<meta name="author" content="Andrew Napier, MD">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Open Water Search · Do you see the same swimmer?">
+<meta property="og:description" content="Andrew Napier, MD. Take the boat crew’s place and mark the swimmer in a recorded drone frame.">
+<meta property="og:url" content="https://open-water-search.vercel.app/">
+<meta property="og:image" content="https://open-water-search.vercel.app/pages/art/open-water-search-share.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Do you see the same swimmer? A close-up lifts from its source on a MOBDrone frame. Open Water Search by Andrew Napier, MD.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="A drone flight becomes a short list of handoffs for a rescue crew. Pin the swimmer as the boat crew, see what the operator gets back, and check the 129-window audit.">
+<link rel="preload" href="fonts/anton.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="pages.css"><link rel="stylesheet" href="paper.css"><link rel="stylesheet" href="flight.css">
 <script type="module" src="flight.js"></script></head><body>
-<header class="masthead"><strong>Open Water Search</strong><nav aria-label="Pages"><a aria-current="page" href="flight.html">Flight handoff</a><a href="index.html">Evidence</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
+<header class="masthead"><a href="flight.html">Open Water Search</a><nav aria-label="Pages"><a href="#crew">Crew reply</a><a href="first-five.html">Audit</a><a href="history.html">History</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
 <main>
-<header class="opening">
-<div class="lead-copy">
-<h1>One swimmer. Two detector flags.</h1>
-<p>At 0:36, the drone detector flagged two patches of water. Muse Ember kept the swimmer for handoff and dismissed the ripples.</p>
+<section class="story" aria-labelledby="lead-title">
+<div class="story-copy">
+<h1 id="lead-title">Which sightings should the crew check first?</h1>
+<p class="second-question">And when the crew says “I see them,” can the operator see who they mean?</p>
+<p>Open Water Search runs a trained detector over every second of a drone flight and sends each flagged spot to Muse Ember for a second look. The operator gets a short ranked list of handoffs. The crew pins who they see and sends it back.</p>
+<div class="actions"><a class="cta" href="#crew">Pin the swimmer as the boat crew</a><a class="quiet" href="first-five/audit.zip" download>Download the audit</a></div>
 </div>
-<div class="paired-crops" aria-label="Recorded crops from MOBDrone flight DJI_0915_0007_40 at 0:36">
-<figure><img src="flight/second-00036-flag1.jpg" alt="The swimmer’s fins above the water" width="180" height="179"><figcaption><strong>Swimmer</strong><span>Kept for handoff</span></figcaption></figure>
-<figure><img src="flight/second-00036-flag2.jpg" alt="Ripples along the edge of the frame" width="186" height="186"><figcaption><strong>Ripples</strong>Dismissed</figcaption></figure>
+<figure class="story-art mount">
+<picture><source media="(max-width: 700px)" srcset="art/officer-account-900.webp"><img src="art/officer-account-1600.webp" width="1600" height="702" alt="Paper model of a lakeshore: a drone lights two paddleboarders while a dashed line runs from the drone to a dispatch building on shore and on to a rescue boat."></picture>
+<figcaption>Illustration based on the officer’s account / Lake Michigan / July 4, 2021</figcaption>
+</figure>
+<blockquote class="officer"><p>“Honestly, we didn’t know if the boats knew.”</p>
+<footer>A police drone officer, describing the rescue. His crew could see the boats from shore but could reach them only through dispatch.</footer></blockquote>
+</section>
+
+<section class="night flags" id="flags" aria-labelledby="flags-title"><div class="band">
+<div class="band-head"><h2 id="flags-title">One swimmer. Two detector flags.</h2>
+<p>At 0:36 the detector flagged two patches of water. Ember checked both close-ups, kept the swimmer for handoff and dismissed the ripples.</p></div>
+<div class="flag-board">
+<figure class="mount wide" id="flag-wide"><div class="stage"><img src="flight/second-00036.webp" width="1280" height="675" alt="Full drone frame at 0:36 with the two flagged patches outlined."><i class="flag-rect" style="left:64.43%;top:16.70%;width:9.38%;height:17.69%"></i><i class="flag-rect" style="left:0%;top:38.83%;width:9.69%;height:18.38%"></i></div>
+<figcaption>Recorded flight / MOBDrone DJI_0915_0007_40 / 0:36</figcaption></figure>
+<div class="flag-cards">
+<figure class="mount flag-card" data-from="0"><img src="flight/second-00036-flag1.jpg" width="224" height="224" alt="Close-up of the first flag: a swimmer with fins above the water."><figcaption><span class="tag kept">Kept for handoff</span>Flag 1 / “Person diving underwater, fins up”</figcaption></figure>
+<figure class="mount flag-card" data-from="1"><img src="flight/second-00036-flag2.jpg" width="224" height="224" alt="Close-up of the second flag: ripples at the frame edge."><figcaption><span class="tag">Dismissed</span>Flag 2 / “Open water with ripples only”</figcaption></figure>
+</div></div>
+<p class="meter"><span>One recorded 2-minute flight</span> 115 spots checked · 57 seconds · $0.008 in Ember usage</p>
+</div></section>
+
+<section class="crew" id="crew" aria-labelledby="crew-title"><div class="band">
+<div class="band-head"><h2 id="crew-title">Now you’re the boat crew.</h2>
+<p>You get Ember’s close-up and the unmarked wide frame. Tap where you see the swimmer, send your reply, then see exactly what the drone operator gets back. The reply saves as a file that opens offline.</p></div>
+<iframe id="crew-frame" class="crew-frame" src="flight/crew-reply.html?start=pin&amp;embed=1" title="Boat crew reply for the 0:36 handoff" loading="lazy"></iframe>
+<p class="provenance">Simulated crew reply / recorded MOBDrone imagery / <a href="flight/crew-reply.html?start=pin">Open it full screen</a></p>
+</div></section>
+
+<section class="night slots" id="slot-five" aria-labelledby="slot-title"><div class="band">
+<div class="band-head"><h2 id="slot-title">What changed in slot five?</h2>
+<p>Same footage, same simulated dispatch clock, five handoffs per list. Both lists reached swimmer A in slot two. The fifth handoff sent one crew to empty water and the other to swimmer B.</p></div>
+<div class="queues">
+<div class="queue detector"><h3>Detector alone</h3><ol class="slot-row" aria-label="Detector alone, first five handoffs"><li>Empty</li><li>A</li><li>Empty</li><li>Empty</li><li class="decides">Empty</li></ol>
+<figure class="mount slot-crop"><img src="art/slot5-detector.webp" width="720" height="480" alt="Slot five for the detector alone: open water with no swimmer."><figcaption><span class="tag">Empty handoff</span>Slot 5 / frame 2982 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=detector&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
+<div class="queue ember"><h3>Detector + Ember</h3><ol class="slot-row" aria-label="Detector plus Ember, first five handoffs"><li>Empty</li><li>A</li><li>Empty</li><li>Empty</li><li class="decides">B</li></ol>
+<figure class="mount slot-crop"><img src="art/slot5-ember.webp" width="720" height="480" alt="Slot five for detector plus Ember: swimmer B in the water."><figcaption><span class="tag kept">Swimmer B</span>Slot 5 / frame 3341 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=ember&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
 </div>
-<div class="lead-action"><a class="release-start" href="flight/crew-reply.html?start=pin">Pin the swimmer as the boat crew</a>
-<p class="source-line">Simulated crew reply on recorded MOBDrone flight DJI_0915_0007_40.</p></div>
-</header>
-<nav class="evidence-exits" aria-label="Check the evidence"><a href="flight.html?view=miss#desk">Where did Ember get it wrong? · 0:12</a><a href="first-five.html">How often did it help? · 129-window audit</a><a href="0014.html">Explore both sightings on flight 0014</a></nav>
-<p class="rescue-account">During a separate rescue, a police drone lit two paddleboarders for approaching boats. The officer could only reach the crews through dispatch. “Honestly, we didn’t know if the boats knew.”</p>
+<p class="provenance">Separate scored flight / MOBDrone DJI_0915_0015_50m / window starting at 1:36</p>
+</div></section>
+
+<section class="results" id="results" aria-labelledby="results-title"><div class="band">
+<div class="band-head"><h2 id="results-title">What reached the first five handoffs?</h2>
+<p>129 recorded MOBDrone windows from 42 recording families. Both queues used the same footage and simulated clock, with up to five handoffs per window.</p></div>
+<div class="charts">
+<div class="chart"><h3>Swimmer appearances reached, out of 229</h3>
+<div class="bar-row"><span>Detector alone</span><b class="bar detector" style="--n:180;--of:229"></b><strong>180</strong></div>
+<div class="bar-row"><span>Detector + Ember</span><b class="bar ember" style="--n:199;--of:229"></b><strong>199</strong></div>
+<p class="result"><span class="tag kept">19 more reached</span> +8.3 percentage points, paired 95% interval +3.7 to +13.3</p></div>
+<div class="chart"><h3>Empty handoffs, sent where no labeled person was</h3>
+<div class="bar-row"><span>Detector alone</span><b class="bar detector" style="--n:185;--of:229"></b><strong>185</strong></div>
+<div class="bar-row"><span>Detector + Ember</span><b class="bar ember" style="--n:121;--of:229"></b><strong>121</strong></div>
+<p class="result"><span class="tag kept">64 fewer empty handoffs</span> 34.6% fewer, paired 95% interval 25.9% to 44.1%</p></div>
+</div>
+<p class="caveat">Ember reached 23 appearances the detector queue missed, and missed four it reached. The grades were assigned after the runs, a person can appear in several windows, some of these flights helped us build the tool, and the crew exchange is simulated. A real crew exercise and independent flights are the next two tests.</p>
+<div class="actions"><a class="cta" href="first-five/audit.zip" download>Download the offline audit</a><a class="quiet" href="first-five.html">Inspect all 129 windows</a></div>
+<p class="provenance">Run python3 -I verify.py in the extracted folder / 838 scored handoffs / no network or key needed</p>
+</div></section>
+
+<section class="night miss" id="miss" aria-labelledby="miss-title"><div class="band">
+<div class="band-head"><h2 id="miss-title">Ember dismissed a swimmer.</h2>
+<p>At 0:12 on the same flight, Ember called this crop “duck swimming in water.” The yellow box is the dataset’s labeled swimmer. The dismissed crop stays in the operator’s report so it can be reopened, and the same person reached the handoff list ten seconds later.</p></div>
+<div class="miss-board">
+<figure class="mount wide"><div class="stage"><img src="flight/second-00012.webp" width="1280" height="675" alt="Full drone frame at 0:12 with the labeled swimmer boxed in yellow."><i class="truth-rect" style="left:68.05%;top:35.48%;width:3.26%;height:3.67%"></i></div>
+<figcaption>Recorded flight / MOBDrone DJI_0915_0007_40 / 0:12</figcaption></figure>
+<figure class="mount flag-card"><img src="flight/second-00012-flag1.jpg" width="224" height="224" alt="The dismissed close-up: a swimmer Ember called a duck."><figcaption><span class="tag">Dismissed</span>“Duck swimming in water”</figcaption></figure>
+</div>
+<div class="actions"><a class="quiet" href="flight.html?view=miss#desk">Open the miss in the flight explorer</a></div>
+</div></section>
+
+<section class="explorer" aria-labelledby="desk-title"><div class="band">
+<div class="band-head"><h2 id="desk-title">Every handoff from this flight</h2>
+<p>Choose any of the eight possible people, see the last reported pin and download its handoff file.</p></div>
 <p id="load" role="status">Loading the two-minute MOBDrone flight…</p><noscript>Enable JavaScript to explore the flight, or <a href="flight/handoff-1.html">open the first recorded handoff</a>.</noscript>
 <section id="desk" hidden aria-label="Recorded flight evidence">
 <div class="flightbar"><div><strong>MOBDrone</strong> <span> / 2 min</span></div><span id="earlier" hidden>Earlier flag · 0:12</span><label id="sighting-label" for="choice">Sighting <select id="choice"></select></label></div>
@@ -31,19 +106,15 @@
 </div>
 <section class="notes" id="notes" hidden aria-labelledby="note-title"><div><h2 id="note-title" tabindex="-1"></h2><p id="note"></p></div><div id="note-actions"></div></section>
 </section>
-<section class="outcome" id="archive" aria-labelledby="outcome-title"><div>
-<h2 id="outcome-title">Nineteen more in-water appearances reached in the first five</h2>
-<p>Across 129 recorded MOBDrone windows, the two queues had the same simulated dispatch clock and up to five handoffs per window.</p>
-<a href="first-five.html">Inspect both queues and download the audit</a></div>
-<div class="results"><table><caption>129 windows · 229 graded in-water appearances</caption>
-<thead><tr><th scope="col">Queue</th><th scope="col">Reached</th><th scope="col">Empty handoffs</th></tr></thead><tbody>
-<tr><th scope="row">Detector</th><td>180/229</td><td>185</td></tr>
-<tr><th scope="row">Detector + Ember</th><td>199/229</td><td>121</td></tr>
-</tbody></table>
-<p>Ember brought forward <strong>23</strong> appearances missed by the detector queue. The detector reached <strong>four</strong> Ember missed. The net gain was <strong>8.3 percentage points</strong> (paired 95% interval 3.7 to 13.3).</p>
-<p>Empty handoffs fell by <strong>34.6%</strong> (paired 95% interval 25.9% to 44.1%).</p>
-<details><summary>How we counted</summary><p>Each in-water track counts once per window at opening. A person can appear in more than one window. Empty openings miss every labeled person. The intervals resample the same 42 recording families for both policies. Some footage informed development. Each policy switched people twice during the update audit.</p>
-<a href="first-five.html">Inspect the matched-clock archive</a></details></div></section>
-<section class="comparison"><h2>Where Ember helped</h2><p>On a separate set of 300 MOBDrone frames, adding Ember cut false marks from <strong>166 to 38</strong>. Both methods found 210 of 297 labeled appearances. They shared 186 matches, with 24 unique to each method. One person can appear in many frames.</p><a href="index.html">See all comparisons, including where Ember lost</a> · <a href="judge.html?run=validation">Try the earlier zoom experiment</a></section>
-</main><footer>Research footage from <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone, Cafarelli et al.</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Overview resized and marked. The rescue account and this flight are separate events.</footer>
+<p class="provenance">More cases, earlier experiments and every comparison, including where Ember lost: <a href="history.html">History</a></p>
+</div></section>
+</main>
+<footer class="end-card"><div class="band">
+<p class="label">Built during the Muse Ember Hackathon</p>
+<p class="name">Open Water Search</p>
+<a class="cta" href="#crew">Try the crew reply</a>
+<p class="url">open-water-search.vercel.app</p>
+<p class="label">$2.49 of the $10 Ember grant</p>
+<p class="credits">Drone footage from <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone, Cafarelli et al.</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, resized and marked. The officer’s rescue and these flights are separate events. <a href="https://github.com/napiermd/open-water-search/blob/main/docs/imagery-credits.md">Imagery credits</a> · <a href="https://github.com/napiermd/open-water-search">Code</a></p>
+</div></footer>
 </body></html>

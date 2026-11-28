@@ -75,6 +75,15 @@ _Avoid_: heat map, search log
 **Handoff message** — A short fixed-format message about one possible person that a dispatcher can read to a rescue crew.
 _Avoid_: alert, summary, notification
 
+**Handoff** — One possible person sent to a rescue crew, with its photo, pin and handoff message. An empty handoff sends the crew to a spot where no labeled person is.
+_Avoid_: opening, alert, slot
+
+**Crew reply** — What a crew sends back about one handoff: "I see them" with its own pin, a request for another cue, or "I still don't see them."
+_Avoid_: response, acknowledgment, receipt
+
+**Operator** — The drone pilot or observer who sends handoffs and reads crew replies.
+_Avoid_: pilot, sender, dispatcher
+
 **Track** — Flags in nearby seconds that are linked as the same thing in the water, whether Ember kept or dismissed them. A possible person is the kept part of a track.
 _Avoid_: trajectory, tracklet
 

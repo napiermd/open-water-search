@@ -1,0 +1,56 @@
+/* Paper system shared by every page. Values come from DESIGN.md. */
+@font-face { font-family: "Anton"; src: url("fonts/anton.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; src: url("fonts/libre-caslon-text-italic.woff") format("woff"); font-display: swap; }
+:root {
+  --stock: #eaddbe; --card: #f5e9cd; --ink: #153642; --night: #153641; --ember: #ff9962; --detector: #9cd6c8;
+  --divider: #68948e; --shadow-stock: #52696566; --shadow-night: #08232b; --edge: #b29c7e; --fold: #b8a580;
+  --ink-soft: #3d5a5f; --on-night-soft: #c9d9cf;
+  --display: "Anton", "Arial Narrow", sans-serif; --story: "Libre Caslon Text", Georgia, serif;
+  --text: "Helvetica Neue", Helvetica, Arial, sans-serif; --label: Menlo, "SFMono-Regular", Consolas, monospace;
+  color-scheme: light; color: var(--ink); background: var(--stock) url("art/grain.png");
+  font: 400 17px/1.55 var(--text);
+  --rule: var(--divider); --muted: var(--ink-soft); --accent: var(--ink);
+}
+body { margin: 0; background: transparent; color: var(--ink); }
+::selection { background: var(--ember); color: var(--ink); }
+:is(a, button, select, input, textarea, iframe, [tabindex]):focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.02; margin: 0; }
+h2 { font-size: clamp(1.55rem, 2.4vw, 2.2rem); line-height: 1.06; margin: 0; }
+h3 { font-size: 1.45rem; line-height: 1.1; margin: 0; }
+table { font-variant-numeric: tabular-nums; }
+.masthead {
+  display: flex; align-items: center; justify-content: space-between; gap: .6rem 1.5rem; flex-wrap: wrap;
+  width: min(calc(100% - 2.5rem), 80rem); margin-inline: auto; padding: 1.1rem 0 .9rem;
+  border-bottom: 2px solid var(--divider); font: 400 .95rem/1.2 var(--label); text-transform: uppercase;
+}
+.masthead > :first-child { font: inherit; color: var(--ink); text-decoration: none; }
+.masthead nav { display: flex; flex-wrap: wrap; gap: .2rem 1.4rem; font-weight: 400; }
+.masthead nav a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.masthead nav a:hover, .masthead nav a[aria-current="page"] { text-decoration: underline; }
+.cta, .primary {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .55rem 1.15rem;
+  font: 400 1.15rem/1 var(--display); letter-spacing: .01em; text-decoration: none; cursor: pointer;
+  color: var(--ink); background: var(--ember); border: 0; border-radius: 0;
+  box-shadow: 0 2px 0 var(--edge), 6px 8px 10px var(--shadow-stock);
+}
+.cta:hover, .primary:enabled:hover { background: #ffb084; }
+.secondary, .quiet {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .5rem 1rem;
+  font: 400 1.05rem/1 var(--display); text-decoration: none; color: var(--ink); background: var(--card);
+  border: 2px solid var(--ink); border-radius: 0; cursor: pointer;
+}
+.secondary:enabled:hover, .quiet:hover { background: #fff6e2; }
+select { border-radius: 0; border: 2px solid var(--ink); background: var(--card); color: var(--ink); }
+.label, .provenance, caption { font: 400 .82rem/1.4 var(--label); text-transform: uppercase; letter-spacing: 0; color: var(--ink-soft); }
+/* A recorded photo sits unaltered in a cream mount with a caption rail. */
+.mount { margin: 0; background: var(--card); padding: 9px; box-shadow: 0 2px 0 var(--edge), 8px 10px 14px var(--shadow-stock); }
+.mount img { display: block; width: 100%; height: auto; }
+.mount figcaption { padding: .7rem .15rem .25rem; font: 400 .82rem/1.4 var(--label); text-transform: uppercase; color: var(--ink); }
+.night { background: var(--night) url("art/grain.png"); color: var(--card); }
+.night a { color: var(--card); }
+.night .mount a, .night :is(.cta, .quiet), .mount a { color: var(--ink); }
+.night .mount { box-shadow: 0 2px 0 var(--fold), 8px 11px 14px var(--shadow-night); }
+.night .label, .night .provenance { color: var(--on-night-soft); }

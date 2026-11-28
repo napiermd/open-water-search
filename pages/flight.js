@@ -105,11 +105,75 @@ async function openFlight() {
 }
 
 const oldSections = new Set(["hero-title","live-check-title","record-title","gate-title","scale-title","story-title","checks-title","own-title","flight-title","compare-title","check-title","limits-title","run-title","how-title","detector-title"]);
+
+// The crew reply is its own self-contained page, so its downloads stay identical. Size it to its content.
+function fitCrewFrame() {
+  const frame = element("crew-frame");
+  if (!frame) return;
+  const attach = () => {
+    const page = frame.contentDocument;
+    if (!page || page.URL === "about:blank") return;
+    const fit = () => { frame.style.height = page.documentElement.scrollHeight + "px"; };
+    new ResizeObserver(fit).observe(page.body);
+    fit();
+  };
+  frame.addEventListener("load", attach);
+  if (frame.contentDocument?.readyState === "complete") attach();
+}
+
+// The two moments shared with the video. Without motion, everything is already in its settled place.
+const smooth = "cubic-bezier(0.42, 0, 0.58, 1)";
+function onceInView(node, play) {
+  if (!node || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const watcher = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    watcher.disconnect();
+    play();
+  }, { threshold: 0.45 });
+  watcher.observe(node);
+}
+
+function liftFlags() {
+  const board = document.querySelector(".flag-board");
+  const rects = [...document.querySelectorAll(".flag-board .flag-rect")];
+  onceInView(board, () => {
+    for (const card of board.querySelectorAll(".flag-card")) {
+      const from = rects[Number(card.dataset.from)].getBoundingClientRect();
+      const to = card.getBoundingClientRect();
+      const scale = from.width / to.width;
+      const dx = from.left - to.left;
+      const dy = from.top - to.top;
+      card.animate([
+        { transform: `translate(${dx}px, ${dy}px) scale(${scale})`, transformOrigin: "top left", filter: "brightness(.63)" },
+        { transform: `translate(${dx / 2}px, ${dy / 2 - 33}px) scale(${(1 + scale) / 2})`, transformOrigin: "top left", offset: 0.5 },
+        { transform: "none", transformOrigin: "top left", filter: "brightness(1)" },
+      ], { duration: 2300, delay: 500, easing: smooth, fill: "backwards" });
+    }
+  });
+}
+
+function turnSlotFive() {
+  const section = document.querySelector(".queues");
+  onceInView(section, () => {
+    section.querySelectorAll(".slot-row").forEach(row => {
+      [...row.children].forEach((slot, index) => slot.animate(
+        [{ transform: "perspective(600px) rotateX(-90deg)", filter: "brightness(.63)" }, { transform: "none", filter: "brightness(1)" }],
+        { duration: 380, delay: index * 45, easing: smooth, fill: "backwards" }));
+    });
+    section.querySelectorAll(".slot-crop").forEach((crop, index) => crop.animate(
+      [{ transform: "perspective(900px) rotateX(-90deg)", filter: "brightness(.63)" }, { transform: "none", filter: "brightness(1)" }],
+      { duration: 700, delay: 1400 + index * 1300, easing: smooth, fill: "backwards" }));
+  });
+}
+
 if (params.has("run") || params.has("case")) {
   location.replace("judge.html" + location.search + location.hash);
 } else if (oldSections.has(location.hash.slice(1))) {
   location.replace("index.html" + location.hash);
 } else {
+  fitCrewFrame();
+  liftFlags();
+  turnSlotFive();
   openFlight().catch(() => {
     element("desk").hidden = true;
     element("load").hidden = false;

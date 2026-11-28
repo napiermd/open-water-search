@@ -5,23 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Inspect both first-five reviewer queues across 129 recorded MOBDrone windows and reproduce the matched-clock audit offline.">
   <title>First-five archive replay · Open Water Search</title>
-  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="pages.css"><link rel="stylesheet" href="paper.css">
   <link rel="stylesheet" href="first-five.css">
   <script type="module" src="first-five.js"></script>
 </head>
 <body>
-  <header class="masthead">
-    <span>Open Water Search</span>
-    <nav aria-label="Pages">
-      <a href="flight.html">Judge handoff</a>
-      <a href="first-five.html" aria-current="page">Archive replay</a>
-    </nav>
-  </header>
+  <header class="masthead"><a href="flight.html">Open Water Search</a><nav aria-label="Pages"><a href="flight.html#crew">Crew reply</a><a href="first-five.html" aria-current="page">Audit</a><a href="history.html">History</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
   <main class="first-five">
     <header class="archive-intro">
       <div>
         <h1>Replay the first five</h1>
-        <p class="intro">Compare the openings from both reviewer queues across 129 recorded MOBDrone windows from 42 recording families. Each queue had up to five slots and used the same simulated dispatch clock.</p>
+        <p class="intro">Compare the handoffs from both reviewer queues across 129 recorded MOBDrone windows from 42 recording families. Each queue had up to five slots and used the same simulated dispatch clock.</p>
       </div>
       <a class="primary audit-download" href="first-five/audit.zip" download>Download offline audit</a>
     </header>
@@ -32,12 +26,12 @@
         <thead><tr><th scope="col">Across all windows</th><th scope="col">Detector + Ember</th><th scope="col">Detector alone</th></tr></thead>
         <tbody>
           <tr><th scope="row">In-water appearances reached</th><td><strong>199</strong> / 229</td><td><strong>180</strong> / 229</td></tr>
-          <tr><th scope="row">Empty openings</th><td><strong>121</strong></td><td><strong>185</strong></td></tr>
-          <tr><th scope="row">Repeat openings</th><td>76</td><td>73</td></tr>
+          <tr><th scope="row">Empty handoffs</th><td><strong>121</strong></td><td><strong>185</strong></td></tr>
+          <tr><th scope="row">Repeat handoffs</th><td>76</td><td>73</td></tr>
           <tr><th scope="row">Identity switches</th><td>2</td><td>2</td></tr>
         </tbody>
       </table>
-      <p><strong>+8.3 points</strong> in reach (95% interval +3.7 to +13.3). <strong>34.6% fewer</strong> empty openings (95% interval 25.9% to 44.1%).</p>
+      <p><strong>+8.3 points</strong> in reach (95% interval +3.7 to +13.3). <strong>34.6% fewer</strong> empty handoffs (95% interval 25.9% to 44.1%).</p>
       <p class="muted">Both queues reached 176 in-water appearances. Only the queue with Ember reached 23. Only the detector queue reached four. Both missed 26.</p>
     </section>
 
@@ -59,7 +53,7 @@
         <details class="setting-grades" id="setting-grades">
           <summary id="settings-summary">Reference tracks in this window</summary>
           <table class="result-table">
-            <thead><tr><th scope="col">Track</th><th scope="col">Setting grade</th><th scope="col">Reached at opening</th></tr></thead>
+            <thead><tr><th scope="col">Track</th><th scope="col">Setting grade</th><th scope="col">Reached in a handoff</th></tr></thead>
             <tbody id="settings-rows"></tbody>
           </table>
           <p id="no-tracks" hidden>This window has no labeled tracks.</p>
@@ -70,10 +64,10 @@
 
     <footer class="provenance">
       <h2>How the audit works</h2>
-      <p>Reach counts each distinct in-water track once per window. A person can appear in multiple windows. Empty openings hit no labeled track. Repeats hit a track already reached in that window. Identity switches are counted across each card’s opening and follow-up pins.</p>
-      <p>This archive shows opening records across all 129 windows. The flight 0014 case shows two openings with frame images. Each opening identifies the source recording, zero-based native frame number, and SHA-256 of the scored JPEG. Find the original video in the <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone dataset (Cafarelli et al., 2022)</a>.</p>
+      <p>Reach counts each distinct in-water track once per window. A person can appear in multiple windows. Empty handoffs hit no labeled track. Repeats hit a track already reached in that window. Identity switches are counted across each card’s first pin and follow-up pins.</p>
+      <p>This archive shows handoff records across all 129 windows. The flight 0014 case shows two handoffs with frame images. Each handoff identifies the source recording, zero-based native frame number, and SHA-256 of the scored JPEG. Find the original video in the <a href="https://doi.org/10.5281/zenodo.5996890">MOBDrone dataset (Cafarelli et al., 2022)</a>.</p>
       <p>The archive overlaps development, the setting grades were assigned retrospectively, and dispatch was simulated. The intervals resample recording families with both queues kept together.</p>
-      <p>The offline verifier checks every opening against independent sealed evidence and recomputes the counts and intervals from the same records this page uses. Extract the download and run <code>python3 -I verify.py</code>. <a href="first-five/replay.json">Open the replay records</a>.</p>
+      <p>The offline verifier checks every handoff against independent sealed evidence and recomputes the counts and intervals from the same records this page uses. Extract the download and run <code>python3 -I verify.py</code>. <a href="first-five/replay.json">Open the replay records</a>.</p>
     </footer>
   </main>
 </body>

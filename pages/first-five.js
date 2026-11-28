@@ -35,7 +35,7 @@ function openingDetails(window, opening) {
     "Sampled second": opening.second,
     "Scored JPEG SHA-256": opening.jpeg_sha256,
     "Pin (x, y in px)": `${opening.x}, ${opening.y}`,
-    "Simulated opening": `${opening.time} s from window start`,
+    "Simulated handoff": `${opening.time} s from window start`,
     "Queue identity": opening.identity,
     "Ember checked": opening.checked ? "Yes" : "No",
     "Reference match": opening.track === null
@@ -69,7 +69,7 @@ function renderQueue(window, arm, requestedArm, requestedSlot) {
     const slot = index + 1;
     const grade = window.settings[opening.track];
     const match = opening.track === null
-      ? "Empty opening"
+      ? "Empty handoff"
       : `Track ${opening.track} · ${seen.has(opening.track) ? "Repeat" : grade}`;
     seen.add(opening.track);
 
@@ -180,7 +180,7 @@ function readAddress() {
   } else {
     renderWindow(index, arm, Number(slot));
     if ((arm !== null || slot !== null) && !selected) {
-      message = "That opening is unavailable. Choose another slot or window.";
+      message = "That handoff is unavailable. Choose another slot or window.";
     }
   }
   loadStatus.textContent = message;
@@ -194,7 +194,7 @@ function moveTo(index) {
 }
 
 async function load() {
-  loadStatus.textContent = "Loading the opening records…";
+  loadStatus.textContent = "Loading the handoff records…";
   loadStatus.hidden = false;
   const response = await fetch(new URL("./first-five/replay.json", import.meta.url));
   if (!response.ok) throw new Error(`Replay request failed (${response.status})`);
@@ -214,5 +214,5 @@ async function load() {
 
 load().catch(() => {
   loadStatus.hidden = false;
-  loadStatus.textContent = "The opening records could not load. Reload the page or download the offline audit above.";
+  loadStatus.textContent = "The handoff records could not load. Reload the page or download the offline audit above.";
 });

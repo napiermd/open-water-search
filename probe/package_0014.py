@@ -11,6 +11,8 @@ def build_packet():
     online = (PAGES / "0014.html").read_text(encoding="utf-8")
     offline = online.replace('href="index.html"', f'href="{PUBLIC_SITE}/"')
     offline = offline.replace('href="first-five.html', f'href="{PUBLIC_SITE}/pages/first-five.html')
+    offline = offline.replace('href="flight.html', f'href="{PUBLIC_SITE}/pages/flight.html')
+    offline = offline.replace('href="history.html', f'href="{PUBLIC_SITE}/pages/history.html')
     offline = offline.replace(
         '<a class="secondary case-action" href="0014.zip" download>Download offline handoff ZIP</a>',
         "",
@@ -22,6 +24,10 @@ def build_packet():
     files = [
         "0014.css",
         "pages.css",
+        "paper.css",
+        "fonts/anton.woff",
+        "fonts/libre-caslon-text-italic.woff",
+        "art/grain.png",
         "0014-gain-frame.webp",
         "0014-gain-crop.webp",
         "0014-loss-frame.webp",
