@@ -28,6 +28,7 @@ async function openFlight() {
     select.add(new Option(item.number + " of " + record.handoffs.length + " · " + time(item.second), item.number));
   }
   let selected = record.handoffs.find(item => String(item.number) === params.get("sighting")) || record.handoffs[0];
+  const unknownSighting = params.has("sighting") && String(selected.number) !== params.get("sighting");
   let state = params.has("sighting") ? "handoff" : "sighting";
   select.value = selected.number;
 
@@ -97,7 +98,8 @@ async function openFlight() {
     selected = record.handoffs.find(item => String(item.number) === select.value);
     show(state === "sighting" ? "sighting" : "handoff", false);
   });
-  element("load").hidden = true;
+  element("load").hidden = !unknownSighting;
+  if (unknownSighting) element("load").textContent = "Sighting " + params.get("sighting") + " isn’t on this flight. Showing sighting 1 of " + record.handoffs.length + ".";
   element("desk").hidden = false;
   const showMiss = params.get("view") === "miss";
   show(showMiss ? "label" : state, false);
@@ -147,7 +149,7 @@ function liftFlags() {
         { transform: `translate(${dx}px, ${dy}px) scale(${scale})`, transformOrigin: "top left", filter: "brightness(.63)" },
         { transform: `translate(${dx / 2}px, ${dy / 2 - 33}px) scale(${(1 + scale) / 2})`, transformOrigin: "top left", offset: 0.5 },
         { transform: "none", transformOrigin: "top left", filter: "brightness(1)" },
-      ], { duration: 2300, delay: 500, easing: smooth, fill: "backwards" });
+      ], { duration: 1100, easing: smooth });
     }
   });
 }
@@ -162,8 +164,38 @@ function turnSlotFive() {
     });
     section.querySelectorAll(".slot-crop").forEach((crop, index) => crop.animate(
       [{ transform: "perspective(900px) rotateX(-90deg)", filter: "brightness(.63)" }, { transform: "none", filter: "brightness(1)" }],
-      { duration: 700, delay: 1400 + index * 1300, easing: smooth, fill: "backwards" }));
+      { duration: 500, delay: 300 + index * 300, easing: smooth, fill: "backwards" }));
   });
+}
+
+// Anything focused or targeted mid-animation shows its settled state at once.
+function settleOnFocus(selector) {
+  const node = document.querySelector(selector);
+  if (!node) return;
+  const settle = () => node.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+  node.addEventListener("focusin", settle);
+  node.addEventListener("click", settle);
+}
+
+// The crew panel starts on the pin screen. Links to it scroll the panel itself into view and give it focus.
+// For a moment afterwards, a second click of a double click neither drops a pin nor selects the page.
+function guardCrewLinks() {
+  const frame = element("crew-frame");
+  if (!frame) return;
+  let guarded = false;
+  document.addEventListener("mousedown", event => { if (guarded && event.detail > 1) event.preventDefault(); });
+  for (const link of document.querySelectorAll('a[href="#crew"]')) {
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      guarded = true;
+      frame.style.pointerEvents = "none";
+      setTimeout(() => { frame.style.pointerEvents = ""; guarded = false; getSelection()?.removeAllRanges(); }, 600);
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      frame.scrollIntoView({ block: "start", behavior: still ? "auto" : "smooth" });
+      history.replaceState(null, "", "#crew");
+      frame.focus({ preventScroll: true });
+    });
+  }
 }
 
 if (params.has("run") || params.has("case")) {
@@ -174,6 +206,9 @@ if (params.has("run") || params.has("case")) {
   fitCrewFrame();
   liftFlags();
   turnSlotFive();
+  settleOnFocus(".flag-board");
+  settleOnFocus(".queues");
+  guardCrewLinks();
   openFlight().catch(() => {
     element("desk").hidden = true;
     element("load").hidden = false;
