@@ -41,7 +41,11 @@ main > section { padding-block: clamp(3rem, 7vw, 6rem); }
 .slot-row li::before { content: "Slot " counter(slot); display: block; margin-bottom: .45rem; font: 400 .7rem/1 var(--label); text-transform: uppercase; color: var(--ink-soft); }
 .slot-row li.decides { background: var(--ember); }
 .queue.detector .slot-row li.decides { background: var(--detector); }
+.slot-row li:not(.decides, .found) { opacity: .5; box-shadow: none; }
+.slot-row li.decides { outline: 3px solid var(--card); outline-offset: 2px; }
+.slot-row li a { color: var(--ink); display: block; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
 .slot-crop { transform-origin: top; }
+.slot-crop:target { outline: 3px solid var(--ember); outline-offset: 4px; }
 
 /* Results */
 .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 5vw, 4.5rem); }
@@ -53,6 +57,13 @@ main > section { padding-block: clamp(3rem, 7vw, 6rem); }
 .bar.detector { background: var(--detector); } .bar.ember { background: var(--ember); }
 .result { margin: 1rem 0 0; font-size: .95rem; }
 .caveat { margin: 2.4rem 0 0; max-width: 72ch; font-size: .98rem; color: var(--ink-soft); }
+.counted { margin-top: 1.2rem; max-width: 72ch; font-size: .95rem; }
+.counted summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font: 400 1.1rem/1 var(--display); }
+.counted p, .counted ul { margin: .6rem 0; }
+.counted code { font: .9em var(--label); background: var(--card); padding: .05rem .3rem; }
+.after-crew { margin-top: 1.2rem; }
+.band-head h2[tabindex]:focus { outline: none; }
+.band-head h2[tabindex]:focus-visible { outline: 3px solid var(--ember); outline-offset: 4px; }
 
 /* Miss */
 .miss-board { display: grid; grid-template-columns: minmax(0, 3fr) minmax(14rem, 1fr); gap: clamp(1rem, 3vw, 2.4rem); align-items: start; }

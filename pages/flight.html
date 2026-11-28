@@ -15,13 +15,13 @@
 <link rel="preload" href="fonts/anton.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="pages.css"><link rel="stylesheet" href="paper.css"><link rel="stylesheet" href="flight.css">
 <script type="module" src="flight.js"></script></head><body>
-<header class="masthead"><a href="flight.html">Open Water Search</a><nav aria-label="Pages"><a href="#crew">Crew reply</a><a href="first-five.html">Audit</a><a href="history.html">History</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
+<header class="masthead"><a href="flight.html">Open Water Search</a><nav aria-label="Pages"><a href="#crew">Crew reply</a><a href="#slot-five">Slot five</a><a href="#results">Results</a><a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96">Audit</a><a href="history.html">History</a><a href="https://github.com/napiermd/open-water-search">Code</a></nav></header>
 <main>
 <section class="story" aria-labelledby="lead-title">
 <div class="story-copy">
 <h1 id="lead-title">Which sightings should the crew check first?</h1>
 <p class="second-question">And when the crew says “I see them,” can the operator see who they mean?</p>
-<p>Open Water Search runs a trained detector over every second of a drone flight and sends each flagged spot to Muse Ember for a second look. The operator gets a short ranked list of handoffs. The crew pins who they see and sends it back.</p>
+<p>A trained detector flags possible swimmers in every second of drone video. Muse Ember, an AI model from Meta, takes a second look at each flagged spot. The drone operator gets a short ranked list of sightings to send to the boat crew, called handoffs. The crew marks who they see and sends it back.</p>
 <div class="actions"><a class="cta" href="#crew">Pin the swimmer as the boat crew</a><a class="quiet" href="first-five/audit.zip" download>Download the audit</a></div>
 </div>
 <figure class="story-art mount">
@@ -46,40 +46,44 @@
 </div></section>
 
 <section class="crew" id="crew" aria-labelledby="crew-title"><div class="band">
-<div class="band-head"><h2 id="crew-title">Now you’re the boat crew.</h2>
-<p>You get Ember’s close-up and the unmarked wide frame. Tap where you see the swimmer, send your reply, then see exactly what the drone operator gets back. The reply saves as a file that opens offline.</p></div>
+<div class="band-head"><h2 id="crew-title" >Now you’re the boat crew.</h2>
+<p>You get Ember’s close-up and the unmarked wide frame. Tap where you see the swimmer, send your reply, then see exactly what the drone operator gets back. You can save the reply as a file that opens offline.</p></div>
 <iframe id="crew-frame" class="crew-frame" src="flight/crew-reply.html?start=pin&amp;embed=1" title="Boat crew reply for the 0:36 handoff" loading="lazy"></iframe>
+<div class="actions after-crew"><a class="quiet" href="#slot-five">Next: what changed in slot five</a></div>
 <p class="provenance">Simulated crew reply / recorded MOBDrone imagery / <a href="flight/crew-reply.html?start=pin">Open it full screen</a></p>
 </div></section>
 
 <section class="night slots" id="slot-five" aria-labelledby="slot-title"><div class="band">
 <div class="band-head"><h2 id="slot-title">What changed in slot five?</h2>
-<p>Same footage, same simulated dispatch clock, five handoffs per list. Both lists reached swimmer A in slot two. The fifth handoff sent one crew to empty water and the other to swimmer B.</p></div>
+<p>A separate scored flight, replayed twice on the same footage and simulated dispatch clock, with five handoffs per list. Both lists reached swimmer A in slot two. In slot five, the detector alone sent the crew to empty water. With Ember, the crew was sent to swimmer B.</p></div>
 <div class="queues">
-<div class="queue detector"><h3>Detector alone</h3><ol class="slot-row" aria-label="Detector alone, first five handoffs"><li>Empty</li><li>A</li><li>Empty</li><li>Empty</li><li class="decides">Empty</li></ol>
-<figure class="mount slot-crop"><img src="art/slot5-detector.webp" width="720" height="480" alt="Slot five for the detector alone: open water with no swimmer."><figcaption><span class="tag">Empty handoff</span>Slot 5 / frame 2982 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=detector&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
-<div class="queue ember"><h3>Detector + Ember</h3><ol class="slot-row" aria-label="Detector plus Ember, first five handoffs"><li>Empty</li><li>A</li><li>Empty</li><li>Empty</li><li class="decides">B</li></ol>
-<figure class="mount slot-crop"><img src="art/slot5-ember.webp" width="720" height="480" alt="Slot five for detector plus Ember: swimmer B in the water."><figcaption><span class="tag kept">Swimmer B</span>Slot 5 / frame 3341 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=ember&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
+<div class="queue detector"><h3>Detector alone</h3><ol class="slot-row" aria-label="Detector alone, first five handoffs"><li>Empty</li><li class="found">A</li><li>Empty</li><li>Empty</li><li class="decides"><a href="#slot5-detector">Empty</a></li></ol>
+<figure class="mount slot-crop" id="slot5-detector"><img src="art/slot5-detector.webp" width="720" height="480" alt="Slot five for the detector alone: open water with no swimmer."><figcaption><span class="tag">Empty handoff</span>Slot 5 / frame 2982 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=detector&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
+<div class="queue ember"><h3>Detector + Ember</h3><ol class="slot-row" aria-label="Detector plus Ember, first five handoffs"><li>Empty</li><li class="found">A</li><li>Empty</li><li>Empty</li><li class="decides"><a href="#slot5-ember">B</a></li></ol>
+<figure class="mount slot-crop" id="slot5-ember"><img src="art/slot5-ember.webp" width="720" height="480" alt="Slot five for detector plus Ember: swimmer B in the water."><figcaption><span class="tag kept">Swimmer B</span>Slot 5 / frame 3341 / <a href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96&amp;arm=ember&amp;slot=5">Check it in the audit</a></figcaption></figure></div>
 </div>
 <p class="provenance">Separate scored flight / MOBDrone DJI_0915_0015_50m / window starting at 1:36</p>
 </div></section>
 
 <section class="results" id="results" aria-labelledby="results-title"><div class="band">
 <div class="band-head"><h2 id="results-title">What reached the first five handoffs?</h2>
-<p>129 recorded MOBDrone windows from 42 recording families. Both queues used the same footage and simulated clock, with up to five handoffs per window.</p></div>
+<p>129 stretches of recorded drone video, 24 seconds each, from 42 separate MOBDrone recordings. Both lists used the same footage and simulated clock, with up to five handoffs per stretch.</p></div>
 <div class="charts">
 <div class="chart"><h3>Swimmer appearances reached, out of 229</h3>
 <div class="bar-row"><span>Detector alone</span><b class="bar detector" style="--n:180;--of:229"></b><strong>180</strong></div>
 <div class="bar-row"><span>Detector + Ember</span><b class="bar ember" style="--n:199;--of:229"></b><strong>199</strong></div>
-<p class="result"><span class="tag kept">19 more reached</span> +8.3 percentage points, paired 95% interval +3.7 to +13.3</p></div>
+<p class="result"><span class="tag kept">19 more reached</span> 8.3 percentage points more of the 229</p></div>
 <div class="chart"><h3>Empty handoffs, sent where no labeled person was</h3>
 <div class="bar-row"><span>Detector alone</span><b class="bar detector" style="--n:185;--of:229"></b><strong>185</strong></div>
 <div class="bar-row"><span>Detector + Ember</span><b class="bar ember" style="--n:121;--of:229"></b><strong>121</strong></div>
-<p class="result"><span class="tag kept">64 fewer empty handoffs</span> 34.6% fewer, paired 95% interval 25.9% to 44.1%</p></div>
+<p class="result"><span class="tag kept">64 fewer empty handoffs</span> 34.6% fewer trips to empty water</p></div>
 </div>
 <p class="caveat">Ember reached 23 appearances the detector queue missed, and missed four it reached. The grades were assigned after the runs, a person can appear in several windows, some of these flights helped us build the tool, and the crew exchange is simulated. A real crew exercise and independent flights are the next two tests.</p>
-<div class="actions"><a class="cta" href="first-five/audit.zip" download>Download the offline audit</a><a class="quiet" href="first-five.html">Inspect all 129 windows</a></div>
-<p class="provenance">Run python3 -I verify.py in the extracted folder / 838 scored handoffs / no network or key needed</p>
+<details class="counted"><summary>How we counted</summary>
+<p>A swimmer appearance is one labeled person in one 24-second stretch, so the same person can count more than once. Each list could send up to five handoffs per stretch, 838 across both lists. The ranges below are paired 95% intervals: we resampled the 42 recordings 20,000 times and kept both lists together each time.</p>
+<ul><li>Reach: +8.3 percentage points, from +3.7 to +13.3.</li><li>Empty handoffs: 34.6% fewer, from 25.9% to 44.1% fewer.</li></ul>
+<p>To check every number yourself, download the audit, unzip it and run <code>python3 -I verify.py</code>. It needs no network connection or API key.</p></details>
+<div class="actions"><a class="cta" href="first-five/audit.zip" download>Download the offline audit</a><a class="quiet" href="first-five.html?video=DJI_0915_0015_50m.mp4&amp;start=96">Inspect all 129 windows</a></div>
 </div></section>
 
 <section class="night miss" id="miss" aria-labelledby="miss-title"><div class="band">

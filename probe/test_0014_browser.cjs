@@ -139,6 +139,7 @@ async function inspectOpeningAndPin(page, touch) {
   const crew = page.frameLocator("#crew-frame");
   const frame = crew.getByRole("group", { name: "Place your pin on the full frame" });
   await frame.waitFor();
+  assert.ok(await crew.locator("#zoom").isVisible(), "Ember's close-up shows beside the frame while pinning");
   assert.ok(await crew.locator("#original-pin").isHidden());
   assert.ok(await crew.getByRole("button", { name: "Send reply and pin" }).isDisabled());
   assert.ok(await crew.locator("header").isHidden());
@@ -147,10 +148,17 @@ async function inspectOpeningAndPin(page, touch) {
   const position = { x: box.width * x / record.pair[0].width, y: box.height * y / record.pair[0].height };
   if (touch) await frame.tap({ position });
   else await frame.click({ position });
+  assert.match(await crew.locator("#pin-note").innerText(), /Pin placed/);
   await crew.getByRole("button", { name: "Send reply and pin" }).click();
   await crew.getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
+  await page.waitForFunction(() => {
+    const panel = document.querySelector("#crew-frame");
+    const top = panel.getBoundingClientRect().top + panel.contentDocument.getElementById("heading").getBoundingClientRect().top;
+    return top >= -1 && top < innerHeight / 2;
+  }, null, { timeout: 3000 });
+  assert.match(await crew.locator("#intro").innerText(), /Right on the swimmer/);
   const messages = crew.getByRole("list", { name: "Messages in order" });
-  assert.match(await messages.innerText(), /Boat crew → drone operator.*I see them.*Inside the labeled swimmer’s box/s);
+  assert.match(await messages.innerText(), /Boat crew → drone operator.*I see them.*inside the labeled swimmer’s box/is);
   assert.equal(await messages.getByRole("listitem").count(), 1);
   for (const id of ["#crew-pin", "#original-pin"]) assert.ok(await crew.locator(id).isVisible());
   await page.waitForFunction(() => {
@@ -161,6 +169,9 @@ async function inspectOpeningAndPin(page, touch) {
   await page.getByRole("heading", { name: "The “duck” was a swimmer." }).waitFor();
   assert.match(await page.locator("#clock").innerText(), /0:12/);
   assert.ok(await page.locator("#truth-box").isVisible());
+  await page.goto(landing);
+  await page.locator("#crew-frame").scrollIntoViewIfNeeded();
+  await page.frameLocator("#crew-frame").getByRole("heading", { name: "What the drone operator gets back" }).waitFor();
   await page.goto(landing);
   await page.getByRole("link", { name: "Inspect all 129 windows" }).click();
   await page.getByRole("heading", { name: "Replay the first five" }).waitFor();
@@ -211,7 +222,7 @@ async function saveDownload(page, control, directory) {
       await openCrew(page);
       const confirmed = await placeCrewPin(page, true);
       assert.ok(await page.getByRole("heading", { name: "What the drone operator gets back" }).isVisible());
-      assert.match(await confirmed.innerText(), /I see them.*Inside the labeled swimmer’s box/s);
+      assert.match(await confirmed.innerText(), /I see them.*inside the labeled swimmer’s box/is);
       assert.match(await page.getByText("White ring: original sighting", { exact: false }).innerText(), /Amber diamond: attempt 1/i);
 
       const offline = await browser.newContext({ offline: true, viewport: { width, height }, hasTouch });
@@ -227,10 +238,10 @@ async function saveDownload(page, control, directory) {
       const unresolved = await placeCrewPin(packet, false);
       await packet.getByRole("button", { name: "Send correction" }).click();
       await packet.getByRole("button", { name: "I still don’t see them" }).click();
-      assert.match(await unresolved.innerText(), /Outside the labeled swimmer’s box.*I still don’t see them/s);
+      assert.match(await unresolved.innerText(), /outside the labeled swimmer’s box.*I still don’t see them/is);
       const status = packet.getByText("Sighting unresolved.", { exact: false });
       assert.ok(await status.isVisible());
-      const savedReply = await saveDownload(packet, packet.getByRole("button", { name: "Download operator copy" }), extracted);
+      const savedReply = await saveDownload(packet, packet.getByRole("button", { name: "Save a copy for the operator" }), extracted);
       await packet.goto(pathToFileURL(savedReply).href);
       assert.ok(await packet.getByText("Sighting unresolved.", { exact: false }).isVisible());
       assert.match(await packet.getByRole("list", { name: "Messages in order" }).innerText(), /I need another cue.*I still don’t see them/s);

@@ -1,5 +1,6 @@
 const arms = { ember: "Detector + Ember", detector: "Detector alone" };
-const caseVideo = "DJI_0804_0014_50m_2.mp4";
+const caseVideo = "DJI_0915_0015_50m.mp4";
+const caseStart = 96;
 const slotLimit = 5;
 const windowPicker = document.querySelector("#window");
 const previous = document.querySelector("#previous");
@@ -169,7 +170,7 @@ function writeAddress() {
 function readAddress() {
   const params = new URLSearchParams(location.search);
   const video = params.get("video") ?? caseVideo;
-  const start = Number(params.get("start") ?? 0);
+  const start = Number(params.get("start") ?? caseStart);
   const index = windows.findIndex(window => window.video === video && window.start === start);
   const arm = params.get("arm");
   const slot = params.get("slot");
