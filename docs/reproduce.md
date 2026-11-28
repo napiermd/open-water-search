@@ -81,7 +81,7 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/pages/index.html`. `probe/build_pages.py` rebuilds `pages/runs/` from the sealed traces and from `runs/live-clip`, and reads no labels. The pages load labels in the browser from the files `fetch_frames.py` downloads.
 
-The hosted site comes from `python probe/build_site.py`, which copies the pages, the run data, and the frames resized to 2,400 pixels, along with their labels, into `site/`. Then `vercel deploy site --prod` publishes it. SeaDronesSee is CC0, so the site can carry frames and labels that this repository leaves out.
+Vercel builds from `vercel.json` on GitHub. It runs the pinned downloader, then `python probe/build_site.py` copies the pages, run data, and frames resized to 2,400 pixels with their labels into `site/`. To deploy a verified local build, run `vercel deploy site --prod`. Both paths use the same public routes. SeaDronesSee is CC0, so the site can carry frames and labels that this repository leaves out.
 
 ## Reproduce the numbers
 

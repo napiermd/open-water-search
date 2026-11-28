@@ -19,16 +19,12 @@ from score import ROOT, TRAINING, VALIDATION
 
 SITE = ROOT / "site"
 LONG_EDGE = 2400
-VERCEL = {
-    "redirects": [
-        {"source": "/", "destination": "/pages/flight.html", "permanent": False},
-        {"source": "/judge", "destination": "/pages/flight.html", "permanent": False},
-        {"source": "/replay", "destination": "/pages/replay.html", "permanent": False},
-    ],
-    "headers": [
-        {"source": "/(.*)\\.jpg", "headers": [{"key": "Cache-Control", "value": "public, max-age=3600, must-revalidate"}]},
-    ],
-}
+
+
+
+def vercel_routes():
+    config = json.loads((ROOT / "vercel.json").read_text())
+    return {key: config[key] for key in ("redirects", "headers")}
 
 
 def site_inputs():
@@ -55,7 +51,7 @@ def assemble(staging, inputs):
         label = staging / label_name
         label.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(label_path, label)
-    (staging / "vercel.json").write_text(json.dumps(VERCEL, indent=2))
+    (staging / "vercel.json").write_text(json.dumps(vercel_routes(), indent=2))
     (staging / ".vercelignore").write_text(".env*\n")
 
 
